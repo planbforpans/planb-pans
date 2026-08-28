@@ -23,9 +23,9 @@ const APP = 'https://app.planbforpans.com'
 // Booked AND paid through Calendly (book + pay in one step).
 // Case Review has its own dedicated event; the package + results-plan use the
 // base scheduling page until they get their own event slugs.
-const CALENDLY = 'https://calendly.com/rachel-planbforpans'
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
 const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/the-roadmap'
+const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together-the-package'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -61,7 +61,7 @@ const TIERS: Tier[] = [
     eyebrow: 'Case Review + Roadmap · save $25',
     body: 'The full path, start to finish: the Case Review to get the right testing done, then the Roadmap once results come back. Both together — and $25 less than buying them separately.',
     cta: 'Book the package — $375 →',
-    href: CALENDLY,
+    href: PACKAGE_CAL,
     accent: teal,
     featured: true,
     badge: 'Best value',
