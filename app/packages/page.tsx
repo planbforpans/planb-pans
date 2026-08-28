@@ -25,7 +25,9 @@ const APP = 'https://app.planbforpans.com'
 // base scheduling page until they get their own event slugs.
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
 const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
-const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together-the-package'
+const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together'
+// Free 15-min orientation — the low-commitment front door before the paid tiers.
+const DISCOVERY_CAL = 'https://calendly.com/rachel-planbforpans/plan-b-free-15-min-orientation'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -103,7 +105,10 @@ export default function PricingPage() {
       {/* Bucket 1 — Work with Rachel */}
       <section style={{ padding: 'clamp(44px, 7vw, 80px) 24px clamp(20px, 3vw, 30px)' }}>
         <div className="pb-container" style={{ maxWidth: 1040, margin: '0 auto' }}>
-          <p style={{ color: gold, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 20px' }}>Work with Rachel — a real person on your kid&rsquo;s case</p>
+          <p style={{ color: gold, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 12px' }}>Work with Rachel — a real person on your kid&rsquo;s case</p>
+          <a href={DISCOVERY_CAL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', margin: '0 0 22px', fontSize: 15.5, fontWeight: 700, color: teal, textDecoration: 'none', borderBottom: '2px solid rgba(31,107,107,0.32)', paddingBottom: 2 }}>
+            New here, or not sure where to start? Book a free 15-minute orientation with Rachel &rarr;
+          </a>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {TIERS.map((t) => (
               <div
