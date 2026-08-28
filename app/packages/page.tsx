@@ -25,6 +25,7 @@ const APP = 'https://app.planbforpans.com'
 // base scheduling page until they get their own event slugs.
 const CALENDLY = 'https://calendly.com/rachel-planbforpans'
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
+const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/the-roadmap'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -57,8 +58,8 @@ const TIERS: Tier[] = [
   {
     price: '$375',
     name: 'Both — the package',
-    eyebrow: 'Case Review + results plan · save $25',
-    body: 'The full path, start to finish: the Case Review to get the right testing done, then your second synthesis once results come back. Both together — and $25 less than buying them separately.',
+    eyebrow: 'Case Review + Roadmap · save $25',
+    body: 'The full path, start to finish: the Case Review to get the right testing done, then the Roadmap once results come back. Both together — and $25 less than buying them separately.',
     cta: 'Book the package — $375 →',
     href: CALENDLY,
     accent: teal,
@@ -67,11 +68,11 @@ const TIERS: Tier[] = [
   },
   {
     price: '$200',
-    name: 'Your second synthesis',
+    name: 'The Roadmap',
     eyebrow: 'Your results → a plan',
-    body: 'Once your test results come back, you upload them. Rachel builds your child’s actual plan from them — and personally reviews every one before it reaches you. Nothing goes out without her own eyes on it.',
-    cta: 'Get your results plan — $200 →',
-    href: CALENDLY,
+    body: 'Once your test results come back, Rachel reads all of them with you and builds your child’s actual plan — what’s driving what, what to do next, and who to see. You leave with a real direction, not a pile of numbers.',
+    cta: 'Book the Roadmap — $200 →',
+    href: ROADMAP_CAL,
     accent: gold,
     badge: 'After your labs',
   },
