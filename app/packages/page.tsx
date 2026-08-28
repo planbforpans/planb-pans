@@ -1,14 +1,15 @@
 // Plan B pricing — the full offering, on the marketing site (Rachel 2026-08:
 // "it all needs to be on the marketing site"). Two clear actions:
-//   1. Work with Rachel — $100 call, $200 second synthesis, $400 concierge.
+//   1. Work with Rachel — $200 Case Review, then $200 second synthesis once
+//      results come back. (The old $100 30-min call was retired 2026-08-28.)
 //   2. Minta tokens — pay-as-you-go, ~$20 covers months.
-// The app + first synthesis stay free. Paid buttons hit the app's public /buy
-// redirect (Stripe) or Rachel's Calendly (book + pay in one).
+// The app + first synthesis stay free. Paid buttons hit the app (/case-review
+// for the Case Review, /buy for the results plan) and check out through Stripe.
 
 export const metadata = {
   title: 'Pricing | Plan B for PANS',
   description:
-    'Start free. Work with Rachel when you want a person — a $100 call, your $200 results plan, or full concierge — and pay only for the Minta AI you use.',
+    'Start free. Work with Rachel when you want a person — a $200 Case Review and your $200 results plan — and pay only for the Minta AI you use.',
 }
 
 const ink = '#2a2a26'
@@ -18,12 +19,9 @@ const soft = '#524d40'
 const rule = '#e3dcc9'
 const card = '#fffdf7'
 
-// The Stripe-integrated $100 booking event (book + pay in one step).
-const CALENDLY = 'https://calendly.com/rachel-planbforpans/30min-consult'
-// Public app redirects that create a Stripe checkout and go straight to Stripe.
-const BUY_RESULTS = 'https://app.planbforpans.com/buy?plan=results'
-const BUY_CONCIERGE = 'https://app.planbforpans.com/buy?plan=concierge'
+// The Case Review has its own app page, which opens the $200 Stripe checkout.
 const APP = 'https://app.planbforpans.com'
+const CASE_REVIEW = `${APP}/case-review`
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -44,34 +42,16 @@ type Tier = {
 }
 const TIERS: Tier[] = [
   {
-    price: '$100',
-    name: 'A 30-minute call',
-    eyebrow: 'Book a call',
-    body: 'Talk your synthesis or results through with Rachel — what doctors to try, where to get the bloodwork, what to do first. You book and pay in one step.',
-    cta: 'Book & pay — $100 →',
-    href: CALENDLY,
-    accent: teal,
-  },
-  {
-    price: '$200',
-    name: 'Your second synthesis',
-    eyebrow: 'Your results → a plan',
-    body: 'As your test results come in, you upload them. Rachel builds your child’s actual plan from them — and personally reviews every one before it reaches you. Nothing goes out without her own eyes on it.',
-    cta: 'Get your results plan — $200 →',
-    href: BUY_RESULTS,
+    price: '$200 + $200',
+    name: 'The Case Review',
+    eyebrow: 'Work with Rachel — one path, start to plan',
+    body:
+      'One offering, two steps. First ($200): Rachel reads everything — every lab, every note, the whole history — and you spend about 90 minutes together. If getting the testing done is the wall, she helps you buy and order every test: the right panel, the right codes, one stick, and catches what the office dropped. Then ($200): once your results come back, she builds your child’s actual plan from them — personally reviewing every one before it reaches you. Nothing goes out without her own eyes on it.',
+    cta: 'Request a Case Review →',
+    href: CASE_REVIEW,
     accent: teal,
     featured: true,
-    badge: 'Most families',
-  },
-  {
-    price: '$400',
-    name: 'The Case Review',
-    eyebrow: 'Full concierge',
-    body: 'If getting the testing done is the wall, Rachel helps you buy and order every test — right panel, right codes, one stick — catches what the office dropped, and builds the synthesis from the results. The second synthesis is included.',
-    cta: 'Request a Case Review — $400 →',
-    href: BUY_CONCIERGE,
-    accent: gold,
-    badge: 'Limited spots',
+    badge: 'Start here',
   },
 ]
 
@@ -136,9 +116,10 @@ export default function PricingPage() {
             ))}
           </div>
           <p style={{ fontSize: 13.5, color: soft, lineHeight: 1.6, margin: '18px 0 0', maxWidth: 720 }}>
-            The first synthesis is free and self-serve. The <strong style={{ color: ink }}>$200 second synthesis</strong> is
-            the human-reviewed one, built from your real results — a full plan only comes from a synthesis Rachel has read
-            by hand. Always meant to bring to your child&rsquo;s doctor, not replace them.
+            Your first synthesis is free and self-serve. The Case Review is the human-reviewed path — the{' '}
+            <strong style={{ color: ink }}>results plan</strong> (its second step) is built from your real results, and a
+            full plan only comes from one Rachel has read by hand. Always meant to bring to your child&rsquo;s doctor, not
+            replace them.
           </p>
         </div>
       </section>
