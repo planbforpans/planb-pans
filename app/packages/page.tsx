@@ -1,10 +1,10 @@
 // Plan B pricing — the full offering, on the marketing site (Rachel 2026-08:
 // "it all needs to be on the marketing site"). Two clear actions:
-//   1. Work with Rachel — $200 Case Review, then $200 second synthesis once
-//      results come back. (The old $100 30-min call was retired 2026-08-28.)
+//   1. Work with Rachel — all booked + paid in Calendly: a $200 Case Review, a
+//      $200 second synthesis, or both together as a $375 package (saves $25).
+//      The old $100 30-min call was retired 2026-08-28.
 //   2. Minta tokens — pay-as-you-go, ~$20 covers months.
-// The app + first synthesis stay free. Paid buttons hit the app (/case-review
-// for the Case Review, /buy for the results plan) and check out through Stripe.
+// The app + first synthesis stay free.
 
 export const metadata = {
   title: 'Pricing | Plan B for PANS',
@@ -19,9 +19,11 @@ const soft = '#524d40'
 const rule = '#e3dcc9'
 const card = '#fffdf7'
 
-// The Case Review has its own app page, which opens the $200 Stripe checkout.
 const APP = 'https://app.planbforpans.com'
-const CASE_REVIEW = `${APP}/case-review`
+// Everything with Rachel is booked AND paid through Calendly (book + pay in one
+// step). This is her scheduling page, which lists her bookable events. If
+// dedicated per-offering event slugs exist, point each tier's href at them.
+const CALENDLY = 'https://calendly.com/rachel-planbforpans'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -42,16 +44,35 @@ type Tier = {
 }
 const TIERS: Tier[] = [
   {
-    price: '$200 + $200',
+    price: '$200',
     name: 'The Case Review',
-    eyebrow: 'Work with Rachel — one path, start to plan',
-    body:
-      'One offering, two steps. First ($200): Rachel reads everything — every lab, every note, the whole history — and you spend about 90 minutes together. If getting the testing done is the wall, she helps you buy and order every test: the right panel, the right codes, one stick, and catches what the office dropped. Then ($200): once your results come back, she builds your child’s actual plan from them — personally reviewing every one before it reaches you. Nothing goes out without her own eyes on it.',
-    cta: 'Request a Case Review →',
-    href: CASE_REVIEW,
+    eyebrow: 'Book + pay in one step',
+    body: 'Rachel reads everything — every lab, every note, the whole history — and you spend about 90 minutes together. If getting the testing done is the wall, she helps you buy and order every test: the right panel, the right codes, one stick, and catches what the office dropped.',
+    cta: 'Book with Rachel — $200 →',
+    href: CALENDLY,
+    accent: teal,
+    badge: 'Start here',
+  },
+  {
+    price: '$375',
+    name: 'Both — the package',
+    eyebrow: 'Case Review + results plan · save $25',
+    body: 'The full path, start to finish: the Case Review to get the right testing done, then your second synthesis once results come back. Both together — and $25 less than buying them separately.',
+    cta: 'Book the package — $375 →',
+    href: CALENDLY,
     accent: teal,
     featured: true,
-    badge: 'Start here',
+    badge: 'Best value',
+  },
+  {
+    price: '$200',
+    name: 'Your second synthesis',
+    eyebrow: 'Your results → a plan',
+    body: 'Once your test results come back, you upload them. Rachel builds your child’s actual plan from them — and personally reviews every one before it reaches you. Nothing goes out without her own eyes on it.',
+    cta: 'Get your results plan — $200 →',
+    href: CALENDLY,
+    accent: gold,
+    badge: 'After your labs',
   },
 ]
 
@@ -116,10 +137,10 @@ export default function PricingPage() {
             ))}
           </div>
           <p style={{ fontSize: 13.5, color: soft, lineHeight: 1.6, margin: '18px 0 0', maxWidth: 720 }}>
-            Your first synthesis is free and self-serve. The Case Review is the human-reviewed path — the{' '}
-            <strong style={{ color: ink }}>results plan</strong> (its second step) is built from your real results, and a
-            full plan only comes from one Rachel has read by hand. Always meant to bring to your child&rsquo;s doctor, not
-            replace them.
+            Your first synthesis is free and self-serve. Working with Rachel is the human-reviewed path — the{' '}
+            <strong style={{ color: ink }}>results plan</strong> is built from your real test results, and a full plan
+            only comes from one she has read by hand. All three options above are booked and paid in one step through
+            Calendly. Always meant to bring to your child&rsquo;s doctor, not replace them.
           </p>
         </div>
       </section>
