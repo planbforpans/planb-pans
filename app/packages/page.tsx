@@ -20,10 +20,11 @@ const rule = '#e3dcc9'
 const card = '#fffdf7'
 
 const APP = 'https://app.planbforpans.com'
-// Everything with Rachel is booked AND paid through Calendly (book + pay in one
-// step). This is her scheduling page, which lists her bookable events. If
-// dedicated per-offering event slugs exist, point each tier's href at them.
+// Booked AND paid through Calendly (book + pay in one step).
+// Case Review has its own dedicated event; the package + results-plan use the
+// base scheduling page until they get their own event slugs.
 const CALENDLY = 'https://calendly.com/rachel-planbforpans'
+const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -49,7 +50,7 @@ const TIERS: Tier[] = [
     eyebrow: 'Book + pay in one step',
     body: 'Rachel reads everything — every lab, every note, the whole history — and you spend about 90 minutes together. You finally understand why the things you’ve tried were only patches, what really set off your past flares, and how to head off the next one. If getting the testing done is the wall, she helps you order every test — the right panel, the right codes, one stick — and catches what the office dropped.',
     cta: 'Book with Rachel — $200 →',
-    href: CALENDLY,
+    href: CASE_REVIEW_CAL,
     accent: teal,
     badge: 'Start here',
   },
