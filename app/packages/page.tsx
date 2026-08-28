@@ -24,7 +24,7 @@ const APP = 'https://app.planbforpans.com'
 // Case Review has its own dedicated event; the package + results-plan use the
 // base scheduling page until they get their own event slugs.
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
-const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/the-roadmap'
+const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
 const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together-the-package'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
