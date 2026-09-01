@@ -51,7 +51,7 @@ const TIERS: Tier[] = [
     price: '$200',
     name: 'The Case Review',
     eyebrow: 'Book + pay in one step',
-    body: 'Rachel reads everything — every lab, every note, the whole history — and you spend about 90 minutes together. You finally understand why the things you’ve tried were only patches, what really set off your past flares, and how to head off the next one. If getting the testing done is the wall, she helps you order every test — the right panel, the right codes, one stick — and catches what the office dropped.',
+    body: 'Your free synthesis is an AI first pass — a real starting map, but AI makes mistakes. The Case Review is where a human finds them. Rachel reads everything herself — every lab, every note, the whole history — and in about 90 minutes together you get the TRUE picture of your child: why the things you’ve tried were only patches, what actually set off your past flares, and how to see the next one coming instead of reacting after it hits. She builds the plan no single doctor has — because no single doctor looks at the whole child — and if getting the testing done is the wall, she helps you order every test (the right panel, the right codes, one stick) and catches what the office dropped. She healed her own three kids from PANS. She’ll do this beside you.',
     cta: 'Book with Rachel — $200 →',
     href: CASE_REVIEW_CAL,
     accent: teal,
