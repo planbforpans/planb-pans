@@ -35,6 +35,7 @@ const SECTIONS: Section[] = [
       { title: 'Where to Start — The Testing Map', blurb: 'Where do I even begin with testing? A tiered, scaffolded map: cast a wide net ONCE (Tier 1), then follow only the branches your results flag. Elevates the two tests almost every family misses — a comprehensive methylation panel and an organic-acids (mitochondrial) test — even two years in.', href: '/testing-map.html' },
       { title: 'How to actually use a genetic test', blurb: 'A genetic test like 23andMe is a blueprint — it shows what your kid might struggle with, but on its own it\'s just a spreadsheet of letters. The whole value is the read: a practitioner like Yasko interprets it — and Minta does it free, then overlays the bloodwork that shows what\'s really happening now. Plus the 3 simple steps to order both.', href: '/how-to-use-genetics.html' },
       { title: 'The Protocol', blurb: 'Where everyone starts — anti-inflammatory + a targeted antibiotic, the doses, how long, and what to do if your child slips.', href: '/deconstructing-pans.html#protocol' },
+      { title: 'My child changed overnight — could it be PANS?', blurb: 'New OCD, tics, or rage out of nowhere. A calm first-read for the parent who just watched their child become someone else: what sudden onset can mean, and what to do first.', href: '/sudden-onset-ocd-tics-child.html' },
     ],
   },
   {
@@ -51,6 +52,7 @@ const SECTIONS: Section[] = [
     items: [
       { title: 'Diet & Nutrition', blurb: 'Food as a real PANS lever — the anti-inflammatory foundation, which specialty diet fits your kid’s pattern, and how to find triggers without over-restricting.', href: '/diet.html' },
       { title: 'Nervous-System Regulation', blurb: 'Calming a fight-or-flight brain — vagus-nerve work, HRV, limbic retraining — the layer that makes everything else tolerable.', href: '/nervous-system.html' },
+      { title: 'What to do during a meltdown', blurb: 'Two anchors, parent to parent — STAY CALM, HOLD THE RULES. What to say, what never to do, and the honest caveat that a flare is not a behavior problem.', href: '/meltdown-playbook-stay-calm-hold-the-rules.html' },
       { title: 'Brain Retraining for Kids', blurb: 'DNRS (Annie Hopper) as the lead, plus the kid-native tools (tapping, SSP, co-regulation) that make detox survivable.', href: '/brain-retraining-kids.html' },
       { title: 'Screens, Dopamine & the Point System', blurb: 'A real family\'s carrot-and-stick reset for a screen-obsessed, dopamine-driven kid — points to grow good behavior, strikes (a written reflection) to deter the bad — that calmed their whole home.', href: '/screen-time-dopamine-point-system.html' },
     ],
@@ -63,6 +65,7 @@ const SECTIONS: Section[] = [
         label: 'Start here',
         items: [
           { title: 'Why Treatment Isn’t Working', blurb: 'The missed drivers behind relapse — mold, Lyme, methylation — and what to investigate next.', href: '/pans-treatment-not-working.html' },
+          { title: 'Is it autism or PANS?', blurb: 'They overlap, get confused, and can coexist. How the two differ, why onset and timeline matter most, and why an autism label should never block a PANS workup.', href: '/is-it-autism-or-pans.html' },
         ],
       },
       {
@@ -152,6 +155,72 @@ const SECTIONS: Section[] = [
           { title: 'Ozone Therapy', blurb: 'Oxidative therapy for chronic infection — the routes, the honest (thin) evidence, the gas-embolism rule, and why Plan B steers away from the IV forms in kids.', href: '/ozone.html' },
           { title: 'EBOO (Blood Ozonation)', blurb: 'The most intensive ozone form — "ozone dialysis" for refractory chronic Lyme/mold. Experimental, invasive, adult-studied; a deeper-menu option, never first-line, and extra caution in kids.', href: '/eboo.html' },
           { title: 'Bee Venom Therapy', blurb: 'Melittin kills Borrelia in the lab — but anaphylaxis is the headline: EpiPen on hand, test-sting first, never for young or allergic kids.', href: '/bee-venom.html' },
+        ],
+      },
+    ],
+  },
+  {
+    group: '7 · Answers from real cases',
+    sub: 'Thirty questions that came up over and over in our own case work — answered the way we answer them for a family. Read the whole set at planbforpans.com/learn.',
+    subgroups: [
+      {
+        label: 'What you are seeing',
+        items: [
+          { title: 'When your child fights every dose of medicine', blurb: 'Daily meltdowns over medication in a PANS child are usually OCD, not defiance. Why every trick stops working, and the approaches that actually help.', href: 'https://app.planbforpans.com/learn/medication-refusal' },
+          { title: 'Some kids collect infections. There is a reason — and it is testable.', blurb: 'In our own cohort, children with abnormal immunoglobulins carried nearly twice the rate of stacked infection drivers. The standard blood test most PANS kids never get.', href: 'https://app.planbforpans.com/learn/collecting-infections' },
+          { title: 'Leucovorin, cerebral folate deficiency, and the FRAT test', blurb: 'Why serum folate can look perfectly normal while a child’s brain is starved of it — and the antibody test that tells you whether leucovorin is the right lever.', href: 'https://app.planbforpans.com/learn/cerebral-folate-frat' },
+          { title: 'When safe foods suddenly become inedible', blurb: 'ARFID in a PANS child is often the illness wearing a food costume. Why the food range collapses, and what actually helps.', href: 'https://app.planbforpans.com/learn/arfid-food-window' },
+          { title: 'Uploaded is not the same as read: why findings get missed', blurb: 'A positive result can sit in a chart for years without anyone acting on it. How to make sure every lab your child has had actually gets looked at.', href: 'https://app.planbforpans.com/learn/uploaded-not-extracted' },
+        ],
+      },
+      {
+        label: 'Labs & testing',
+        items: [
+          { title: 'One lab says Lyme, the other says negative. Who is right?', blurb: 'Specialty tick-borne panels and standard two-tier testing often disagree. Why a negative Quest or LabCorp result does not mean your child was never infected.', href: 'https://app.planbforpans.com/learn/conflicting-lyme-tests' },
+          { title: 'You treat the strep. The Mycoplasma is still there.', blurb: 'In our cohort, 53% of children carried three or more infection or mold drivers at once. Why treating one thing at a time keeps failing.', href: 'https://app.planbforpans.com/learn/never-one-thing' },
+          { title: 'The immune workup almost no PANS child gets', blurb: 'Immunoglobulins, IgG subclasses and pneumococcal titers — the standard, covered blood tests that explain why some children cannot stop getting reinfected.', href: 'https://app.planbforpans.com/learn/immune-workup-nobody-orders' },
+          { title: 'Your child’s labs are two years old. What still counts?', blurb: 'How to tell which old results are still useful, which need rechecking, and why a stale abnormal result should never be treated as today’s emergency.', href: 'https://app.planbforpans.com/learn/old-labs-recheck' },
+          { title: 'Rage, night terrors and foot pain: the Bartonella signature', blurb: 'The behavioral fingerprint that points toward Bartonella in a PANS child, why standard testing misses it, and what treatment realistically looks like.', href: 'https://app.planbforpans.com/learn/bartonella-signature' },
+          { title: 'Why the strep keeps coming back: household carriers', blurb: 'Roughly a third of PANS strep recurrences trace to an asymptomatic family member. How to find a carrier and decontaminate a house.', href: 'https://app.planbforpans.com/learn/family-strep-carriers' },
+          { title: 'Babesia: the co-infection most often missed', blurb: 'Air hunger, night sweats and bone-deep fatigue that does not lift. Why Babesia is so often overlooked, and why it needs its own treatment.', href: 'https://app.planbforpans.com/learn/babesia-missed' },
+          { title: 'Constipation is stealing your child’s appetite', blurb: 'No lunch, then a huge dinner. Why a backed-up gut produces exactly that pattern, and why fixing it comes before everything else.', href: 'https://app.planbforpans.com/learn/constipation-and-appetite' },
+          { title: 'Genetics is the blueprint, not the whole picture', blurb: 'What a methylation panel can and cannot tell you about your child — and why the gene is the lock, not whether it is turned.', href: 'https://app.planbforpans.com/learn/genetics-is-the-blueprint' },
+        ],
+      },
+      {
+        label: 'Infections',
+        items: [
+          { title: 'Open the exit before you increase the kill', blurb: 'Why starting antimicrobials in a constipated, under-hydrated child backfires — and the order that actually works: water, bowels, binders, then herbs.', href: 'https://app.planbforpans.com/learn/drainage-first' },
+          { title: 'The away trial: is your house making your child sick?', blurb: 'The cheapest and most informative mold test is leaving. What an away trial can and cannot tell you, and how to run one properly.', href: 'https://app.planbforpans.com/learn/mold-away-trial' },
+          { title: 'What a positive anti-neuronal antibody panel actually means', blurb: 'Gold-standard antibody tests versus commercial neural panels — how to read a result where one is negative and the other shows a dozen positives.', href: 'https://app.planbforpans.com/learn/autoimmune-encephalitis-panel' },
+          { title: 'Before IVIG: the workup worth finishing first', blurb: 'IVIG can be transformative, and it can also fail for reasons that were knowable beforehand. What to rule out and treat before you get there.', href: 'https://app.planbforpans.com/learn/pre-ivig-pathway' },
+        ],
+      },
+      {
+        label: 'Treatment & sequencing',
+        items: [
+          { title: 'Is it OCD, or is my child being defiant?', blurb: 'How to tell PANS-driven OCD from oppositional behavior — and why the difference completely changes what you should do.', href: 'https://app.planbforpans.com/learn/ocd-vs-defiance' },
+          { title: 'Die-off reactions: how to tell a Herx from things getting worse', blurb: 'What a Herxheimer reaction looks like in a PANS child, how to tell it from a treatment failure, and exactly what to do when it happens.', href: 'https://app.planbforpans.com/learn/herx-reactions' },
+          { title: 'When the supplement is the problem: overmethylation in PANS kids', blurb: 'Methylfolate, methyl-B12 and TMG can drive irritability, aggression and agitation in the wrong child. How to spot it and what to check.', href: 'https://app.planbforpans.com/learn/overmethylation' },
+          { title: 'What a PANS flare actually is — and how to recognize one early', blurb: 'The signs a PANS child is flaring rather than regressing, what typically triggers one, and what to do in the first 48 hours.', href: 'https://app.planbforpans.com/learn/what-is-a-flare' },
+          { title: 'The nose and sinuses: the reservoir nobody checks', blurb: 'Chronic nasal and sinus colonization is a recognized PANS driver and one of the least-ordered parts of the workup. What to test and why.', href: 'https://app.planbforpans.com/learn/nasal-sinus-reservoir' },
+          { title: 'Drops are not a dose: reading herbal tincture strength', blurb: 'Twelve drops of one brand is not twelve drops of another. How to compare tinctures properly and avoid accidentally under- or over-dosing your child.', href: 'https://app.planbforpans.com/learn/drops-are-not-a-dose' },
+          { title: 'Classical homeopathy, dosing frequency, and provings', blurb: 'Why a well-chosen remedy can start making things worse — and the difference between true classical practice and frequent-dosing approaches.', href: 'https://app.planbforpans.com/learn/homeopathy-provings' },
+          { title: 'What most gut tests miss in a PANS child', blurb: 'Beneficial-species depletion matters as much as overgrowth — and the most common stool tests do not report it at the level that counts.', href: 'https://app.planbforpans.com/learn/gut-testing-bifidobacterium' },
+        ],
+      },
+      {
+        label: 'Environment',
+        items: [
+          { title: 'What to do when no doctor will order the labs', blurb: 'Practical routes to getting a full PANS workup ordered and covered — what to say, who to ask, and what to do when everyone says no.', href: 'https://app.planbforpans.com/learn/getting-labs-ordered' },
+        ],
+      },
+      {
+        label: 'What the data shows',
+        items: [
+          { title: 'Mycoplasma IgG vs IgM: does a high IgG mean an active infection?', blurb: 'High Mycoplasma IgG with a negative IgM confuses almost every PANS family. What each marker means, why doctors disagree, and the three tests that actually settle it.', href: 'https://app.planbforpans.com/learn/mycoplasma-igg-igm' },
+          { title: 'Our kids take a median of nine supplements a day', blurb: 'What we found when we counted: two-thirds of children on five or more supplements, half never tested for the drivers most likely causing their illness.', href: 'https://app.planbforpans.com/learn/nine-supplements' },
+          { title: 'Find the one biggest driver and knock that down first', blurb: 'Why treating a PANS child one symptom at a time keeps failing, and how to identify the single driver worth going after before anything else.', href: 'https://app.planbforpans.com/learn/find-the-driver' },
         ],
       },
     ],
