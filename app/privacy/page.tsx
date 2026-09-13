@@ -154,7 +154,7 @@ export default function PrivacyPage() {
 
         <h2 style={h2}>9 · HIPAA note</h2>
         <p style={p}>
-          Plan B believes it is a <span style={strong}>direct-to-consumer service</span> and{' '}
+          Plan B believes it is <span style={strong}>direct-to-consumer service</span> and{' '}
           <span style={strong}>likely not a HIPAA &ldquo;covered entity&rdquo; or &ldquo;business associate&rdquo;</span>,
           because it does not provide health care or bill insurance and instead helps families organize their own
           records. As a result, <span style={strong}>HIPAA may not apply</span> to Plan B. Regardless, Plan B treats

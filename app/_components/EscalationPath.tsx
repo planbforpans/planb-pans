@@ -368,9 +368,9 @@ export default function EscalationPath() {
               color: 'var(--ink)',
             }}
           >
-            From crisis to{' '}
+            Exploring{' '}
             <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>
-              all the way better
+              options with your care team
             </span>
           </h2>
           <p
@@ -383,9 +383,8 @@ export default function EscalationPath() {
               margin: '0 auto',
             }}
           >
-            Three stages, walked one at a time. If your child isn’t{' '}
-            <em style={{ color: 'var(--ink)', fontStyle: 'italic', fontWeight: 500 }}>all the way</em>{' '}
-            better, you don’t stop — you go deeper.
+            Different approaches may be relevant at different times. Use this overview to prepare
+            questions for your licensed practitioners; no approach guarantees recovery.
           </p>
         </div>
 
@@ -437,9 +436,9 @@ export default function EscalationPath() {
             }}
           >
             This is <span style={{ color: 'var(--teal)', fontStyle: 'italic' }}>Plan B</span>. The
-            name is literal — when Plan A runs out, there’s a whole map left. We help you work down
-            it, one stage at a time, until your child is{' '}
-            <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>all the way better.</span>
+            name reflects our purpose: helping you explore questions with your care team.
+            We support informed decisions about{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>options with your care team.</span>
           </p>
         </div>
       </div>

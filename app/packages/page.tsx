@@ -1,3 +1,5 @@
+import { caseReviewBookingUrl } from '../_components/site-links'
+
 // Plan B pricing — the full offering, on the marketing site (Rachel 2026-08:
 // "it all needs to be on the marketing site"). Two clear actions:
 //   1. Work with Rachel — all booked + paid in Calendly: a $200 Case Review, a
@@ -22,7 +24,7 @@ const card = '#fffdf7'
 const APP = 'https://app.planbforpans.com'
 // Booked AND paid through Calendly (book + pay in one step).
 // Separate events for the initial consultation and results follow-up.
-const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
+const CASE_REVIEW_CAL = caseReviewBookingUrl('website-pricing')
 const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -46,8 +48,8 @@ const TIERS: Tier[] = [
     price: '$200',
     name: 'The Case Review',
     eyebrow: 'Book + pay in one step',
-    body: 'Your free synthesis is an AI first pass — a real starting map, but AI makes mistakes. The Case Review is where a human finds them. Rachel reads everything herself — every lab, every note, the whole history — and in about 90 minutes together you get the TRUE picture of your child: why the things you’ve tried were only patches, what actually set off your past flares, and how to see the next one coming instead of reacting after it hits. She builds the plan no single doctor has — because no single doctor looks at the whole child — and if getting the testing done is the wall, she helps you order every test (the right panel, the right codes, one stick) and catches what the office dropped. She healed her own three kids from PANS. She’ll do this beside you.',
-    cta: 'Book with Rachel — $200 →',
+    body: 'Rachel personally reviews your child’s records, then talks through the whole picture with you: the history, what you have tried, questions the records raise, and what to prioritize with your practitioners. The $200 price includes preparation and your consultation. Your free AI synthesis is a starting point; this is time with Rachel herself.',
+    cta: 'Book a Case Review · $200 →',
     href: CASE_REVIEW_CAL,
     accent: teal,
     badge: 'Start here',
@@ -72,7 +74,7 @@ export default function PricingPage() {
         <div className="pb-container" style={{ maxWidth: 860, margin: '0 auto' }}>
           <p style={{ color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 16px' }}>Pricing · Non-profit</p>
           <h1 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(34px, 6vw, 62px)', lineHeight: 1.02, letterSpacing: '-0.02em', margin: '0 0 18px' }}>
-            Start free. Add a person when you want one.
+            A person to help you connect the pieces.
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, maxWidth: 680, margin: 0 }}>
             Your vault, your tracking, and your <strong style={{ color: ink }}>first synthesis</strong> are free.
@@ -125,9 +127,9 @@ export default function PricingPage() {
             ))}
           </div>
           <p style={{ fontSize: 13.5, color: soft, lineHeight: 1.6, margin: '18px 0 0', maxWidth: 720 }}>
-            Your first synthesis is free and self-serve. Working with Rachel is the human-reviewed path — the{' '}
-            <strong style={{ color: ink }}>results plan</strong> is built from your real test results, and a full plan
-            only comes from one she has read by hand. All three options above are booked and paid in one step through
+            Your first synthesis is free and AI-generated. Personal support starts with a $200 Case Review. The optional follow-up{' '}
+            <strong style={{ color: ink }}>results plan</strong> costs $200 separately and helps you work through
+            new test results with Rachel. Both options above are booked and paid in one step through
             Calendly. Always meant to bring to your child&rsquo;s doctor, not replace them.
           </p>
         </div>
@@ -140,7 +142,7 @@ export default function PricingPage() {
           <p style={{ fontSize: 15.5, color: soft, lineHeight: 1.7, margin: '0 0 14px', maxWidth: 720 }}>
             Everyone gets a <strong style={{ color: ink }}>free taste</strong> of Minta. After that you cover your own
             usage — no subscription, no markup, not a cent of profit. Here&rsquo;s the honest part:{' '}
-            <strong style={{ color: ink }}>Minta runs on the most advanced AI in the world, and it is genuinely expensive.</strong>{' '}
+            <strong style={{ color: ink }}>Plan B uses a combination of leading AI models to process and organize information, and that work has a real cost.</strong>{' '}
             Every single message re-reads your child&rsquo;s <em>entire</em> record — every lab, every note, the whole picture —
             which is exactly why the answers are so good, and exactly why they cost real money to produce.
           </p>

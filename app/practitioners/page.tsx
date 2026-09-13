@@ -230,7 +230,7 @@ export default function PractitionersPage() {
                 position: 'relative',
               }}
             >
-              Sign up to take on ten PANS/PANDAS/autism/dysregulated kids pro-bono, matched by
+              Sign up to take on ten PANS/PANDAS/autism/dysregulated kids pro bono, matched by
               Plan B&apos;s read of their profile. Work with them the way you normally would.
             </p>
             <p
@@ -244,7 +244,7 @@ export default function PractitionersPage() {
               }}
             >
               We document the full journey — weekly, with consent, de-identified. What shifted,
-              what stalled, what ordered well with what. Your ten kids become a real cohort study
+              what stalled, which approaches worked well in sequence. Your ten kids become a real cohort study
               that every parent and practitioner in the network can learn from.
             </p>
             <div

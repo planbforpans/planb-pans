@@ -8,6 +8,8 @@ import WhyBoth from './_components/WhyBoth'
 import RegularAIvsMinta from './_components/RegularAIvsMinta'
 import { FamilyStoriesTeaser } from './_components/FamilyStories'
 import Testimonials from './_components/Testimonials'
+import CaseReviewInvite from './_components/CaseReviewInvite'
+import { caseReviewBookingUrl } from './_components/site-links'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -109,7 +111,7 @@ export default function Home() {
                 color: 'var(--ink)',
               }}
             >
-              <span className="word" style={{ animationDelay: '0.16s' }}>We&apos;ll figure out what&apos;s</span>{' '}
+              <span className="word" style={{ animationDelay: '0.16s' }}>Let&apos;s make sense of</span>{' '}
               <span
                 className="word"
                 style={{
@@ -119,10 +121,10 @@ export default function Home() {
                   animationDelay: '0.24s',
                 }}
               >
-                actually wrong
+                the whole picture
               </span>{' '}
-              <span className="word" style={{ animationDelay: '0.32s' }}>with your child</span>{' '}
-              <span className="word" style={{ animationDelay: '0.4s' }}>— and give you the</span>{' '}
+              <span className="word" style={{ animationDelay: '0.32s' }}>for your child</span>{' '}
+              <span className="word" style={{ animationDelay: '0.4s' }}>— and find a</span>{' '}
               <span
                 className="word"
                 style={{
@@ -134,7 +136,7 @@ export default function Home() {
               >
                 roadmap
               </span>{' '}
-              <span className="word" style={{ animationDelay: '0.56s' }}>to get them better.</span>
+              <span className="word" style={{ animationDelay: '0.56s' }}>for the next step.</span>
             </h1>
 
             <p
@@ -149,20 +151,10 @@ export default function Home() {
                 marginBottom: 20,
               }}
             >
-              Share your child&apos;s labs and history. A{' '}
-              <em style={{ color: 'var(--ink)', fontStyle: 'normal', fontWeight: 600 }}>
-                real person
-              </em>
-              , working with the most advanced AI there is, reads every piece together — the way a
-              brilliant integrative doctor would if they had unlimited time — and hands you one clear
-              picture:{' '}
-              <em style={{ color: 'var(--ink)', fontStyle: 'normal', fontWeight: 600 }}>
-                what&apos;s driving this, why nothing has worked yet, what to ask each doctor, and
-                exactly what to do next.
-              </em>{' '}
-              <em style={{ color: 'var(--teal)', fontStyle: 'normal', fontWeight: 600 }}>
-                It&apos;s free.
-              </em>
+              When you want help connecting your child&apos;s labs, history, and the treatments you&apos;ve tried,
+              Rachel can read the records with you and help you prepare clear next steps and questions
+              for your practitioners. <strong>The personal Case Review is $200.</strong> Your first
+              AI-generated synthesis and the self-serve tracker are free.
             </p>
             <p
               className="rise delay-3"
@@ -194,11 +186,8 @@ export default function Home() {
                 paddingLeft: 16,
               }}
             >
-              Minta is still learning. Today she offers thoughtful suggestions shaped to your
-              kid. Soon — as every family who joins adds their story —{' '}
-              <span style={{ color: 'var(--teal)' }}>
-                a real protocol emerges for every child.
-              </span>
+              A careful review, a conversation with someone who has walked this road, and
+              a clearer sense of what to ask next. When you&apos;re ready, Rachel is here.
             </p>
 
             <div
@@ -210,12 +199,12 @@ export default function Home() {
               }}
             >
               <a
-                href="https://app.planbforpans.com/signup"
+                href={caseReviewBookingUrl('website-home')}
                 rel="noopener"
                 className="cta-teal"
                 style={{ textDecoration: 'none' }}
               >
-                Start your free Synthesis →
+                Book a Case Review · $200
               </a>
               <a
                 href="https://app.planbforpans.com/try"
@@ -235,7 +224,7 @@ export default function Home() {
                   background: 'transparent',
                 }}
               >
-                Try Plan B — ask a question →
+                Explore Minta for free →
               </a>
             </div>
 
@@ -444,6 +433,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      <div style={{ padding: '0 24px' }}><CaseReviewInvite source="website-home" /></div>
+
 
       {/* WHY PLAN B EXISTS — the mission, right after the hero */}
       <section
@@ -780,7 +771,7 @@ export default function Home() {
           >
             It gets better with every family who joins.{' '}
             <span style={{ color: 'var(--teal)' }}>
-              Over time — together — we build the way out.
+              Over time, we learn more together.
             </span>
           </p>
         </div>
@@ -991,7 +982,7 @@ export default function Home() {
               maxWidth: 880,
             }}
           >
-            There&apos;s no 911 for this. When your kid is in crisis, the emergency system has no answer for what&apos;s actually driving it underneath.
+            When questions remain between appointments, it helps to have someone organize the whole picture with you.
           </h2>
           <p
             className="serif"
@@ -1005,7 +996,7 @@ export default function Home() {
               maxWidth: 780,
             }}
           >
-            This is where you go when there&apos;s no other place — for solutions.
+            Plan B helps you prepare for the next conversation with your care team. It is not an emergency service.
           </p>
         </div>
       </section>
@@ -1364,7 +1355,7 @@ export default function Home() {
             >
               Your family&apos;s journey feeds back into the library. The 100th family&apos;s
               synthesis benefits from what the first 99 contributed. More families in → sharper
-              patterns → faster to answers, for everyone.
+              patterns → more questions to explore together.
             </p>
           </div>
 
@@ -1384,7 +1375,7 @@ export default function Home() {
           >
             A real plan, not silence.{' '}
             <span style={{ color: 'var(--teal)' }}>
-              Sharpened with every family. Together we get out.
+              Sharpened with every family. Together, we keep learning.
             </span>
           </p>
         </div>
@@ -1544,7 +1535,7 @@ export default function Home() {
                 n: '03',
                 tag: 'Minta reads both',
                 title: 'Troubleshoots from the full record, 2am included.',
-                body: "Minta already has your intake. Now she has every day you&apos;ve logged. Ask anything — <em>&lsquo;why did we have a bad week?&rsquo;</em>, <em>&lsquo;is this new symptom concerning?&rsquo;</em>, <em>&lsquo;what should we try next?&rsquo;</em> — and she reads the whole record before answering. She runs correlations across meds, symptoms, timing, triggers: <em>&lsquo;Rage spiked the week you raised guanfacine AND started the new binder. Tics ticked up same week — may be rebound. Pause the binder at half-dose for 10 days to isolate which one is the driver.&rsquo;</em> Specific to your kid. Grounded in your data. Not generic advice.",
+                body: "Minta already has your intake. Now she has every day you&apos;ve logged. Ask anything — <em>&lsquo;why did we have a bad week?&rsquo;</em>, <em>&lsquo;is this new symptom concerning?&rsquo;</em>, <em>&lsquo;what should we try next?&rsquo;</em> — and she reads the whole record before answering. She runs correlations across meds, symptoms, timing, triggers: <em>&lsquo;Rage spiked the week you raised guanfacine AND started the new binder. Tics ticked up the same week — may be rebound. Pause the binder at half-dose for 10 days to isolate which one is the driver.&rsquo;</em> Specific to your kid. Grounded in your data. Not generic advice.",
               },
               {
                 n: '04',
@@ -1910,8 +1901,8 @@ export default function Home() {
               },
               {
                 n: 'Q3',
-                q: 'Does strep have a personality? Does mold? Does lyme?',
-                s: 'Do specific pathogens produce specific behavioral signatures? Does a kid picking their nose constantly mean parasites? Does a kid saying "I want to die" mean lyme? We&apos;re collecting the data to find out.',
+                q: 'Does strep have a personality? Does mold? Does Lyme?',
+                s: 'Do specific pathogens produce specific behavioral signatures? Does a kid picking their nose constantly mean parasites? Does a kid saying "I want to die" mean Lyme? We&apos;re collecting the data to find out.',
               },
               {
                 n: 'Q4',

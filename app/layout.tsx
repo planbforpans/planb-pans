@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import './globals.css'
+import { caseReviewBookingUrl } from './_components/site-links'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://planbforpans.com'),
@@ -70,18 +71,11 @@ export default function RootLayout({
                 </span>
               </p>
             </Link>
-            <nav style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-              <NavLink href="/">Home</NavLink>
-              <a href="/start" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Start Here</a>
+            <nav className="site-nav" style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
               <NavLink href="/about">About</NavLink>
               <NavLink href="/packages">Pricing</NavLink>
-              <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>See a Synthesis →</a>
-              <a href="/learn" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Field Guide</a>
-              <NavLink href="/research">Research</NavLink>
-              <NavLink href="/tracker">Tracker</NavLink>
-              <NavLink href="/podcast">Podcast</NavLink>
+              <NavLink href="/stories">Family stories</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
-              <NavLink href="/donate">Donate</NavLink>
               <a
                 href="https://app.planbforpans.com/sign-in"
                 rel="noopener"
@@ -114,10 +108,10 @@ export default function RootLayout({
                   textDecoration: 'none',
                 }}
               >
-                Get your free Synthesis
+                Free app
               </a>
               <a
-                href="https://app.planbforpans.com/signup"
+                href={caseReviewBookingUrl('website-header')}
                 rel="noopener"
                 style={{
                   fontFamily: 'var(--font-inter)',
@@ -132,7 +126,7 @@ export default function RootLayout({
                   textDecoration: 'none',
                 }}
               >
-                Start Intake →
+                Case Review · $200
               </a>
             </nav>
           </div>
@@ -195,7 +189,7 @@ export default function RootLayout({
                 fontWeight: 500,
               }}
             >
-              Free for families · Donation-funded
+              Free app · Optional paid Case Reviews
             </p>
             <Link
               href="/donate"
@@ -214,7 +208,7 @@ export default function RootLayout({
                 textDecoration: 'none',
               }}
             >
-              Donate → Keep Minta free
+              Donate → Support families
             </Link>
             <p
               className="mono"

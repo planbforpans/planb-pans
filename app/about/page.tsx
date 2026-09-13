@@ -218,9 +218,9 @@ export default function AboutPage() {
 
           <p style={p}>
             And I&apos;m not going anywhere. My own kids could hit puberty, catch the wrong bug, and
-            flare again — and I will not allow it. Not for them. Not for you. So I&apos;m still in this,
+            flare again. I can’t promise to prevent that, for them or for any family. So I&apos;m still in this,
             every day, finding the <em>why</em> — because now that we have these tools, we don&apos;t
-            have to <em>hope</em> anymore. We can know. And we can end this.
+            have to <em>hope</em> alone. We can keep asking better questions.
           </p>
 
           <p
@@ -237,7 +237,7 @@ export default function AboutPage() {
             }}
           >
             I love you. I&apos;ve been exactly where you are. And I&apos;m here.{' '}
-            <span style={{ color: 'var(--teal)' }}>Together, we will find a way out.</span>
+            <span style={{ color: 'var(--teal)' }}>Together, we can work toward clearer next steps.</span>
           </p>
 
           <p className="label-tracked" style={{ color: 'var(--sand-dark)', marginTop: 28, fontWeight: 600 }}>

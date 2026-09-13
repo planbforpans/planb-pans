@@ -5,7 +5,7 @@ import { useReveal } from '../_components/hooks'
 const faqs = [
   {
     q: 'Is it free?',
-    a: "Your Synthesis is included — a complete, integrated read of everything going on with your child, built by a real person. After that, you pay only for Minta tokens: units of her time that cover the actual AI cost. about $20 covers months of Minta, pay-as-you-go, nothing recurring. Plan B is a non-profit, and no family is ever turned away for cost.",
+    a: "Your first AI-generated synthesis and self-serve tracker are free. A Case Review with Rachel is $200 and includes her personal review of your records and your consultation. An optional Results & Plan follow-up is $200 separately. Minta uses pay-as-you-go token packs; usage varies with the length of your records and conversations.",
   },
   {
     q: "What about my kid\u2019s privacy?",
@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: 'How is this different from ChatGPT or Claude?',
-    a: "Plan B runs on the most advanced AI there is — so the engine is the same caliber. The difference is everything built around it. A blank chatbox forgets your child the moment you close it; Minta remembers your whole picture — every lab, symptom, and prior treatment — and re-reads it as new results come in. A general chatbot is a generalist; Minta is built on the PANS field's frameworks — Walsh, Yasko, Shoemaker, O'Hara, Crista, Nathan — and the safety rules that keep her from guessing (she won't hand you a supplement protocol off stale labs). She learns across families, anonymized, so she can see what's actually moved the needle for kids like yours — something no solo chat can do. And she produces what a wall of text can't: a doctor-ready packet, what to bring each specialist, the order to do things in, and a daily loop that flags when your child isn't responding. Claude is the engine; Plan B is the workshop built around your child — for the 95% of parents who don't have the time to become expert prompt-engineers at 2am.",
+    a: "Plan B uses a combination of leading AI models to help process and organize information. Minta brings that work together with your saved records, symptom tracking, and Plan B’s PANS-focused knowledge library. AI can make mistakes. The optional $200 Case Review adds Rachel’s personal review and a conversation about priorities and questions for your licensed practitioners.",
   },
   {
     q: 'What if Minta is wrong?',
@@ -45,7 +45,7 @@ const faqs = [
   },
   {
     q: "I\u2019m a practitioner. How do I get involved?",
-    a: "Visit the Practitioners page. The short version: we're looking for practitioners willing to take on ten pro-bono cohort clients, have their work openly documented over six months, and be matched to families whose kids fit their modality. Any public listing can be removed by email with no questions asked.",
+    a: "Visit the Practitioners page. The short version: we're looking for practitioners willing to take on ten pro bono cohort clients, have their work openly documented over six months, and be matched to families whose kids fit their modality. Any public listing can be removed by email with no questions asked.",
   },
 ]
 

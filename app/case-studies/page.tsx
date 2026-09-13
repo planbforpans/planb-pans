@@ -786,7 +786,7 @@ export default function CaseStudies() {
             }}
           >
             Want your kid in a cohort study? Complete the full Plan B intake. Cohorts are matched
-            on profile — we place kids where the modality actually fits their kid, so every
+            on profile — we place kids where the modality fits each child’s profile, so every
             study starts from aligned data.
           </p>
           <a

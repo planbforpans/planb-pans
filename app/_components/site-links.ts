@@ -1,10 +1,5 @@
-// Shared external links for the site.
-//
-// ┌──────────────────────────────────────────────────────────────────────┐
-// │  TODO: swap CALENDLY_URL to the real booking link when the scheduler   │
-// │  is live. Every "Book a consult" / "Talk to Rachel" CTA — including     │
-// │  the header button — reads from this ONE constant. The header button   │
-// │  is hidden while this is '#', and appears site-wide the moment it's a   │
-// │  real URL.                                                              │
-// └──────────────────────────────────────────────────────────────────────┘
-export const CALENDLY_URL: string = 'https://calendly.com/rachel-planbforpans/30min' // booking is live; set the event DURATION to 15 min in Calendly (URL stays the same)
+export const CALENDLY_URL = 'https://calendly.com/rachel-planbforpans/the-case-review'
+export const CASE_REVIEW_DETAILS = 'https://app.planbforpans.com/case-review'
+export function caseReviewBookingUrl(source: string) {
+  return `https://app.planbforpans.com/book-case-review?source=${encodeURIComponent(source)}`
+}
