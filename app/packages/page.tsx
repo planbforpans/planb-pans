@@ -1,7 +1,7 @@
 // Plan B pricing — the full offering, on the marketing site (Rachel 2026-08:
 // "it all needs to be on the marketing site"). Two clear actions:
 //   1. Work with Rachel — all booked + paid in Calendly: a $200 Case Review, a
-//      $200 second synthesis, or both together as a $375 package (saves $25).
+//      $200 follow-up for results. Each consultation is $200.
 //      The old $100 30-min call was retired 2026-08-28.
 //   2. Minta tokens — pay-as-you-go, ~$20 covers months.
 // The app + first synthesis stay free.
@@ -21,14 +21,9 @@ const card = '#fffdf7'
 
 const APP = 'https://app.planbforpans.com'
 // Booked AND paid through Calendly (book + pay in one step).
-// Case Review has its own dedicated event; the package + results-plan use the
-// base scheduling page until they get their own event slugs.
+// Separate events for the initial consultation and results follow-up.
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
 const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
-const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together'
-// Free 15-min orientation — the low-commitment front door before the paid tiers.
-const DISCOVERY_CAL = 'https://calendly.com/rachel-planbforpans/plan-b-free-15-min-orientation'
-
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
   { price: '$50', covers: 'Goes further', note: 'A better rate per message' },
@@ -56,17 +51,6 @@ const TIERS: Tier[] = [
     href: CASE_REVIEW_CAL,
     accent: teal,
     badge: 'Start here',
-  },
-  {
-    price: '$375',
-    name: 'Both — the package',
-    eyebrow: 'Case Review + Roadmap · save $25',
-    body: 'The full path, start to finish: the Case Review to get the right testing done, then the Roadmap once results come back. Both together — and $25 less than buying them separately.',
-    cta: 'Book the package — $375 →',
-    href: PACKAGE_CAL,
-    accent: teal,
-    featured: true,
-    badge: 'Best value',
   },
   {
     price: '$200',
@@ -106,9 +90,6 @@ export default function PricingPage() {
       <section style={{ padding: 'clamp(44px, 7vw, 80px) 24px clamp(20px, 3vw, 30px)' }}>
         <div className="pb-container" style={{ maxWidth: 1040, margin: '0 auto' }}>
           <p style={{ color: gold, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 12px' }}>Work with Rachel — a real person on your kid&rsquo;s case</p>
-          <a href={DISCOVERY_CAL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', margin: '0 0 22px', fontSize: 15.5, fontWeight: 700, color: teal, textDecoration: 'none', borderBottom: '2px solid rgba(31,107,107,0.32)', paddingBottom: 2 }}>
-            New here, or not sure where to start? Book a free 15-minute orientation with Rachel &rarr;
-          </a>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {TIERS.map((t) => (
               <div
