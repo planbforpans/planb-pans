@@ -18,8 +18,6 @@
 //      instead of one.
 // Prices must stay in sync with /api/synthesis-checkout in planb-app.
 //
-// TODO (Rachel): create a Calendly event for the $100 one-hour follow-up and
-// swap CONSULT_CAL below. It currently points at the base scheduling page.
 
 export const metadata = {
   title: 'Pricing | Plan B for PANS',
@@ -38,9 +36,8 @@ const APP = 'https://app.planbforpans.com'
 // Booked AND paid through Calendly (book + pay in one step).
 // Case Review has its own dedicated event; the package + results-plan use the
 // base scheduling page until they get their own event slugs.
-const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
-const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
-const CONSULT_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting' // TODO: dedicated $100 one-hour event
+const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/case-study'
+const CONSULT_CAL = 'https://calendly.com/rachel-planbforpans/follow-up-with-rachel'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -75,7 +72,7 @@ const TIERS: Tier[] = [
     price: '$100',
     name: 'Chat with Rachel',
     eyebrow: 'An hour, as often as you need · after a Case Review',
-    body: 'For families who have had a Case Review and want to keep going \u2014 new results to read, a flare that came out of nowhere, a decision you are stuck on, the next stage of the plan. Book an hour whenever you need one. This is a follow-up, not a shortcut: an hour on the phone without her having read the record first is the weak version of this, which is why it sits after the Case Review rather than beside it.',
+    body: 'If this is your first time booking, you want the Case Review above, not this \u2014 an hour on the phone without Rachel having read the whole record first is the weak version of it. Once you have had a Case Review, this is how you keep going: new results to read, a flare that came out of nowhere, a decision you are stuck on, the next stage of the plan. And the hour is yours to use however suits you \u2014 all in one go, or broken into several short calls as questions come up.',
     cta: 'Book an hour \u2014 $100 \u2192',
     href: CONSULT_CAL,
     accent: gold,

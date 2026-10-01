@@ -7,4 +7,9 @@
 // │  is hidden while this is '#', and appears site-wide the moment it's a   │
 // │  real URL.                                                              │
 // └──────────────────────────────────────────────────────────────────────┘
-export const CALENDLY_URL: string = 'https://calendly.com/rachel-planbforpans/30min' // booking is live; set the event DURATION to 15 min in Calendly (URL stays the same)
+// Every "Book a consult" / "Talk to Rachel" CTA site-wide reads from this one
+// constant, including the header button. Pointed at the $400 Case Review event
+// 1 Oct 2026 — a first-time booking should always be the Case Review, never a
+// generic call. The $100 follow-up hour is only offered from /packages, below
+// the Case Review, and only to families who have already had one.
+export const CALENDLY_URL: string = 'https://calendly.com/rachel-planbforpans/case-study'
