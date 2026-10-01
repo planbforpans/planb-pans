@@ -1,15 +1,30 @@
-// Plan B pricing — the full offering, on the marketing site (Rachel 2026-08:
-// "it all needs to be on the marketing site"). Two clear actions:
-//   1. Work with Rachel — all booked + paid in Calendly: a $200 Case Review, a
-//      $200 second synthesis, or both together as a $375 package (saves $25).
-//      The old $100 30-min call was retired 2026-08-28.
-//   2. Minta tokens — pay-as-you-go, ~$20 covers months.
-// The app + first synthesis stay free.
+// Plan B pricing — the full offering, on the marketing site.
+//
+// RESTRUCTURED 1 Oct 2026, to match app.planbforpans.com/pricing exactly and
+// to stop presenting a menu. Trigger: a parent (Tina C.) wrote in — "I'm a bit
+// overwhelmed on your website... First the free option then the paid option.
+// Then there's the app to record symptoms. Then there's the AI tool I access
+// and pay for. Is this all correct?" She read a sequence as four parallel
+// products. The old page made that easy: three paid cards side by side at
+// $200 / $375 / $200, plus token packs, plus a free orientation — five choices
+// on one screen. The orientation is gone entirely.
+//
+// Now ONE PATH, three rungs:
+//   1. Free — vault, daily tracking, AI synthesis (Rachel-reviewed)
+//   2. The Case Review — $400. The one human product. Absorbs the old
+//      $200 Roadmap / second synthesis, which is what the $375 package was
+//      really selling and what Lupita's $400 already covered.
+//   3. Chat with Rachel — $100/hr. Follow-ups, AFTER a Case Review, never
+//      instead of one.
+// Prices must stay in sync with /api/synthesis-checkout in planb-app.
+//
+// TODO (Rachel): create a Calendly event for the $100 one-hour follow-up and
+// swap CONSULT_CAL below. It currently points at the base scheduling page.
 
 export const metadata = {
   title: 'Pricing | Plan B for PANS',
   description:
-    'Start free. Work with Rachel when you want a person — a $200 Case Review and your $200 results plan — and pay only for the Minta AI you use.',
+    'One path. Your records, your tracking and your synthesis are free. The Case Review is the one paid thing — Rachel herself, reading your whole record with you.',
 }
 
 const ink = '#2a2a26'
@@ -25,9 +40,7 @@ const APP = 'https://app.planbforpans.com'
 // base scheduling page until they get their own event slugs.
 const CASE_REVIEW_CAL = 'https://calendly.com/rachel-planbforpans/the-case-review'
 const ROADMAP_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting'
-const PACKAGE_CAL = 'https://calendly.com/rachel-planbforpans/both-together'
-// Free 15-min orientation — the low-commitment front door before the paid tiers.
-const DISCOVERY_CAL = 'https://calendly.com/rachel-planbforpans/plan-b-free-15-min-orientation'
+const CONSULT_CAL = 'https://calendly.com/rachel-planbforpans/new-meeting' // TODO: dedicated $100 one-hour event
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -48,35 +61,25 @@ type Tier = {
 }
 const TIERS: Tier[] = [
   {
-    price: '$200',
+    price: '$400',
     name: 'The Case Review',
-    eyebrow: 'Book + pay in one step',
-    body: 'Your free synthesis is an AI first pass — a real starting map, but AI makes mistakes. The Case Review is where a human finds them. Rachel reads everything herself — every lab, every note, the whole history — and in about 90 minutes together you get the TRUE picture of your child: why the things you’ve tried were only patches, what actually set off your past flares, and how to see the next one coming instead of reacting after it hits. She builds the plan no single doctor has — because no single doctor looks at the whole child — and if getting the testing done is the wall, she helps you order every test (the right panel, the right codes, one stick) and catches what the office dropped. She healed her own three kids from PANS. She’ll do this beside you.',
-    cta: 'Book with Rachel — $200 →',
+    eyebrow: 'The one paid thing · book + pay in one step',
+    body: 'Your free synthesis is written by AI. It is a real starting map, and Rachel checks every number in it — but it can only tell you what is already in your child\u2019s file. The Case Review is the part that is Rachel. It fills in all the blanks. She reads the whole record herself, catches what the AI missed, and you go right through your child\u2019s life \u2014 birth until now \u2014 and really dig into everything. You work out all the possible triggers, and the order of operations: what to do first, what can wait, and what will make things worse if you do it too early. Every piece of bloodwork gets ordered, with the insurance codes. She writes the letters to your child\u2019s doctors for you. She sets you up personally with the tracker, and then keeps tabs on you. It includes your updated synthesis once results come in. No stone left unturned. It is overwhelming to land in PANS and harder still to learn all the fringe modalities and what order to do them in \u2014 this is, honestly, a crash course on your own child\u2019s health. She healed her own three children. She will do this beside you.',
+    cta: 'Book a Case Review \u2014 $400 \u2192',
     href: CASE_REVIEW_CAL,
     accent: teal,
-    badge: 'Start here',
-  },
-  {
-    price: '$375',
-    name: 'Both — the package',
-    eyebrow: 'Case Review + Roadmap · save $25',
-    body: 'The full path, start to finish: the Case Review to get the right testing done, then the Roadmap once results come back. Both together — and $25 less than buying them separately.',
-    cta: 'Book the package — $375 →',
-    href: PACKAGE_CAL,
-    accent: teal,
     featured: true,
-    badge: 'Best value',
+    badge: 'Step 2',
   },
   {
-    price: '$200',
-    name: 'The Roadmap',
-    eyebrow: 'Your results → a plan',
-    body: 'Once your test results come back, Rachel reads all of them with you and builds your child’s actual plan — what’s driving what, what to do next, and who to see. You leave with a real direction, not a pile of numbers.',
-    cta: 'Book the Roadmap — $200 →',
-    href: ROADMAP_CAL,
+    price: '$100',
+    name: 'Chat with Rachel',
+    eyebrow: 'An hour, as often as you need · after a Case Review',
+    body: 'For families who have had a Case Review and want to keep going \u2014 new results to read, a flare that came out of nowhere, a decision you are stuck on, the next stage of the plan. Book an hour whenever you need one. This is a follow-up, not a shortcut: an hour on the phone without her having read the record first is the weak version of this, which is why it sits after the Case Review rather than beside it.',
+    cta: 'Book an hour \u2014 $100 \u2192',
+    href: CONSULT_CAL,
     accent: gold,
-    badge: 'After your labs',
+    badge: 'After that',
   },
 ]
 
@@ -88,13 +91,13 @@ export default function PricingPage() {
         <div className="pb-container" style={{ maxWidth: 860, margin: '0 auto' }}>
           <p style={{ color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 16px' }}>Pricing · Non-profit</p>
           <h1 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(34px, 6vw, 62px)', lineHeight: 1.02, letterSpacing: '-0.02em', margin: '0 0 18px' }}>
-            Start free. Add a person when you want one.
+            One path. The first part is free.
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, maxWidth: 680, margin: 0 }}>
-            Your vault, your tracking, and your <strong style={{ color: ink }}>first synthesis</strong> are free.
-            From there, two simple choices: <strong style={{ color: ink }}>work with Rachel</strong> when you want a
-            real person on your kid&rsquo;s case, and use <strong style={{ color: ink }}>Minta AI</strong> pay-as-you-go —
-            you only ever cover your own usage.
+            Your records, your daily tracking and your <strong style={{ color: ink }}>synthesis</strong> are free, and
+            they come first for everybody &mdash; everything below is built on your child&rsquo;s uploaded record.
+            From there one thing is paid: <strong style={{ color: ink }}>the Case Review</strong>, which is Rachel
+            herself going through your child&rsquo;s whole record with you. Most families never buy anything else.
           </p>
           <div style={{ marginTop: 22 }}>
             <a href={`${APP}/signup`} style={{ display: 'inline-block', background: teal, color: '#fffdf7', fontSize: 16, fontWeight: 700, padding: '14px 32px', borderRadius: 9, textDecoration: 'none' }}>Start free →</a>
@@ -105,10 +108,8 @@ export default function PricingPage() {
       {/* Bucket 1 — Work with Rachel */}
       <section style={{ padding: 'clamp(44px, 7vw, 80px) 24px clamp(20px, 3vw, 30px)' }}>
         <div className="pb-container" style={{ maxWidth: 1040, margin: '0 auto' }}>
-          <p style={{ color: gold, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 12px' }}>Work with Rachel — a real person on your kid&rsquo;s case</p>
-          <a href={DISCOVERY_CAL} target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', margin: '0 0 22px', fontSize: 15.5, fontWeight: 700, color: teal, textDecoration: 'none', borderBottom: '2px solid rgba(31,107,107,0.32)', paddingBottom: 2 }}>
-            New here, or not sure where to start? Book a free 15-minute orientation with Rachel &rarr;
-          </a>
+          <p style={{ color: gold, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 12px' }}>Step 2 &middot; when you&rsquo;d rather not do it alone</p>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: 18 }}>
             {TIERS.map((t) => (
               <div
@@ -149,6 +150,27 @@ export default function PricingPage() {
             only comes from one she has read by hand. All three options above are booked and paid in one step through
             Calendly. Always meant to bring to your child&rsquo;s doctor, not replace them.
           </p>
+        </div>
+      </section>
+
+      {/* Scholarship — load-bearing. The Case Review went from $200 to $400 on
+          1 Oct 2026. That is only defensible alongside a genuinely free path and
+          a genuinely available ask. No form, no means test: PANS families are
+          financially wrecked by this illness and nobody goes without because of
+          a number on a page. */}
+      <section style={{ padding: '0 24px clamp(30px, 5vw, 56px)' }}>
+        <div className="pb-container" style={{ maxWidth: 1040, margin: '0 auto' }}>
+          <div style={{ background: teal, color: '#fffdf7', borderRadius: 14, padding: 'clamp(22px, 3vw, 30px)' }}>
+            <p style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 400, fontSize: 'clamp(22px, 3vw, 28px)', lineHeight: 1.2, margin: '0 0 10px' }}>
+              If the money isn&rsquo;t there, say so.
+            </p>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: '#d9e9e6', margin: 0, maxWidth: 700 }}>
+              No form, no means test, no explaining yourself. Email Rachel and tell her a Case Review
+              isn&rsquo;t affordable right now, and we will cover it. This illness wrecks families financially
+              &mdash; that is exactly what donations are for, and nobody is going without because of a price on
+              a page.
+            </p>
+          </div>
         </div>
       </section>
 

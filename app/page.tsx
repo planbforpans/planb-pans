@@ -217,25 +217,24 @@ export default function Home() {
               >
                 Start your free Synthesis →
               </a>
+              {/* Demoted from a second button to a quiet link, 1 Oct 2026. Two
+                  equally-weighted buttons made a frightened parent choose before
+                  they understood either option; a parent who wrote in had read
+                  the free path and the AI as separate products. One door now. */}
               <a
                 href="https://app.planbforpans.com/try"
                 rel="noopener"
                 style={{
-                  display: 'inline-block',
-                  padding: '16px 32px',
+                  alignSelf: 'center',
                   fontFamily: 'var(--font-inter)',
-                  fontSize: 11,
-                  letterSpacing: '0.28em',
-                  textTransform: 'uppercase',
-                  fontWeight: 600,
-                  color: 'var(--teal)',
-                  border: '1px solid var(--sand)',
-                  borderRadius: 4,
-                  textDecoration: 'none',
-                  background: 'transparent',
+                  fontSize: 14,
+                  color: 'var(--ink-soft)',
+                  textDecoration: 'underline',
+                  textUnderlineOffset: 3,
+                  textDecorationColor: 'var(--sand)',
                 }}
               >
-                Try Plan B — ask a question →
+                or ask Minta a question first &rarr;
               </a>
             </div>
 
@@ -545,8 +544,7 @@ export default function Home() {
                 maxWidth: 680,
               }}
             >
-              Three steps. The first two are on us — what&apos;s wrong, and the plan. Then you&apos;re
-              never alone working it.
+              Four steps, and all four are free. Then you&apos;re never alone working it.
             </p>
           </div>
 
@@ -554,29 +552,34 @@ export default function Home() {
             className="how-start-grid"
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
+              gridTemplateColumns: 'repeat(4, 1fr)',
               gap: 0,
               borderTop: '1px solid var(--ink)',
               borderBottom: '1px solid var(--ink)',
             }}
           >
             {[
-              {
-                n: '01',
-                t: 'Share what you have',
-                b: 'Your child&apos;s labs and history. <em>No labs yet? The Synthesis tells you exactly what to run.</em>',
-              },
-              {
-                n: '02',
-                t: 'Get your Synthesis',
-                b: 'One integrated read of everything — what&apos;s wrong, why, and the roadmap: what to ask, what to test, in what order.',
-              },
-              {
-                n: '03',
-                t: 'Work the plan — never alone',
-                b: 'Minta (your AI guide) and a 60-second daily tracker walk every step and adapt as your child changes.',
-              },
-            ].map((s, i, arr) => (
+                {
+                  n: '01',
+                  t: 'Sign up',
+                  b: 'Your name, your email, your child&apos;s first name. No card, no insurance details.',
+                },
+                {
+                  n: '02',
+                  t: 'Upload everything',
+                  b: 'Every lab and doctor&apos;s note &mdash; including the old ones, and the ones you were told were normal. No labs yet? The Synthesis tells you exactly what to run.',
+                },
+                {
+                  n: '03',
+                  t: 'Tell us her story',
+                  b: 'When things changed, what she was like before, what you&apos;ve already tried. This is what makes the labs mean something.',
+                },
+                {
+                  n: '04',
+                  t: 'Get your Synthesis',
+                  b: 'One integrated read of everything &mdash; what&apos;s wrong, why, and the roadmap: what to ask, what to test, in what order. Then Minta and a 60-second daily tracker walk every step.',
+                },
+              ].map((s, i, arr) => (
               <div
                 key={s.n}
                 style={{
@@ -2278,54 +2281,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* FREE SPOT — waitlist */}
-      <section
-        style={{
-          padding: 'clamp(56px, 7vw, 88px) 24px',
-          background: 'var(--cream-light)',
-          borderTop: '1px solid var(--sand)',
-          borderBottom: '1px solid var(--sand)',
-        }}
-      >
-        <div className="pb-container" style={{ maxWidth: 820, textAlign: 'center' }}>
-          <p className="eyebrow" style={{ marginBottom: 16 }}>The free spot · Non-profit</p>
-          <h2
-            className="serif"
-            style={{
-              fontSize: 'clamp(28px, 4.5vw, 52px)',
-              fontWeight: 300,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.05,
-              color: 'var(--ink)',
-              margin: '0 0 16px',
-            }}
-          >
-            Can&apos;t afford it?{' '}
-            <em style={{ color: 'var(--teal)' }}>One family a week, free.</em>
-          </h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', fontWeight: 300, maxWidth: 620, margin: '0 auto 28px' }}>
-            Cost should never be the reason your child doesn&apos;t get this. The waitlist is open and
-            public; the finished synthesis is published anonymized, so we all learn together from
-            what Minta finds.
-          </p>
-          <a
-            href="/waitlist"
-            style={{
-              display: 'inline-block',
-              padding: '15px 32px',
-              background: 'var(--teal)',
-              color: 'var(--cream)',
-              borderRadius: 6,
-              textDecoration: 'none',
-              fontSize: 15,
-              fontWeight: 500,
-            }}
-          >
-            Join the waitlist →
-          </a>
-        </div>
-      </section>
-
+      {/* The "free spot / waitlist" section was removed 1 Oct 2026. Signups are
+          open at app.planbforpans.com/signup, so a waitlist block near the bottom
+          told a parent to wait while everything above told them to start — and it
+          was left over from launch. If a cohort cap ever comes back, restore it
+          from app/page.tsx.bak. */}
       {/* EMAIL CAPTURE — stay in the loop */}
       <section
         style={{

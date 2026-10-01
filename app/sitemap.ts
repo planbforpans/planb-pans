@@ -9,6 +9,7 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: '/', priority: 1.0 },
   { path: '/start', priority: 0.9 },
   { path: '/learn', priority: 0.9 },
+  { path: '/tests', priority: 0.8 },
   { path: '/packages', priority: 0.8 },
   { path: '/pricing', priority: 0.7 },
   { path: '/research', priority: 0.8 },
@@ -19,7 +20,7 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: '/case-studies', priority: 0.7 },
   { path: '/practitioners', priority: 0.7 },
   { path: '/podcast', priority: 0.6 },
-  { path: '/minta-classes', priority: 0.6 },
+  // /minta-classes is password-gated — deliberately excluded from the sitemap.
   { path: '/donate', priority: 0.6 },
   { path: '/vote', priority: 0.5 },
   { path: '/waitlist', priority: 0.6 },

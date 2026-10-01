@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -14,6 +15,27 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
+  // Activates once NEXT_PUBLIC_GSC_VERIFICATION is set in the Vercel env.
+  // Renders <meta name="google-site-verification" ...> for Search Console.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? '',
+  },
+}
+
+// Site-wide organization schema. Helps Google understand who Plan B is and
+// links the official Facebook parent community + page (sameAs).
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalOrganization',
+  name: 'Plan B for PANS',
+  alternateName: 'Plan B for PANS & PANDAS',
+  url: 'https://planbforpans.com',
+  description:
+    'A non-profit clinical synthesis engine for PANS, PANDAS, autism, and severe dysregulation. When the standard system runs out of answers, Plan B helps families keep going.',
+  sameAs: [
+    'https://www.facebook.com/groups/1329989715405433/',
+    'https://www.facebook.com/profile.php?id=61588842100605',
+  ],
 }
 
 export default function RootLayout({
@@ -29,6 +51,10 @@ export default function RootLayout({
         <link
           href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
           rel="stylesheet"
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
       </head>
       <body className="grain">
@@ -71,15 +97,16 @@ export default function RootLayout({
               </p>
             </Link>
             <nav style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-              <NavLink href="/">Home</NavLink>
+              {/* Trimmed from 11 links to 6, 1 Oct 2026. A parent arriving here is
+                  frightened and scanning, not browsing — every extra door is a
+                  decision before they understand any of the options. Field Guide,
+                  Research, Tracker and Podcast moved to the footer; "Home" removed
+                  because the masthead already does that. Kept: the action, the
+                  proof, the price, who we are, the objections, and giving. */}
               <a href="/start" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Start Here</a>
-              <NavLink href="/about">About</NavLink>
-              <NavLink href="/packages">Pricing</NavLink>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>See a Synthesis →</a>
-              <a href="/learn" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Field Guide</a>
-              <NavLink href="/research">Research</NavLink>
-              <NavLink href="/tracker">Tracker</NavLink>
-              <NavLink href="/podcast">Podcast</NavLink>
+              <NavLink href="/packages">Pricing</NavLink>
+              <NavLink href="/about">About</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
               <NavLink href="/donate">Donate</NavLink>
               <a
@@ -245,6 +272,15 @@ export default function RootLayout({
               <a href="/why-plan-b.html" style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}>
                 Why Plan B
               </a>
+              <Link href="/learn" style={{ color: 'var(--sand-dark)' }}>
+                Field Guide
+              </Link>
+              <Link href="/research" style={{ color: 'var(--sand-dark)' }}>
+                Research
+              </Link>
+              <Link href="/podcast" style={{ color: 'var(--sand-dark)' }}>
+                Podcast
+              </Link>
               <Link href="/tracker" style={{ color: 'var(--sand-dark)' }}>
                 Tracker
               </Link>
@@ -287,6 +323,7 @@ export default function RootLayout({
             </p>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
   )
