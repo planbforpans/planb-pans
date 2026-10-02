@@ -106,7 +106,7 @@ export default function RootLayout({
               <a href="/start" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Start Here</a>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>See a Synthesis →</a>
               <a href="/how-to-use" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>How to use it</a>
-              <NavLink href="/packages">Pricing</NavLink>
+              <NavLink href="/packages">What it costs</NavLink>
               <NavLink href="/about">About</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
               <NavLink href="/donate">Donate</NavLink>

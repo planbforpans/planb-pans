@@ -20,7 +20,7 @@
 //
 
 export const metadata = {
-  title: 'Pricing | Plan B for PANS',
+  title: 'What it costs | Plan B for PANS',
   description:
     'One path. Your records, your tracking and your synthesis are free. The Case Review is the one paid thing — Rachel herself, reading your whole record with you.',
 }
@@ -61,7 +61,7 @@ const TIERS: Tier[] = [
     price: '$400',
     name: 'The Case Review',
     eyebrow: 'The one paid thing · book + pay in one step',
-    body: 'Your free synthesis is written by AI. It is a real starting map, and Rachel checks every number in it — but it can only tell you what is already in your child\u2019s file. The Case Review is the part that is Rachel. It fills in all the blanks. She reads the whole record herself, catches what the AI missed, and you go right through your child\u2019s life \u2014 birth until now \u2014 and really dig into everything. You work out all the possible triggers, and the order of operations: what to do first, what can wait, and what will make things worse if you do it too early. Every piece of bloodwork gets ordered, with the insurance codes. She writes the letters to your child\u2019s doctors for you. She sets you up personally with the tracker, and then keeps tabs on you. It includes your updated synthesis once results come in. No stone left unturned. It is overwhelming to land in PANS and harder still to learn all the fringe modalities and what order to do them in \u2014 this is, honestly, a crash course on your own child\u2019s health. She healed her own three children. She will do this beside you.',
+    body: 'Your free synthesis is written by AI. It is a real starting map, and Rachel checks every number in it — but it can only tell you what is already in your child\u2019s file. The Case Review is the part that is Rachel. You end up with the one document every doctor actually reads: a timeline of your child\u2019s whole illness \u2014 what happened, when, what was tried, and what changed. You can build that yourself, and plenty of parents do. The Case Review is where Rachel builds it for you, from everything. It fills in all the blanks. She reads the whole record herself, catches what the AI missed, and you go right through your child\u2019s life \u2014 birth until now \u2014 and really dig into everything. You work out all the possible triggers, and the order of operations: what to do first, what can wait, and what will make things worse if you do it too early. Every piece of bloodwork gets ordered, with the insurance codes. She writes the letters to your child\u2019s doctors for you. She sets you up personally with the tracker, and then keeps tabs on you. It includes your updated synthesis once results come in. No stone left unturned. It is overwhelming to land in PANS and harder still to learn all the fringe modalities and what order to do them in \u2014 this is, honestly, a crash course on your own child\u2019s health. She healed her own three children. She will do this beside you.',
     cta: 'Book a Case Review \u2014 $400 \u2192',
     href: CASE_REVIEW_CAL,
     accent: teal,
@@ -86,7 +86,7 @@ export default function PricingPage() {
       {/* Hero */}
       <section style={{ padding: 'clamp(56px, 9vw, 110px) 24px 40px', borderBottom: `1px solid ${rule}` }}>
         <div className="pb-container" style={{ maxWidth: 860, margin: '0 auto' }}>
-          <p style={{ color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 16px' }}>Pricing · Non-profit</p>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: '#8a8373', margin: '0 0 18px' }}>NON-PROFIT &middot; WHAT IT COSTS</p>
           <h1 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(34px, 6vw, 62px)', lineHeight: 1.02, letterSpacing: '-0.02em', margin: '0 0 18px' }}>
             One path. The first part is free.
           </h1>
