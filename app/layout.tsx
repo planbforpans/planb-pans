@@ -105,6 +105,7 @@ export default function RootLayout({
                   proof, the price, who we are, the objections, and giving. */}
               <a href="/start" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>Start Here</a>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>See a Synthesis →</a>
+              <a href="/how-to-use" style={{ fontFamily: 'var(--font-inter)', fontSize: 13, color: 'var(--teal)', fontWeight: 700, textDecoration: 'none', whiteSpace: 'nowrap' }}>How to use it</a>
               <NavLink href="/packages">Pricing</NavLink>
               <NavLink href="/about">About</NavLink>
               <NavLink href="/faq">FAQ</NavLink>
@@ -272,6 +273,9 @@ export default function RootLayout({
               <a href="/why-plan-b.html" style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}>
                 Why Plan B
               </a>
+              <Link href="/how-to-use" style={{ color: 'var(--sand-dark)' }}>
+                How to use it
+              </Link>
               <Link href="/learn" style={{ color: 'var(--sand-dark)' }}>
                 Field Guide
               </Link>

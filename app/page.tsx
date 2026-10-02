@@ -476,11 +476,10 @@ export default function Home() {
       </section>
 
 
-      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
-        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
-          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>One</p>
-          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>Why this happens to some children and not others</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>The part nobody explains, and the reason the second group exists.</p>
+      <section style={{ padding: 'clamp(54px,8vw,88px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 820, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--mute)', margin: '0 0 14px' }}>&sect; 01</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(30px,5vw,52px)', lineHeight: 1.04, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>Why this happens to some children and not others</h2>
         </div>
       </section>
 
@@ -709,11 +708,11 @@ export default function Home() {
       <BucketSection />
 
 
-      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
-        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
-          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Two</p>
-          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>What you do first</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Upload everything. Find out what is actually driving your child. It costs nothing.</p>
+      <section style={{ padding: 'clamp(66px,10vw,118px) 24px clamp(14px,2.4vw,24px)', background: 'var(--paper)', borderTop: '1px solid var(--rule)' }}>
+        <div className="pb-container" style={{ maxWidth: 620, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--mute)', margin: '0 0 18px' }}>&sect; 02</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(34px,6vw,64px)', lineHeight: 0.98, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>What you do first</h2>
+          <p style={{ fontSize: 15.5, lineHeight: 1.75, color: 'var(--ink-soft)', margin: '20px 0 0' }}>Upload everything. Find out what is actually driving your child. It costs nothing.</p>
         </div>
       </section>
 
@@ -855,13 +854,58 @@ export default function Home() {
 
       {/* The escalation path — crisis → functional med → what hasn't been tried */}
 
-      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
-        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
-          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Three</p>
-          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>How you keep going</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Track her daily. Ask Minta daily. This is the part people skip, and it is the part that finds the drivers.</p>
+      <section className="graph-paper" style={{ padding: 'clamp(58px,8vw,96px) 24px clamp(12px,2vw,20px)', borderTop: '1px solid var(--rule)' }}>
+        <div className="pb-container" style={{ maxWidth: 1040, margin: '0 auto', display: 'flex', gap: 'clamp(18px,4vw,56px)', alignItems: 'baseline', flexWrap: 'wrap' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--mute)', margin: 0, flexShrink: 0 }}>&sect; 03</p>
+          <div style={{ flex: 1, minWidth: 280 }}>
+            <h2 className="serif" style={{ fontSize: 'clamp(28px,4.4vw,46px)', lineHeight: 1.06, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>How you keep going</h2>
+            <p style={{ fontSize: 15.5, lineHeight: 1.75, color: 'var(--ink-soft)', maxWidth: 520, margin: '14px 0 0' }}>Track her daily. Ask Minta daily. This is the part people skip, and it is the part that finds the drivers. Lost your login, or not sure where Minta lives? <a href="/how-to-use" style={{ color: 'var(--teal)', fontWeight: 600 }}>Here is how to get back in</a>.</p>
+          </div>
         </div>
       </section>
+
+      {/* WHAT MINTA AND THE TRACKER ACTUALLY ARE — added 2 Oct 2026. Rachel:
+          "What is Minta? What is the tracker? How do we integrate all so parents
+          get it." The site used both nouns constantly and defined neither, and a
+          parent reading "ask Minta daily" has no idea who that is. The integration
+          is the point: they are not two features, the tracker is how Minta learns
+          your child. */}
+      <section style={{ padding: 'clamp(34px,5vw,58px) 24px clamp(10px,2vw,16px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 18 }}>
+          <div style={{ borderTop: '1px solid var(--rule)', paddingTop: 20 }}>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--mute)', margin: '0 0 12px' }}>WHO IS MINTA</p>
+            <p style={{ fontSize: 16.5, lineHeight: 1.68, color: 'var(--ink-soft)', margin: 0 }}>
+              Minta is our AI, and she has read your child&rsquo;s entire record &mdash; every lab, every
+              doctor&rsquo;s note, the history you gave us. She writes your synthesis. And she is not a
+              chatbot you start from scratch each time: you can ask her anything, any day, and she answers
+              about <em>your</em> child. She will also tell you when she doesn&rsquo;t know.
+            </p>
+          </div>
+          <div style={{ borderTop: '1px solid var(--rule)', paddingTop: 20 }}>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.08em', color: 'var(--mute)', margin: '0 0 12px' }}>WHAT THE TRACKER IS</p>
+            <p style={{ fontSize: 16.5, lineHeight: 1.68, color: 'var(--ink-soft)', margin: 0 }}>
+              A place to score your child each day &mdash; the rage, the tics, the stomach pain, the sleep,
+              whatever her picture actually is. Zero to ten. It takes about two minutes, and it lives on your
+              phone&rsquo;s home screen.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ padding: 'clamp(18px,3vw,26px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto', borderTop: '1px solid var(--ink)', borderBottom: '1px solid var(--ink)', padding: 'clamp(26px,4vw,38px) 0' }}>
+          <p className="serif" style={{ fontSize: 'clamp(24px,3.6vw,36px)', lineHeight: 1.2, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--ink)', margin: '0 0 16px' }}>
+            They are not two things.
+          </p>
+          <p style={{ fontSize: 17, lineHeight: 1.75, color: 'var(--ink-soft)', margin: 0 }}>
+            The tracker is how Minta learns your daughter. Every day you log, she knows her a little better
+            &mdash; so when you ask &ldquo;why was this week so bad?&rdquo;, she isn&rsquo;t guessing. She is
+            reading ninety days of your own observations against her labs, her medications and what you tried
+            last month. That is the whole system, and it is why the two minutes a day matter.
+          </p>
+        </div>
+      </section>
+
 
       {/* THE CENTER — intake + tracker + troubleshooting */}
       <section
@@ -1468,11 +1512,11 @@ export default function Home() {
       </section>
 
 
-      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
-        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
-          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Four</p>
-          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>When you are stuck</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>If the AI missed something, or you would rather not do it alone.</p>
+      <section style={{ padding: 'clamp(62px,9vw,104px) 24px', background: 'var(--teal)', color: '#fffdf7' }}>
+        <div className="pb-container" style={{ maxWidth: 700, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: '#9fc4c0', margin: '0 0 18px' }}>&sect; 04</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(30px,5.2vw,54px)', lineHeight: 1.02, fontWeight: 300, letterSpacing: '-0.02em', margin: 0 }}>When you are stuck</h2>
+          <p style={{ fontSize: 16.5, lineHeight: 1.75, color: '#dce9e7', margin: '20px auto 0', maxWidth: 560 }}>If you are still scared and directionless. If the AI missed something, or you want more guidance &mdash; if you need someone to hold your hand through the gates.</p>
         </div>
       </section>
 
@@ -1486,11 +1530,11 @@ export default function Home() {
 
       {/* Where they were → the new angle (Tommy + Daniel, anonymized) */}
 
-      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
-        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
-          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Five</p>
-          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>Why it gets better the more of us there are</h2>
-          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Volume is the bottleneck. Every family who tracks makes the answer clearer for the next one.</p>
+      <section style={{ padding: 'clamp(54px,8vw,90px) 24px clamp(10px,2vw,18px)', borderTop: '1px solid var(--rule)' }}>
+        <div className="pb-container" style={{ maxWidth: 680, margin: '0 auto' }}>
+          <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--mute)', margin: '0 0 12px' }}>&sect; 05</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(23px,3.4vw,34px)', lineHeight: 1.18, fontWeight: 300, letterSpacing: '-0.02em', color: 'var(--ink)', margin: 0 }}>Why it gets better the more of us there are</h2>
+          <p style={{ fontSize: 15.5, lineHeight: 1.75, color: 'var(--ink-soft)', margin: '14px 0 0' }}>Volume is the bottleneck. Every family who tracks makes the answer clearer for the next one.</p>
         </div>
       </section>
 
