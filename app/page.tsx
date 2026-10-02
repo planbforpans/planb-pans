@@ -444,6 +444,46 @@ export default function Home() {
         </div>
       </section>
 
+
+      {/* THE THESIS — added 2 Oct 2026. Rachel: "It's like writing an essay
+          without a clear thesis." The site had six competing claims and a parent
+          had to assemble the point themselves. Everything below now serves this
+          one: the protocol is a miracle when it works, and the families it fails
+          fall off the end of the map. That is who this is for. */}
+      <section style={{ padding: 'clamp(56px,8vw,96px) 24px', background: 'var(--teal)', color: '#fffdf7' }}>
+        <div className="pb-container" style={{ maxWidth: 780, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#cfe3df', margin: '0 0 20px' }}>
+            Why Plan B exists
+          </p>
+          <p className="serif" style={{ fontSize: 'clamp(26px,4.6vw,44px)', lineHeight: 1.22, fontWeight: 300, letterSpacing: '-0.01em', margin: '0 0 26px' }}>
+            PANS has a protocol. When it works it is a miracle.
+          </p>
+          <p style={{ fontSize: 18, lineHeight: 1.75, color: '#e6f0ee', maxWidth: 660, margin: '0 auto 18px' }}>
+            It cured my daughter. Advil and Augmentin, and she never came back — not a relapse, not a flare.
+          </p>
+          <p style={{ fontSize: 18, lineHeight: 1.75, color: '#e6f0ee', maxWidth: 660, margin: '0 auto 18px' }}>
+            It did nothing for my son.
+          </p>
+          <p style={{ fontSize: 18, lineHeight: 1.75, color: '#e6f0ee', maxWidth: 660, margin: '0 auto 18px' }}>
+            When the protocol fails, families fall off the end of the map. Nobody has described what those
+            children need, or why they are the second group. You are left assembling an answer alone, from
+            forums and whoever you can afford.
+          </p>
+          <p className="serif" style={{ fontSize: 'clamp(21px,3.2vw,30px)', lineHeight: 1.3, fontWeight: 400, color: '#fffdf7', maxWidth: 660, margin: '26px auto 0' }}>
+            That is who Plan B is for. And it is free.
+          </p>
+        </div>
+      </section>
+
+
+      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>One</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>Why this happens to some children and not others</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>The part nobody explains, and the reason the second group exists.</p>
+        </div>
+      </section>
+
       {/* WHY PLAN B EXISTS — the mission, right after the hero */}
       <section
         style={{
@@ -503,6 +543,177 @@ export default function Home() {
               That&rsquo;s the gap. That&rsquo;s why we&rsquo;re here.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* STAKES — no 911 */}
+      <section
+        style={{
+          background: 'var(--ink)',
+          color: 'var(--cream)',
+          padding: '80px 24px',
+          borderTop: '1px solid var(--rule)',
+          borderBottom: '1px solid var(--rule)',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
+        <div
+          className="graph-paper"
+          style={{
+            position: 'absolute',
+            inset: 0,
+            opacity: 0.04,
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          className="pb-container"
+          style={{ maxWidth: 900, position: 'relative', zIndex: 1 }}
+        >
+          <p
+            className="mono"
+            style={{
+              fontSize: 10,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color: '#a02020',
+              fontWeight: 700,
+              marginBottom: 18,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+            }}
+          >
+            <span className="pulse-dot" />
+            The stakes
+          </p>
+          <h2
+            className="serif"
+            style={{
+              fontSize: 'clamp(34px, 6vw, 64px)',
+              fontWeight: 300,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.02,
+              margin: 0,
+              color: 'var(--cream)',
+              maxWidth: 880,
+            }}
+          >
+            There&apos;s no 911 for this. When your kid is in crisis, the emergency system has no answer for what&apos;s actually driving it underneath.
+          </h2>
+          <p
+            className="serif"
+            style={{
+              fontSize: 'clamp(22px, 3vw, 32px)',
+              fontStyle: 'italic',
+              color: 'var(--teal-light)',
+              lineHeight: 1.35,
+              fontWeight: 400,
+              margin: '28px 0 0',
+              maxWidth: 780,
+            }}
+          >
+            This is where you go when there&apos;s no other place — for solutions.
+          </p>
+        </div>
+      </section>
+
+      {/* THESIS — stated plainly */}
+      <section
+        aria-label="Thesis"
+        style={{
+          background: 'var(--paper)',
+          borderTop: '1px solid var(--rule)',
+          borderBottom: '1px solid var(--rule)',
+          padding: '56px 24px',
+        }}
+      >
+        <div
+          className="pb-container"
+          style={{
+            maxWidth: 1080,
+            display: 'grid',
+            gridTemplateColumns: 'auto 1fr',
+            gap: 'clamp(18px, 4vw, 40px)',
+            alignItems: 'start',
+          }}
+        >
+          <p
+            className="mono"
+            style={{
+              fontSize: 10,
+              letterSpacing: '0.3em',
+              textTransform: 'uppercase',
+              color: 'var(--teal)',
+              fontWeight: 600,
+              whiteSpace: 'nowrap',
+              paddingTop: 6,
+            }}
+          >
+            Our thesis
+          </p>
+          <div>
+            <p
+              className="serif"
+              style={{
+                fontSize: 'clamp(28px, 4.2vw, 46px)',
+                fontWeight: 300,
+                letterSpacing: '-0.018em',
+                lineHeight: 1.08,
+                margin: 0,
+                color: 'var(--ink)',
+              }}
+            >
+              A <em style={{ color: 'var(--teal)' }}>path out of the fire</em> —
+              built from every modality, every family,{' '}
+              <em style={{ color: 'var(--teal)' }}>every hard-won answer.</em>
+            </p>
+            <p
+              style={{
+                fontSize: 15,
+                lineHeight: 1.8,
+                color: 'var(--ink-soft)',
+                fontWeight: 300,
+                marginTop: 18,
+                maxWidth: 760,
+              }}
+            >
+              <strong style={{ color: 'var(--ink)', fontWeight: 600 }}>Today:</strong> a synthesis
+              that reads every lab, every modality, and your child&apos;s whole history together —
+              and names what&apos;s been missed and what hasn&apos;t been tried.{' '}
+              <strong style={{ color: 'var(--ink)', fontWeight: 600 }}>Tomorrow:</strong> as more
+              families join, the patterns sharpen — which modality actually helps, for which child,
+              in what order.
+            </p>
+            <p
+              className="mono"
+              style={{
+                fontSize: 10,
+                letterSpacing: '0.2em',
+                textTransform: 'uppercase',
+                color: 'var(--sand-dark)',
+                fontWeight: 500,
+                marginTop: 18,
+                paddingTop: 14,
+                borderTop: '1px solid var(--sand-light)',
+              }}
+            >
+              Built by a mother who&apos;s lived it &middot; We never prescribe &middot; Every number checked against the source
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* BUCKET — the problem */}
+      <BucketSection />
+
+
+      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Two</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>What you do first</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Upload everything. Find out what is actually driving your child. It costs nothing.</p>
         </div>
       </section>
 
@@ -643,753 +854,12 @@ export default function Home() {
       </section>
 
       {/* The escalation path — crisis → functional med → what hasn't been tried */}
-      <EscalationPath />
 
-      {/* Why you need both — the bot + the human */}
-      <WhyBoth />
-
-      {/* Why not just a chatbot — regular AI vs Minta */}
-      <RegularAIvsMinta />
-
-      {/* Where they were → the new angle (Tommy + Daniel, anonymized) */}
-      <FamilyStoriesTeaser />
-
-      {/* Unsolicited family testimonials (anonymized) */}
-      <Testimonials />
-
-      {/* THESIS — stated plainly */}
-      <section
-        aria-label="Thesis"
-        style={{
-          background: 'var(--paper)',
-          borderTop: '1px solid var(--rule)',
-          borderBottom: '1px solid var(--rule)',
-          padding: '56px 24px',
-        }}
-      >
-        <div
-          className="pb-container"
-          style={{
-            maxWidth: 1080,
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr',
-            gap: 'clamp(18px, 4vw, 40px)',
-            alignItems: 'start',
-          }}
-        >
-          <p
-            className="mono"
-            style={{
-              fontSize: 10,
-              letterSpacing: '0.3em',
-              textTransform: 'uppercase',
-              color: 'var(--teal)',
-              fontWeight: 600,
-              whiteSpace: 'nowrap',
-              paddingTop: 6,
-            }}
-          >
-            Our thesis
-          </p>
-          <div>
-            <p
-              className="serif"
-              style={{
-                fontSize: 'clamp(28px, 4.2vw, 46px)',
-                fontWeight: 300,
-                letterSpacing: '-0.018em',
-                lineHeight: 1.08,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              A <em style={{ color: 'var(--teal)' }}>path out of the fire</em> —
-              built from every modality, every family,{' '}
-              <em style={{ color: 'var(--teal)' }}>every hard-won answer.</em>
-            </p>
-            <p
-              style={{
-                fontSize: 15,
-                lineHeight: 1.8,
-                color: 'var(--ink-soft)',
-                fontWeight: 300,
-                marginTop: 18,
-                maxWidth: 760,
-              }}
-            >
-              <strong style={{ color: 'var(--ink)', fontWeight: 600 }}>Today:</strong> a synthesis
-              that reads every lab, every modality, and your child&apos;s whole history together —
-              and names what&apos;s been missed and what hasn&apos;t been tried.{' '}
-              <strong style={{ color: 'var(--ink)', fontWeight: 600 }}>Tomorrow:</strong> as more
-              families join, the patterns sharpen — which modality actually helps, for which child,
-              in what order.
-            </p>
-            <p
-              className="mono"
-              style={{
-                fontSize: 10,
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'var(--sand-dark)',
-                fontWeight: 500,
-                marginTop: 18,
-                paddingTop: 14,
-                borderTop: '1px solid var(--sand-light)',
-              }}
-            >
-              Built by a mother who&apos;s lived it &middot; We never prescribe &middot; Every number checked against the source
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* COMPOUNDING PROMISE — it gets better the more of us join */}
-      <section
-        style={{
-          padding: '64px 24px',
-          background: 'var(--cream)',
-          borderBottom: '1px solid var(--rule)',
-          textAlign: 'center',
-        }}
-      >
-        <div className="pb-container" style={{ maxWidth: 900 }}>
-          <p
-            className="mono"
-            style={{
-              fontSize: 10,
-              letterSpacing: '0.28em',
-              textTransform: 'uppercase',
-              color: 'var(--teal)',
-              fontWeight: 600,
-              marginBottom: 16,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-            }}
-          >
-            <span aria-hidden="true">↺</span> Compounding promise
-          </p>
-          <p
-            className="serif"
-            style={{
-              fontSize: 'clamp(26px, 4.2vw, 44px)',
-              fontWeight: 300,
-              fontStyle: 'italic',
-              letterSpacing: '-0.015em',
-              lineHeight: 1.2,
-              margin: 0,
-              color: 'var(--ink)',
-            }}
-          >
-            It gets better with every family who joins.{' '}
-            <span style={{ color: 'var(--teal)' }}>
-              Over time — together — we build the way out.
-            </span>
-          </p>
-        </div>
-      </section>
-
-      {/* TRY MINTA — tangible interaction moment before the problem */}
-      <section
-        aria-label="Try Minta"
-        style={{
-          padding: 'clamp(72px, 10vw, 120px) 24px',
-          background: 'var(--cream-light)',
-          borderBottom: '1px solid var(--rule)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          className="bloom-float"
-          style={{
-            position: 'absolute',
-            top: -180,
-            right: -160,
-            width: 520,
-            height: 520,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(31,107,107,0.10) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-        <div
-          className="pb-container reveal"
-          style={{
-            maxWidth: 900,
-            textAlign: 'center',
-            position: 'relative',
-            zIndex: 1,
-          }}
-        >
-          <p
-            className="eyebrow"
-            style={{ color: 'var(--teal)', fontWeight: 600, marginBottom: 22 }}
-          >
-            Try Minta &middot; Free sample &middot; No sign-up
-          </p>
-          <h2
-            className="serif"
-            style={{
-              fontSize: 'clamp(40px, 6vw, 68px)',
-              fontWeight: 300,
-              letterSpacing: '-0.022em',
-              lineHeight: 1.05,
-              margin: '0 0 24px',
-              color: 'var(--ink)',
-            }}
-          >
-            Ask Minta{' '}
-            <em style={{ color: 'var(--teal)', fontStyle: 'italic', fontWeight: 400 }}>
-              anything.
-            </em>
-          </h2>
-          <p
-            style={{
-              fontSize: 'clamp(17px, 1.9vw, 20px)',
-              lineHeight: 1.7,
-              color: 'var(--ink-soft)',
-              fontWeight: 300,
-              maxWidth: 680,
-              margin: '0 auto 44px',
-            }}
-          >
-            A question about your kid. A modality you keep hearing about. A symptom
-            that isn&rsquo;t in any textbook. Type it in your own words &mdash; Minta
-            will give you a straight, plain-English read. A taste of the conversation
-            that comes with every Synthesis.
-          </p>
-
-          <div style={{ marginBottom: 44 }}>
-            <p
-              className="mono"
-              style={{
-                fontSize: 10,
-                letterSpacing: '0.28em',
-                textTransform: 'uppercase',
-                color: 'var(--sand-dark)',
-                fontWeight: 600,
-                marginBottom: 18,
-              }}
-            >
-              For example
-            </p>
-            <div
-              style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                justifyContent: 'center',
-                gap: 12,
-                maxWidth: 820,
-                margin: '0 auto',
-              }}
-            >
-              {[
-                'My 9yo has new OCD and food refusal after strep. Where do I start?',
-                'What&rsquo;s the difference between PANS and PANDAS?',
-                'My kid plateaued on IVIG &mdash; what are we missing?',
-                'Is mold the reason nothing else is working?',
-              ].map((q, i) => (
-                <span
-                  key={i}
-                  style={{
-                    display: 'inline-block',
-                    padding: '11px 18px',
-                    fontFamily: 'var(--font-cormorant)',
-                    fontSize: 'clamp(14px, 1.4vw, 16px)',
-                    fontStyle: 'italic',
-                    color: 'var(--ink)',
-                    background: 'white',
-                    border: '1px solid var(--sand)',
-                    borderRadius: 999,
-                    lineHeight: 1.35,
-                    maxWidth: 360,
-                  }}
-                  dangerouslySetInnerHTML={{ __html: `&ldquo;${q}&rdquo;` }}
-                />
-              ))}
-            </div>
-          </div>
-
-          <a
-            href="https://app.planbforpans.com/try"
-            rel="noopener"
-            className="cta-teal"
-            style={{
-              textDecoration: 'none',
-              display: 'inline-block',
-            }}
-          >
-            Ask Minta now &rarr;
-          </a>
-
-          <p
-            style={{
-              marginTop: 26,
-              fontSize: 12,
-              color: 'var(--sand-dark)',
-              fontStyle: 'italic',
-              lineHeight: 1.6,
-            }}
-          >
-            Ask as many questions as you need. No data saved. No sign-up. Just a real read.
-          </p>
-        </div>
-      </section>
-
-      {/* BUCKET — the problem */}
-      <BucketSection />
-
-      {/* STAKES — no 911 */}
-      <section
-        style={{
-          background: 'var(--ink)',
-          color: 'var(--cream)',
-          padding: '80px 24px',
-          borderTop: '1px solid var(--rule)',
-          borderBottom: '1px solid var(--rule)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          className="graph-paper"
-          style={{
-            position: 'absolute',
-            inset: 0,
-            opacity: 0.04,
-            pointerEvents: 'none',
-          }}
-        />
-        <div
-          className="pb-container"
-          style={{ maxWidth: 900, position: 'relative', zIndex: 1 }}
-        >
-          <p
-            className="mono"
-            style={{
-              fontSize: 10,
-              letterSpacing: '0.3em',
-              textTransform: 'uppercase',
-              color: '#a02020',
-              fontWeight: 700,
-              marginBottom: 18,
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 10,
-            }}
-          >
-            <span className="pulse-dot" />
-            The stakes
-          </p>
-          <h2
-            className="serif"
-            style={{
-              fontSize: 'clamp(34px, 6vw, 64px)',
-              fontWeight: 300,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.02,
-              margin: 0,
-              color: 'var(--cream)',
-              maxWidth: 880,
-            }}
-          >
-            There&apos;s no 911 for this. When your kid is in crisis, the emergency system has no answer for what&apos;s actually driving it underneath.
-          </h2>
-          <p
-            className="serif"
-            style={{
-              fontSize: 'clamp(22px, 3vw, 32px)',
-              fontStyle: 'italic',
-              color: 'var(--teal-light)',
-              lineHeight: 1.35,
-              fontWeight: 400,
-              margin: '28px 0 0',
-              maxWidth: 780,
-            }}
-          >
-            This is where you go when there&apos;s no other place — for solutions.
-          </p>
-        </div>
-      </section>
-
-      {/* THE ENGINE — one synthesized system */}
-      <section
-        style={{
-          padding: '100px 24px',
-          background: 'var(--paper)',
-          borderTop: '1px solid var(--rule)',
-          borderBottom: '1px solid var(--rule)',
-        }}
-      >
-        <div className="pb-container" style={{ maxWidth: 1080 }}>
-          <div style={{ marginBottom: 48, maxWidth: 900 }}>
-            <p className="eyebrow" style={{ marginBottom: 20 }}>
-              § 02 · The engine
-            </p>
-            <h2
-              className="serif"
-              style={{
-                fontSize: 'clamp(36px, 6vw, 68px)',
-                fontWeight: 300,
-                letterSpacing: '-0.022em',
-                lineHeight: 1,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              One system.
-              <br />
-              <em style={{ color: 'var(--teal)' }}>Every facet feeds it.</em>
-            </h2>
-            <p
-              style={{
-                fontSize: 17,
-                lineHeight: 1.85,
-                color: 'var(--ink-soft)',
-                fontWeight: 300,
-                marginTop: 24,
-                maxWidth: 720,
-              }}
-            >
-              Parent forums have suggestions. A doctor sees one slice. Plan B reads every modality,
-              every practitioner teaching, and your child&apos;s full history together — and
-              synthesizes them into one plan, sequenced for your kid. The more families who join,
-              the sharper that synthesis gets for the next child.
-            </p>
-          </div>
-
-          {/* Engine schematic */}
-          <div
-            className="engine-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: '1fr auto 1fr',
-              gap: 'clamp(20px, 4vw, 56px)',
-              alignItems: 'stretch',
-              marginBottom: 40,
-            }}
-          >
-            {/* Inputs */}
-            <div
-              style={{
-                border: '1px solid var(--ink)',
-                padding: '26px 24px',
-                position: 'relative',
-              }}
-            >
-              <p
-                className="mono"
-                style={{
-                  fontSize: 10,
-                  letterSpacing: '0.24em',
-                  color: 'var(--sand-dark)',
-                  fontWeight: 600,
-                  marginBottom: 18,
-                  textTransform: 'uppercase',
-                }}
-              >
-                Inputs · What feeds it
-              </p>
-              {[
-                'Every modality (standard · functional · fringe)',
-                'Every practitioner teaching & published work',
-                'Live cohort data from running cohort studies',
-                'Your kid\u2019s full intake, onset story, labs',
-                'Community questions and corrections',
-              ].map((x, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '28px 1fr',
-                    gap: 10,
-                    alignItems: 'baseline',
-                    padding: '10px 0',
-                    borderTop: i === 0 ? 'none' : '1px solid var(--sand-light)',
-                  }}
-                >
-                  <span
-                    className="mono"
-                    style={{
-                      fontSize: 10,
-                      color: 'var(--teal)',
-                      letterSpacing: '0.12em',
-                      fontWeight: 600,
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 13.5,
-                      color: 'var(--ink)',
-                      lineHeight: 1.55,
-                      fontWeight: 300,
-                    }}
-                  >
-                    {x}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Engine center */}
-            <div
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                justifyContent: 'center',
-                minWidth: 180,
-                position: 'relative',
-              }}
-              aria-hidden="false"
-            >
-              <div
-                className="engine-arrow-in"
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: -40,
-                  transform: 'translateY(-50%)',
-                  width: 40,
-                  height: 1,
-                  background: 'var(--ink)',
-                }}
-              />
-              <div
-                className="engine-arrow-in"
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  top: 'calc(50% - 5px)',
-                  left: -12,
-                  width: 0,
-                  height: 0,
-                  borderTop: '5px solid transparent',
-                  borderBottom: '5px solid transparent',
-                  borderLeft: '8px solid var(--ink)',
-                }}
-              />
-              <div
-                style={{
-                  background: 'var(--ink)',
-                  color: 'var(--cream)',
-                  padding: '36px 28px',
-                  textAlign: 'center',
-                  width: '100%',
-                  position: 'relative',
-                  overflow: 'hidden',
-                }}
-              >
-                <div
-                  className="graph-paper"
-                  style={{
-                    position: 'absolute',
-                    inset: 0,
-                    opacity: 0.05,
-                    pointerEvents: 'none',
-                  }}
-                />
-                <p
-                  className="mono"
-                  style={{
-                    fontSize: 9,
-                    letterSpacing: '0.28em',
-                    color: 'var(--teal-light)',
-                    fontWeight: 600,
-                    marginBottom: 14,
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  Synthesis engine
-                </p>
-                <p
-                  className="serif"
-                  style={{
-                    fontSize: 28,
-                    fontWeight: 300,
-                    color: 'var(--cream)',
-                    letterSpacing: '-0.015em',
-                    lineHeight: 1,
-                    margin: '0 0 8px',
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  Plan B
-                </p>
-                <p
-                  style={{
-                    fontSize: 11,
-                    color: '#bbb3a2',
-                    lineHeight: 1.7,
-                    fontWeight: 300,
-                    margin: 0,
-                    position: 'relative',
-                    zIndex: 1,
-                  }}
-                >
-                  Reads it all together.
-                </p>
-              </div>
-              <div
-                className="engine-arrow-out"
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  top: '50%',
-                  right: -40,
-                  transform: 'translateY(-50%)',
-                  width: 40,
-                  height: 1,
-                  background: 'var(--ink)',
-                }}
-              />
-              <div
-                className="engine-arrow-out"
-                aria-hidden="true"
-                style={{
-                  position: 'absolute',
-                  top: 'calc(50% - 5px)',
-                  right: -12,
-                  width: 0,
-                  height: 0,
-                  borderTop: '5px solid transparent',
-                  borderBottom: '5px solid transparent',
-                  borderLeft: '8px solid var(--ink)',
-                }}
-              />
-            </div>
-
-            {/* Outputs */}
-            <div
-              style={{
-                border: '1px solid var(--ink)',
-                padding: '26px 24px',
-                position: 'relative',
-              }}
-            >
-              <p
-                className="mono"
-                style={{
-                  fontSize: 10,
-                  letterSpacing: '0.24em',
-                  color: 'var(--sand-dark)',
-                  fontWeight: 600,
-                  marginBottom: 18,
-                  textTransform: 'uppercase',
-                }}
-              >
-                Outputs · What it produces
-              </p>
-              {[
-'A synthesis shaped to your kid\u2019s specific profile',
-                'What\u2019s been missed \u2014 and what hasn\u2019t been tried yet',
-                'Referrals to practitioners whose work fits \u2014 and the questions to bring them',
-                '30 days of Minta to troubleshoot the plan',
-                'Patterns that sharpen the read for every family after',
-              ].map((x, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'grid',
-                    gridTemplateColumns: '28px 1fr',
-                    gap: 10,
-                    alignItems: 'baseline',
-                    padding: '10px 0',
-                    borderTop: i === 0 ? 'none' : '1px solid var(--sand-light)',
-                  }}
-                >
-                  <span
-                    className="mono"
-                    style={{
-                      fontSize: 10,
-                      color: 'var(--teal)',
-                      letterSpacing: '0.12em',
-                      fontWeight: 600,
-                    }}
-                  >
-                    →
-                  </span>
-                  <span
-                    style={{
-                      fontSize: 13.5,
-                      color: 'var(--ink)',
-                      lineHeight: 1.55,
-                      fontWeight: 300,
-                    }}
-                  >
-                    {x}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Feedback loop callout */}
-          <div
-            style={{
-              borderTop: '1px dashed var(--sand)',
-              paddingTop: 24,
-              display: 'flex',
-              gap: 16,
-              alignItems: 'baseline',
-              flexWrap: 'wrap',
-            }}
-          >
-            <span
-              className="mono"
-              style={{
-                fontSize: 10,
-                letterSpacing: '0.24em',
-                color: 'var(--teal)',
-                fontWeight: 600,
-                textTransform: 'uppercase',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              ↺ Feedback loop
-            </span>
-            <p
-              style={{
-                fontSize: 14,
-                lineHeight: 1.75,
-                color: 'var(--ink-soft)',
-                fontWeight: 300,
-                margin: 0,
-                flex: 1,
-                minWidth: 280,
-              }}
-            >
-              Your family&apos;s journey feeds back into the library. The 100th family&apos;s
-              synthesis benefits from what the first 99 contributed. More families in → sharper
-              patterns → faster to answers, for everyone.
-            </p>
-          </div>
-
-          <p
-            className="serif"
-            style={{
-              fontSize: 'clamp(24px, 3.4vw, 34px)',
-              fontStyle: 'italic',
-              color: 'var(--ink)',
-              lineHeight: 1.3,
-              fontWeight: 400,
-              margin: '48px 0 0',
-              maxWidth: 800,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
-            }}
-          >
-            A real plan, not silence.{' '}
-            <span style={{ color: 'var(--teal)' }}>
-              Sharpened with every family. Together we get out.
-            </span>
-          </p>
+      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Three</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>How you keep going</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Track her daily. Ask Minta daily. This is the part people skip, and it is the part that finds the drivers.</p>
         </div>
       </section>
 
@@ -1849,158 +1319,302 @@ export default function Home() {
         </div>
       </section>
 
-      {/* THE WHY — mechanism questions */}
+      {/* TRY MINTA — tangible interaction moment before the problem */}
       <section
+        aria-label="Try Minta"
         style={{
-          padding: '100px 24px',
+          padding: 'clamp(72px, 10vw, 120px) 24px',
           background: 'var(--cream-light)',
           borderBottom: '1px solid var(--rule)',
+          position: 'relative',
+          overflow: 'hidden',
         }}
       >
-        <div className="pb-container" style={{ maxWidth: 1000 }}>
-          <div style={{ marginBottom: 36, maxWidth: 860 }}>
-            <p className="eyebrow" style={{ marginBottom: 20 }}>
-              § 03 · The why
-            </p>
-            <h2
-              className="serif"
-              style={{
-                fontSize: 'clamp(34px, 5.6vw, 60px)',
-                fontWeight: 300,
-                letterSpacing: '-0.022em',
-                lineHeight: 1,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              Understanding the mechanism — <em style={{ color: 'var(--teal)' }}>so solutions get easier to craft.</em>
-            </h2>
-            <p
-              style={{
-                fontSize: 17,
-                lineHeight: 1.85,
-                color: 'var(--ink-soft)',
-                fontWeight: 300,
-                marginTop: 20,
-                maxWidth: 720,
-              }}
-            >
-              Plan B isn&apos;t only matching modalities to kids. It&apos;s pursuing the
-              questions underneath — which behavior is which driver? Every added family,
-              every added cohort, every added data point pushes these questions closer to
-              answers.
-            </p>
-          </div>
-
-          <ul
+        <div
+          className="bloom-float"
+          style={{
+            position: 'absolute',
+            top: -180,
+            right: -160,
+            width: 520,
+            height: 520,
+            borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(31,107,107,0.10) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }}
+        />
+        <div
+          className="pb-container reveal"
+          style={{
+            maxWidth: 900,
+            textAlign: 'center',
+            position: 'relative',
+            zIndex: 1,
+          }}
+        >
+          <p
+            className="eyebrow"
+            style={{ color: 'var(--teal)', fontWeight: 600, marginBottom: 22 }}
+          >
+            Try Minta &middot; Free sample &middot; No sign-up
+          </p>
+          <h2
+            className="serif"
             style={{
-              listStyle: 'none',
-              padding: 0,
-              margin: 0,
-              borderTop: '1px solid var(--ink)',
+              fontSize: 'clamp(40px, 6vw, 68px)',
+              fontWeight: 300,
+              letterSpacing: '-0.022em',
+              lineHeight: 1.05,
+              margin: '0 0 24px',
+              color: 'var(--ink)',
             }}
           >
-            {[
-              {
-                n: 'Q1',
-                q: 'Are these behaviors pathogen-driven?',
-                s: 'When sudden OCD, rage, or regression appears — is the brain reacting to a specific infection? Which one, and in which kid?',
-              },
-              {
-                n: 'Q2',
-                q: 'Or are they symptoms of an inflamed brain?',
-                s: 'Is the driver the pathogen itself, or the inflammation it provoked? Different answers mean different protocols.',
-              },
-              {
-                n: 'Q3',
-                q: 'Does strep have a personality? Does mold? Does lyme?',
-                s: 'Do specific pathogens produce specific behavioral signatures? Does a kid picking their nose constantly mean parasites? Does a kid saying "I want to die" mean lyme? We&apos;re collecting the data to find out.',
-              },
-              {
-                n: 'Q4',
-                q: 'Which combinations load the bucket fastest?',
-                s: 'Mold + strep + methylation stall + stress — what order? Which is the bottleneck for which kid?',
-              },
-              {
-                n: 'Q5',
-                q: 'Where does each modality actually fit?',
-                s: 'Not &ldquo;does it work&rdquo; — where in the sequence does it belong, for which kind of kid?',
-              },
-            ].map((x) => (
-              <li
-                key={x.n}
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: '56px 1fr',
-                  gap: 18,
-                  padding: '26px 0',
-                  borderBottom: '1px solid var(--sand)',
-                  alignItems: 'baseline',
-                }}
-              >
-                <span
-                  className="mono"
-                  style={{
-                    fontSize: 12,
-                    color: 'var(--teal)',
-                    letterSpacing: '0.14em',
-                    fontWeight: 600,
-                    textAlign: 'right',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {x.n}
-                </span>
-                <div>
-                  <p
-                    className="serif"
-                    style={{
-                      fontSize: 'clamp(22px, 2.8vw, 30px)',
-                      fontStyle: 'italic',
-                      color: 'var(--ink)',
-                      fontWeight: 400,
-                      lineHeight: 1.25,
-                      marginBottom: 10,
-                    }}
-                  >
-                    {x.q}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: 14,
-                      color: 'var(--ink-soft)',
-                      lineHeight: 1.75,
-                      fontWeight: 300,
-                    }}
-                    dangerouslySetInnerHTML={{ __html: x.s }}
-                  />
-                </div>
-              </li>
-            ))}
-          </ul>
+            Ask Minta{' '}
+            <em style={{ color: 'var(--teal)', fontStyle: 'italic', fontWeight: 400 }}>
+              anything.
+            </em>
+          </h2>
+          <p
+            style={{
+              fontSize: 'clamp(17px, 1.9vw, 20px)',
+              lineHeight: 1.7,
+              color: 'var(--ink-soft)',
+              fontWeight: 300,
+              maxWidth: 680,
+              margin: '0 auto 44px',
+            }}
+          >
+            A question about your kid. A modality you keep hearing about. A symptom
+            that isn&rsquo;t in any textbook. Type it in your own words &mdash; Minta
+            will give you a straight, plain-English read. A taste of the conversation
+            that comes with every Synthesis.
+          </p>
 
+          <div style={{ marginBottom: 44 }}>
+            <p
+              className="mono"
+              style={{
+                fontSize: 10,
+                letterSpacing: '0.28em',
+                textTransform: 'uppercase',
+                color: 'var(--sand-dark)',
+                fontWeight: 600,
+                marginBottom: 18,
+              }}
+            >
+              For example
+            </p>
+            <div
+              style={{
+                display: 'flex',
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                gap: 12,
+                maxWidth: 820,
+                margin: '0 auto',
+              }}
+            >
+              {[
+                'My 9yo has new OCD and food refusal after strep. Where do I start?',
+                'What&rsquo;s the difference between PANS and PANDAS?',
+                'My kid plateaued on IVIG &mdash; what are we missing?',
+                'Is mold the reason nothing else is working?',
+              ].map((q, i) => (
+                <span
+                  key={i}
+                  style={{
+                    display: 'inline-block',
+                    padding: '11px 18px',
+                    fontFamily: 'var(--font-cormorant)',
+                    fontSize: 'clamp(14px, 1.4vw, 16px)',
+                    fontStyle: 'italic',
+                    color: 'var(--ink)',
+                    background: 'white',
+                    border: '1px solid var(--sand)',
+                    borderRadius: 999,
+                    lineHeight: 1.35,
+                    maxWidth: 360,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: `&ldquo;${q}&rdquo;` }}
+                />
+              ))}
+            </div>
+          </div>
+
+          <a
+            href="https://app.planbforpans.com/try"
+            rel="noopener"
+            className="cta-teal"
+            style={{
+              textDecoration: 'none',
+              display: 'inline-block',
+            }}
+          >
+            Ask Minta now &rarr;
+          </a>
+
+          <p
+            style={{
+              marginTop: 26,
+              fontSize: 12,
+              color: 'var(--sand-dark)',
+              fontStyle: 'italic',
+              lineHeight: 1.6,
+            }}
+          >
+            Ask as many questions as you need. No data saved. No sign-up. Just a real read.
+          </p>
+        </div>
+      </section>
+
+
+      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Four</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>When you are stuck</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>If the AI missed something, or you would rather not do it alone.</p>
+        </div>
+      </section>
+
+      <EscalationPath />
+
+      {/* Why you need both — the bot + the human */}
+      <WhyBoth />
+
+      {/* Why not just a chatbot — regular AI vs Minta */}
+      <RegularAIvsMinta />
+
+      {/* Where they were → the new angle (Tommy + Daniel, anonymized) */}
+
+      <section style={{ padding: 'clamp(40px,6vw,72px) 24px clamp(10px,2vw,18px)' }}>
+        <div className="pb-container" style={{ maxWidth: 900, margin: '0 auto' }}>
+          <p style={{ fontSize: 11.5, letterSpacing: '0.24em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 10px' }}>Five</p>
+          <h2 className="serif" style={{ fontSize: 'clamp(28px,4.6vw,46px)', lineHeight: 1.08, fontWeight: 300, letterSpacing: '-0.02em', margin: 0, color: 'var(--ink)' }}>Why it gets better the more of us there are</h2>
+          <p style={{ fontSize: 17, lineHeight: 1.7, color: "var(--ink-soft)", maxWidth: 640, margin: "14px 0 0" }}>Volume is the bottleneck. Every family who tracks makes the answer clearer for the next one.</p>
+        </div>
+      </section>
+
+      {/* COMPOUNDING PROMISE — it gets better the more of us join */}
+      <section
+        style={{
+          padding: '64px 24px',
+          background: 'var(--cream)',
+          borderBottom: '1px solid var(--rule)',
+          textAlign: 'center',
+        }}
+      >
+        <div className="pb-container" style={{ maxWidth: 900 }}>
+          <p
+            className="mono"
+            style={{
+              fontSize: 10,
+              letterSpacing: '0.28em',
+              textTransform: 'uppercase',
+              color: 'var(--teal)',
+              fontWeight: 600,
+              marginBottom: 16,
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: 10,
+            }}
+          >
+            <span aria-hidden="true">↺</span> Compounding promise
+          </p>
           <p
             className="serif"
             style={{
-              fontSize: 'clamp(22px, 3vw, 30px)',
+              fontSize: 'clamp(26px, 4.2vw, 44px)',
+              fontWeight: 300,
               fontStyle: 'italic',
+              letterSpacing: '-0.015em',
+              lineHeight: 1.2,
+              margin: 0,
               color: 'var(--ink)',
-              lineHeight: 1.35,
-              fontWeight: 400,
-              margin: '48px 0 0',
-              maxWidth: 820,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
             }}
           >
-            The why is how the solution gets precise.{' '}
+            It gets better with every family who joins.{' '}
             <span style={{ color: 'var(--teal)' }}>
-              Every family helps us answer it.
+              Over time — together — we build the way out.
             </span>
           </p>
         </div>
       </section>
 
+      <FamilyStoriesTeaser />
+
+      {/* Unsolicited family testimonials (anonymized) */}
+      <Testimonials />
+
+      {/* VOICES — social proof placeholder */}
+      <section
+        style={{
+          padding: '80px 24px',
+          background: 'var(--cream)',
+        }}
+      >
+        <div className="pb-container" style={{ maxWidth: 960 }}>
+          <p className="eyebrow" style={{ marginBottom: 24, textAlign: 'center' }}>
+            Voices · From the families using Plan B
+          </p>
+          <div
+            style={{
+              padding: 'clamp(40px, 6vw, 64px) clamp(28px, 5vw, 56px)',
+              textAlign: 'center',
+              border: '1px solid var(--sand)',
+              borderRadius: 8,
+              background: 'var(--paper)',
+            }}
+          >
+            <p
+              className="serif"
+              style={{
+                fontSize: 'clamp(24px, 3.4vw, 34px)',
+                fontStyle: 'italic',
+                color: 'var(--ink)',
+                lineHeight: 1.38,
+                fontWeight: 400,
+                maxWidth: 720,
+                margin: '0 auto 22px',
+              }}
+            >
+              &ldquo;This is the most comprehensive document I have ever received concerning my
+              son&apos;s health and test results. You and Minta are excellent —{' '}
+              <span style={{ color: 'var(--teal)' }}>it makes so much sense.</span>&rdquo;
+            </p>
+            <p className="serial" style={{ color: 'var(--sand-dark)', marginBottom: 18 }}>
+              Mother of a teen son · Europe ·{' '}
+              <a href="/stories#europe-teen" style={{ color: 'var(--teal)', textDecoration: 'underline' }}>
+                read his story
+              </a>
+            </p>
+            <p
+              style={{
+                fontSize: 14,
+                color: 'var(--ink-soft)',
+                lineHeight: 1.7,
+                fontWeight: 300,
+                maxWidth: 520,
+                margin: '0 auto',
+              }}
+            >
+              Using Plan B and want your story here (with consent)?{' '}
+              <a
+                href="mailto:rachel@planbforpans.com?subject=Plan%20B%20story"
+                style={{ color: 'var(--teal)', textDecoration: 'underline' }}
+              >
+                Email Rachel
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* The "free spot / waitlist" section was removed 1 Oct 2026. Signups are
+          open at app.planbforpans.com/signup, so a waitlist block near the bottom
+          told a parent to wait while everything above told them to start — and it
+          was left over from launch. If a cohort cap ever comes back, restore it
+          from app/page.tsx.bak. */}
       {/* PRIVACY PROMISE — three lines */}
       <section
         style={{
@@ -2092,200 +1706,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* COMPARISON — why Plan B vs. the alternatives */}
-      <section
-        style={{
-          padding: '100px 24px',
-          background: 'var(--cream-light)',
-          borderTop: '1px solid var(--rule)',
-          borderBottom: '1px solid var(--rule)',
-        }}
-      >
-        <div className="pb-container" style={{ maxWidth: 1100 }}>
-          <div style={{ marginBottom: 44, maxWidth: 880 }}>
-            <p className="eyebrow" style={{ marginBottom: 18 }}>
-              What makes Plan B different
-            </p>
-            <h2
-              className="serif"
-              style={{
-                fontSize: 'clamp(34px, 5.4vw, 54px)',
-                fontWeight: 300,
-                letterSpacing: '-0.018em',
-                lineHeight: 1.05,
-                margin: 0,
-                color: 'var(--ink)',
-              }}
-            >
-              You&apos;ve already tried the other places.
-            </h2>
-          </div>
-
-          <div style={{ overflowX: 'auto' }}>
-            <table
-              style={{
-                width: '100%',
-                borderCollapse: 'collapse',
-                fontSize: 14,
-                minWidth: 720,
-              }}
-            >
-              <thead>
-                <tr style={{ borderBottom: '1px solid var(--ink)' }}>
-                  {['', 'Facebook groups', 'PANS forums', 'Doctor visits', 'Plan B'].map(
-                    (h, i) => (
-                      <th
-                        key={i}
-                        className="mono"
-                        style={{
-                          padding: '16px 12px',
-                          fontSize: 10,
-                          letterSpacing: '0.18em',
-                          textTransform: 'uppercase',
-                          color: i === 4 ? 'var(--teal)' : 'var(--sand-dark)',
-                          fontWeight: 700,
-                          textAlign: i === 0 ? 'left' : 'center',
-                        }}
-                      >
-                        {h}
-                      </th>
-                    ),
-                  )}
-                </tr>
-              </thead>
-              <tbody>
-                {[
-                  ['2am access', '✓', '✓', '—', '✓'],
-                  ['Specific to YOUR kid', '—', '—', '✓', '✓'],
-                  ['Reads every modality together', '—', '—', '—', '✓'],
-                  ['Remembers your kid&apos;s full history', '—', '—', 'partial', '✓'],
-                  ['Gets sharper with every family', '—', '—', '—', '✓'],
-                  ['Cost', 'free', 'free', '$300–$2,000 per visit', 'free synthesis · pay-as-you-go Minta'],
-                  ['Data belongs to', 'Meta', 'forum owner', 'their chart', 'you'],
-                ].map((row, i) => (
-                  <tr
-                    key={i}
-                    style={{
-                      borderBottom: '1px solid var(--sand-light)',
-                    }}
-                  >
-                    {row.map((cell, j) => (
-                      <td
-                        key={j}
-                        style={{
-                          padding: '14px 12px',
-                          fontSize: j === 0 ? 14 : 13,
-                          color:
-                            j === 4
-                              ? 'var(--teal)'
-                              : j === 0
-                              ? 'var(--ink)'
-                              : 'var(--ink-soft)',
-                          fontWeight: j === 0 ? 500 : 400,
-                          textAlign: j === 0 ? 'left' : 'center',
-                          fontFamily:
-                            j > 0 && (cell === '✓' || cell === '—') ? 'var(--font-mono)' : 'inherit',
-                        }}
-                        dangerouslySetInnerHTML={{ __html: cell }}
-                      />
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <p
-            className="serif"
-            style={{
-              fontSize: 'clamp(20px, 2.6vw, 26px)',
-              fontStyle: 'italic',
-              color: 'var(--ink)',
-              lineHeight: 1.4,
-              fontWeight: 400,
-              margin: '36px 0 0',
-              maxWidth: 780,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
-            }}
-          >
-            Parent forums have suggestions. Doctors see their slice. Plan B is the only place
-            that holds <span style={{ color: 'var(--teal)' }}>everything together</span> —
-            your kid, every modality, every family&apos;s story.
-          </p>
-        </div>
-      </section>
-
-      {/* VOICES — social proof placeholder */}
-      <section
-        style={{
-          padding: '80px 24px',
-          background: 'var(--cream)',
-        }}
-      >
-        <div className="pb-container" style={{ maxWidth: 960 }}>
-          <p className="eyebrow" style={{ marginBottom: 24, textAlign: 'center' }}>
-            Voices · From the families using Plan B
-          </p>
-          <div
-            style={{
-              padding: 'clamp(40px, 6vw, 64px) clamp(28px, 5vw, 56px)',
-              textAlign: 'center',
-              border: '1px solid var(--sand)',
-              borderRadius: 8,
-              background: 'var(--paper)',
-            }}
-          >
-            <p
-              className="serif"
-              style={{
-                fontSize: 'clamp(24px, 3.4vw, 34px)',
-                fontStyle: 'italic',
-                color: 'var(--ink)',
-                lineHeight: 1.38,
-                fontWeight: 400,
-                maxWidth: 720,
-                margin: '0 auto 22px',
-              }}
-            >
-              &ldquo;This is the most comprehensive document I have ever received concerning my
-              son&apos;s health and test results. You and Minta are excellent —{' '}
-              <span style={{ color: 'var(--teal)' }}>it makes so much sense.</span>&rdquo;
-            </p>
-            <p className="serial" style={{ color: 'var(--sand-dark)', marginBottom: 18 }}>
-              Mother of a teen son · Europe ·{' '}
-              <a href="/stories#europe-teen" style={{ color: 'var(--teal)', textDecoration: 'underline' }}>
-                read his story
-              </a>
-            </p>
-            <p
-              style={{
-                fontSize: 14,
-                color: 'var(--ink-soft)',
-                lineHeight: 1.7,
-                fontWeight: 300,
-                maxWidth: 520,
-                margin: '0 auto',
-              }}
-            >
-              Using Plan B and want your story here (with consent)?{' '}
-              <a
-                href="mailto:rachel@planbforpans.com?subject=Plan%20B%20story"
-                style={{ color: 'var(--teal)', textDecoration: 'underline' }}
-              >
-                Email Rachel
-              </a>
-              .
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* The "free spot / waitlist" section was removed 1 Oct 2026. Signups are
-          open at app.planbforpans.com/signup, so a waitlist block near the bottom
-          told a parent to wait while everything above told them to start — and it
-          was left over from launch. If a cohort cap ever comes back, restore it
-          from app/page.tsx.bak. */}
       {/* EMAIL CAPTURE — stay in the loop */}
       <section
         style={{
