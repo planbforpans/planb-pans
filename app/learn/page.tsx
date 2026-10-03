@@ -72,6 +72,7 @@ const SECTIONS: Section[] = [
         label: 'Infections',
         items: [
           { title: 'PANS, PANDAS & Strep', blurb: 'How strep triggers sudden OCD, tics, and behavior changes — the molecular-mimicry mechanism, what to test, and why a negative throat swab doesn\'t rule it out.', href: '/pans-and-strep.html' },
+          { title: 'Leg pain after strep — growing pains, or something else?', blurb: 'Growing pains don\'t respond to antibiotics. How to tell ordinary achy shins from post-strep arthritis and rheumatic fever, the red flags that warrant a call, why both ASO and anti-DNase B matter — and the one test almost nobody orders, because everyone is looking at the brain instead of the heart.', href: '/leg-pain-after-strep-children.html' },
           { title: 'PANS and Lyme', blurb: 'The tick-borne connection — how Lyme and co-infections drive sudden OCD and rage, why standard tests miss them, and what to test and do next.', href: '/pans-and-lyme.html' },
           { title: 'Lyme & Co-infections', blurb: 'Antibiotics vs herbals (research-backed), the kill-menu, per-bug dosing, and how to find a Lyme doctor.', href: '/lyme.html' },
           { title: 'Parasites & Behavior', blurb: 'The overlooked driver — pinworms, protozoa, and helminths that drive night-waking, teeth-grinding, rage, and OCD-like behavior, the full-moon pattern, and how to treat them.', href: '/parasites.html' },
