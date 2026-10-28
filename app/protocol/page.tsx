@@ -9,12 +9,12 @@ export const metadata = {
     'The exact tests a good PANS doctor orders to find the trigger, the antibiotic for each infection with standard doses, when IVIG is used and how it gets covered, and the decision tree they follow — laid out so you can decide alongside them.',
 }
 
-const ink = '#2a2a26'
-const teal = '#1F6B6B'
-const soft = '#5b5547'
-const rule = '#e3dcc9'
-const cream = '#faf6ec'
-const card = '#fffdf7'
+const ink = '#1F2424'
+const teal = '#2E6E70'
+const soft = '#505858'
+const rule = '#E1E5E4'
+const cream = '#F5F7F6'
+const card = '#FFFFFF'
 
 const SCREEN: [string, string][] = [
   ['Throat swab — rapid strep + culture', 'Active group A Strep, even with no sore throat. If the rapid test is negative they culture it — rapid tests miss ~15% of strep.'],
@@ -82,7 +82,7 @@ export default function ProtocolPage() {
       </section>
 
       {/* What the protocol IS — the story + the "hit it hard while you wait" framing */}
-      <section style={{ padding: 'clamp(44px, 6vw, 72px) 24px', borderBottom: `1px solid ${rule}`, background: '#f3eede' }}>
+      <section style={{ padding: 'clamp(44px, 6vw, 72px) 24px', borderBottom: `1px solid ${rule}`, background: '#F5F7F6' }}>
         <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto' }}>
           <h2 style={sectionTitle}>What &ldquo;the protocol&rdquo; even is</h2>
           <p style={{ fontSize: 17, lineHeight: 1.75, color: soft, margin: '0 0 16px' }}>
@@ -168,7 +168,7 @@ export default function ProtocolPage() {
               Overwhelmed? You don’t order everything, and you don’t do this alone.
             </p>
             <p style={{ fontSize: 15, color: soft, margin: '0 0 12px', lineHeight: 1.65 }}>
-              Plan B doesn’t treat your child — <strong style={{ color: ink }}>your doctors do that.</strong> What
+              Plan B for PANS doesn’t treat your child — <strong style={{ color: ink }}>your doctors do that.</strong> What
               Minta gives you is <strong style={{ color: teal }}>direction,</strong> in two steps:
             </p>
             <p style={{ fontSize: 15, color: soft, margin: '0 0 8px', lineHeight: 1.6 }}>
@@ -190,7 +190,7 @@ export default function ProtocolPage() {
       </section>
 
       {/* Decision tree */}
-      <section style={{ padding: 'clamp(48px, 7vw, 80px) 24px', borderBottom: `1px solid ${rule}`, background: '#f3eede' }}>
+      <section style={{ padding: 'clamp(48px, 7vw, 80px) 24px', borderBottom: `1px solid ${rule}`, background: '#F5F7F6' }}>
         <div className="pb-container" style={{ maxWidth: 720, margin: '0 auto' }}>
           <p style={{ color: teal, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 8px' }}>The decision tree</p>
           <h2 style={sectionTitle}>The path a doctor follows</h2>
@@ -299,7 +299,7 @@ export default function ProtocolPage() {
       </section>
 
       {/* IVIG + insurance */}
-      <section style={{ padding: 'clamp(48px, 7vw, 80px) 24px', borderBottom: `1px solid ${rule}`, background: '#f3eede' }}>
+      <section style={{ padding: 'clamp(48px, 7vw, 80px) 24px', borderBottom: `1px solid ${rule}`, background: '#F5F7F6' }}>
         <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto' }}>
           <p style={{ color: teal, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 8px' }}>When it’s severe</p>
           <h2 style={sectionTitle}>IVIG — and how families get it covered</h2>
@@ -336,22 +336,22 @@ export default function ProtocolPage() {
             <li><strong style={{ color: ink }}>Anti-inflammatories:</strong> a <strong>6-week</strong> trial; many kids slip when it’s withdrawn — itself a sign it was helping.</li>
             <li><strong style={{ color: ink }}>Steroid burst:</strong> works best within <strong>1–3 days</strong> of a flare; flares treated early ran ~6 weeks vs ~11 untreated.</li>
             <li><strong style={{ color: ink }}>The escalation rule:</strong> early treatment beats late, and when first-line fails, second-line helps — so you <strong>escalate, you don’t wait.</strong></li>
-            <li><strong style={{ color: ink }}>When to pivot:</strong> if a kid stops responding to immune treatment entirely (even high-dose steroids), the guideline itself says to shift toward <strong>rehabilitation</strong> — and that’s exactly where Plan B starts hunting for the driver no one found.</li>
+            <li><strong style={{ color: ink }}>When to pivot:</strong> if a kid stops responding to immune treatment entirely (even high-dose steroids), the guideline itself says to shift toward <strong>rehabilitation</strong> — and that’s exactly where Plan B for PANS starts hunting for the driver no one found.</li>
           </ul>
         </div>
       </section>
 
       {/* The bigger escalation path: protocol → functional med → homeopathy */}
-      <section style={{ padding: 'clamp(48px, 7vw, 90px) 24px', borderBottom: `1px solid ${rule}`, background: '#f3eede' }}>
+      <section style={{ padding: 'clamp(48px, 7vw, 90px) 24px', borderBottom: `1px solid ${rule}`, background: '#F5F7F6' }}>
         <div className="pb-container" style={{ maxWidth: 700, margin: '0 auto' }}>
           <p style={{ color: teal, fontSize: 12, letterSpacing: '0.14em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 8px' }}>The bigger picture</p>
           <h2 style={sectionTitle}>If the protocol isn&rsquo;t enough — the path forward</h2>
           <p style={{ fontSize: 16.5, lineHeight: 1.7, color: soft, margin: '0 0 30px' }}>
             Everything above is <strong style={{ color: ink }}>Stage 1</strong>. Most kids caught early get better here. But if your child
-            isn&rsquo;t <em>all the way</em> better, you don&rsquo;t stop — you go deeper. This is the path Plan B walks with you.
+            isn&rsquo;t <em>all the way</em> better, you don&rsquo;t stop — you go deeper. This is the path Plan B for PANS walks with you.
           </p>
           {([
-            ['1', 'Stage 1 · Conventional', 'The Protocol', 'Everything on this page — find the trigger, the right antibiotic, scheduled anti-inflammatories, and IVIG or plasma exchange when it’s severe. The standard first line, and where most early, mild-to-moderate kids get better.', '#1F6B6B'],
+            ['1', 'Stage 1 · Conventional', 'The Protocol', 'Everything on this page — find the trigger, the right antibiotic, scheduled anti-inflammatories, and IVIG or plasma exchange when it’s severe. The standard first line, and where most early, mild-to-moderate kids get better.', '#2E6E70'],
             ['2', 'Stage 2 · Functional medicine', 'Find the root drivers', 'Not all better? Go deeper than infection: methylation & detox, the gut, mold/CIRS, chronic tick-borne (Lyme, Bartonella, Babesia, Mycoplasma), MCAS, and mineral & immune dysregulation — the roots conventional medicine doesn’t look for. Test them, treat them.', '#6b3fa0'],
             ['3', 'Stage 3 · Deepest tier', 'Homeopathy & what hasn’t been tried', 'Still not all the way there? Homeopathy, plus the full “what hasn’t been tried” menu — biomagnetism, phage therapy, peptides, and more. Nothing left on the table.', '#9a5b2a'],
           ] as [string, string, string, string, string][]).map(([n, tag, title, body, color], i) => (
@@ -373,8 +373,8 @@ export default function ProtocolPage() {
             </div>
           ))}
           <p style={{ fontSize: 15.5, color: soft, lineHeight: 1.7, margin: '28px 0 0', textAlign: 'center' }}>
-            <strong style={{ color: ink }}>This is Plan B.</strong> The name is literal — when Plan A runs out, there&rsquo;s a whole map left.
-            We help you work down it, one stage at a time, until your child is <em>all the way</em> better.
+            <strong style={{ color: ink }}>This is Plan B for PANS.</strong> The name is literal — when Plan A runs out, there&rsquo;s a whole map left.
+            We help you work down it, one stage at a time, and keep looking for the next thing to try.
           </p>
         </div>
       </section>

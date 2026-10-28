@@ -8,11 +8,11 @@ export const metadata = {
     'Every PANS/Lyme treatment, deconstructed: what it is, the studies behind it, and — the part no one explains — how to actually access it and get help.',
 }
 
-const ink = '#2a2a26'
-const teal = '#1F6B6B'
-const soft = '#524d40'
-const rule = '#e3dcc9'
-const card = '#fffdf7'
+const ink = '#1F2424'
+const teal = '#2E6E70'
+const soft = '#505858'
+const rule = '#E1E5E4'
+const card = '#FFFFFF'
 const rust = '#9a5a3a'
 
 type Item = { title: string; blurb: string; href?: string }
@@ -40,7 +40,7 @@ const SECTIONS: Section[] = [
   },
   {
     group: '2 · Check the engine first',
-    sub: 'Before you try anything else. If your child is undermethylating, detox is clogged, or the mitochondria are drained, treatments can BACKFIRE — this is the engine no specialist owns, and the bottleneck Plan B was built around.',
+    sub: 'Before you try anything else. If your child is undermethylating, detox is clogged, or the mitochondria are drained, treatments can BACKFIRE — this is the engine no specialist owns, and the bottleneck Plan B for PANS was built around.',
     items: [
       { title: 'Methylation, Detox & Energy', blurb: 'The body’s cleanup-and-power engine — methylation (the maintenance crew), detox/glutathione (the drains), and the mitochondria (the batteries), all one connected system. Why genes only say the crew might be short-staffed and blood tells you if it actually is, Naviaux’s Cell Danger Response, and why pushing a kill before the engine is running can make a sensitive kid worse.', href: '/methylation.html' },
       { title: 'Read your raw SNPs — free', blurb: 'Drop your 23andMe file and get your methylation genetics read through three frameworks (Yasko · Lynch · Kara Fitzgerald) — tendencies, not prescriptions. Free.', href: 'https://app.planbforpans.com/genetics' },
@@ -153,7 +153,7 @@ const SECTIONS: Section[] = [
         label: '⚠ Real risks — expert supervision only',
         caution: true,
         items: [
-          { title: 'Ozone Therapy', blurb: 'Oxidative therapy for chronic infection — the routes, the honest (thin) evidence, the gas-embolism rule, and why Plan B steers away from the IV forms in kids.', href: '/ozone.html' },
+          { title: 'Ozone Therapy', blurb: 'Oxidative therapy for chronic infection — the routes, the honest (thin) evidence, the gas-embolism rule, and why Plan B for PANS steers away from the IV forms in kids.', href: '/ozone.html' },
           { title: 'EBOO (Blood Ozonation)', blurb: 'The most intensive ozone form — "ozone dialysis" for refractory chronic Lyme/mold. Experimental, invasive, adult-studied; a deeper-menu option, never first-line, and extra caution in kids.', href: '/eboo.html' },
           { title: 'Bee Venom Therapy', blurb: 'Melittin kills Borrelia in the lab — but anaphylaxis is the headline: EpiPen on hand, test-sting first, never for young or allergic kids.', href: '/bee-venom.html' },
         ],
@@ -232,7 +232,7 @@ function ItemGrid({ items, caution }: { items: Item[]; caution?: boolean }) {
   return (
     <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: 16 }}>
       {items.map((it) => (
-        <a key={it.title} href={it.href} style={{ display: 'block', textDecoration: 'none', background: caution ? '#fbf5ef' : card, border: `1.5px solid ${caution ? 'rgba(154,90,58,0.5)' : teal}`, borderRadius: 14, padding: '22px 22px 24px' }}>
+        <a key={it.title} href={it.href} style={{ display: 'block', textDecoration: 'none', background: caution ? '#F5F7F6' : card, border: `1.5px solid ${caution ? 'rgba(154,90,58,0.5)' : teal}`, borderRadius: 14, padding: '22px 22px 24px' }}>
           <p style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 400, fontSize: 24, lineHeight: 1.1, color: ink, margin: '0 0 10px' }}>{it.title}</p>
           <p style={{ fontSize: 14.5, color: soft, lineHeight: 1.55, margin: '0 0 14px' }}>{it.blurb}</p>
           <span style={{ fontSize: 13, color: caution ? rust : teal, fontWeight: 700, letterSpacing: '0.04em' }}>Read &rarr;</span>
@@ -244,24 +244,24 @@ function ItemGrid({ items, caution }: { items: Item[]; caution?: boolean }) {
 
 export default function LearnPage() {
   return (
-    <main style={{ background: '#faf6ec', color: ink }}>
+    <main style={{ background: '#F5F7F6', color: ink }}>
       <section style={{ padding: 'clamp(56px, 9vw, 110px) 24px 36px', borderBottom: `1px solid ${rule}` }}>
         <div className="pb-container" style={{ maxWidth: 860, margin: '0 auto' }}>
-          <p style={{ color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 16px' }}>The Plan B Field Guide</p>
+          <p style={{ color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 16px' }}>The Plan B for PANS Field Guide</p>
           <h1 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(34px, 6vw, 62px)', lineHeight: 1.02, letterSpacing: '-0.02em', margin: '0 0 18px' }}>
             Every treatment, deconstructed.
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, maxWidth: 680, margin: 0 }}>
-            The hardest part of PANS is the moment you <strong style={{ color: ink }}>stall</strong> — when the standard path stops working and no one tells you what&rsquo;s left. <strong style={{ color: ink }}>This is what&rsquo;s left.</strong> Every treatment, laid out honestly, so that when you hit a wall you know the search isn&rsquo;t over — there&rsquo;s a Plan B. Each guide answers the same things: <strong style={{ color: ink }}>what it is</strong>, <strong style={{ color: ink }}>the research</strong>, <strong style={{ color: ink }}>the real risks</strong>, <strong style={{ color: ink }}>how to actually get it</strong>, and <strong style={{ color: ink }}>how to vet a practitioner.</strong>
+            The hardest part of PANS is the moment you <strong style={{ color: ink }}>stall</strong> — when the standard path stops working and no one tells you what&rsquo;s left. <strong style={{ color: ink }}>This is what&rsquo;s left.</strong> Every treatment, laid out honestly, so that when you hit a wall you know the search isn&rsquo;t over — there&rsquo;s a Plan B for PANS. Each guide answers the same things: <strong style={{ color: ink }}>what it is</strong>, <strong style={{ color: ink }}>the research</strong>, <strong style={{ color: ink }}>the real risks</strong>, <strong style={{ color: ink }}>how to actually get it</strong>, and <strong style={{ color: ink }}>how to vet a practitioner.</strong>
           </p>
         </div>
       </section>
 
       <section style={{ padding: 'clamp(24px, 4vw, 40px) 24px 0' }}>
         <div className="pb-container" style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div style={{ background: '#fffdf7', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 12, padding: 'clamp(20px, 4vw, 30px)' }}>
+          <div style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 12, padding: 'clamp(20px, 4vw, 30px)' }}>
             <p style={{ color: teal, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 14px' }}>A note from Rachel &mdash; before you scroll</p>
-            <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 12px' }}>This map took me <strong style={{ color: ink }}>two years</strong> to understand. <strong style={{ color: ink }}>You don&rsquo;t have to.</strong> Plan B already knows it &mdash; better than any human ever will.</p>
+            <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 12px' }}>This map took me <strong style={{ color: ink }}>two years</strong> to understand. <strong style={{ color: ink }}>You don&rsquo;t have to.</strong> Plan B for PANS already knows it &mdash; better than any human ever will.</p>
             <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 12px' }}>So if this page tightens your chest or makes you want to close the laptop &mdash; <strong style={{ color: ink }}>do it. That&rsquo;s allowed.</strong> Let Minta do the work; that&rsquo;s exactly what she&rsquo;s for.</p>
             <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 14px' }}>I&rsquo;m a control freak &mdash; I need to see the gears turning behind the curtain. So I&rsquo;m pulling it back and showing you the basics. Fair warning: even the basics are honestly a lot. <strong style={{ color: ink }}>Take what helps, skip the rest, and let the system carry what you can&rsquo;t.</strong></p>
             <p style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', fontSize: 21, color: teal, margin: 0 }}>&mdash; Rachel</p>
@@ -272,7 +272,7 @@ export default function LearnPage() {
       <section style={{ padding: 'clamp(36px, 6vw, 64px) 24px' }}>
         <div className="pb-container" style={{ maxWidth: 960, margin: '0 auto' }}>
           {/* THE FULL MAP — the can't-miss hero with a mini-map visual */}
-          <a href="/tree.html" style={{ display: 'block', textDecoration: 'none', background: 'linear-gradient(135deg, #1F6B6B, #24566a)', color: '#fdf8ee', borderRadius: 18, padding: 'clamp(28px,5vw,46px)', marginBottom: 38, boxShadow: '0 28px 64px -28px rgba(31,107,107,0.95)', border: '1px solid rgba(255,255,255,0.14)' }}>
+          <a href="/tree.html" style={{ display: 'block', textDecoration: 'none', background: 'linear-gradient(135deg, #2E6E70, #24566a)', color: '#F5F7F6', borderRadius: 18, padding: 'clamp(28px,5vw,46px)', marginBottom: 38, boxShadow: '0 28px 64px -28px rgba(31,107,107,0.95)', border: '1px solid rgba(255,255,255,0.14)' }}>
             <p style={{ fontSize: 12, letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 800, color: '#bfe3df', margin: '0 0 12px' }}>★ Read this first — the whole picture</p>
             <p style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 400, fontSize: 'clamp(36px, 6.5vw, 58px)', lineHeight: 1.0, margin: '0 0 6px' }}>The Map</p>
             <svg viewBox="0 0 620 64" style={{ width: '100%', maxWidth: 560, height: 'auto', display: 'block', margin: '14px 0 6px' }} aria-hidden="true">
@@ -287,7 +287,7 @@ export default function LearnPage() {
               <span>Protocol</span><span>Drivers</span><span>Deeper</span><span>Better</span>
             </div>
             <p style={{ fontSize: 17, lineHeight: 1.6, color: '#eaf4f2', margin: '0 0 20px', maxWidth: 640 }}>The whole journey for PANS — at a glance. <strong style={{ color: '#fff' }}>Tap any branch to open its treatments.</strong> Every guide below is one limb of this map.</p>
-            <span style={{ display: 'inline-block', fontSize: 15, fontWeight: 800, color: '#1F6B6B', background: '#fff', padding: '13px 26px', borderRadius: 10, letterSpacing: '0.02em' }}>Open the Map &rarr;</span>
+            <span style={{ display: 'inline-block', fontSize: 15, fontWeight: 800, color: '#2E6E70', background: '#fff', padding: '13px 26px', borderRadius: 10, letterSpacing: '0.02em' }}>Open the Map &rarr;</span>
           </a>
 
 

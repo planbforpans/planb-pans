@@ -112,7 +112,7 @@ function MethodVisual({ step }: { step: StepKey }) {
           {[
             { t: '07:12', k: 'Dose', v: 'Guanfacine 1mg', c: '#4f8f8f' },
             { t: '08:30', k: 'Symptom', v: 'Irritability ↑↑', c: '#c76a4a' },
-            { t: '12:45', k: 'Food', v: 'Gluten-free lunch', c: '#8a8373' },
+            { t: '12:45', k: 'Food', v: 'Gluten-free lunch', c: '#7C8585' },
             { t: '15:10', k: 'Note', v: 'New tic — throat clear', c: '#d4a24a' },
             { t: '19:00', k: 'Dose', v: 'Binder, 1/2 scoop', c: '#4f8f8f' },
           ].map((r, i) => (
@@ -171,7 +171,7 @@ function MethodVisual({ step }: { step: StepKey }) {
           className="serif"
           style={{
             fontSize: 20,
-            color: '#F6F1E7',
+            color: '#FFFFFF',
             margin: 0,
             lineHeight: 1.3,
             fontStyle: 'italic',
@@ -266,8 +266,8 @@ export default function MethodSection() {
     <section
       id="method"
       style={{
-        background: '#141414',
-        color: '#F6F1E7',
+        background: '#1F2424',
+        color: '#FFFFFF',
         borderTop: '1px solid var(--rule)',
         borderBottom: '1px solid var(--rule)',
         position: 'relative',
@@ -303,7 +303,7 @@ export default function MethodSection() {
                 fontWeight: 300,
                 letterSpacing: '-0.02em',
                 margin: 0,
-                color: '#F6F1E7',
+                color: '#FFFFFF',
                 maxWidth: 900,
               }}
             >
@@ -378,7 +378,7 @@ export default function MethodSection() {
                   style={{
                     fontSize: 28,
                     lineHeight: 1.1,
-                    color: '#F6F1E7',
+                    color: '#FFFFFF',
                     margin: 0,
                     marginBottom: 12,
                     fontWeight: 400,

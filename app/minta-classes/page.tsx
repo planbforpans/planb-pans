@@ -40,7 +40,7 @@ const SECTIONS: { heading: string; courses: Course[] }[] = [
   {
     heading: 'Methylation · nutrigenomics',
     courses: [
-      { name: 'Mastering Brain Chemistry / methylation training', provider: 'Walsh Research Institute', why: 'Walsh phenotypes — the biochemical engine Plan B owns.', pri: 3, status: '🔲 considering', href: 'https://www.walshinstitute.org/' },
+      { name: 'Mastering Brain Chemistry / methylation training', provider: 'Walsh Research Institute', why: 'Walsh phenotypes — the biochemical engine Plan B for PANS owns.', pri: 3, status: '🔲 considering', href: 'https://www.walshinstitute.org/' },
       { name: 'Nutrigenomic / SNP-cycle protocols', provider: 'Yasko', why: 'Deep methylation-cycle interpretation for the sensitive kids.', pri: 2, status: '🔲 considering' },
     ],
   },
@@ -54,14 +54,14 @@ const SECTIONS: { heading: string; courses: Course[] }[] = [
   {
     heading: 'Herbal (Buhner lineage)',
     courses: [
-      { name: 'Buhner protocol study (books + recommended courses)', provider: 'Buhner', why: 'The herbal kill menu Plan B leans on for Lyme/co-infections.', pri: 2, status: '🔲 considering' },
+      { name: 'Buhner protocol study (books + recommended courses)', provider: 'Buhner', why: 'The herbal kill menu Plan B for PANS leans on for Lyme/co-infections.', pri: 2, status: '🔲 considering' },
     ],
   },
 ]
 
 export default function MintaClassesPage() {
   return (
-    <main style={{ background: 'var(--cream, #faf7f0)', minHeight: '100vh', padding: '48px 24px 96px' }}>
+    <main style={{ background: 'var(--cream, #F5F7F6)', minHeight: '100vh', padding: '48px 24px 96px' }}>
       <div className="pb-container" style={{ maxWidth: 880, margin: '0 auto' }}>
         <p className="eyebrow" style={{ marginBottom: 12, color: 'var(--teal)' }}>Private · Rachel only · 🔒</p>
         <h1 className="serif" style={{ fontSize: 'clamp(30px, 5vw, 52px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--ink)', margin: '0 0 14px' }}>

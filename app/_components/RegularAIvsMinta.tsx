@@ -5,15 +5,15 @@
 // remember). So we concede that, and lean on the three things a chat window
 // genuinely can't be: cross-family data, a human, and a whole care system.
 
-const ink = '#2a2a26'
-const soft = '#524d40'
-const teal = '#1F6B6B'
-const rule = '#e3dcc9'
+const ink = '#1F2424'
+const soft = '#505858'
+const teal = '#2E6E70'
+const rule = '#E1E5E4'
 
 const POINTS: { lead: string; body: string }[] = [
   {
     lead: 'It learns across families — not just yours.',
-    body: "A chatbot remembers your chats. Plan B sees what's actually moved the needle across hundreds of PANS kids like yours — which driver showed up, what order worked, what backfired. That's outcome data no general AI has or can get. Your hardest season sharpens the next family's read; theirs sharpens yours.",
+    body: "A chatbot remembers your chats. Plan B for PANS sees what's actually moved the needle across hundreds of PANS kids like yours — which driver showed up, what order worked, what backfired. That's outcome data no general AI has or can get. Your hardest season sharpens the next family's read; theirs sharpens yours.",
   },
   {
     lead: 'There’s a human who has lived it.',
@@ -21,7 +21,7 @@ const POINTS: { lead: string; body: string }[] = [
   },
   {
     lead: 'It’s not a chat window — it’s the whole way through.',
-    body: 'A chatbot gives you answers. Plan B gives you the system: the tracker that catches when your child stalls, the synthesis built from your whole record, the map, and the exact thing to hand each doctor. A parent with a chatbot still has to drive. Plan B drives.',
+    body: 'A chatbot gives you answers. Plan B for PANS gives you the system: the tracker that catches when your child stalls, the synthesis built from your whole record, the map, and the exact thing to hand each doctor. A parent with a chatbot still has to drive. Plan B for PANS drives.',
   },
   {
     lead: 'It already knows PANS — and what to ask.',
@@ -31,7 +31,7 @@ const POINTS: { lead: string; body: string }[] = [
 
 export default function RegularAIvsMinta() {
   return (
-    <section style={{ padding: 'clamp(56px,8vw,96px) 24px', background: '#faf6ec', borderTop: `1px solid ${rule}` }}>
+    <section style={{ padding: 'clamp(56px,8vw,96px) 24px', background: '#F5F7F6', borderTop: `1px solid ${rule}` }}>
       <div style={{ maxWidth: 820, margin: '0 auto' }}>
         <p style={{ textAlign: 'center', color: teal, fontSize: 12, letterSpacing: '0.18em', textTransform: 'uppercase', fontWeight: 600, margin: '0 0 14px' }}>
           Isn&rsquo;t ChatGPT already good for this?
@@ -45,7 +45,7 @@ export default function RegularAIvsMinta() {
 
         <div style={{ display: 'grid', gap: 16 }}>
           {POINTS.map((p, i) => (
-            <div key={i} style={{ background: '#fffdf7', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 13, padding: 'clamp(18px,3vw,26px)' }}>
+            <div key={i} style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 13, padding: 'clamp(18px,3vw,26px)' }}>
               <p style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(21px,3vw,26px)', color: ink, margin: '0 0 8px', lineHeight: 1.15 }}>{p.lead}</p>
               <p style={{ fontSize: 15.5, lineHeight: 1.62, color: soft, margin: 0 }}>{p.body}</p>
             </div>

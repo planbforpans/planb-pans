@@ -10,7 +10,7 @@ import type { Metadata } from 'next'
 // one-tap email links; nobody ever told them.
 
 export const metadata: Metadata = {
-  title: 'How to use Plan B — find Minta, the tracker, and get back in',
+  title: 'How to use Plan B for PANS — find Minta, the tracker, and get back in',
   description:
     'Forgotten your login? You don’t need one. Here’s how to reach Minta, how to start the daily tracker, and how to put both on your phone.',
 }
@@ -31,17 +31,17 @@ export default function HowToUse() {
             Can’t get in? <em style={{ color: teal, fontStyle: 'italic' }}>You don’t need your password.</em>
           </h1>
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, margin: 0 }}>
-            Plan B never required one. If you’ve forgotten everything, this takes about fifteen seconds.
+            Plan B for PANS never required one. If you’ve forgotten everything, this takes about fifteen seconds.
           </p>
         </div>
       </section>
 
       {/* GET BACK IN — first, because it is the most common problem */}
       <section style={{ padding: '0 24px clamp(34px,5vw,54px)' }}>
-        <div style={{ maxWidth: 720, margin: '0 auto', background: teal, color: '#fffdf7', padding: 'clamp(26px,4.4vw,38px)' }}>
+        <div style={{ maxWidth: 720, margin: '0 auto', background: teal, color: '#FFFFFF', padding: 'clamp(26px,4.4vw,38px)' }}>
           <p style={{ fontSize: 11.5, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#cfe3df', margin: '0 0 14px' }}>If you’re locked out</p>
           <ol style={{ margin: 0, paddingLeft: 20, fontSize: 17, lineHeight: 1.8, color: '#e6f0ee' }}>
-            <li>Go to <strong style={{ color: '#fffdf7' }}>app.planbforpans.com/minta</strong></li>
+            <li>Go to <strong style={{ color: '#FFFFFF' }}>app.planbforpans.com/minta</strong></li>
             <li>Type the email address you signed up with</li>
             <li>Check your inbox and tap the link we send</li>
           </ol>
@@ -49,7 +49,7 @@ export default function HowToUse() {
             That’s it. Your child’s file opens with everything in it. No password to remember, no account to
             recover. You can do this as often as you need to, from any phone or computer.
           </p>
-          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: '#fffdf7', color: teal, fontSize: 16, fontWeight: 700, padding: '14px 30px', borderRadius: 2, textDecoration: 'none' }}>
+          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: '#FFFFFF', color: teal, fontSize: 16, fontWeight: 700, padding: '14px 30px', borderRadius: 2, textDecoration: 'none' }}>
             Get my link →
           </a>
           <p style={{ fontSize: 14, lineHeight: 1.6, color: '#cfe3df', margin: '16px 0 0' }}>
@@ -84,7 +84,7 @@ export default function HowToUse() {
             same address that gets you back in. Bookmark that one page and you never have to remember anything
             else.
           </p>
-          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: teal, color: '#fffdf7', fontSize: 15, fontWeight: 700, padding: '13px 28px', borderRadius: 2, textDecoration: 'none' }}>
+          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: teal, color: '#FFFFFF', fontSize: 15, fontWeight: 700, padding: '13px 28px', borderRadius: 2, textDecoration: 'none' }}>
             Talk to Minta →
           </a>
         </div>
@@ -110,7 +110,7 @@ export default function HowToUse() {
             later — and a line on a page, with dates on it, is the single thing that most often changes a
             doctor’s mind.
           </p>
-          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: teal, color: '#fffdf7', fontSize: 15, fontWeight: 700, padding: '13px 28px', borderRadius: 2, textDecoration: 'none' }}>
+          <a href={`${APP}/minta`} rel="noopener" style={{ display: 'inline-block', background: teal, color: '#FFFFFF', fontSize: 15, fontWeight: 700, padding: '13px 28px', borderRadius: 2, textDecoration: 'none' }}>
             Open my tracker →
           </a>
         </div>
@@ -122,7 +122,7 @@ export default function HowToUse() {
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'var(--mute)', margin: '0 0 12px' }}>&sect; 04</p>
           <h2 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(26px,4.2vw,40px)', letterSpacing: '-0.02em', margin: '0 0 16px', lineHeight: 1.1 }}>Put it on your phone</h2>
           <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 16px' }}>
-            This takes a minute and it’s the difference between using Plan B and meaning to. There’s nothing
+            This takes a minute and it’s the difference between using Plan B for PANS and meaning to. There’s nothing
             to download — it becomes an icon on your home screen like any other app.
           </p>
           <p style={{ fontSize: 16, lineHeight: 1.8, color: soft, margin: '0 0 10px' }}>

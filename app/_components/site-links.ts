@@ -12,4 +12,4 @@
 // 1 Oct 2026 — a first-time booking should always be the Case Review, never a
 // generic call. The $100 follow-up hour is only offered from /packages, below
 // the Case Review, and only to families who have already had one.
-export const CALENDLY_URL: string = 'https://calendly.com/rachel-planbforpans/case-study'
+export const CALENDLY_URL: string = 'https://app.planbforpans.com/book/case-review?source=website-details'

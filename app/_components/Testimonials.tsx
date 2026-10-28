@@ -2,11 +2,11 @@
 // name + descriptor by default (upgrade only with the family's OK). Add new
 // quotes to TESTIMONIALS — the section renders whatever's here.
 
-const ink = '#2a2a26'
-const teal = '#1F6B6B'
-const soft = '#524d40'
-const rule = '#e3dcc9'
-const card = '#fffdf7'
+const ink = '#1F2424'
+const teal = '#2E6E70'
+const soft = '#505858'
+const rule = '#E1E5E4'
+const card = '#FFFFFF'
 
 type Testimonial = { quote: string; name: string; detail: string }
 
@@ -27,7 +27,7 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export default function Testimonials() {
   return (
-    <section style={{ padding: 'clamp(56px, 9vw, 96px) 24px', background: '#f4efe3', borderTop: `1px solid ${rule}`, borderBottom: `1px solid ${rule}` }}>
+    <section style={{ padding: 'clamp(56px, 9vw, 96px) 24px', background: '#F5F7F6', borderTop: `1px solid ${rule}`, borderBottom: `1px solid ${rule}` }}>
       <div className="pb-container" style={{ maxWidth: 1000, margin: '0 auto' }}>
         <p style={{ color: teal, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 10px', textAlign: 'center' }}>In their words</p>
         <h2 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(28px, 4.6vw, 44px)', lineHeight: 1.08, letterSpacing: '-0.02em', color: ink, margin: '0 0 36px', textAlign: 'center' }}>

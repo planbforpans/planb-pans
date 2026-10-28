@@ -14,7 +14,7 @@ function Constellation() {
 
   const data = useMemo(() => {
     const clusters = [
-      { cx: 0.22, cy: 0.35, label: 'Methylation-first', color: '#1F6B6B' },
+      { cx: 0.22, cy: 0.35, label: 'Methylation-first', color: '#2E6E70' },
       { cx: 0.65, cy: 0.28, label: 'Mold + binders', color: '#c76a4a' },
       { cx: 0.78, cy: 0.68, label: 'IVIG responders', color: '#d4a24a' },
       { cx: 0.32, cy: 0.72, label: 'Strep-triggered', color: '#4f8f8f' },
@@ -59,7 +59,7 @@ function Constellation() {
               y1="0"
               x2={(i * W) / 10}
               y2={H}
-              stroke="#141414"
+              stroke="#1F2424"
               strokeWidth="0.5"
             />
           ))}
@@ -70,7 +70,7 @@ function Constellation() {
               y1={(i * H) / 6}
               x2={W}
               y2={(i * H) / 6}
-              stroke="#141414"
+              stroke="#1F2424"
               strokeWidth="0.5"
             />
           ))}
@@ -157,7 +157,7 @@ function Constellation() {
                 fontFamily="var(--serif)"
                 fontSize={on ? 20 : 16}
                 fontStyle="italic"
-                fill="#141414"
+                fill="#1F2424"
                 style={{ transition: 'font-size 300ms ease' }}
               >
                 {c.label}
@@ -168,7 +168,7 @@ function Constellation() {
                 textAnchor="middle"
                 fontFamily="var(--mono)"
                 fontSize="9"
-                fill="#8a8373"
+                fill="#7C8585"
                 letterSpacing="2"
               >
                 n = {12 + ci * 3}
@@ -266,7 +266,7 @@ export default function ResearchSection() {
                 margin: 0,
               }}
             >
-              Every family who uses Plan B contributes — with consent, de-identified — to a
+              Every family who uses Plan B for PANS contributes — with consent, de-identified — to a
               growing pattern library. What combinations show up in the overloaded-bucket kids?
               What interventions correlate with regression versus recovery? Which modalities
               actually move the needle, and which ones just add noise?

@@ -75,7 +75,7 @@ function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
           borderRadius: 18,
           padding: 'clamp(26px, 4vw, 40px)',
           background: dark
-            ? 'linear-gradient(150deg, #1a1a1a 0%, #111 100%)'
+            ? 'linear-gradient(150deg, #1F2424 0%, #111 100%)'
             : 'linear-gradient(150deg, var(--cream-light) 0%, var(--paper) 100%)',
           border: `1px solid ${dark ? 'rgba(246,241,231,0.14)' : 'var(--sand-light)'}`,
           boxShadow: dark
@@ -164,7 +164,7 @@ function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
                 letterSpacing: '-0.02em',
                 lineHeight: 1.02,
                 margin: '0 0 14px',
-                color: dark ? '#F6F1E7' : 'var(--ink)',
+                color: dark ? '#FFFFFF' : 'var(--ink)',
               }}
             >
               {stage.title}
@@ -202,7 +202,7 @@ function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
                       lineHeight: 1.3,
                       padding: '7px 13px',
                       borderRadius: 999,
-                      color: dark ? '#e8e0c9' : 'var(--ink-soft)',
+                      color: dark ? '#E1E5E4' : 'var(--ink-soft)',
                       background: dark ? 'rgba(246,241,231,0.06)' : stage.accentSoft,
                       border: `1px solid ${dark ? 'rgba(246,241,231,0.16)' : stage.accentSoft}`,
                     }}
@@ -229,7 +229,7 @@ function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
                   fontStyle: 'italic',
                   fontSize: 'clamp(16px, 1.8vw, 19px)',
                   fontWeight: 400,
-                  color: dark ? '#F6F1E7' : stage.accent,
+                  color: dark ? '#FFFFFF' : stage.accent,
                 }}
               >
                 {stage.note}
@@ -370,7 +370,7 @@ export default function EscalationPath() {
           >
             From crisis to{' '}
             <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>
-              all the way better
+              what&apos;s next
             </span>
           </h2>
           <p
@@ -436,10 +436,10 @@ export default function EscalationPath() {
               color: 'var(--ink)',
             }}
           >
-            This is <span style={{ color: 'var(--teal)', fontStyle: 'italic' }}>Plan B</span>. The
+            This is <span style={{ color: 'var(--teal)', fontStyle: 'italic' }}>Plan B for PANS</span>. The
             name is literal — when Plan A runs out, there’s a whole map left. We help you work down
-            it, one stage at a time, until your child is{' '}
-            <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>all the way better.</span>
+            it, one stage at a time, and keep looking for{' '}
+            <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>the next thing to try.</span>
           </p>
         </div>
       </div>

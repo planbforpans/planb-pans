@@ -92,7 +92,7 @@ function TestCard({ num, name, subtitle, rows, warn }: TestCardProps) {
       {warn && (
         <div
           style={{
-            background: 'rgba(31, 107, 107, 0.06)',
+            background: 'rgba(31,107,107, 0.06)',
             borderLeft: '3px solid var(--teal)',
             padding: '12px 16px',
             marginTop: 14,
@@ -314,7 +314,7 @@ export default function TestsPage() {
       <section
         style={{
           padding: 'clamp(48px, 7vw, 80px) 24px',
-          background: 'var(--cream-deep, #ece2cd)',
+          background: 'var(--cream-deep, #E1E5E4)',
           borderBottom: '1px solid var(--sand)',
         }}
       >
@@ -396,7 +396,7 @@ export default function TestsPage() {
           <p style={{ fontSize: 15, lineHeight: 1.7, color: 'var(--ink-soft)', maxWidth: 680, marginTop: 32 }}>
             Not sure which tests <em>your</em> kid needs, or the cheapest route for each?{' '}
             <Link href="/pricing" style={{ color: 'var(--teal)', fontWeight: 600 }}>
-              A Plan B Synthesis
+              A Plan B for PANS Synthesis
             </Link>{' '}
             builds the exact list, prioritized, with where to order every one.
           </p>
@@ -404,7 +404,7 @@ export default function TestsPage() {
       </section>
 
       {/* WHAT MINTA DOES WITH THE RESULTS */}
-      <section style={{ padding: 'clamp(56px, 7vw, 88px) 24px', background: 'var(--cream-deep, #ece2cd)', borderTop: '1px solid var(--sand)', borderBottom: '1px solid var(--sand)' }}>
+      <section style={{ padding: 'clamp(56px, 7vw, 88px) 24px', background: 'var(--cream-deep, #E1E5E4)', borderTop: '1px solid var(--sand)', borderBottom: '1px solid var(--sand)' }}>
         <div className="pb-container">
           <p className="serial" style={{ color: 'var(--teal)', marginBottom: 14 }}>
             Then upload them
@@ -1309,7 +1309,7 @@ export default function TestsPage() {
               lineHeight: 1.6,
             }}
           >
-            Plan B is a parent-driven knowledge base. We are not doctors. None of this is medical
+            Plan B for PANS is a parent-driven knowledge base. We are not doctors. None of this is medical
             advice. Always work with a practitioner. But you deserve to know what tests exist.
           </p>
           <Link
