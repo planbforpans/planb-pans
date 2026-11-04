@@ -55,6 +55,30 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        {/* Google Ads conversion measurement, AW-18556430921 (2026-11-04).
+            Ad Grants requires conversion tracking - accounts are suspended
+            without it - and Smart Bidding cannot optimise toward a conversion
+            it cannot see.
+
+            DELIBERATELY ONLY ON THE MARKETING SITE. It must NOT go site-wide on
+            app.planbforpans.com: every page view there would send Google a hit
+            from a page about a named child - their labs, their synthesis, their
+            record - and the URLs carry client IDs. That is children's health
+            information going to an ad network. On the app, only the single
+            sign-up conversion event fires, on the success step, carrying
+            nothing about any child. */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18556430921"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18556430921');`,
+          }}
+        />
       </head>
       <body className="grain">
         <header className="site-header">
