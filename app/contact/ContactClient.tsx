@@ -17,15 +17,29 @@ export default function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
+  // This used to console.log the submission, show "thanks!", and throw the
+  // message away. Beyond being wrong to do to a parent who had just written
+  // to us, it is an Ad Grants website-policy violation: "donation and contact
+  // buttons must lead to functional pages". The marketing site has no API
+  // routes and no mail provider, so rather than fake a send, the form now
+  // hands off to the visitor's own mail client with everything filled in.
+  // It genuinely delivers, it needs no secrets, and nothing is silently lost.
   const handleSubmit = (e: any) => {
     e.preventDefault()
-    // In production, this would send to an email service
-    console.log('Form submitted:', formData)
+    const subject = formData.subject?.trim()
+      ? `[${formData.type}] ${formData.subject.trim()}`
+      : `[${formData.type}] Message from ${formData.name || 'the Plan B site'}`
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      `Type: ${formData.type}`,
+      '',
+      formData.message,
+    ].join('\n')
+    window.location.href =
+      `mailto:rachel@planbforpans.com?subject=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`
     setSubmitted(true)
-    setTimeout(() => {
-      setFormData({ name: '', email: '', subject: '', message: '', type: 'inquiry' })
-      setSubmitted(false)
-    }, 3000)
   }
 
   return (
@@ -163,9 +177,19 @@ export default function Contact() {
                   fontWeight: 600
                 }}
               >
-                {submitted ? '✓ Message Sent' : 'Send Message →'}
+                {submitted ? '✓ Opening your email…' : 'Send Message →'}
               </button>
             </form>
+            {/* Works with JavaScript disabled, and for anyone whose browser has
+                no mail client wired up — so there is always a route that works. */}
+            <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '13px', color: '#666', lineHeight: 1.7, marginTop: '20px', marginBottom: 0 }}>
+              This opens your own email app with the message filled in. If nothing happens, or you
+              would rather just write to us directly, email{' '}
+              <a href="mailto:rachel@planbforpans.com" style={{ color: '#2E6E70', fontWeight: 600 }}>
+                rachel@planbforpans.com
+              </a>{' '}
+              &mdash; Rachel reads and answers every one herself.
+            </p>
           </div>
 
           {/* Contact Info */}
