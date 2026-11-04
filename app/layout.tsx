@@ -71,6 +71,7 @@ export default function RootLayout({
             <nav className="site-nav">
               <a href="/start" className="strong">Start Here</a>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="strong">See a Synthesis</a>
+              <a href="/minta">Meet Minta</a>
               <a href="/tracker#install">The Tracker</a>
               <Link href="/about">About</Link>
               <Link href="/donate">Donate</Link>
@@ -208,6 +209,9 @@ export default function RootLayout({
                   … specifically in the tab podcast (Coming Soon pages)". The page
                   still exists at /podcast — it is simply not linked until there
                   are real episodes. Re-add this link when episode 1 ships. */}
+              <Link href="/minta" style={{ color: 'var(--sand-dark)' }}>
+                Meet Minta
+              </Link>
               <Link href="/tracker" style={{ color: 'var(--sand-dark)' }}>
                 Tracker
               </Link>
@@ -277,7 +281,7 @@ export default function RootLayout({
               planbforpans.com is our official and only domain.
             </p>
             <p style={{ marginTop: 8, fontSize: 11.5, lineHeight: 1.7, color: 'var(--sand-dark)' }}>
-              Plan B for PANS · 1887 Whitney Mesa Drive #7974, Henderson, NV 89014 · <a href="mailto:rachel@planbforpans.com" style={{ color: 'var(--sand-dark)' }}>rachel@planbforpans.com</a>
+              Plan B for PANS · 4845 Pearl East Circle, Ste 118, Boulder, CO 80301 · <a href="mailto:rachel@planbforpans.com" style={{ color: 'var(--sand-dark)' }}>rachel@planbforpans.com</a>
             </p>
             <p style={{ marginTop: 10, fontSize: 11.5, lineHeight: 1.6, color: 'var(--sand-dark)', maxWidth: 760 }}>
               Plan B for PANS integrates and interprets published frameworks &mdash; including those of Walsh, Yasko, Shoemaker, O&rsquo;Hara, Crista, Nathan and others &mdash; for educational purposes. It is not affiliated with, endorsed by, or reviewed by any named practitioner; names are used only to attribute the ideas described. Nothing here is medical advice &mdash; always confirm with your own practitioner.
