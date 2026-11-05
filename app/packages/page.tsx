@@ -37,7 +37,7 @@ const APP = 'https://app.planbforpans.com'
 // Case Review has its own dedicated event; the package + results-plan use the
 // base scheduling page until they get their own event slugs.
 const CASE_REVIEW_CAL = 'https://app.planbforpans.com/book/case-review?source=website-pricing'
-const CONSULT_CAL = 'https://calendly.com/rachel-planbforpans/follow-up-with-rachel'
+const CONSULT_CAL = 'https://calendly.com/rachel-planbforpans/one-hour-with-rachel'
 
 const PACKS: { price: string; covers: string; note: string }[] = [
   { price: '$20', covers: 'A starter top-up', note: 'Try it and see how far it takes you' },
@@ -69,10 +69,20 @@ const TIERS: Tier[] = [
     badge: 'Step 2',
   },
   {
+    price: '$250',
+    name: 'Lab Review',
+    eyebrow: 'New labs to go over · after a Case Review',
+    body: 'When new results come back after your Case Review, Rachel goes over every page against your child\u2019s whole record: what changed, what it means, what is still missing, and what to do next. You get a written read and a one-page handout to bring to your doctor.',
+    cta: 'Book a Lab Review \u2014 $250 \u2192',
+    href: 'https://calendly.com/rachel-planbforpans/new-meeting',
+    accent: teal,
+    badge: 'After that',
+  },
+  {
     price: '$100',
-    name: 'Chat with Rachel',
+    name: 'Need more time with Rachel?',
     eyebrow: 'An hour, as often as you need · after a Case Review',
-    body: 'If this is your first time booking, you want the Case Review above, not this \u2014 an hour on the phone without Rachel having read the whole record first is the weak version of it. Once you have had a Case Review, this is how you keep going: new results to read, a flare that came out of nowhere, a decision you are stuck on, the next stage of the plan. And the hour is yours to use however suits you \u2014 all in one go, or broken into several short calls as questions come up.',
+    body: 'If this is your first time booking, you want the Case Review above, not this \u2014 an hour on the phone without Rachel having read the whole record first is the weak version of it. Once you have had a Case Review, this is how you keep going: a flare that came out of nowhere, a decision you are stuck on, the next stage of the plan. And the hour is yours to use however suits you \u2014 all in one go, or broken into several short calls as questions come up.',
     cta: 'Book an hour \u2014 $100 \u2192',
     href: CONSULT_CAL,
     accent: gold,
@@ -246,6 +256,27 @@ export default function PricingPage() {
             and keeping Minta running for the next family.
           </p>
           <a href="/donate" style={{ display: 'inline-block', marginTop: 20, background: teal, color: '#FFFFFF', fontSize: 16, fontWeight: 700, padding: '13px 32px', borderRadius: 9, textDecoration: 'none' }}>Donate →</a>
+        </div>
+      </section>
+
+      {/* Where the money goes — Ad Grants requires a nonprofit to disclose how
+          commercial proceeds support its programs, in Google's own words: "You
+          must clearly disclose how those proceeds directly support your
+          nonprofit programs." /case-review carries this; this page is the one a
+          reviewer actually lands on from a pricing ad and it did not. Added
+          2026-11-05. Same wording as /case-review on purpose — except the
+          duplicate-content rejection of 2026-10-29 was about byte-identical
+          PAGES, not a shared disclosure paragraph. */}
+      <section style={{ padding: '0 24px 72px' }}>
+        <div className="pb-container" style={{ maxWidth: 720, margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 500, margin: '0 0 16px' }}>Where the money goes</h2>
+          <p style={{ fontSize: 16.5, lineHeight: 1.65, color: soft, margin: 0 }}>
+            Plan B for PANS is a <strong style={{ color: ink }}>501(c)(3) nonprofit</strong> (EIN 42&#8209;2258077).
+            The Case Review is the only thing we charge for, and it is what pays for everything
+            that is free &mdash; the vault, the daily tracker, Minta, and the synthesis every
+            family gets without being asked for anything. Every dollar goes back into the hours,
+            the lab&#8209;reading and the software. Nobody takes a dividend.
+          </p>
         </div>
       </section>
 
