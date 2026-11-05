@@ -143,7 +143,7 @@ export default function Home() {
               <p className="step-tag">The Case Review</p>
               <h3>Can&apos;t do it alone?</h3>
               <p>Rachel combs through your child&apos;s whole record, birth to now. She built the system behind every Synthesis, so she catches what it missed and sets it right. No stone unturned.</p>
-              <a href="/packages" className="step-link">What a Case Review is &rarr;</a>
+              <a href="/case-review" className="step-link">What a Case Review is &rarr;</a>
               <svg className="fig-svg" viewBox="0 0 300 150" aria-hidden="true">
                 <line className="draw" x1="20" y1="80" x2="284" y2="80" />
                 {[20, 64, 102, 150, 188, 236, 284].map((x, i) => <line key={i} className="tick" x1={x} x2={x} y1={i % 2 ? 70 : 64} y2="90" style={{ animationDelay: `${0.4 + i * 0.15}s` }} />)}
@@ -190,7 +190,7 @@ export default function Home() {
               <li><b>Patterns</b> one bad week hides.</li>
               <li><b>Research</b> that helps the next family.</li>
             </ul>
-            <a href="/tracker#install" className="cta-teal">Put the tracker on your phone</a>
+            <a href="/daily-tracker#install" className="cta-teal">Put the tracker on your phone</a>
           </div>
         </div>
       </section>
@@ -319,6 +319,9 @@ export default function Home() {
             }}
           >
             Ask as many questions as you need. No data saved. No sign-up. Just a real read.
+          </p>
+          <p style={{ marginTop: 10, fontSize: 14 }}>
+            <a href="/minta" style={{ color: 'var(--teal)', textDecoration: 'underline', textUnderlineOffset: 4 }}>Who is Minta? &rarr;</a>
           </p>
         </div>
       </section>

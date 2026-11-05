@@ -96,7 +96,7 @@ gtag('config', 'AW-18556430921');`,
               <a href="/start" className="strong">Start Here</a>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="strong">See a Synthesis</a>
               <a href="/minta">Meet Minta</a>
-              <a href="/tracker#install">The Tracker</a>
+              <a href="/daily-tracker#install">The Tracker</a>
               <Link href="/about">About</Link>
               <Link href="/donate">Donate</Link>
               <a href="https://app.planbforpans.com/sign-in" rel="noopener" className="quiet">Sign in</a>
@@ -236,7 +236,7 @@ gtag('config', 'AW-18556430921');`,
               <Link href="/minta" style={{ color: 'var(--sand-dark)' }}>
                 Meet Minta
               </Link>
-              <Link href="/tracker" style={{ color: 'var(--sand-dark)' }}>
+              <Link href="/daily-tracker" style={{ color: 'var(--sand-dark)' }}>
                 Tracker
               </Link>
               <a
