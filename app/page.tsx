@@ -107,7 +107,7 @@ export default function Home() {
             This is the beginning of the end of this suffering, and it starts with you and your child.
           </p>
           <p className="serif" style={{ fontSize: 'clamp(21px,3vw,27px)', fontStyle: 'italic', color: 'var(--teal)', margin: 0, lineHeight: 1.4 }}>
-            I love you. I love your children more. Together, we will find a way out of this.
+            Together, we will find a way out of this.
           </p>
           <p style={{ fontSize: 15, color: '#6b7672', margin: '12px 0 0' }}>Rachel Johnson, founder</p>
         </div>
