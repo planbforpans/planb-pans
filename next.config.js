@@ -30,6 +30,14 @@ const nextConfig = {
       // option of changing where this points without a cached permanent.
       { source: '/tracker', destination: 'https://app.planbforpans.com/tracker', permanent: false },
       { source: '/t', destination: 'https://app.planbforpans.com/tracker', permanent: false },
+      // 6 Nov 2026, Rachel: "can we make the link simpler?" The App Store URL is
+      // apps.apple.com/us/app/plan-b-for-pans/id6816483159 - unsayable. These go
+      // straight to the listing so a parent can type it, or Rachel can say it on
+      // a call or from a stage. 307 so the target can change (e.g. a smart
+      // iOS/Android split once Google Play is live).
+      { source: '/app', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      { source: '/ios', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      { source: '/download', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
       // Orlando flyer + card (Documenting Hope, Nov 2026): short, typeable address.
       // Reusable QR on the booth banner + table cover. Repoint per event (Oct 2026: Orlando bonus).
     ]
