@@ -83,6 +83,36 @@ export default function Home() {
         </div>
       </div>
 
+      {/* OUR MISSION — Rachel, 7 Nov 2026: "This is the heart and the mission
+          statement... put that everywhere." And: "Plan B for PANS is not a
+          business, it's a movement." Placed right after the hero so it is the
+          first thing a parent reads. */}
+      <section style={{ padding: 'clamp(56px,8vw,96px) 24px', background: 'var(--cream)' }}>
+        <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
+          <p style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 18px' }}>
+            Our mission
+          </p>
+          <p className="serif" style={{ fontSize: 'clamp(30px,5vw,52px)', lineHeight: 1.1, margin: '0 0 26px', color: 'var(--ink, #1d2422)' }}>
+            Plan B for PANS is not a business. <em style={{ color: 'var(--teal)' }}>It&apos;s a movement.</em>
+          </p>
+          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
+            There is still so much no one understands about PANS and autism. Every child who is tracked teaches us
+            something. The more families who track, the more we all learn, and together we pull each other out.
+          </p>
+          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
+            <strong>Track, track, track:</strong> for your child, for every child suffering now, and so the next
+            generation never has to suffer the way ours did.
+          </p>
+          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 26px', color: '#3b4642' }}>
+            This is the beginning of the end of this suffering, and it starts with you and your child.
+          </p>
+          <p className="serif" style={{ fontSize: 'clamp(21px,3vw,27px)', fontStyle: 'italic', color: 'var(--teal)', margin: 0, lineHeight: 1.4 }}>
+            I love you. I love your children more. Together, we will find a way out of this.
+          </p>
+          <p style={{ fontSize: 15, color: '#6b7672', margin: '12px 0 0' }}>Rachel Johnson, founder</p>
+        </div>
+      </section>
+
       {/* HOW IT WORKS — Oct 13 2026 restructure. Rachel: "people are confused
           when they come to the site… we want to really push the tracker,
           because the more we track the better it is, and the research." One
