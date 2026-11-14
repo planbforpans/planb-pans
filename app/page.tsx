@@ -94,23 +94,36 @@ export default function Home() {
             Our mission
           </p>
           <p className="serif" style={{ fontSize: 'clamp(30px,5vw,52px)', lineHeight: 1.1, margin: '0 0 26px', color: 'var(--ink, #1d2422)' }}>
-            Plan B for PANS is not a business. <em style={{ color: 'var(--teal)' }}>It&apos;s a movement.</em>
+            Plan B for PANS isn&apos;t a business. <em style={{ color: 'var(--teal)' }}>It&apos;s a movement.</em>
           </p>
           <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            There is still so much no one understands about PANS and autism. Every child who is tracked teaches us
-            something. The more families who track, the more we all learn, and together we pull each other out.
+            It starts with a simple tool: <strong>the daily tracker.</strong> Once a day, in about a minute, you rate how
+            your child is doing (the tics, the rages, the fears, sleep, eating, whatever matters for your child) and note
+            anything new: a fever, a new medicine, a different house. Over a few weeks it shows you what no single
+            appointment can: which symptoms move together, what a flare follows, and whether a treatment is actually working.
           </p>
           <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            <strong>Track, track, track:</strong> for your child, for every child suffering now, and so the next
-            generation never has to suffer the way ours did.
+            Then our AI does something no doctor&apos;s office can. It reads across every family who tracks: every win,
+            every setback, what helped and what made things worse. It learns from all of it, with no names attached, and
+            passes it on to the next family. The treatment that worked for one child becomes a lead for another. The one
+            that backfired becomes a warning. No family has to start from zero again.
+          </p>
+          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
+            So much about PANS and autism is still unknown. But every child who is tracked teaches us something. The more
+            of us who track, the faster we learn, and the more of us find our way out.
+          </p>
+          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
+            <strong>So track:</strong> for your child, for every child suffering right now, and for the children who come
+            after, so they never have to go through what ours did.
           </p>
           <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 26px', color: '#3b4642' }}>
-            This is the beginning of the end of this suffering, and it starts with you and your child.
+            It starts with you, and with your child, one day at a time.
           </p>
           <p className="serif" style={{ fontSize: 'clamp(21px,3vw,27px)', fontStyle: 'italic', color: 'var(--teal)', margin: 0, lineHeight: 1.4 }}>
-            Together, we will find a way out of this.
+            Together, we&apos;ll find the way out.
           </p>
           <p style={{ fontSize: 15, color: '#6b7672', margin: '12px 0 0' }}>Rachel Johnson, founder</p>
+          <a href="/daily-tracker#install" className="cta-teal" style={{ display: 'inline-block', marginTop: 26 }}>Start your child&apos;s tracker →</a>
         </div>
       </section>
 
