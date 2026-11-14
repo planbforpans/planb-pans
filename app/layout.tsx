@@ -278,7 +278,15 @@ gtag('config', 'AW-18556430921');`,
                 rel="noopener"
                 style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
               >
-                Facebook community
+                Facebook group (parents)
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61588842100605"
+                target="_blank"
+                rel="noopener"
+                style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
+              >
+                Facebook page
               </a>
               <a
                 href="https://www.instagram.com/planbforpans/"
