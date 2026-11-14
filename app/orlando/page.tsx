@@ -1,4 +1,4 @@
-import CaseReviewVoices from '../_components/CaseReviewVoices'
+import CaseReviewVoices, { CaseReviewLong } from '../_components/CaseReviewVoices'
 // /orlando — was a bare redirect to app.planbforpans.com/signup.
 //
 // Two reasons it is now a real page. (1) Ad Grants rejects sites whose
@@ -49,6 +49,7 @@ export default function Page(){
           </div>))}
       </section>
       <CaseReviewVoices />
+      <CaseReviewLong />
       <section style={{maxWidth:720,margin:'0 auto',padding:'30px 24px 96px'}}>
         <div style={{border:`1px solid ${rule}`,background:'#fff',padding:'28px 26px'}}>
           <p style={{fontSize:17,lineHeight:1.6,margin:'0 0 18px'}}>
