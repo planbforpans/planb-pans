@@ -1,8 +1,8 @@
 // What parents said about their Case Review, verbatim (Rachel, 2026-11-14:
 // "we need quotes all over the website of case studies"). Only quotes with the
 // family's OK go here. Weston's mom said yes in writing on 2026-09-15 ("Of
-// course you can quote me like that"). Rían's mom (Ireland) is asked; add hers
-// only after she says yes.
+// course you can quote me like that"). Rían's mom (Ireland): Rachel, 2026-11-14,
+// "She said it was fine." 
 
 const ink = '#1F2424'
 const teal = '#2E6E70'
@@ -18,6 +18,10 @@ export const CASE_REVIEW_VOICES: CaseReviewVoice[] = [
   {
     quote: 'I work in tech and I wanted to build what Plan B for PANS was. When I saw it existed and it was even better than I could have dreamed… this thing is going to go viral.',
     who: 'The same mom, on her call',
+  },
+  {
+    quote: "I've asked about PANS/PANDAS so many times here and they don't recognize it. To have someone take the end-to-end look — it feels just so amazing.",
+    who: 'Mom of a 19-year-old, Ireland · after her Case Review',
   },
   {
     quote: 'I appreciate your time and effort into helping mothers like myself in getting their children on the path to recovery and a better quality of life!',
