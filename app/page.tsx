@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, Fragment } from 'react'
 import BucketSection from './_components/BucketSection'
 import { VOICES } from './_components/voices'
+import CaseReviewVoices from './_components/CaseReviewVoices'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -358,6 +359,9 @@ export default function Home() {
 
 
 
+
+      {/* Rachel, 2026-11-14: Case Review quotes, front and center. */}
+      <CaseReviewVoices dark />
 
       {/* Unsolicited family testimonials (anonymized) */}
       {/* PARENT VOICES — Oct 13 2026. Rachel: "pull up all the quotes from my
