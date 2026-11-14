@@ -55,7 +55,8 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
-        {/* Google Ads conversion measurement, AW-18556430921 (2026-11-04).
+        {/* Google Ads conversion measurement, AW-18556430921 (2026-11-04). This IS
+            the Ad Grants account's tag (Customer ID 916-558-2142, confirmed 2026-11-14).
             Ad Grants requires conversion tracking - accounts are suspended
             without it - and Smart Bidding cannot optimise toward a conversion
             it cannot see.
@@ -79,11 +80,6 @@ gtag('js', new Date());
 gtag('config', 'AW-18556430921');`,
           }}
         />
-        {/* The Ad Grants account (Customer ID 916-558-2142) measures through
-            this Tag Manager container (Adam, 2026-11-14). The grant account
-            didn't see the AW- tag above as its own, so its conversions showed
-            "Inactive". Marketing site only, for the same privacy reason. */}
-        <script async src="https://www.googletagmanager.com/gtm.js?id=GTM-MSMGZ2NC" />
       </head>
       <body className="grain">
         <header className="site-header">
