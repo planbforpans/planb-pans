@@ -35,9 +35,14 @@ const nextConfig = {
       // straight to the listing so a parent can type it, or Rachel can say it on
       // a call or from a stage. 307 so the target can change (e.g. a smart
       // iOS/Android split once Google Play is live).
-      { source: '/app', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      // 15 Nov 2026: smart split. iPhone/iPad -> App Store; everyone else (Android, which isn't on
+      // Google Play yet, and computers) -> the free web app's sign-up, never an Apple dead end.
+      // When Google Play is live, add an Android rule above the fallback.
+      { source: '/app', has: [{ type: 'header', key: 'user-agent', value: '.*(iPhone|iPad|iPod).*' }], destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      { source: '/app', destination: 'https://app.planbforpans.com/signup', permanent: false },
       { source: '/ios', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
-      { source: '/download', destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      { source: '/download', has: [{ type: 'header', key: 'user-agent', value: '.*(iPhone|iPad|iPod).*' }], destination: 'https://apps.apple.com/us/app/plan-b-for-pans/id6816483159', permanent: false },
+      { source: '/download', destination: 'https://app.planbforpans.com/signup', permanent: false },
       // Orlando flyer + card (Documenting Hope, Nov 2026): short, typeable address.
       // Reusable QR on the booth banner + table cover. Repoint per event (Oct 2026: Orlando bonus).
     ]
