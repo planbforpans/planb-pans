@@ -3,9 +3,9 @@
 // actually access it. Cards link to live pages or mark "coming soon".
 
 export const metadata = {
-  title: 'Learn — Plan B for PANS',
+  title: 'PANS & PANDAS Field Guide for Parents — Plan B for PANS',
   description:
-    'Every PANS/Lyme treatment, deconstructed: what it is, the studies behind it, and — the part no one explains — how to actually access it and get help.',
+    'The PANS & PANDAS field guide for parents: what PANDAS is, the symptoms, how it is diagnosed, every treatment deconstructed: what it is, the studies behind it, and — the part no one explains — how to actually access it and get help.',
 }
 
 const ink = '#1F2424'
@@ -31,6 +31,11 @@ const SECTIONS: Section[] = [
     group: '1 · Start here',
     sub: 'Understand it, then begin.',
     items: [
+      { title: 'What is PANDAS? PANS & PANDAS explained', blurb: 'What the names mean (Pediatric Autoimmune Neuropsychiatric Disorders Associated with Streptococcal infections, and the broader Pediatric Acute-onset Neuropsychiatric Syndrome), why a child can change overnight, and the first three steps.', href: '/understanding-pans.html' },
+      { title: 'PANDAS & PANS symptoms: the full checklist', blurb: 'Sudden OCD or food restriction plus the accompanying cluster: anxiety, rage, tics, regression, handwriting changes, bedwetting, sleep problems, and why it comes in waves.', href: '/pans-symptoms-children.html' },
+      { title: 'PANS vs PANDAS: what is the difference?', blurb: 'PANDAS is the strep-triggered form; PANS is the wider umbrella. How much they overlap, when to suspect each, and why the first steps are largely the same.', href: '/pans-vs-pandas.html' },
+      { title: 'How to get a PANDAS or PANS diagnosis', blurb: 'No single blood test exists. The clinical criteria, the workup and labs worth asking for, and what to do if your doctor has never heard of PANS.', href: '/how-to-get-pans-diagnosis.html' },
+      { title: 'PANDAS & PANS treatment options', blurb: 'The layered map: treat the trigger, calm the inflammation, find the deeper drivers, and the immune treatments, such as IVIG, some children need.', href: '/pans-treatment-options.html' },
       { title: 'Start here: understand this first (plain English)', blurb: 'The simplest possible explanation for a scared parent with zero biology background. Four plain ideas — genes are the blueprint, methylation is the maintenance crew, mitochondria are the batteries, the infection is what lit the fire — and the one thing that matters most: the order to do things in (understand & find → support the engine → THEN the deep kill), so your child gets better instead of crashing.', href: '/start-here.html' },
       { title: 'Where to Start — The Testing Map', blurb: 'Where do I even begin with testing? A tiered, scaffolded map: cast a wide net ONCE (Tier 1), then follow only the branches your results flag. Elevates the two tests almost every family misses — a comprehensive methylation panel and an organic-acids (mitochondrial) test — even two years in.', href: '/testing-map.html' },
       { title: 'How to actually use a genetic test', blurb: 'A genetic test like 23andMe is a blueprint — it shows what your kid might struggle with, but on its own it\'s just a spreadsheet of letters. The whole value is the read: a practitioner like Yasko interprets it — and Minta does it free, then overlays the bloodwork that shows what\'s really happening now. Plus the 3 simple steps to order both.', href: '/how-to-use-genetics.html' },

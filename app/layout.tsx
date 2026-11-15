@@ -206,6 +206,42 @@ gtag('config', 'AW-18556430921');`,
             >
               Led by the community · For the community
             </p>
+            {/* PANS & PANDAS basics: sitewide links to the pillar articles (SEO 2026-11-14).
+                Search Console showed these crawled-but-not-indexed with almost no internal links. */}
+            <nav
+              aria-label="PANS and PANDAS basics"
+              style={{
+                marginTop: 28,
+                display: 'flex',
+                gap: 18,
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                fontSize: 13,
+                fontWeight: 500,
+              }}
+            >
+              <a href="/understanding-pans.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                What is PANDAS?
+              </a>
+              <a href="/pans-symptoms-children.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANDAS &amp; PANS symptoms
+              </a>
+              <a href="/pans-vs-pandas.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANS vs PANDAS
+              </a>
+              <a href="/pans-and-strep.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANDAS and strep
+              </a>
+              <a href="/how-to-get-pans-diagnosis.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Getting a diagnosis
+              </a>
+              <a href="/pans-treatment-options.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Treatment options
+              </a>
+              <a href="/is-it-autism-or-pans.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Autism or PANS?
+              </a>
+            </nav>
             <nav
               style={{
                 marginTop: 32,
