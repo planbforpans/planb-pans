@@ -36,6 +36,7 @@ const orgJsonLd = {
     'A non-profit clinical synthesis engine for PANS, PANDAS, autism, and severe dysregulation. When the standard system runs out of answers, Plan B for PANS helps families keep going.',
   sameAs: [
     'https://www.facebook.com/groups/1329989715405433/',
+    'https://www.facebook.com/planbforpans',
     'https://www.instagram.com/planbforpans/',
   ],
 }
@@ -283,7 +284,7 @@ gtag('config', 'AW-18556430921');`,
                 Facebook group (parents)
               </a>
               <a
-                href="https://www.facebook.com/profile.php?id=61588842100605"
+                href="https://www.facebook.com/planbforpans"
                 target="_blank"
                 rel="noopener"
                 style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
