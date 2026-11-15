@@ -80,6 +80,7 @@ gtag('js', new Date());
 gtag('config', 'AW-18556430921');`,
           }}
         />
+        <script src="/start-free-click.js" defer />
       </head>
       <body className="grain">
         <header className="site-header">
