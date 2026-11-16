@@ -193,6 +193,15 @@ gtag('config', 'AW-18556430921');`,
             >
               Donate → Keep Minta free
             </Link>
+            {/* Rachel, 2026-11-15: Instagram, the public Page and the private group on every page. */}
+            <p style={{ marginTop: 22, fontSize: 14, color: 'var(--ink)' }}>
+              Follow Plan B for PANS:{' '}
+              <a href="https://www.instagram.com/planbforpans/" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Instagram</a>
+              {' · '}
+              <a href="https://www.facebook.com/planbforpans" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Facebook Page</a>
+              {' · '}
+              <a href="https://www.facebook.com/groups/1329989715405433/" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Private parents&rsquo; group</a>
+            </p>
             <p
               className="mono"
               style={{
