@@ -2,6 +2,7 @@ import { Bodoni_Moda, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/next'
+import AutoTranslate from './_components/AutoTranslate'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -370,6 +371,7 @@ gtag('config', 'AW-18556430921');`,
           </div>
         </footer>
         <Analytics />
+        <AutoTranslate />
       </body>
     </html>
   )
