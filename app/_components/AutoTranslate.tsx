@@ -54,6 +54,7 @@ function skipped(el: Element | null): boolean {
 }
 
 export default function AutoTranslate() {
+  const [busy, setBusy] = useState(false)
   const [lang, setLang] = useState<'en' | 'es'>('en')
 
   useEffect(() => {
@@ -77,14 +78,14 @@ export default function AutoTranslate() {
       } catch {}
     }
 
-    const fetchMissing = async (strings: string[]) => {
+    const fetchMissing = async (strings: string[], onBatch: () => void) => {
       const missing = Array.from(new Set(strings.filter((s) => !(s in cache))))
       const chunks: string[][] = []
-      for (let i = 0; i < missing.length; i += 25) chunks.push(missing.slice(i, i + 25))
-      // Up to 6 batches at once, so a long page fills in within seconds.
-      for (let i = 0; i < chunks.length; i += 6) {
+      for (let i = 0; i < missing.length; i += 8) chunks.push(missing.slice(i, i + 8))
+      // Small batches, 10 at a time, applied as each lands: the top of the page shows Spanish in a second or two.
+      for (let i = 0; i < chunks.length; i += 10) {
         await Promise.all(
-          chunks.slice(i, i + 6).map(async (chunk) => {
+          chunks.slice(i, i + 10).map(async (chunk) => {
             try {
               const r = await fetch('https://app.planbforpans.com/api/translate', {
                 method: 'POST',
@@ -93,6 +94,7 @@ export default function AutoTranslate() {
               })
               const j = await r.json()
               if (Array.isArray(j.translations)) chunk.forEach((s, k) => (cache[s] = j.translations[k] || s))
+              onBatch()
             } catch {}
           }),
         )
@@ -119,7 +121,7 @@ export default function AutoTranslate() {
           if (v && worthTranslating(v) && attrMine.get(e)?.[a] !== v) wanted.push(v.trim())
         }))
         if (!wanted.length) return
-        await fetchMissing(wanted)
+        const apply = () => {
         nodes.forEach((t) => {
           const v = t.nodeValue || ''
           const es = cache[v.trim()]
@@ -141,8 +143,16 @@ export default function AutoTranslate() {
             e.setAttribute(a, es)
           }
         }))
+        }
+        apply()
+        if (wanted.some((w) => !(w in cache))) {
+          setBusy(true)
+          await fetchMissing(wanted, apply)
+          apply()
+        }
       } finally {
         running = false
+        setBusy(false)
       }
     }
 
@@ -167,7 +177,7 @@ export default function AutoTranslate() {
       document.cookie = `${LANG_KEY}=${l}; path=/; max-age=31536000; samesite=lax${domain}`
     } catch {}
     if (l === 'en') window.location.reload()
-    else setLang('es')
+    else { setLang('es'); window.dispatchEvent(new Event('pb-lang')) }
   }
 
   const pill = (l: 'en' | 'es', label: string) => (
@@ -211,7 +221,7 @@ export default function AutoTranslate() {
     >
       <span aria-hidden style={{ alignSelf: 'center', padding: '0 4px 0 6px', fontSize: 15 }}>🌐</span>
       {pill('en', 'English')}
-      {pill('es', 'Español')}
+      {pill('es', busy ? 'Traduciendo…' : 'Español')}
     </div>
   )
 }
