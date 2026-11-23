@@ -85,11 +85,11 @@ export default function WhyBoth() {
         </h2>
         <p style={{ fontSize: 18, lineHeight: 1.7, color: 'var(--ink-soft)', fontWeight: 300, maxWidth: 700, margin: '0 0 52px' }}>
           Most PANS parents are handed a half-baked protocol — one that treats a single issue at a
-          time and never integrates the whole. Plan B does the opposite: it brings every healing
+          time and never integrates the whole. Plan B for PANS does the opposite: it brings every healing
           modality and every issue your child faces into one compact healing journey, and it knows
           things your doctor doesn&apos;t.{' '}
           <strong style={{ color: 'var(--teal)', fontWeight: 600 }}>
-            When you&apos;re stalled, Minta has your Plan B
+            When you&apos;re stalled, Minta has your Plan B for PANS
           </strong>{' '}
           — a real idea of <em>why</em>, and many new things to try. Doing that takes two things
           working together.
@@ -159,7 +159,8 @@ export default function WhyBoth() {
             Start free — upload your labs →
           </a>
           <a
-            href="/pricing"
+            href="https://app.planbforpans.com/signup"
+            rel="noopener"
             style={{
               display: 'inline-block', padding: '16px 30px', background: 'transparent', color: 'var(--teal)',
               border: '1px solid var(--rule)', borderRadius: 6, textDecoration: 'none', fontSize: 15, fontWeight: 500,

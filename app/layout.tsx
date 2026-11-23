@@ -1,10 +1,12 @@
+import { Bodoni_Moda, Instrument_Sans, IBM_Plex_Mono } from 'next/font/google'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
-import { caseReviewBookingUrl } from './_components/site-links'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://planbforpans.com'),
+  alternates: { canonical: './' },
   title: 'Plan B for PANS & PANDAS — A path out of the fire',
   description: 'A path out of the fire — built from every modality, every family, every hard-won answer. A clinical synthesis engine for PANS, PANDAS, autism, and severe dysregulation.',
   openGraph: {
@@ -15,7 +17,33 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
   },
+  // Activates once NEXT_PUBLIC_GSC_VERIFICATION is set in the Vercel env.
+  // Renders <meta name="google-site-verification" ...> for Search Console.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION ?? '',
+  },
 }
+
+// Site-wide organization schema. Helps Google understand who Plan B is and
+// links the official Facebook parent community + page (sameAs).
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'MedicalOrganization',
+  name: 'Plan B for PANS',
+  alternateName: 'Plan B for PANS & PANDAS',
+  url: 'https://planbforpans.com',
+  description:
+    'A non-profit clinical synthesis engine for PANS, PANDAS, autism, and severe dysregulation. When the standard system runs out of answers, Plan B for PANS helps families keep going.',
+  sameAs: [
+    'https://www.facebook.com/groups/1329989715405433/',
+    'https://www.facebook.com/planbforpans',
+    'https://www.instagram.com/planbforpans/',
+  ],
+}
+
+const bodoni = Bodoni_Moda({ subsets: ['latin'], style: ['normal', 'italic'], display: 'swap', variable: '--f-bodoni' })
+const instrument = Instrument_Sans({ subsets: ['latin'], display: 'swap', variable: '--f-instrument' })
+const plexMono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], display: 'swap', variable: '--f-plex' })
 
 export default function RootLayout({
   children,
@@ -23,115 +51,71 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
-          rel="stylesheet"
+    <html lang="en" className={`${bodoni.variable} ${instrument.variable} ${plexMono.variable}`}>
+      <head>        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        {/* Google Ads conversion measurement, AW-18556430921 (2026-11-04). This IS
+            the Ad Grants account's tag (Customer ID 916-558-2142, confirmed 2026-11-14).
+            Ad Grants requires conversion tracking - accounts are suspended
+            without it - and Smart Bidding cannot optimise toward a conversion
+            it cannot see.
+
+            DELIBERATELY ONLY ON THE MARKETING SITE. It must NOT go site-wide on
+            app.planbforpans.com: every page view there would send Google a hit
+            from a page about a named child - their labs, their synthesis, their
+            record - and the URLs carry client IDs. That is children's health
+            information going to an ad network. On the app, only the single
+            sign-up conversion event fires, on the success step, carrying
+            nothing about any child. */}
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-18556430921"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'AW-18556430921');`,
+          }}
+        />
+        <script src="/start-free-click.js" defer />
       </head>
       <body className="grain">
-        <header
-          style={{
-            borderBottom: '1px solid var(--sand)',
-            padding: '22px 24px',
-            background: 'var(--cream)',
-            position: 'sticky',
-            top: 0,
-            zIndex: 50,
-            backdropFilter: 'blur(8px)',
-          }}
-        >
-          <div
-            style={{
-              maxWidth: 1280,
-              margin: '0 auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              gap: 24,
-            }}
-          >
+        <header className="site-header">
+          <div className="site-header-in">
             <Link href="/" style={{ textDecoration: 'none' }}>
-              <p
-                style={{
-                  fontFamily: 'var(--font-cormorant)',
-                  fontSize: 22,
-                  fontWeight: 400,
-                  color: 'var(--ink)',
-                  lineHeight: 1,
-                  margin: 0,
-                }}
-              >
+              <p className="site-logo">
                 Plan B{' '}
-                <span style={{ fontStyle: 'italic', fontWeight: 300, color: 'var(--teal)' }}>
-                  for PANS
-                </span>
+                <span style={{ fontStyle: 'italic', color: 'var(--teal)' }}>for PANS</span>
               </p>
             </Link>
-            <nav className="site-nav" style={{ display: 'flex', gap: 18, alignItems: 'center' }}>
-              <NavLink href="/about">About</NavLink>
-              <NavLink href="/packages">Pricing</NavLink>
-              <NavLink href="/stories">Family stories</NavLink>
-              <NavLink href="/faq">FAQ</NavLink>
-              <a
-                href="https://app.planbforpans.com/sign-in"
-                rel="noopener"
-                style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 11,
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--sand-dark)',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                }}
-              >
-                Sign In
-              </a>
-              <a
-                href="https://app.planbforpans.com/signup"
-                rel="noopener"
-                style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 11,
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--teal)',
-                  background: 'transparent',
-                  border: '1px solid var(--teal)',
-                  padding: '9px 16px',
-                  fontWeight: 600,
-                  borderRadius: 4,
-                  textDecoration: 'none',
-                }}
-              >
-                Free app
-              </a>
-              <a
-                href={caseReviewBookingUrl('website-header')}
-                rel="noopener"
-                style={{
-                  fontFamily: 'var(--font-inter)',
-                  fontSize: 11,
-                  letterSpacing: '0.22em',
-                  textTransform: 'uppercase',
-                  color: 'var(--cream)',
-                  background: 'var(--teal)',
-                  padding: '10px 18px',
-                  fontWeight: 600,
-                  borderRadius: 4,
-                  textDecoration: 'none',
-                }}
-              >
-                Case Review · $200
-              </a>
+            {/* Trimmed to the essentials 1 Oct 2026; "Get the Tracker" back 7 Oct
+                (Rachel: installing the tracker needs to be a link). Oct 13
+                overhaul: the two identical sign-up buttons became one. */}
+            <nav className="site-nav">
+              <a href="/start" className="strong">Start Here</a>
+              <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="strong">See a Synthesis</a>
+              <a href="/minta">Meet Minta</a>
+              <a href="/daily-tracker#install">The Tracker</a>
+              <a href="/case-review">Book a Case Review</a>
+              <Link href="/about">About</Link>
+              <Link href="/donate">Donate</Link>
+              <a href="https://app.planbforpans.com/sign-in" rel="noopener" className="quiet">Sign in</a>
+              <a href="https://app.planbforpans.com/signup" rel="noopener" className="nav-cta">Get your free Synthesis &rarr;</a>
             </nav>
           </div>
         </header>
         {children}
+        {/* Site-wide medical disclaimer (Rachel, 2026-10-14: "cover my ass"). */}
+        <div style={{ borderTop: '1px solid var(--ink)', background: 'var(--cream-light)', padding: '22px 24px' }}>
+          <p style={{ maxWidth: 900, margin: '0 auto', fontSize: 13.5, lineHeight: 1.6, color: 'var(--ink)', textAlign: 'center' }}>
+            <strong>Important:</strong> Plan B for PANS, Rachel Johnson and Minta are <strong>not doctors</strong>. Everything here, including Minta, the Synthesis and Case Reviews, is <strong>education, not medical advice, diagnosis or treatment</strong>. Always talk with your child&rsquo;s licensed clinicians before changing anything. You use Plan B for PANS and Minta at your own risk. <strong>In an emergency, call 911, or 988 for a mental-health crisis.</strong>{' '}
+            <a href="/disclaimer" style={{ color: 'var(--teal)', textDecoration: 'underline' }}>Full disclaimer</a>
+          </p>
+        </div>
         <footer
           style={{
             borderTop: '1px solid var(--sand)',
@@ -160,7 +144,7 @@ export default function RootLayout({
               }}
             >
               When the protocols fail,{' '}
-              <em style={{ color: 'var(--teal)' }}>this is your Plan B.</em>
+              <em style={{ color: 'var(--teal)' }}>this is your Plan B for PANS.</em>
             </p>
             <p
               style={{
@@ -175,7 +159,7 @@ export default function RootLayout({
             </p>
             <p style={{ maxWidth: 560, margin: '0 auto' }}>
               A non-profit clinical synthesis engine for PANS, PANDAS, autism, and severe
-              dysregulation. When the standard system runs out of answers, Plan B helps you
+              dysregulation. When the standard system runs out of answers, Plan B for PANS helps you
               keep going.
             </p>
             <p
@@ -189,7 +173,7 @@ export default function RootLayout({
                 fontWeight: 500,
               }}
             >
-              Free app · Optional paid Case Reviews
+              Free for families · Donation-funded
             </p>
             <Link
               href="/donate"
@@ -208,8 +192,17 @@ export default function RootLayout({
                 textDecoration: 'none',
               }}
             >
-              Donate → Support families
+              Donate → Keep Minta free
             </Link>
+            {/* Rachel, 2026-11-15: Instagram, the public Page and the private group on every page. */}
+            <p style={{ marginTop: 22, fontSize: 14, color: 'var(--ink)' }}>
+              Follow Plan B for PANS:{' '}
+              <a href="https://www.instagram.com/planbforpans/" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Instagram</a>
+              {' · '}
+              <a href="https://www.facebook.com/planbforpans" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Facebook Page</a>
+              {' · '}
+              <a href="https://www.facebook.com/groups/1329989715405433/" target="_blank" rel="noopener" style={{ color: 'var(--teal)', fontWeight: 600 }}>Private parents&rsquo; group</a>
+            </p>
             <p
               className="mono"
               style={{
@@ -223,6 +216,42 @@ export default function RootLayout({
             >
               Led by the community · For the community
             </p>
+            {/* PANS & PANDAS basics: sitewide links to the pillar articles (SEO 2026-11-14).
+                Search Console showed these crawled-but-not-indexed with almost no internal links. */}
+            <nav
+              aria-label="PANS and PANDAS basics"
+              style={{
+                marginTop: 28,
+                display: 'flex',
+                gap: 18,
+                flexWrap: 'wrap',
+                justifyContent: 'center',
+                fontSize: 13,
+                fontWeight: 500,
+              }}
+            >
+              <a href="/understanding-pans.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                What is PANDAS?
+              </a>
+              <a href="/pans-symptoms-children.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANDAS &amp; PANS symptoms
+              </a>
+              <a href="/pans-vs-pandas.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANS vs PANDAS
+              </a>
+              <a href="/pans-and-strep.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                PANDAS and strep
+              </a>
+              <a href="/how-to-get-pans-diagnosis.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Getting a diagnosis
+              </a>
+              <a href="/pans-treatment-options.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Treatment options
+              </a>
+              <a href="/is-it-autism-or-pans.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
+                Autism or PANS?
+              </a>
+            </nav>
             <nav
               style={{
                 marginTop: 32,
@@ -237,9 +266,26 @@ export default function RootLayout({
               }}
             >
               <a href="/why-plan-b.html" style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}>
-                Why Plan B
+                Why Plan B for PANS
               </a>
-              <Link href="/tracker" style={{ color: 'var(--sand-dark)' }}>
+              <Link href="/how-to-use" style={{ color: 'var(--sand-dark)' }}>
+                How to use it
+              </Link>
+              <Link href="/learn" style={{ color: 'var(--sand-dark)' }}>
+                Field Guide
+              </Link>
+              <Link href="/research" style={{ color: 'var(--sand-dark)' }}>
+                Research
+              </Link>
+              {/* Podcast link removed 2026-10-07: Google for Nonprofits rejected
+                  the Workspace application citing "primarily placeholder content
+                  … specifically in the tab podcast (Coming Soon pages)". The page
+                  still exists at /podcast — it is simply not linked until there
+                  are real episodes. Re-add this link when episode 1 ships. */}
+              <Link href="/minta" style={{ color: 'var(--sand-dark)' }}>
+                Meet Minta
+              </Link>
+              <Link href="/daily-tracker" style={{ color: 'var(--sand-dark)' }}>
                 Tracker
               </Link>
               <a
@@ -252,6 +298,13 @@ export default function RootLayout({
               <Link href="/practitioners" style={{ color: 'var(--sand-dark)' }}>
                 Practitioners
               </Link>
+              <a
+                href="https://app.planbforpans.com/volunteer"
+                rel="noopener"
+                style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
+              >
+                Volunteer
+              </a>
               <Link href="/contact" style={{ color: 'var(--sand-dark)' }}>
                 Contact
               </Link>
@@ -264,43 +317,60 @@ export default function RootLayout({
               <Link href="/terms" style={{ color: 'var(--sand-dark)' }}>
                 Terms
               </Link>
+              {/* Was the bare numeric-id Facebook page URL — Facebook serves logged-out visitors a
+                  "content isn't available" wall on that URL form, which Google's
+                  reviewer hit and cited as a non-functional social link. The
+                  group URL renders a public preview instead. */}
               <a
-                href="https://www.facebook.com/profile.php?id=61588842100605"
+                href="https://www.facebook.com/groups/1329989715405433/"
                 target="_blank"
                 rel="noopener"
                 style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
               >
-                Facebook
+                Facebook group (parents)
+              </a>
+              <a
+                href="https://www.facebook.com/planbforpans"
+                target="_blank"
+                rel="noopener"
+                style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
+              >
+                Facebook page
+              </a>
+              <a
+                href="https://www.instagram.com/planbforpans/"
+                target="_blank"
+                rel="noopener"
+                style={{ color: 'var(--sand-dark)', textDecoration: 'none' }}
+              >
+                Instagram
               </a>
             </nav>
             <p style={{ marginTop: 22, fontSize: 12, color: 'var(--sand-dark)' }}>
               © {new Date().getFullYear()} Plan B for PANS
             </p>
+            {/* Legal identity. Added 2026-10-06: Google for Nonprofits rejected our
+                Workspace activation because nothing on this site connected the
+                registered entity to this domain — a reviewer landing here found a
+                personal essay and no evidence a charity existed. Donors, grant
+                reviewers and Ad Grants all look for exactly this block. */}
+            <p style={{ marginTop: 10, fontSize: 11.5, lineHeight: 1.7, color: 'var(--sand-dark)', maxWidth: 760 }}>
+              Plan B for PANS is a registered 501(c)(3) nonprofit public charity.
+              EIN <strong>42-2258077</strong>. Incorporated in Colorado, April 30, 2026
+              (entity ID 20261532334). Tax-exempt status effective April 30, 2026;
+              donations are tax-deductible to the extent allowed by law.
+              planbforpans.com is our official and only domain.
+            </p>
+            <p style={{ marginTop: 8, fontSize: 11.5, lineHeight: 1.7, color: 'var(--sand-dark)' }}>
+              Plan B for PANS · 4845 Pearl East Circle, Ste 118, Boulder, CO 80301 · <a href="mailto:rachel@planbforpans.com" style={{ color: 'var(--sand-dark)' }}>rachel@planbforpans.com</a>
+            </p>
             <p style={{ marginTop: 10, fontSize: 11.5, lineHeight: 1.6, color: 'var(--sand-dark)', maxWidth: 760 }}>
-              Plan B integrates and interprets published frameworks &mdash; including those of Walsh, Yasko, Shoemaker, O&rsquo;Hara, Crista, Nathan and others &mdash; for educational purposes. It is not affiliated with, endorsed by, or reviewed by any named practitioner; names are used only to attribute the ideas described. Nothing here is medical advice &mdash; always confirm with your own practitioner.
+              Plan B for PANS integrates and interprets published frameworks &mdash; including those of Walsh, Yasko, Shoemaker, O&rsquo;Hara, Crista, Nathan and others &mdash; for educational purposes. It is not affiliated with, endorsed by, or reviewed by any named practitioner; names are used only to attribute the ideas described. Nothing here is medical advice &mdash; always confirm with your own practitioner.
             </p>
           </div>
         </footer>
+        <Analytics />
       </body>
     </html>
-  )
-}
-
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <Link
-      href={href}
-      style={{
-        fontFamily: 'var(--font-inter)',
-        fontSize: 11,
-        letterSpacing: '0.22em',
-        textTransform: 'uppercase',
-        color: 'var(--sand-dark)',
-        fontWeight: 500,
-        textDecoration: 'none',
-      }}
-    >
-      {children}
-    </Link>
   )
 }

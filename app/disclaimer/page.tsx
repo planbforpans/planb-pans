@@ -9,10 +9,10 @@ export const metadata = {
   robots: { index: true, follow: true },
 }
 
-const ink = '#141414'
-const teal = '#1F6B6B'
-const soft = '#3a3a3a'
-const muted = '#8a8373'
+const ink = '#1F2424'
+const teal = '#2E6E70'
+const soft = '#505858'
+const muted = '#7C8585'
 const rule = '#d4cbb6'
 
 const h2: React.CSSProperties = {
@@ -197,7 +197,7 @@ function FinalizingBanner() {
         padding: '16px 20px',
         fontSize: 14,
         lineHeight: 1.7,
-        color: '#3a3a3a',
+        color: '#505858',
         fontWeight: 300,
       }}
     >

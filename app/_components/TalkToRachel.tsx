@@ -2,15 +2,18 @@
 
 import { CALENDLY_URL } from './site-links'
 
+// "Start your free Synthesis" CTA. Plan B doesn't advertise a pre-sale consult —
+// the founder isn't a consultant — so this points families straight at the free
+// Synthesis signup. (CALENDLY_URL is re-exported for any remaining importers.)
 export { CALENDLY_URL }
 
-const BOOKING_URL = 'https://app.planbforpans.com/book-case-review?source=website-details'
+const SIGNUP_URL = 'https://app.planbforpans.com/signup'
 
 export function TalkToRachel({ variant = 'outline' }: { variant?: 'outline' | 'quiet' }) {
   if (variant === 'quiet') {
     return (
       <a
-        href={BOOKING_URL}
+        href={SIGNUP_URL}
         rel="noopener"
         style={{
           color: 'var(--teal)',
@@ -20,14 +23,14 @@ export function TalkToRachel({ variant = 'outline' }: { variant?: 'outline' | 'q
           textUnderlineOffset: 4,
         }}
       >
-        Book a Case Review · $200
+        Start your free Synthesis →
       </a>
     )
   }
 
   return (
     <a
-      href={BOOKING_URL}
+      href={SIGNUP_URL}
       rel="noopener"
       style={{
         display: 'inline-block',
@@ -41,7 +44,7 @@ export function TalkToRachel({ variant = 'outline' }: { variant?: 'outline' | 'q
         fontWeight: 500,
       }}
     >
-      Book a Case Review · $200
+      Start your free Synthesis →
     </a>
   )
 }

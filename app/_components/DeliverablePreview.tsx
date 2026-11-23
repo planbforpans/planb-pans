@@ -71,7 +71,7 @@ function Paper({ children, label }: { children: React.ReactNode; label: string }
 }
 
 function SynthesisDoc() {
-  const cell: React.CSSProperties = { padding: '8px 10px', fontSize: 12, lineHeight: 1.45, verticalAlign: 'top', borderTop: '1px solid var(--cream-light, #f3ecdc)' }
+  const cell: React.CSSProperties = { padding: '8px 10px', fontSize: 12, lineHeight: 1.45, verticalAlign: 'top', borderTop: '1px solid var(--cream-light, #F5F7F6)' }
   return (
     <Paper label="The Synthesis · PDF">
       <p style={{ ...mono, color: 'var(--sand-dark)', fontSize: 9, marginBottom: 6 }}>Plan B · Synthesis</p>
@@ -110,8 +110,32 @@ function SynthesisDoc() {
         </tbody>
       </table>
 
+      {/* Hypothesis */}
+      <p style={{ ...mono, color: 'var(--ink-soft)', fontSize: 9, margin: '0 0 4px' }}>Where Minta&apos;s thinking is going</p>
+      <p style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink)', margin: '0 0 8px' }}>
+        <strong>Our best theory right now:</strong> the infections aren&apos;t clearing because of the
+        immune gap. It fits the story, but nothing has proved it yet. Here&apos;s what the tests
+        could show, and what each answer would change.
+      </p>
+      <div style={{ display: 'grid', gap: 6, marginBottom: 16 }}>
+        {[
+          ['Immune gap is letting infections hang on', 'Leading', 'IgG subclasses + vaccine titers', 'Low → the immune door (IVIG talk) opens', 'Normal → clearance moves up the list'],
+          ['Methylation block is slowing clearance', 'Possible', 'MMA + homocysteine', 'High → cofactors before any killing', 'Normal → B12 isn’t the bottleneck'],
+          ['An infection serology missed', 'Possible', 'Direct tick-borne panel', 'Positive → a targeted plan, sequenced slowly', 'Negative → focus stays on immune + clearance'],
+        ].map(([name, lk, test, yes, no]) => (
+          <div key={name} style={{ background: 'var(--cream-light, #F5F7F6)', borderRadius: 6, padding: '8px 10px', fontSize: 11.5, lineHeight: 1.45 }}>
+            <div style={{ fontWeight: 600, color: 'var(--ink)' }}>
+              {name} <span style={{ ...mono, fontSize: 8.5, color: 'var(--teal)', marginLeft: 4 }}>{lk}</span>
+            </div>
+            <div style={{ color: 'var(--ink-soft)' }}>
+              <em>The test:</em> {test} · {yes} · {no}
+            </div>
+          </div>
+        ))}
+      </div>
+
       {/* Priority */}
-      <div style={{ background: 'var(--cream-light, #f3ecdc)', borderLeft: '3px solid var(--teal)', borderRadius: '0 6px 6px 0', padding: '12px 14px', marginBottom: 14 }}>
+      <div style={{ background: 'var(--cream-light, #F5F7F6)', borderLeft: '3px solid var(--teal)', borderRadius: '0 6px 6px 0', padding: '12px 14px', marginBottom: 14 }}>
         <p style={{ ...mono, color: 'var(--teal)', fontSize: 9, margin: '0 0 4px' }}>Do this first</p>
         <p style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink)', margin: 0 }}>
           Confirm the immune picture before any more killing. Drainage + cofactors come before
@@ -128,7 +152,7 @@ function SynthesisDoc() {
 }
 
 function TestsToOrder() {
-  const td: React.CSSProperties = { padding: '8px 9px', fontSize: 11.5, lineHeight: 1.45, borderTop: '1px solid var(--cream-light, #f3ecdc)', verticalAlign: 'top' }
+  const td: React.CSSProperties = { padding: '8px 9px', fontSize: 11.5, lineHeight: 1.45, borderTop: '1px solid var(--cream-light, #F5F7F6)', verticalAlign: 'top' }
   return (
     <Paper label="Tests to order next">
       <p style={{ ...mono, color: 'var(--sand-dark)', fontSize: 9, marginBottom: 6 }}>Plan B · Data gaps</p>
@@ -166,7 +190,7 @@ function TestsToOrder() {
 
 function SupplementCalendar() {
   const th: React.CSSProperties = { ...mono, fontSize: 9, color: 'var(--cream)', background: 'var(--teal)', padding: '6px 8px', textAlign: 'left' }
-  const td: React.CSSProperties = { padding: '7px 8px', fontSize: 11.5, lineHeight: 1.4, borderTop: '1px solid var(--cream-light, #f3ecdc)', color: 'var(--ink)', verticalAlign: 'top' }
+  const td: React.CSSProperties = { padding: '7px 8px', fontSize: 11.5, lineHeight: 1.4, borderTop: '1px solid var(--cream-light, #F5F7F6)', color: 'var(--ink)', verticalAlign: 'top' }
   return (
     <Paper label="Supplement calendar · printable">
       <p style={{ ...mono, color: 'var(--sand-dark)', fontSize: 9, marginBottom: 6 }}>Plan B · Daily calendar</p>
@@ -186,7 +210,7 @@ function SupplementCalendar() {
             ['Vitamin D3/K2 · 2,000 IU', 'Gentle binder · away from food'],
             ['Cod liver oil · ½ tsp', 'Probiotic · 1 cap'],
           ].map(([am, pm], i) => (
-            <tr key={i}><td style={td}>{am}</td><td style={{ ...td, borderLeft: '1px solid var(--cream-light, #f3ecdc)' }}>{pm}</td></tr>
+            <tr key={i}><td style={td}>{am}</td><td style={{ ...td, borderLeft: '1px solid var(--cream-light, #F5F7F6)' }}>{pm}</td></tr>
           ))}
         </tbody>
       </table>
@@ -200,7 +224,7 @@ function SupplementCalendar() {
           ['Month 6', 'Full stack, watch die-off'],
           ['Month 9', 'Retest · adjust · hold'],
         ].map(([m, note]) => (
-          <div key={m} style={{ background: 'var(--cream-light, #f3ecdc)', borderRadius: 5, padding: '8px 9px' }}>
+          <div key={m} style={{ background: 'var(--cream-light, #F5F7F6)', borderRadius: 5, padding: '8px 9px' }}>
             <p style={{ ...mono, fontSize: 9, color: 'var(--teal)', margin: '0 0 4px' }}>{m}</p>
             <p style={{ fontSize: 10.5, lineHeight: 1.4, color: 'var(--ink-soft)', margin: 0 }}>{note}</p>
           </div>

@@ -1,79 +1,70 @@
 'use client'
 
-import { useReveal, useTick } from './hooks'
+import { useReveal } from './hooks'
 
+// FIG. 01 — total load, drawn as a technical plate (Oct 2026). Rachel: "the
+// cup feels cool but it's too cartoony… keep it feeling like science". Hairline
+// glass, hatched liquid, the overflow as fine lines. What fills it are the
+// triggers; what spills over the rim are the symptoms parents see.
 function BucketFill() {
-  const t = useTick()
-  const cycle = (t * 0.4) % 1
-  const fill = 0.3 + cycle * 0.65
+  const ink = 'var(--ink)'
+  const toxins = ['Stress', 'Viruses', 'Metals', 'Lyme', 'Strep', 'Mold']
+  const spill = [
+    { x: 2, y: 330, t: 'rage', a: 'start' as const },
+    { x: 2, y: 356, t: 'tics', a: 'start' as const },
+    { x: 258, y: 330, t: 'OCD', a: 'end' as const },
+    { x: 258, y: 356, t: 'food fear', a: 'end' as const },
+    { x: 130, y: 382, t: 'no sleep', a: 'middle' as const },
+  ]
   return (
-    <svg viewBox="0 0 260 320" style={{ width: '100%', height: 'auto', display: 'block' }}>
+    <svg viewBox="0 0 260 400" style={{ width: '100%', height: 'auto', display: 'block', overflow: 'visible' }} role="img" aria-label="Technical drawing of a beaker filled to the brim with mold, strep, Lyme, metals, viruses and stress, overflowing; what spills over is rage, tics, OCD, food fear and no sleep.">
       <defs>
-        <clipPath id="bucket-clip">
-          <path d="M 40 80 L 60 290 Q 60 300 70 300 L 190 300 Q 200 300 200 290 L 220 80 Z" />
-        </clipPath>
-        <linearGradient id="liq" x1="0" x2="0" y1="0" y2="1">
-          <stop offset="0" stopColor="#1F6B6B" stopOpacity="0.75" />
-          <stop offset="1" stopColor="#134848" stopOpacity="0.95" />
-        </linearGradient>
+        <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(-35)">
+          <line x1="0" y1="0" x2="0" y2="6" stroke="var(--teal)" strokeWidth="0.8" opacity="0.55" />
+        </pattern>
+        <clipPath id="beaker-clip"><path d="M 60 78 L 60 300 Q 60 312 72 312 L 188 312 Q 200 312 200 300 L 200 78 Z" /></clipPath>
       </defs>
-      <ellipse cx="130" cy="80" rx="92" ry="14" fill="none" stroke="#141414" strokeWidth="1.5" />
-      <path
-        d="M 40 80 L 60 290 Q 60 300 70 300 L 190 300 Q 200 300 200 290 L 220 80"
-        fill="none"
-        stroke="#141414"
-        strokeWidth="1.5"
-      />
-      <g clipPath="url(#bucket-clip)">
-        <rect x="30" y={320 - fill * 240} width="220" height="240" fill="url(#liq)" />
-        <path
-          d={`M 30 ${320 - fill * 240} Q 80 ${315 - fill * 240} 130 ${320 - fill * 240} T 260 ${
-            320 - fill * 240
-          } L 260 320 L 30 320 Z`}
-          fill="#134848"
-          opacity="0.5"
-        />
+
+      <text x="130" y="22" textAnchor="middle" fontFamily="var(--mono)" fontSize="8.5" fill="var(--sand-dark)" letterSpacing="2.4">FIG. 01 — TOTAL LOAD</text>
+      <line x1="70" x2="190" y1="32" y2="32" stroke="var(--sand)" strokeWidth="0.6" />
+
+      {/* liquid at the brim */}
+      <g clipPath="url(#beaker-clip)">
+        <rect x="50" y="80" width="170" height="240" fill="url(#hatch)" />
+        <rect x="50" y="80" width="170" height="240" fill="var(--teal)" opacity="0.05" />
       </g>
-      {[
-        { x: 70, y: 110, t: 'tics' },
-        { x: 170, y: 130, t: 'rage' },
-        { x: 90, y: 170, t: 'OCD' },
-        { x: 180, y: 200, t: 'sleep' },
-        { x: 70, y: 230, t: 'anxiety' },
-        { x: 170, y: 260, t: 'brain fog' },
-        { x: 90, y: 280, t: 'food fear' },
-      ].map((l, i) => (
-        <text
-          key={i}
-          x={l.x}
-          y={l.y}
-          fontFamily="var(--serif)"
-          fontStyle="italic"
-          fontSize="14"
-          fill="#F6F1E7"
-          opacity={fill > (320 - l.y) / 240 ? 0.9 : 0.35}
-        >
-          {l.t}
-        </text>
+      <path d="M 60 80 Q 130 74 200 80" fill="none" stroke="var(--teal)" strokeWidth="0.9" />
+
+      {/* glass */}
+      <path d="M 52 72 L 60 78 L 60 300 Q 60 312 72 312 L 188 312 Q 200 312 200 300 L 200 78 L 208 72" fill="none" stroke={ink} strokeWidth="1.1" />
+      {Array.from({ length: 10 }, (_, i) => (
+        <line key={i} x1="200" x2={i % 2 ? 194 : 188} y1={296 - i * 22} y2={296 - i * 22} stroke={ink} strokeWidth="0.6" />
       ))}
-      {fill > 0.8 && (
-        <>
-          <circle cx="50" cy="78" r="3" fill="#c76a4a" opacity="0.8" />
-          <circle cx="218" cy="76" r="2" fill="#c76a4a" opacity="0.6" />
-          <circle cx="38" cy="92" r="2" fill="#c76a4a" opacity="0.5" />
-        </>
-      )}
-      <text
-        x="130"
-        y="50"
-        textAnchor="middle"
-        fontFamily="var(--mono)"
-        fontSize="9"
-        fill="#8a8373"
-        letterSpacing="3"
-      >
-        FIG. 01 — THE BUCKET
-      </text>
+      {[0, 2, 4, 6, 8].map((i) => (
+        <text key={i} x="184" y={298.5 - i * 22} textAnchor="end" fontFamily="var(--mono)" fontSize="6.5" fill={ink} opacity="0.55">{i * 50}</text>
+      ))}
+
+      {/* contents — label column with leader ticks */}
+      {toxins.map((t, i) => (
+        <g key={t}>
+          <line x1="68" x2="76" y1={110 + i * 34} y2={110 + i * 34} stroke={ink} strokeWidth="0.6" />
+          <text x="80" y={113 + i * 34} fontFamily="var(--mono)" fontSize="8.5" letterSpacing="1.6" fill={ink}>{t.toUpperCase()}</text>
+        </g>
+      ))}
+
+      {/* overflow — fine lines down the glass, a drop forming at each end */}
+      <path d="M 54 74 C 44 82 42 130 44 190 C 45 240 40 280 36 302" fill="none" stroke="var(--teal)" strokeWidth="0.9" />
+      <path d="M 57 75 C 49 84 48 140 49 200 C 50 236 47 262 45 276" fill="none" stroke="var(--teal)" strokeWidth="0.5" opacity="0.6" />
+      <path d="M 206 74 C 216 84 218 140 216 200 C 215 246 220 280 224 300" fill="none" stroke="var(--teal)" strokeWidth="0.9" />
+      <path className="drip" d="M 36 306 q -3 6 0 9 q 3 -3 0 -9 Z" fill="var(--signal)" />
+      <path className="drip drip-2" d="M 224 304 q -3 6 0 9 q 3 -3 0 -9 Z" fill="var(--signal)" />
+      <line x1="10" x2="250" y1="318" y2="318" stroke={ink} strokeWidth="0.6" />
+
+      {/* what spills over */}
+      {spill.map((l) => (
+        <text key={l.t} x={l.x} y={l.y} textAnchor={l.a} fontFamily="var(--font-display)" fontStyle="italic" fontSize="15" fill="var(--signal)">{l.t}</text>
+      ))}
+      <text x="130" y="398" textAnchor="middle" fontFamily="var(--mono)" fontSize="7.5" fill="var(--sand-dark)" letterSpacing="1.6">WHAT FILLS IT · WHAT SPILLS OVER</text>
     </svg>
   )
 }
@@ -128,63 +119,16 @@ export default function BucketSection() {
             </h2>
             <p
               style={{
-                fontSize: 17,
-                lineHeight: 1.8,
+                fontSize: 18,
+                lineHeight: 1.7,
                 color: 'var(--ink-soft)',
-                fontWeight: 300,
-                marginTop: 36,
-                maxWidth: 560,
+                marginTop: 30,
+                maxWidth: 520,
               }}
             >
-              PANS and PANDAS families carry a cognitive load no spreadsheet can hold. New
-              symptoms appear. Old ones come back. You start a binder and the headaches get
-              worse — is it the binder, or a flare, or the guanfacine you bumped up last
-              Tuesday?
+              Nightly tracking shows what&apos;s filling your child&apos;s cup, and what makes it spill.
             </p>
-            <p
-              style={{
-                fontSize: 17,
-                lineHeight: 1.8,
-                color: 'var(--ink-soft)',
-                fontWeight: 300,
-                marginTop: 16,
-                maxWidth: 560,
-              }}
-            >
-              Plan B is the tracker built for that exact confusion.
-            </p>
-            <div
-              style={{
-                display: 'flex',
-                gap: 24,
-                marginTop: 36,
-                flexWrap: 'wrap',
-              }}
-            >
-              {['Modality-agnostic', 'Free forever', 'Your data, yours'].map((t) => (
-                <div key={t} style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                  <span
-                    style={{
-                      width: 6,
-                      height: 6,
-                      borderRadius: '50%',
-                      background: 'var(--teal)',
-                    }}
-                  />
-                  <span
-                    style={{
-                      fontSize: 11,
-                      letterSpacing: '0.18em',
-                      textTransform: 'uppercase',
-                      color: 'var(--ink)',
-                      fontWeight: 500,
-                    }}
-                  >
-                    {t}
-                  </span>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
       </div>

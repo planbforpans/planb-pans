@@ -16,9 +16,9 @@ function InstallStep({ n, visual, children }: { n: number; visual: ReactNode; ch
 function ShareGlyph() {
   return (
     <svg width="26" height="30" viewBox="0 0 26 30" fill="none" aria-hidden="true">
-      <path d="M13 3 L13 18" stroke="#1F6B6B" strokeWidth="2.2" strokeLinecap="round" />
-      <path d="M8 7 L13 2 L18 7" stroke="#1F6B6B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-      <path d="M7 12 L4 12 L4 27 L22 27 L22 12 L19 12" stroke="#1F6B6B" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M13 3 L13 18" stroke="#2E6E70" strokeWidth="2.2" strokeLinecap="round" />
+      <path d="M8 7 L13 2 L18 7" stroke="#2E6E70" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M7 12 L4 12 L4 27 L22 27 L22 12 L19 12" stroke="#2E6E70" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   )
 }
@@ -29,10 +29,10 @@ function ChromeGlyph() {
   return <div style={{ width: 34, height: 34, borderRadius: '50%', background: 'conic-gradient(#ea4335,#fbbc05,#34a853,#4285f4,#ea4335)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}><div style={{ width: 13, height: 13, borderRadius: '50%', background: '#fff', border: '3px solid #4285f4' }} /></div>
 }
 function AddRowGlyph() {
-  return <div style={{ width: 30, height: 30, borderRadius: 7, border: '2px solid #1F6B6B', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#1F6B6B', fontSize: 20 }}>+</div>
+  return <div style={{ width: 30, height: 30, borderRadius: 7, border: '2px solid #2E6E70', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#2E6E70', fontSize: 20 }}>+</div>
 }
 function AddBtnGlyph() {
-  return <span style={{ background: '#1F6B6B', color: '#fff', padding: '5px 13px', borderRadius: 14, fontSize: 12, fontWeight: 600 }}>Add</span>
+  return <span style={{ background: '#2E6E70', color: '#fff', padding: '5px 13px', borderRadius: 14, fontSize: 12, fontWeight: 600 }}>Add</span>
 }
 function AppIconGlyph() {
   return <div style={{ width: 34, height: 34, borderRadius: 9, background: 'var(--teal)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 16 }}>🌱</div>
@@ -44,6 +44,7 @@ function MenuGlyph() {
 export default function TrackerPage() {
   const intro = useReveal()
   const close = useReveal()
+  const example = useReveal()
   return (
     <main style={{ background: 'var(--cream)' }}>
       {/* Header */}
@@ -206,7 +207,7 @@ export default function TrackerPage() {
                   color: 'var(--ink)',
                 }}
               >
-                Memory is the <em style={{ color: 'var(--teal)' }}>first thing to go.</em>
+                What&apos;s helping? <em style={{ color: 'var(--teal)' }}>What isn&apos;t?</em>
               </h2>
             </div>
             <div>
@@ -219,9 +220,9 @@ export default function TrackerPage() {
                   margin: 0,
                 }}
               >
-                Every PANS parent has had this moment: three months into a new protocol the kid
-                is worse, and you genuinely cannot remember if it started before or after the
-                binder. Or the guanfacine bump. Or the move. Or the sibling&apos;s strep.
+                Track your child&apos;s symptoms: rage, OCD, food intake, constipation, sleep,
+                whatever you&apos;re watching. Two minutes a night. Log what changed that day,
+                too: a new supplement, a dose, a cold in the house.
               </p>
               <p
                 style={{
@@ -232,10 +233,9 @@ export default function TrackerPage() {
                   marginTop: 18,
                 }}
               >
-                You are running a clinical trial on your own child, with ten variables in play
-                and no lab notebook. The tracker is the notebook. Not for paperwork — for
-                signal. Six weeks of daily taps and the pattern becomes visible in a way no
-                memory can hold.
+                In a few weeks you can see what&apos;s working and what isn&apos;t, instead of
+                guessing. And when things get worse, Minta looks at the nights with you and helps
+                you troubleshoot what changed.
               </p>
               <p
                 className="serif"
@@ -257,8 +257,48 @@ export default function TrackerPage() {
         </div>
       </section>
 
+      {/* THE EXAMPLE — Rachel, Oct 28: the tracker page never showed what it
+          looks like, or why it works. Same phone as the homepage, with the
+          payoff spelled out. Illustrative, not a real child. */}
+      <div ref={example} className="tracker-show reveal">
+        <div className="tracker-in">
+          <div className="phone" aria-hidden="true">
+            <div className="phone-screen">
+              <p className="ph-date">Tonight &middot; Tue</p>
+              <p className="ph-title">How was today?</p>
+              {[
+                { k: 'Rage', v: 3, w: 30 },
+                { k: 'OCD', v: 4, w: 40 },
+                { k: 'Food', v: 6, w: 60 },
+                { k: 'Sleep', v: 7, w: 70 },
+              ].map((r, i) => (
+                <div key={r.k} className="ph-row">
+                  <span>{r.k}</span><b>{r.v}</b>
+                  <div className="ph-track"><i style={{ ['--w' as string]: `${r.w}%`, animationDelay: `${0.3 + i * 0.25}s` }} /></div>
+                </div>
+              ))}
+              <p className="ph-note">+ Started magnesium, 100 mg</p>
+              <div className="ph-spark">{[8, 7, 8, 7, 8, 6, 7, 5, 5, 4, 4, 3, 3, 3].map((h, i) => <span key={i} style={{ height: `${h * 10}%`, animationDelay: `${1.4 + i * 0.05}s` }} />)}</div>
+              <p className="ph-saved">Rage &middot; last 14 nights</p>
+            </div>
+          </div>
+          <div className="tracker-copy">
+            <p className="eyebrow" style={{ marginBottom: 14 }}>An example &middot; what it shows you</p>
+            <h2>Two minutes a night. <em>Then the pattern shows up.</em></h2>
+            <ul>
+              <li><b>Every night:</b> rate rage, OCD, food, sleep, constipation &mdash; whatever you&apos;re watching.</li>
+              <li><b>What changed that day:</b> a new supplement, a dose, a cold in the house.</li>
+              <li><b>Two weeks later:</b> rage drifted down from 8 to 3 after the magnesium started &mdash; and Minta points it out, so you know what to keep.</li>
+              <li><b>When it gets worse:</b> Minta looks back at the nights with you and helps you find what changed.</li>
+            </ul>
+            <p style={{ fontSize: 13, color: 'var(--sand-dark)', fontStyle: 'italic', margin: '0 0 22px' }}>An illustration, not a real child.</p>
+            <a href="#install" className="cta-teal">Put the tracker on your phone</a>
+          </div>
+        </div>
+      </div>
+
       {/* ADD TO PHONE — hand-held visual walkthrough */}
-      <section style={{ padding: 'clamp(56px, 7vw, 88px) 24px', background: 'var(--cream)', borderTop: '1px solid var(--rule)' }}>
+      <section id="install" style={{ padding: 'clamp(56px, 7vw, 88px) 24px', background: 'var(--cream)', borderTop: '1px solid var(--rule)', scrollMarginTop: 90 }}>
         <div className="pb-container" style={{ maxWidth: 680 }}>
           <p className="eyebrow" style={{ marginBottom: 16 }}>📱 Put it on your phone</p>
           <h2 className="serif" style={{ fontSize: 'clamp(26px, 4vw, 44px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--ink)', margin: '0 0 14px' }}>
@@ -334,7 +374,7 @@ export default function TrackerPage() {
           >
             When the protocols fail,
             <br />
-            <em style={{ color: 'var(--teal)' }}>this is your Plan B.</em>
+            <em style={{ color: 'var(--teal)' }}>this is your Plan B for PANS.</em>
           </h2>
           <a
             href="https://app.planbforpans.com/signup"

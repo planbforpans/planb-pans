@@ -8,10 +8,10 @@ export const metadata = {
   robots: { index: true, follow: true },
 }
 
-const ink = '#141414'
-const teal = '#1F6B6B'
-const soft = '#3a3a3a'
-const muted = '#8a8373'
+const ink = '#1F2424'
+const teal = '#2E6E70'
+const soft = '#505858'
+const muted = '#7C8585'
 const rule = '#d4cbb6'
 
 const h2: React.CSSProperties = {
@@ -75,7 +75,8 @@ export default function PrivacyPage() {
           <li style={li}><span style={strong}>Minta conversations</span> — the messages you exchange with the Minta AI assistant.</li>
           <li style={li}><span style={strong}>Synthesis and Direction inputs and outputs</span> — the records you provide for, and the documents produced by, these features.</li>
           <li style={li}><span style={strong}>Payment information</span> — handled by Stripe. We receive limited transaction details (such as that a payment succeeded and the last four digits/brand); <span style={strong}>we do not store full payment-card numbers.</span></li>
-          <li style={li}><span style={strong}>Usage and device information</span> — basic logs, device/browser information, and analytics used to operate and secure the Service. <span style={flag}>[Analytics/cookies actually used to be confirmed; cookie disclosure added if applicable.]</span></li>
+          <li style={li}><span style={strong}>Usage and device information</span> — basic logs and device/browser information used to operate and secure the Service.</li>
+          <li style={li}><span style={strong}>Advertising measurement, on our public website only</span> — <span style={strong}>planbforpans.com</span> uses Google Ads conversion measurement (a Google tag) so we can see whether our charitable advertising is reaching families. It records page views on that public site and whether someone went on to create an account. <span style={strong}>It is not installed on app.planbforpans.com</span>, where your child&apos;s record lives — no advertising or analytics tag runs on the pages that hold your child&apos;s labs, intake, Synthesis or Tracker. When an account is created, a single signal is sent that a sign-up happened; it carries no name, no diagnosis, and nothing about your child.</li>
         </ul>
 
         <h2 style={h2}>3 · How we use information</h2>
@@ -122,6 +123,7 @@ export default function PrivacyPage() {
           <li style={li}>We do <span style={strong}>not sell</span> your personal information.</li>
           <li style={li}>We do <span style={strong}>not share</span> your personal information with advertisers, data brokers, insurers, or schools without your explicit consent.</li>
           <li style={li}>We do <span style={strong}>not</span> use your child&apos;s identifiable health data for marketing or advertising.</li>
+          <li style={li}>We do <span style={strong}>not</span> place advertising or analytics tags on the pages that hold your child&apos;s record. Our conversion measurement runs only on the public marketing site and tells Google that a sign-up occurred &mdash; never who, never anything clinical.</li>
         </ul>
         <p style={p}>
           We share information only with the subprocessors listed above (to operate the Service), with your
@@ -231,7 +233,7 @@ function FinalizingBanner() {
         padding: '16px 20px',
         fontSize: 14,
         lineHeight: 1.7,
-        color: '#3a3a3a',
+        color: '#505858',
         fontWeight: 300,
       }}
     >
