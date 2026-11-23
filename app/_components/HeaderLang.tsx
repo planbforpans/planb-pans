@@ -7,7 +7,12 @@ import { getLang } from './AutoTranslate'
 // corner pill was easy to miss, so the menu carries the switch too.
 export default function HeaderLang() {
   const [lang, setLang] = useState<'en' | 'es'>('en')
-  useEffect(() => setLang(getLang()), [])
+  useEffect(() => {
+    const read = () => setLang(getLang())
+    read()
+    window.addEventListener('pb-lang', read)
+    return () => window.removeEventListener('pb-lang', read)
+  }, [])
   const next = lang === 'es' ? 'en' : 'es'
   const go = () => {
     try {
