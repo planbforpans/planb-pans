@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { Analytics } from '@vercel/analytics/next'
 import AutoTranslate from './_components/AutoTranslate'
+import HeaderLang from './_components/HeaderLang'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -97,6 +98,7 @@ gtag('config', 'AW-18556430921');`,
                 (Rachel: installing the tracker needs to be a link). Oct 13
                 overhaul: the two identical sign-up buttons became one. */}
             <nav className="site-nav">
+              <HeaderLang />
               <a href="/start" className="strong">Start Here</a>
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="strong">See a Synthesis</a>
               <a href="/minta">Meet Minta</a>
