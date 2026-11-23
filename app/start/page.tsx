@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import CaseReviewVoices from '../_components/CaseReviewVoices'
 
 // REWRITTEN 2 Oct 2026. The old /start taught people about PANS protocols —
 // antibiotics, panels, the Field Guide — and never once said what Plan B does
@@ -138,6 +139,7 @@ export default function StartHere() {
           </a>
         </div>
       </section>
+      <CaseReviewVoices />
     </main>
   )
 }

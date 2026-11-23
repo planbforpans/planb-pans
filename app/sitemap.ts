@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import fs from 'node:fs'
 import path from 'node:path'
+import { allProviders, outsideUS, statesWithProviders } from '@/lib/directory/data'
 
 const BASE = 'https://planbforpans.com'
 
@@ -20,6 +21,8 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: '/stories', priority: 0.7 },
   { path: '/case-studies', priority: 0.7 },
   { path: '/practitioners', priority: 0.7 },
+  { path: '/directory', priority: 0.9 },
+  { path: '/directory/review-policy', priority: 0.3 },
   { path: '/podcast', priority: 0.6 },
   // /minta-classes is password-gated — deliberately excluded from the sitemap.
   { path: '/donate', priority: 0.6 },
@@ -80,5 +83,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: HIGH_PRIORITY_HTML.has(file) ? 0.9 : 0.7,
   }))
 
-  return [...pageEntries, ...htmlEntries]
+  const directoryEntries: MetadataRoute.Sitemap = [
+    ...statesWithProviders().map((st) => ({ url: `${BASE}/directory/${st.slug}`, lastModified, changeFrequency: 'weekly' as const, priority: 0.8 })),
+    ...(outsideUS().length ? [{ url: `${BASE}/directory/international`, lastModified, changeFrequency: 'weekly' as const, priority: 0.6 }] : []),
+    ...allProviders.map((p) => ({ url: `${BASE}/directory/p/${p.slug}`, lastModified: new Date(p.lastVerified), changeFrequency: 'weekly' as const, priority: 0.6 })),
+  ]
+
+  return [...pageEntries, ...htmlEntries, ...directoryEntries]
 }

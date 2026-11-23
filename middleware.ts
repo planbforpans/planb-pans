@@ -4,7 +4,22 @@ import { NextRequest, NextResponse } from 'next/server'
 // HTTP Basic Auth: the browser shows its native password prompt and the page
 // content is only served after a correct password. Username can be anything.
 // Override the default by setting MINTA_CLASSES_PASSWORD in the environment.
+const TREE_HOSTS = new Set(['unheardtrees.org', 'www.unheardtrees.org', 'unheardtrees.com', 'www.unheardtrees.com', 'theunheardtreesproject.com', 'www.theunheardtreesproject.com'])
+
+const AUTISM_HOSTS = new Set(['planbforautism.com', 'www.planbforautism.com', 'planbforautism.org', 'www.planbforautism.org'])
+
 export function middleware(req: NextRequest) {
+  // The Unheard Trees (2026-11-19): its own site, served from this app.
+  const host = (req.headers.get('host') || '').toLowerCase()
+  if (TREE_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/unheard-trees', req.url))
+    return NextResponse.next()
+  }
+  if (AUTISM_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-autism', req.url))
+    return NextResponse.next()
+  }
+  if (!req.nextUrl.pathname.startsWith('/minta-classes')) return NextResponse.next()
   const expected = process.env.MINTA_CLASSES_PASSWORD || 'MintaLearns26'
   const auth = req.headers.get('authorization')
   if (auth) {
@@ -25,4 +40,4 @@ export function middleware(req: NextRequest) {
   })
 }
 
-export const config = { matcher: ['/minta-classes', '/minta-classes/:path*'] }
+export const config = { matcher: ['/', '/minta-classes', '/minta-classes/:path*'] }

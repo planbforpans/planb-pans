@@ -1,0 +1,175 @@
+import type { Metadata } from 'next'
+
+// Plan B for Autism (Rachel, 2026-11-19). Served at planbforautism.com/.org via middleware rewrite.
+// Same offer as every Plan B site (free Synthesis, Minta the troubleshooter, tracker, Case Review, app),
+// packaged for autism families. Language: autism and the body; never "cure", never the puzzle piece.
+export const metadata: Metadata = {
+  title: 'Plan B for Autism · Autism and the body',
+  description: 'Your child’s autism is real. So are the gut, the sleep, the infections and the inflammation that can make everything harder. Free help from Plan B, a nonprofit.',
+  alternates: { canonical: 'https://planbforautism.com' },
+}
+
+const APP = 'https://app.planbforpans.com'
+const FROM = 'autism'
+
+const css = `
+body:has(.pa) .site-header, body:has(.pa) > footer { display:none !important }
+body:has(.pa){ background:#F6F4F9 }
+.pa{ --ink:#1E2230; --dusk:#2F3E63; --dusk2:#43568A; --lilac:#C9C3E6; --peach:#F2C9A9; --paper:#F6F4F9; --rule:#DDD8EA;
+  color:var(--ink); font-family: var(--f-instrument), 'Instrument Sans', system-ui, sans-serif; font-size:17px; line-height:1.65 }
+.pa *{ box-sizing:border-box } .pa a{ color:inherit }
+.pa h1,.pa h2,.pa h3,.pa p,.pa li{ color:inherit }
+.pa .serif{ font-family: var(--f-bodoni), 'Bodoni Moda', Georgia, serif; font-weight:400 }
+.pa .mono{ font-family: var(--f-plex), 'IBM Plex Mono', monospace; letter-spacing:.2em; text-transform:uppercase; font-size:11.5px }
+.pa .wrap{ max-width:1080px; margin:0 auto; padding:0 20px }
+.pa .hero{ background: radial-gradient(ellipse 80% 70% at 80% 30%, #43568A 0%, #2F3E63 45%, #1F2946 100%); color:#F6F4F9; padding:26px 0 70px; position:relative; overflow:hidden }
+.pa .stars{ position:absolute; inset:0; background-image: radial-gradient(1.5px 1.5px at 12% 22%, #fff8, transparent), radial-gradient(1px 1px at 32% 70%, #fff7, transparent), radial-gradient(1.5px 1.5px at 58% 16%, #fff9, transparent), radial-gradient(1px 1px at 78% 62%, #fff6, transparent), radial-gradient(1.2px 1.2px at 90% 30%, #fff8, transparent), radial-gradient(1px 1px at 45% 40%, #fff5, transparent); opacity:.8 }
+.pa .top{ display:flex; justify-content:space-between; align-items:center; gap:12px; position:relative }
+.pa .brand{ font-family: var(--f-bodoni), Georgia, serif; font-size:24px; text-decoration:none }
+.pa .brand em{ color:var(--peach) }
+.pa .grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:30px; align-items:center; margin-top:46px; position:relative }
+.pa h1{ font-size:clamp(44px,7vw,84px); line-height:.98; margin:0 }
+.pa h1 em{ color:var(--peach) }
+.pa .lede{ font-size:clamp(18px,2.2vw,22px); line-height:1.5; color:#E3E1F0; margin:22px 0 28px; max-width:600px }
+.pa .girl{ width:100%; max-width:420px; justify-self:end; filter: drop-shadow(0 30px 60px rgba(10,14,30,.45)); opacity:0; animation: fade 1.4s .3s forwards }
+.pa .girl img{ width:100%; height:auto; filter: invert(1) sepia(.15) saturate(1.2) hue-rotate(200deg) brightness(1.02) }
+.pa .btns{ display:flex; flex-wrap:wrap; gap:12px }
+.pa .btn{ display:inline-block; padding:14px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:15px }
+.pa .btn.p{ background:var(--peach); color:#2A1E14 } .pa .btn.g{ border:1px solid rgba(246,244,249,.55); color:#F6F4F9 } .pa .btn.d{ background:var(--dusk); color:#fff }
+.pa section{ padding: clamp(60px,8vw,110px) 0 }
+.pa h2{ font-size:clamp(32px,4.6vw,54px); line-height:1.06; margin:10px 0 18px }
+.pa h2 em{ color:var(--dusk2) }
+.pa .minta{ background:#fff; border:1px solid var(--rule); border-radius:22px; padding:clamp(22px,4vw,40px); box-shadow:0 30px 70px -40px rgba(47,62,99,.45) }
+.pa .ask{ display:flex; gap:8px; margin-top:18px }
+.pa .ask input{ flex:1; min-width:0; font-size:17px; padding:15px 20px; border:1px solid #CFCADF; border-radius:999px; font-family:inherit }
+.pa .ask button{ border:0; border-radius:999px; background:var(--dusk); color:#fff; font-weight:600; padding:0 22px; font-size:15px; cursor:pointer }
+.pa .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px }
+.pa .chips a{ text-decoration:none; border:1px solid var(--rule); background:#F6F4F9; border-radius:999px; padding:8px 14px; font-size:13.5px }
+.pa .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; margin-top:22px }
+.pa .card{ background:#fff; border:1px solid var(--rule); border-radius:18px; padding:22px; text-decoration:none; display:block }
+.pa .card .k{ color:var(--dusk2) }
+.pa .card h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:24px; margin:8px 0 6px }
+.pa .card p{ margin:0; font-size:15.5px; color:#4A4E5E }
+.pa .signs{ columns:2 260px; column-gap:34px; margin-top:16px }
+.pa .signs li{ break-inside:avoid; margin:0 0 12px; padding-left:4px }
+.pa .band{ background:var(--dusk); color:#F6F4F9 }
+.pa .band h2 em{ color:var(--peach) }
+.pa .quote{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:clamp(22px,3vw,32px); line-height:1.35; max-width:820px }
+.pa .foot{ background:#141A2E; color:#B8BCD2; padding:44px 0; font-size:14.5px }
+.pa .foot a{ color:#E8E6F2 }
+.pa .fam{ display:flex; flex-wrap:wrap; gap:10px 18px; margin:14px 0 18px }
+@keyframes fade{ to{ opacity:1 } }
+@keyframes rise{ from{ opacity:0; transform:translateY(16px) } to{ opacity:1; transform:none } }
+.pa .r{ opacity:0; animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards } .pa .d1{animation-delay:.1s} .pa .d2{animation-delay:.35s} .pa .d3{animation-delay:.6s}
+@media (max-width:760px){ .pa .grid{ grid-template-columns:1fr } .pa .girl{ max-width:240px; justify-self:start; order:-1 } }
+@media (prefers-reduced-motion: reduce){ .pa .r,.pa .girl{ animation:none; opacity:1 } }
+`
+
+const IDEAS = [
+  'My autistic son suddenly started having rages after a cold. Why?',
+  'My daughter is constipated all the time and her behavior gets worse. Could they be connected?',
+  'He lost words he used to have after being sick. What should I ask the doctor?',
+  'Why is my child up at 2am every night?',
+]
+
+export default function PlanBForAutism() {
+  return (
+    <div className="pa">
+      <style dangerouslySetInnerHTML={{ __html: css }} />
+      <header className="hero">
+        <div className="stars" aria-hidden />
+        <div className="wrap top">
+          <a className="brand" href="/">Plan B <em>for Autism</em></a>
+          <a className="mono" href={`${APP}/sign-in`} style={{ textDecoration: 'none', color: '#E3E1F0' }}>Sign in</a>
+        </div>
+        <div className="wrap grid">
+          <div>
+            <p className="mono r d1" style={{ color: 'var(--lilac)', margin: '0 0 16px' }}>Autism and the body · free · a nonprofit</p>
+            <h1 className="serif r d2">Your child’s autism is real. <em>So is everything else.</em></h1>
+            <p className="lede r d3">The gut, the sleep, the infections, the inflammation, the sudden rages and lost words that nobody can explain. Plan B helps you read your child’s whole story, find what makes everything harder, and track what helps. Free.</p>
+            <div className="btns r d3">
+              <a className="btn p" href={`${APP}/ask?from=${FROM}`}>Ask Minta now</a>
+              <a className="btn g" href={`${APP}/signup?from=${FROM}`}>Start your child’s free Synthesis</a>
+            </div>
+          </div>
+          <div className="girl"><img src="/girl-silhouette.png" alt="" /></div>
+        </div>
+      </header>
+
+      <section>
+        <div className="wrap">
+          <div className="minta">
+            <p className="mono" style={{ color: 'var(--dusk2)', margin: 0 }}>Minta · your 2am troubleshooter</p>
+            <h2 className="serif" style={{ marginTop: 8 }}>Something changed tonight. <em>Ask Minta why.</em></h2>
+            <p style={{ maxWidth: 700, margin: 0 }}>Minta is Plan B’s AI, built for families like yours. Tell her what happened, a meltdown, a bad night, a new behavior, and she helps you think through what might be driving it and what to try or ask next. She gets sharper once she’s read your child’s records.</p>
+            <form className="ask" action={`${APP}/ask`} method="get">
+              <input type="hidden" name="from" value={FROM} />
+              <input name="q" placeholder="What’s going on with your child?" aria-label="Your question for Minta" />
+              <button type="submit">Ask</button>
+            </form>
+            <div className="chips">{IDEAS.map((q) => <a key={q} href={`${APP}/ask?from=${FROM}&q=${encodeURIComponent(q)}`}>{q}</a>)}</div>
+            <p style={{ fontSize: 12.5, color: '#6B6F80', margin: '12px 0 0' }}>Minta is an AI and can be wrong. Plan B is not a doctor and this isn’t medical advice. In an emergency, call 911 or 988.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <p className="mono" style={{ color: 'var(--dusk2)' }}>Signs worth a closer look</p>
+          <h2 className="serif">When it’s <em>more than</em> autism.</h2>
+          <p style={{ maxWidth: 760 }}>Many autistic children also carry something treatable in the body that makes everything harder. These are the patterns parents tell us about most:</p>
+          <ul className="signs">
+            <li><b>A sudden change</b>: rage, fear, rituals or tics that appeared fast, often after an illness</li>
+            <li><b>Lost words or skills</b> after being sick</li>
+            <li><b>Constipation</b> that never really goes away</li>
+            <li><b>Sleep</b> that falls apart, or 2am wakings</li>
+            <li><b>Food</b> narrowing to a few safe things, or new fears about eating</li>
+            <li><b>Flares</b> that come with colds, strep, a moldy building, or a season</li>
+            <li><b>A child who is better away from home</b>, on a trip or at grandma’s</li>
+            <li><b>Eczema, allergies or infections</b> that never quite clear</li>
+          </ul>
+        </div>
+      </section>
+
+      <section className="band">
+        <div className="wrap">
+          <p className="mono" style={{ color: 'var(--lilac)' }}>Everything is free</p>
+          <h2 className="serif">One family file. <em>Every tool.</em></h2>
+          <div className="cards">
+            <a className="card" href={`${APP}/signup?from=${FROM}`} style={{ color: 'var(--ink)' }}><span className="mono k">01 · Free</span><h3>Your child’s Synthesis</h3><p>Every lab and record, read together, so the clues line up. Questions and tests to bring to your doctor.</p></a>
+            <a className="card" href={`${APP}/ask?from=${FROM}`} style={{ color: 'var(--ink)' }}><span className="mono k">02 · Free</span><h3>Minta, any hour</h3><p>Your troubleshooter for the hard nights, built for these kids.</p></a>
+            <a className="card" href={`${APP}/signup?from=${FROM}&next=/tracker`} style={{ color: 'var(--ink)' }}><span className="mono k">03 · Free</span><h3>A one-minute tracker</h3><p>See what helps and what sets off a flare, on a chart you can show the doctor.</p></a>
+            <a className="card" href="https://planbforpans.com/app" style={{ color: 'var(--ink)' }}><span className="mono k">04 · Free</span><h3>Get the app</h3><p>Plan B on your phone, in the App Store and Google Play.</p></a>
+          </div>
+          <p style={{ marginTop: 22, color: '#D9D7E8' }}>Want a second set of eyes? <a href="https://planbforpans.com/case-review" style={{ color: 'var(--peach)' }}>A Case Review with Rachel</a> goes through your child’s whole story with you.</p>
+        </div>
+      </section>
+
+      <section>
+        <div className="wrap">
+          <p className="quote">“For the first time, every detail of my son’s history was considered together, rather than just the one sliver relevant to whichever specialist we happened to be seeing.”</p>
+          <p style={{ color: '#5A5E70' }}>E., Florida · after her Case Review</p>
+          <div className="btns" style={{ marginTop: 22 }}>
+            <a className="btn d" href={`${APP}/signup?from=${FROM}`}>Start free</a>
+            <a className="btn d" style={{ background: 'var(--dusk2)' }} href={`${APP}/join?src=${FROM}`}>Just keep me posted</a>
+          </div>
+        </div>
+      </section>
+
+      <footer className="foot">
+        <div className="wrap">
+          <p className="serif" style={{ fontSize: 24, color: '#F6F4F9', margin: '0 0 6px' }}>Plan B for Autism</p>
+          <p style={{ margin: 0 }}>Part of the Plan B family, from <a href="https://planbforpans.com">Plan B for PANS</a>, a Colorado nonprofit.</p>
+          <div className="fam">
+            <a href="https://planbforpans.com">Plan B for PANS</a>
+            <a href="https://askminta.org">Ask Minta</a>
+            <a href="https://unheardtrees.org">The Unheard Trees</a>
+            <a href="https://planbforpans.com/directory">Find a doctor</a>
+            <a href="https://planbforpans.com/donate">Donate</a>
+          </div>
+          <p style={{ margin: 0, fontSize: 13 }}>Educational information only; not medical advice. Plan B does not diagnose or treat. Always work with your child’s doctor.</p>
+        </div>
+      </footer>
+    </div>
+  )
+}

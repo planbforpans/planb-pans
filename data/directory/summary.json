@@ -1,0 +1,113 @@
+{
+  "runDate": "2026-11-15",
+  "totalProviders": 517,
+  "withNpi": 328,
+  "multiSourceProviders": 13,
+  "byKind": {
+    "practitioner": 195,
+    "physician": 179,
+    "researcher": 49,
+    "clinic": 21,
+    "nurse-practitioner": 73
+  },
+  "byState": {
+    "non-US/unknown": 75,
+    "CA": 49,
+    "NY": 36,
+    "TX": 33,
+    "FL": 32,
+    "MA": 23,
+    "AZ": 20,
+    "GA": 15,
+    "CT": 14,
+    "OH": 14,
+    "MD": 13,
+    "NC": 13,
+    "OR": 13,
+    "PA": 13,
+    "MI": 12,
+    "NJ": 12,
+    "VA": 12,
+    "WA": 12,
+    "CO": 10,
+    "MN": 10,
+    "IL": 9,
+    "UT": 7,
+    "IA": 6,
+    "WI": 6,
+    "IN": 5,
+    "KS": 5,
+    "MO": 5,
+    "NH": 5,
+    "TN": 5,
+    "AR": 4,
+    "DE": 4,
+    "OK": 4,
+    "SC": 4,
+    "VT": 3,
+    "NE": 2,
+    "RI": 2,
+    "AK": 1,
+    "AL": 1,
+    "ID": 1,
+    "LA": 1,
+    "ME": 1,
+    "MS": 1,
+    "MT": 1,
+    "ND": 1,
+    "NV": 1,
+    "SD": 1
+  },
+  "sources": {
+    "ppn": {
+      "label": "PANDAS Physicians Network directory (pandasppn.org)",
+      "status": "ok",
+      "records": 473
+    },
+    "pandasnetwork": {
+      "label": "PANDAS Network international providers (pandasnetwork.org)",
+      "status": "ok",
+      "records": 12
+    },
+    "aspire": {
+      "label": "ASPIRE find-a-provider (aspire.care)",
+      "status": "ok",
+      "records": 0,
+      "note": "ASPIRE provider list is distributed by email on request only; nothing public to scrape."
+    },
+    "neuroimmune": {
+      "label": "Neuroimmune Foundation clinician directory",
+      "status": "ok",
+      "records": 0,
+      "note": "Skipped: robots.txt disallows /patient-and-family-resources/clinician-directory/."
+    },
+    "clinicaltrials": {
+      "label": "ClinicalTrials.gov API v2",
+      "status": "ok",
+      "records": 17,
+      "studiesFetched": 24,
+      "relevantStudies": 20
+    },
+    "pubmed": {
+      "label": "PubMed E-utilities",
+      "status": "ok",
+      "records": 137,
+      "articles": 474,
+      "usAuthorCandidates": 597,
+      "keptCandidates": 137
+    }
+  },
+  "npi": {
+    "attempted": 514,
+    "matched": 340,
+    "ambiguous": 25,
+    "noMatch": 149,
+    "skipped": 69,
+    "errors": 0
+  },
+  "dropped": {
+    "signalWithoutNpi": 76,
+    "nonClinicalNpi": 2,
+    "npiCityNotInAffiliation": 9
+  }
+}

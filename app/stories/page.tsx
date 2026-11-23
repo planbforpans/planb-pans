@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import StoriesClient from './StoriesClient'
+import CaseReviewVoices from '../_components/CaseReviewVoices'
 
 export const metadata: Metadata = {
   title: 'Family Stories — Plan B for PANS',
@@ -8,5 +9,10 @@ export const metadata: Metadata = {
 }
 
 export default function Page() {
-  return <StoriesClient />
+  return (
+    <>
+      <StoriesClient />
+      <CaseReviewVoices />
+    </>
+  )
 }

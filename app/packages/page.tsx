@@ -19,6 +19,8 @@
 // Prices must stay in sync with /api/synthesis-checkout in planb-app.
 //
 
+import CaseReviewVoices from '../_components/CaseReviewVoices'
+
 export const metadata = {
   title: 'What it costs | Plan B for PANS',
   description:
@@ -288,6 +290,7 @@ export default function PricingPage() {
           </p>
         </div>
       </section>
+      <CaseReviewVoices />
     </main>
   )
 }

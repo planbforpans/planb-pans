@@ -100,6 +100,7 @@ gtag('config', 'AW-18556430921');`,
               <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="strong">See a Synthesis</a>
               <a href="/minta">Meet Minta</a>
               <a href="/daily-tracker#install">The Tracker</a>
+              <a href="/case-review">Book a Case Review</a>
               <Link href="/about">About</Link>
               <Link href="/donate">Donate</Link>
               <a href="https://app.planbforpans.com/sign-in" rel="noopener" className="quiet">Sign in</a>

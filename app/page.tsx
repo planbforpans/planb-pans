@@ -3,7 +3,8 @@
 import { useEffect, useRef, useState, Fragment } from 'react'
 import BucketSection from './_components/BucketSection'
 import { VOICES } from './_components/voices'
-import CaseReviewVoices from './_components/CaseReviewVoices'
+import CaseReviewVoices, { CaseReviewLong } from './_components/CaseReviewVoices'
+import WelcomeVideo from './_components/WelcomeVideo'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -24,6 +25,7 @@ export default function Home() {
 
   return (
     <main ref={revealRef} style={{ background: 'var(--cream)' }}>
+      <WelcomeVideo />
       {/* HERO — the cover (Oct 13 2026). Rachel: "lean more into Vogue",
           "black is too hard", "clean like Goop tied with medical vibes".
           A magazine cover: giant masthead, the child overlapping it the way a
@@ -84,48 +86,8 @@ export default function Home() {
         </div>
       </div>
 
-      {/* OUR MISSION — Rachel, 7 Nov 2026: "This is the heart and the mission
-          statement... put that everywhere." And: "Plan B for PANS is not a
-          business, it's a movement." Placed right after the hero so it is the
-          first thing a parent reads. */}
-      <section style={{ padding: 'clamp(56px,8vw,96px) 24px', background: 'var(--cream)' }}>
-        <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ fontSize: 12, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: 'var(--teal)', margin: '0 0 18px' }}>
-            Our mission
-          </p>
-          <p className="serif" style={{ fontSize: 'clamp(30px,5vw,52px)', lineHeight: 1.1, margin: '0 0 26px', color: 'var(--ink, #1d2422)' }}>
-            Plan B for PANS isn&apos;t a business. <em style={{ color: 'var(--teal)' }}>It&apos;s a movement.</em>
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            It starts with a simple tool: <strong>the daily tracker.</strong> Once a day, in about a minute, you rate how
-            your child is doing (the tics, the rages, the fears, sleep, eating, whatever matters for your child) and note
-            anything new: a fever, a new medicine, a different house. Over a few weeks it shows you what no single
-            appointment can: which symptoms move together, what a flare follows, and whether a treatment is actually working.
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            Then our AI does something no doctor&apos;s office can. It reads across every family who tracks: every win,
-            every setback, what helped and what made things worse. It learns from all of it, with no names attached, and
-            passes it on to the next family. The treatment that worked for one child becomes a lead for another. The one
-            that backfired becomes a warning. No family has to start from zero again.
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            So much about PANS and autism is still unknown. But every child who is tracked teaches us something. The more
-            of us who track, the faster we learn, and the more of us find our way out.
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 16px', color: '#3b4642' }}>
-            <strong>So track:</strong> for your child, for every child suffering right now, and for the children who come
-            after, so they never have to go through what ours did.
-          </p>
-          <p style={{ fontSize: 19, lineHeight: 1.7, margin: '0 0 26px', color: '#3b4642' }}>
-            It starts with you, and with your child, one day at a time.
-          </p>
-          <p className="serif" style={{ fontSize: 'clamp(21px,3vw,27px)', fontStyle: 'italic', color: 'var(--teal)', margin: 0, lineHeight: 1.4 }}>
-            Together, we&apos;ll find the way out.
-          </p>
-          <p style={{ fontSize: 15, color: '#6b7672', margin: '12px 0 0' }}>Rachel Johnson, founder</p>
-          <a href="/daily-tracker#install" className="cta-teal" style={{ display: 'inline-block', marginTop: 26 }}>Start your child&apos;s tracker →</a>
-        </div>
-      </section>
+      {/* Rachel, 2026-11-14 / 11-17: Case Review quotes, front and center, right under the hero. */}
+      <CaseReviewVoices dark />
 
       {/* HOW IT WORKS — Oct 13 2026 restructure. Rachel: "people are confused
           when they come to the site… we want to really push the tracker,
@@ -373,8 +335,8 @@ export default function Home() {
 
 
 
-      {/* Rachel, 2026-11-14: Case Review quotes, front and center. */}
-      <CaseReviewVoices dark />
+      {/* Rachel, 2026-11-17: "put more case reviews on the main webpage" — the full letter from one mother. */}
+      <CaseReviewLong />
 
       {/* Unsolicited family testimonials (anonymized) */}
       {/* PARENT VOICES — Oct 13 2026. Rachel: "pull up all the quotes from my
