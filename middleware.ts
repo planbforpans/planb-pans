@@ -8,6 +8,8 @@ const TREE_HOSTS = new Set(['unheardtrees.org', 'www.unheardtrees.org', 'unheard
 
 const AUTISM_HOSTS = new Set(['planbforautism.com', 'www.planbforautism.com', 'planbforautism.org', 'www.planbforautism.org'])
 
+const OCD_HOSTS = new Set(['planbforocd.com', 'www.planbforocd.com', 'planbforocd.org', 'www.planbforocd.org'])
+
 export function middleware(req: NextRequest) {
   // The Unheard Trees (2026-11-19): its own site, served from this app.
   const host = (req.headers.get('host') || '').toLowerCase()
@@ -17,6 +19,10 @@ export function middleware(req: NextRequest) {
   }
   if (AUTISM_HOSTS.has(host)) {
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-autism', req.url))
+    return NextResponse.next()
+  }
+  if (OCD_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-ocd', req.url))
     return NextResponse.next()
   }
   if (!req.nextUrl.pathname.startsWith('/minta-classes')) return NextResponse.next()
