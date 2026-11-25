@@ -35,6 +35,9 @@ export default function LearningHub() {
             <p className="lrn-lede" style={{ marginBottom: 14 }}>
               Plan B for PANS is a <strong>research engine run by parents.</strong> There is still so much nobody knows about PANS, PANDAS, autism and brain inflammation. Every family that tracks teaches us something, and the more of us who do it, the faster we all learn.
             </p>
+            <p className="lrn-lede" style={{ marginBottom: 14 }}>
+              Most autism research takes a snapshot. <strong>We follow children night by night:</strong> infections, the immune system, food, sleep and treatments. Every family that tracks helps us find what makes symptoms rise and fall, and the way out.
+            </p>
             <p className="lrn-lede">
               This is where we share it. <strong>One clue at a time</strong>, in plain words, with the tests to ask for and what has helped.
             </p>
