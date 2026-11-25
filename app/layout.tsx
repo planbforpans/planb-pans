@@ -280,6 +280,9 @@ gtag('config', 'AW-18556430921');`,
               <Link href="/research" style={{ color: 'var(--sand-dark)' }}>
                 Research
               </Link>
+              <Link href="/learning" style={{ color: 'var(--sand-dark)' }}>
+                What we&rsquo;re learning
+              </Link>
               {/* Podcast link removed 2026-10-07: Google for Nonprofits rejected
                   the Workspace application citing "primarily placeholder content
                   … specifically in the tab podcast (Coming Soon pages)". The page
