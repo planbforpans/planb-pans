@@ -197,6 +197,9 @@ export default function Home() {
               <li><b>Research</b> that helps the next family.</li>
             </ul>
             <a href="/daily-tracker#install" className="cta-teal">Put the tracker on your phone</a>
+            <p style={{ marginTop: 18 }}>
+              <a href="/learning" className="link-sweep" style={{ color: 'var(--ink)', fontSize: 14.5 }}>What we&rsquo;re learning from tracking &rarr;</a>
+            </p>
           </div>
         </div>
       </section>
