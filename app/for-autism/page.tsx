@@ -1,16 +1,21 @@
 import type { Metadata } from 'next'
+import HeaderLang from '../_components/HeaderLang'
 
 // Plan B for Autism (Rachel, 2026-11-19). Served at planbforautism.com/.org via middleware rewrite.
 // Same offer as every Plan B site (free Synthesis, Minta the troubleshooter, tracker, Case Review, app),
 // packaged for autism families. Language: autism and the body; never "cure", never the puzzle piece.
+const DESC = 'Your child’s autism is real. So are the gut, the sleep, the infections and the inflammation that can make everything harder. Free help from Plan B, a nonprofit that follows children night by night.'
 export const metadata: Metadata = {
   title: 'Plan B for Autism · Autism and the body',
-  description: 'Your child’s autism is real. So are the gut, the sleep, the infections and the inflammation that can make everything harder. Free help from Plan B, a nonprofit.',
-  alternates: { canonical: 'https://planbforautism.com' },
+  description: DESC,
+  alternates: { canonical: 'https://planbforpans.com/for-autism' },
+  openGraph: { title: 'Plan B for Autism', description: DESC, url: 'https://planbforpans.com/for-autism', siteName: 'Plan B for Autism', type: 'website' },
+  twitter: { card: 'summary_large_image', title: 'Plan B for Autism', description: DESC },
 }
 
 const APP = 'https://app.planbforpans.com'
 const FROM = 'autism'
+const BEHAVIORS = 'https://planbforpans.com/learning/behaviors-are-a-clue'
 
 const css = `
 body:has(.pa) .site-header, body:has(.pa) > footer { display:none !important }
@@ -55,9 +60,37 @@ body:has(.pa){ background:#F6F4F9 }
 .pa .band{ background:var(--dusk); color:#F6F4F9 }
 .pa .band h2 em{ color:var(--peach) }
 .pa .quote{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:clamp(22px,3vw,32px); line-height:1.35; max-width:820px }
-.pa .foot{ background:#141A2E; color:#B8BCD2; padding:44px 0; font-size:14.5px }
+.pa .foot{ background:#141A2E; color:#B8BCD2; padding:44px 0 88px; font-size:14.5px }
 .pa .foot a{ color:#E8E6F2 }
 .pa .fam{ display:flex; flex-wrap:wrap; gap:10px 18px; margin:14px 0 18px }
+.pa{ overflow-x:hidden }
+.pa .grid > *{ min-width:0 }
+.pa .topr{ display:flex; gap:10px; align-items:center }
+.pa .topr a, .pa .topr .nav-lang{ min-height:44px; display:inline-flex; align-items:center; text-decoration:none; color:#E3E1F0 }
+.pa .topr .nav-lang{ padding:0 14px; font-family: var(--f-plex), monospace; letter-spacing:.1em; font-size:12px; text-transform:uppercase }
+.pa .brand{ min-height:44px; display:inline-flex; align-items:center }
+.pa .btn{ min-height:48px; display:inline-flex; align-items:center }
+.pa .chips a{ min-height:44px; display:inline-flex; align-items:center }
+.pa .foot a{ min-height:44px; display:inline-flex; align-items:center }
+.pa .manifesto{ background:linear-gradient(180deg,#1F2946 0%, #2F3E63 100%); color:#F6F4F9; padding-top:clamp(40px,6vw,80px) }
+.pa .belief{ font-family: var(--f-bodoni), Georgia, serif; font-size:clamp(26px,3.6vw,44px); line-height:1.22; margin:14px 0 0; max-width:900px }
+.pa .belief em{ color:var(--peach) }
+.pa .sig{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:24px; color:var(--peach); margin:22px 0 0 }
+.pa .research{ border-top:1px solid rgba(201,195,230,.3); margin-top:44px; padding-top:30px; display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start; max-width:900px }
+.pa .research p{ margin:0; font-size:clamp(18px,2vw,21px); color:#E3E1F0 }
+.pa .ages{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:26px 0 }
+.pa .age{ border-radius:18px; padding:24px; border:1px solid var(--rule); background:#fff }
+.pa .age.young{ background:#EEEBF7 }
+.pa .age h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:28px; margin:6px 0 6px }
+.pa .age p{ margin:0; font-size:15.5px; color:#4A4E5E }
+.pa .cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:16px; margin-top:16px }
+.pa .col{ background:#fff; border:1px solid var(--rule); border-radius:18px; padding:22px }
+.pa .col h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:24px; margin:6px 0 10px }
+.pa .col ul{ margin:0; padding-left:18px; font-size:15.5px } .pa .col li{ margin-bottom:8px }
+.pa .frame{ border-left:3px solid var(--peach); padding:4px 0 4px 16px; font-style:italic; color:#4A4E5E; margin:24px 0 0 }
+.pa .teaser{ display:flex; justify-content:space-between; gap:20px; align-items:center; border:1px solid var(--rule); border-radius:18px; padding:26px; background:#fff; text-decoration:none; margin-top:18px }
+.pa .clue{ font-family: var(--f-bodoni), Georgia, serif; font-size:clamp(20px,2.4vw,26px); line-height:1.3; margin:0 0 6px }
+@media (max-width:760px){ .pa .ages{ grid-template-columns:1fr } .pa .research{ grid-template-columns:1fr; gap:8px } }
 @keyframes fade{ to{ opacity:1 } }
 @keyframes rise{ from{ opacity:0; transform:translateY(16px) } to{ opacity:1; transform:none } }
 .pa .r{ opacity:0; animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards } .pa .d1{animation-delay:.1s} .pa .d2{animation-delay:.35s} .pa .d3{animation-delay:.6s}
@@ -79,8 +112,11 @@ export default function PlanBForAutism() {
       <header className="hero">
         <div className="stars" aria-hidden />
         <div className="wrap top">
-          <a className="brand" href="/">Plan B <em>for Autism</em></a>
-          <a className="mono" href={`${APP}/sign-in`} style={{ textDecoration: 'none', color: '#E3E1F0' }}>Sign in</a>
+          <a className="brand" href="/for-autism">Plan B&nbsp;<em>for Autism</em></a>
+          <div className="topr mono">
+            <HeaderLang />
+            <a href={`${APP}/sign-in`}>Sign in</a>
+          </div>
         </div>
         <div className="wrap grid">
           <div>
@@ -95,6 +131,24 @@ export default function PlanBForAutism() {
           <div className="girl"><img src="/girl-silhouette.png" alt="" /></div>
         </div>
       </header>
+
+      <section className="manifesto">
+        <div className="wrap">
+          <p className="mono" style={{ color: 'var(--lilac)', margin: 0 }}>What we believe</p>
+          <blockquote style={{ margin: 0 }}>
+            <p className="belief">Autism is not a chronic condition. It’s a name to describe things we don’t understand. <em>We think that PANS/PANDAS start when the immune system is older and autism hits when it’s younger.</em> Plan B suspects both are fixable and we are dedicated to figuring out a way out for all children.</p>
+            <p className="sig">— Rachel</p>
+            <p style={{ margin: '4px 0 0', fontSize: 14, color: 'var(--lilac)' }}>Founder of Plan B, and a mother who has walked this road</p>
+          </blockquote>
+          <div className="research">
+            <p className="mono" style={{ color: 'var(--peach)', fontSize: 11.5, paddingTop: 6 }}>Our research</p>
+            <p>Most autism research takes a snapshot. We follow children night by night: infections, the immune system, food, sleep and treatments. Every family that tracks helps us find what makes symptoms rise and fall, and the way out.</p>
+          </div>
+          <div className="btns" style={{ marginTop: 28 }}>
+            <a className="btn p" href={`${APP}/signup?from=${FROM}&next=/tracker`}>Start tracking, free</a>
+          </div>
+        </div>
+      </section>
 
       <section>
         <div className="wrap">
@@ -131,6 +185,38 @@ export default function PlanBForAutism() {
         </div>
       </section>
 
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <p className="mono" style={{ color: 'var(--dusk2)' }}>Autism and the immune system</p>
+          <h2 className="serif">One story, <em>at different ages.</em></h2>
+          <p style={{ maxWidth: 780 }}>Here is what we think, and what we are testing with every family who tracks. An infection or an immune hit can change how a child’s brain works. What it looks like may depend on how old the immune system is when it lands.</p>
+          <div className="ages">
+            <div className="age"><span className="mono" style={{ color: 'var(--dusk2)' }}>An older immune system</span><h3>It can look like PANS</h3><p>A child who was doing fine, then overnight: OCD, rage, fear, food refusal. Parents can often name the week it started.</p></div>
+            <div className="age young"><span className="mono" style={{ color: 'var(--dusk2)' }}>A younger immune system</span><h3>It can look like autism</h3><p>The hit lands while the immune system and the brain are still being built. The change is slower, earlier and harder to date, so it gets a different name.</p></div>
+          </div>
+          <div className="cols">
+            <div className="col"><span className="mono" style={{ color: 'var(--dusk2)' }}>What families track</span><h3>One minute a night</h3><ul><li>Meltdowns, sleep, words and eye contact</li><li>Bowel movements and food</li><li>Colds, coughs, fevers, anyone sick at home</li><li>Every treatment, and the day it started</li></ul></div>
+            <div className="col"><span className="mono" style={{ color: 'var(--dusk2)' }}>The clues</span><h3>What we look at</h3><ul><li><b>Infections</b>: strep, Mycoplasma, viruses, tick-borne</li><li><b>Immune labs</b>: can the body make antibodies and clear a bug?</li><li><b>Mold</b> at home or school</li><li><b>The gut</b>: constipation, yeast</li><li><b>Blood sugar</b> swings behind meltdowns</li></ul></div>
+            <div className="col"><span className="mono" style={{ color: 'var(--dusk2)' }}>The tests that sort kids</span><h3>What to ask for</h3><ul><li><b>The swab set</b>: strep PCR throat swab and a Mycoplasma PCR, for your child and everyone at home</li><li><b>Pneumococcal titers + immunoglobulins</b> (IgG, IgA, IgM, IgG subclasses): does the immune system answer?</li><li><b>Glucose during a meltdown</b>: a home meter, checked in the moment</li><li><b>FRAT</b>, the folate receptor antibody test, when speech stalled or slipped</li></ul></div>
+          </div>
+          <p className="frame">Clues to test, not a diagnosis. We update when the data says otherwise. We’re not doctors: everything here is made to take to yours.</p>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <p className="mono" style={{ color: 'var(--dusk2)' }}>Behaviors are a clue</p>
+          <h2 className="serif">What the behavior <em>is pointing at.</em></h2>
+          <p className="clue">Sudden OCD after a sore throat: think strep.</p>
+          <p className="clue">Rage with nightmares or urinary urgency: think Bartonella.</p>
+          <p className="clue">Meltdowns after hunger, exercise or sweets: think blood-sugar swings.</p>
+          <a className="teaser" href={BEHAVIORS}>
+            <span><span className="mono" style={{ color: 'var(--dusk2)' }}>Read the guide</span><br /><span className="serif" style={{ fontSize: 26 }}>Behaviors are a clue: rage, food refusal, tics, sleep and more</span></span>
+            <span aria-hidden style={{ fontSize: 28 }}>→</span>
+          </a>
+        </div>
+      </section>
+
       <section className="band">
         <div className="wrap">
           <p className="mono" style={{ color: 'var(--lilac)' }}>Everything is free</p>
@@ -162,6 +248,8 @@ export default function PlanBForAutism() {
           <p style={{ margin: 0 }}>Part of the Plan B family, from <a href="https://planbforpans.com">Plan B for PANS</a>, a Colorado nonprofit.</p>
           <div className="fam">
             <a href="https://planbforpans.com">Plan B for PANS</a>
+            <a href="https://planbforpans.com/for-autism">Plan B for Autism</a>
+            <a href="https://planbforpans.com/for-ocd">Plan B for OCD</a>
             <a href="https://askminta.org">Ask Minta</a>
             <a href="https://unheardtrees.org">The Unheard Trees</a>
             <a href="https://planbforpans.com/directory">Find a doctor</a>
