@@ -843,7 +843,7 @@ body { background: #fff; }
 html:not([lang="en"]) body { overflow-wrap: break-word; }
 html[lang="de"] body { -webkit-hyphens: auto; hyphens: auto; }
 html[lang="ja"] body, html[lang="zh-Hans"] body { line-break: strict; }
-html[lang="ja"] :is(em, i), html[lang="zh-Hans"] :is(em, i) { font-style: normal; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="ar"]) body * { font-style: normal !important; }
 
 /* Arabic, right to left. */
 html[lang="ar"] {
