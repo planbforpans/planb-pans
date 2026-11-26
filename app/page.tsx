@@ -6,6 +6,7 @@ import { VOICES } from './_components/voices'
 import CaseReviewVoices, { CaseReviewLong } from './_components/CaseReviewVoices'
 import WelcomeVideo from './_components/WelcomeVideo'
 import CarePath from './_components/CarePath'
+import Manifesto from './_components/Manifesto'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -166,6 +167,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* WE ARE THE RESEARCH — closing statement right after the care path (Rachel, 2026-11-26). */}
+      <Manifesto fig="Fig. 03" />
 
       {/* THE TRACKER — shown, not described. */}
       <section className="tracker-show reveal">
