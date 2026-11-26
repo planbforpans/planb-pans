@@ -1,7 +1,7 @@
 'use client'
 
-import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { LANGS, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } from '@/lib/languages'
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from 'react'
+import { LANGS, REQUEST_COPY, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } from '@/lib/languages'
 
 // The language chooser, on every page. English and Español first (2026-11-21);
 // French, German, Portuguese, Italian, Chinese (Simplified and Traditional),
@@ -169,12 +169,95 @@ const SHEET_CSS = `
 .pbl-opt:focus-visible,.pbl-x:focus-visible,.pbl-keep:focus-visible{outline:3px solid #F2B04A;outline-offset:2px}
 .pbl-keep{margin-top:12px;width:100%;min-height:52px;border:0;border-radius:14px;background:#F1F5F4;color:#1F2424;font-size:16px;font-weight:600;cursor:pointer}
 .pbl-note{margin:12px 2px 0;font-size:12px;color:#5B6766;text-align:center}
+.pbl-ask{display:block;margin:14px auto 0;min-height:44px;padding:8px 12px;border:0;background:none;color:${TEAL};font-size:15px;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.pbl-form{display:grid;gap:12px;margin-top:6px}
+.pbl-form label{display:grid;gap:5px;font-size:14px;font-weight:600;color:#3A4545}
+.pbl-form input,.pbl-form textarea{box-sizing:border-box;width:100%;min-height:48px;padding:10px 12px;border:1.5px solid #CFDCDA;border-radius:12px;background:#fff;color:#1F2424;font:inherit;font-size:16px;font-weight:400}
+.pbl-form textarea{min-height:76px;resize:vertical}
+.pbl-form input:focus,.pbl-form textarea:focus{outline:3px solid #F2B04A;outline-offset:1px;border-color:${TEAL}}
+.pbl-send{min-height:52px;border:0;border-radius:14px;background:${TEAL};color:#fff;font-size:17px;font-weight:700;cursor:pointer}
+.pbl-send[disabled]{opacity:.6;cursor:default}
+.pbl-hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.pbl-thanks{margin:18px 4px 6px;font-size:18px;line-height:1.45;font-weight:600;text-align:center;color:${TEAL}}
+.pbl-err{margin:0;font-size:14px;color:#8A2D1F}
+.pbl-ask:focus-visible,.pbl-send:focus-visible{outline:3px solid #F2B04A;outline-offset:2px}
 @media (min-width:640px){.pbl-backdrop{align-items:center;padding:24px}.pbl-sheet{border-radius:22px;padding:18px 22px 22px}.pbl-grab{display:none}}
 @media (max-width:340px){.pbl-opt{font-size:15px}}
 @keyframes pbl-up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
 @keyframes pbl-fade{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.pbl-backdrop,.pbl-sheet{animation:none}}
 `
+
+// "Don't see your language? Ask for it": straight to Rachel. The app's
+// /api/language-requests emails her and logs it for app /admin/languages; it
+// only accepts planbforpans.com, so the link shows only there (and on localhost).
+// Nobody is emailed back automatically.
+const REQUEST_URL = 'https://app.planbforpans.com/api/language-requests'
+const canAsk = () => /(^|\.)planbforpans\.com$|^localhost$/.test(window.location.hostname)
+function LanguageRequestForm({ ui, onBack }: { ui: Lang; onBack: () => void }) {
+  const t = REQUEST_COPY[ui]
+  const opened = useRef(0)
+  const first = useRef<HTMLInputElement>(null)
+  const [state, setState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
+  useEffect(() => {
+    opened.current = Date.now()
+    first.current?.focus()
+  }, [])
+  const submit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const f = new FormData(e.currentTarget)
+    const get = (k: string) => String(f.get(k) || '').trim()
+    if (!get('language')) return
+    setState('sending')
+    try {
+      const r = await fetch(REQUEST_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ language: get('language'), email: get('email'), country: get('country'), note: get('note'), website: get('website'), ui_lang: ui, page: window.location.pathname, ms: Date.now() - opened.current }),
+      })
+      setState(r.ok ? 'sent' : 'error')
+    } catch {
+      setState('error')
+    }
+  }
+  if (state === 'sent') {
+    return (
+      <>
+        <p className="pbl-thanks" role="status">{t.thanks}</p>
+        <button type="button" className="pbl-keep" onClick={onBack}>{t.back}</button>
+      </>
+    )
+  }
+  return (
+    <form className="pbl-form" onSubmit={submit} noValidate>
+      <label>
+        {t.language}
+        <input ref={first} name="language" required maxLength={60} autoComplete="off" />
+      </label>
+      <label>
+        {t.email}
+        <input name="email" type="email" inputMode="email" maxLength={200} autoComplete="email" dir="ltr" />
+      </label>
+      <label>
+        {t.country}
+        <input name="country" maxLength={80} autoComplete="country-name" />
+      </label>
+      <label>
+        {t.note}
+        <textarea name="note" maxLength={1000} rows={2} />
+      </label>
+      <div className="pbl-hp" aria-hidden>
+        <label>
+          Website
+          <input name="website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+      {state === 'error' && <p className="pbl-err" role="alert">{t.error}</p>}
+      <button type="submit" className="pbl-send" disabled={state === 'sending'}>{state === 'sending' ? t.sending : t.send}</button>
+      <button type="button" className="pbl-keep" style={{ marginTop: 0 }} onClick={onBack}>{t.back}</button>
+    </form>
+  )
+}
 
 function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang; suggested: Lang; first: boolean; onPick: (l: Lang) => void; onClose: () => void }) {
   const sheet = useRef<HTMLDivElement>(null)
@@ -183,6 +266,7 @@ function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang
     close.current = onClose
   })
   const head = langInfo(first ? suggested : current)
+  const [asking, setAsking] = useState(false)
   useEffect(() => {
     const before = document.activeElement as HTMLElement | null
     const overflow = document.body.style.overflow
@@ -195,7 +279,7 @@ function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang
         e.preventDefault()
         close.current()
       } else if (e.key === 'Tab' && sheet.current) {
-        const f = Array.from(sheet.current.querySelectorAll<HTMLElement>('button'))
+        const f = Array.from(sheet.current.querySelectorAll<HTMLElement>('button, input:not([tabindex="-1"]), textarea'))
         if (!f.length) return
         const i = f.indexOf(document.activeElement as HTMLElement)
         if (e.shiftKey && i <= 0) {
@@ -229,9 +313,13 @@ function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang
       >
         <div className="pbl-grab" aria-hidden />
         <div className="pbl-top">
-          <h2 id="pbl-title" className="pbl-title">{head.choose}</h2>
+          <h2 id="pbl-title" className="pbl-title">{asking ? REQUEST_COPY[head.code].title : head.choose}</h2>
           <button type="button" className="pbl-x" onClick={onClose} aria-label="Close">✕</button>
         </div>
+        {asking ? (
+          <LanguageRequestForm ui={head.code} onBack={() => setAsking(false)} />
+        ) : (
+        <>
         <p className="pbl-also">
           {LANGS.filter((l) => l.code !== head.code).map((l) => (
             <span key={l.code} lang={l.code} dir={l.dir}>{l.choose}</span>
@@ -259,6 +347,13 @@ function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang
           </button>
         )}
         {head.note && <p className="pbl-note">{head.note}</p>}
+        {canAsk() && (
+          <button type="button" className="pbl-ask" onClick={() => setAsking(true)}>
+            {REQUEST_COPY[head.code].ask}
+          </button>
+        )}
+        </>
+        )}
       </div>
     </div>
   )

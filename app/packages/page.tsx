@@ -20,6 +20,7 @@
 //
 
 import CaseReviewVoices from '../_components/CaseReviewVoices'
+import CaseReviewLanguageNote from '../_components/CaseReviewLanguageNote'
 
 export const metadata = {
   title: 'What it costs | Plan B for PANS',
@@ -155,6 +156,7 @@ export default function PricingPage() {
                     See exactly what you get, with real examples &rarr;
                   </a>
                 )}
+                {t.name === 'The Case Review' && <CaseReviewLanguageNote style={{ fontSize: 13.5 }} />}
               </div>
             ))}
           </div>
