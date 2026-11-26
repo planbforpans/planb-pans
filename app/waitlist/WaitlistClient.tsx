@@ -128,7 +128,7 @@ export default function WaitlistPage() {
               marginTop: 36,
               background: 'var(--cream-light)',
               border: '1px solid var(--rule)',
-              borderLeft: '3px solid var(--teal)',
+              borderInlineStart: '3px solid var(--teal)',
               borderRadius: 8,
               padding: 'clamp(22px, 3vw, 30px)',
             }}

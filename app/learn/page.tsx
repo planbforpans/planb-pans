@@ -268,7 +268,7 @@ export default function LearnPage() {
 
       <section style={{ padding: 'clamp(24px, 4vw, 40px) 24px 0' }}>
         <div className="pb-container" style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 12, padding: 'clamp(20px, 4vw, 30px)' }}>
+          <div style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderInlineStart: `4px solid ${teal}`, borderRadius: 12, padding: 'clamp(20px, 4vw, 30px)' }}>
             <p style={{ color: teal, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 14px' }}>A note from Rachel &mdash; before you scroll</p>
             <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 12px' }}>This map took me <strong style={{ color: ink }}>two years</strong> to understand. <strong style={{ color: ink }}>You don&rsquo;t have to.</strong> Plan B for PANS already knows it &mdash; better than any human ever will.</p>
             <p style={{ fontSize: 16.5, lineHeight: 1.72, color: soft, margin: '0 0 12px' }}>So if this page tightens your chest or makes you want to close the laptop &mdash; <strong style={{ color: ink }}>do it. That&rsquo;s allowed.</strong> Let Minta do the work; that&rsquo;s exactly what she&rsquo;s for.</p>

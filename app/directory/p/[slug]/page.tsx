@@ -85,7 +85,7 @@ export default async function ProviderPage({ params }: { params: Promise<{ slug:
           <aside>
             <div className={s.panel}>
               <p className={s.sectionLabel}>Where this listing comes from</p>
-              <ul style={{ margin: 0, paddingLeft: 18, fontSize: 14.5, lineHeight: 1.7 }}>
+              <ul style={{ margin: 0, paddingInlineStart: 18, fontSize: 14.5, lineHeight: 1.7 }}>
                 {p.sources.map((src) => (
                   <li key={src.url}>
                     <a href={src.url} rel="nofollow noopener" target="_blank" style={{ color: 'var(--teal)' }}>{src.name}</a>

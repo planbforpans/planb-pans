@@ -45,7 +45,7 @@ function TestCard({ num, name, subtitle, rows, warn }: TestCardProps) {
           lineHeight: 1.15,
           color: 'var(--ink)',
           marginBottom: 6,
-          paddingRight: 90,
+          paddingInlineEnd: 90,
         }}
       >
         {name}
@@ -93,7 +93,7 @@ function TestCard({ num, name, subtitle, rows, warn }: TestCardProps) {
         <div
           style={{
             background: 'rgba(31,107,107, 0.06)',
-            borderLeft: '3px solid var(--teal)',
+            borderInlineStart: '3px solid var(--teal)',
             padding: '12px 16px',
             marginTop: 14,
             fontSize: 14,
@@ -432,7 +432,7 @@ export default function TestsPage() {
             direction with a why behind every step</strong>, not a pile of disconnected numbers no one
             connected.
           </p>
-          <p className="serif" style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', fontSize: 'clamp(19px, 2.3vw, 25px)', lineHeight: 1.45, color: 'var(--ink)', maxWidth: 640, margin: '8px 0 0', paddingLeft: 16, borderLeft: '2px solid var(--teal)' }}>
+          <p className="serif" style={{ fontFamily: 'var(--font-cormorant)', fontStyle: 'italic', fontSize: 'clamp(19px, 2.3vw, 25px)', lineHeight: 1.45, color: 'var(--ink)', maxWidth: 640, margin: '8px 0 0', paddingInlineStart: 16, borderInlineStart: '2px solid var(--teal)' }}>
             You don&apos;t need all of these at once. Start with a few, upload them, and let Minta lead
             you out.
           </p>
@@ -1064,15 +1064,15 @@ export default function TestsPage() {
               All three read the same DNA. The difference is <strong>curation, cost, and who orders it</strong> — not the underlying genes.
             </p>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 12 }}>
-              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingLeft: 18, position: 'relative' }}>
+              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingInlineStart: 18, position: 'relative' }}>
                 <span style={{ position: 'absolute', left: 0, color: 'var(--teal)' }}>›</span>
                 <strong style={{ color: 'var(--ink)' }}>Start: 23andMe / AncestryDNA → StrateGene (~$100, DIY).</strong> Covers the major methylation SNPs. Right for almost everyone, first. You rarely need more.
               </li>
-              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingLeft: 18, position: 'relative' }}>
+              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingInlineStart: 18, position: 'relative' }}>
                 <span style={{ position: 'absolute', left: 0, color: 'var(--teal)' }}>›</span>
                 <strong style={{ color: 'var(--ink)' }}>Step up: Yasko panel (~$495).</strong> When you want a curated interpretation <em>and</em> a ready protocol, and you&rsquo;re working the methylation/detox angle. Just know it&rsquo;s tied to her supplements.
               </li>
-              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingLeft: 18, position: 'relative' }}>
+              <li style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', paddingInlineStart: 18, position: 'relative' }}>
                 <span style={{ position: 'absolute', left: 0, color: 'var(--teal)' }}>›</span>
                 <strong style={{ color: 'var(--ink)' }}>Clinical: IntellxxDNA / GX Sciences (~$500–700, practitioner).</strong> When a practitioner is steering treatment off the results and wants clinical-grade annotation.
               </li>
@@ -1137,8 +1137,8 @@ export default function TestsPage() {
                 fontSize: 'clamp(18px, 2vw, 22px)',
                 lineHeight: 1.5,
                 color: 'var(--ink)',
-                paddingLeft: 16,
-                borderLeft: '2px solid var(--teal-light)',
+                paddingInlineStart: 16,
+                borderInlineStart: '2px solid var(--teal-light)',
                 marginBottom: 16,
               }}
             >

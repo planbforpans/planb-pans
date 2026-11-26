@@ -30,7 +30,7 @@ const item: React.CSSProperties = {
   lineHeight: 1.6,
   color: 'var(--ink-soft)',
   fontWeight: 300,
-  paddingLeft: 20,
+  paddingInlineStart: 20,
   position: 'relative',
 }
 
@@ -130,7 +130,7 @@ export default function WhyBoth() {
             marginTop: 28,
             background: 'var(--cream-light)',
             border: '1px solid var(--rule)',
-            borderLeft: '3px solid var(--teal)',
+            borderInlineStart: '3px solid var(--teal)',
             borderRadius: 8,
             padding: 'clamp(26px, 3.4vw, 40px)',
           }}

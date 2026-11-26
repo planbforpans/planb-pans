@@ -294,8 +294,8 @@ export default function ResearchSection() {
                 margin: '28px 0 0',
                 fontWeight: 400,
                 lineHeight: 1.3,
-                borderLeft: '3px solid var(--teal)',
-                paddingLeft: 20,
+                borderInlineStart: '3px solid var(--teal)',
+                paddingInlineStart: 20,
               }}
             >
               Private data.{' '}

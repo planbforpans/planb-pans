@@ -125,7 +125,7 @@ function SynthesisDoc() {
         ].map(([name, lk, test, yes, no]) => (
           <div key={name} style={{ background: 'var(--cream-light, #F5F7F6)', borderRadius: 6, padding: '8px 10px', fontSize: 11.5, lineHeight: 1.45 }}>
             <div style={{ fontWeight: 600, color: 'var(--ink)' }}>
-              {name} <span style={{ ...mono, fontSize: 8.5, color: 'var(--teal)', marginLeft: 4 }}>{lk}</span>
+              {name} <span style={{ ...mono, fontSize: 8.5, color: 'var(--teal)', marginInlineStart: 4 }}>{lk}</span>
             </div>
             <div style={{ color: 'var(--ink-soft)' }}>
               <em>The test:</em> {test} · {yes} · {no}
@@ -135,7 +135,7 @@ function SynthesisDoc() {
       </div>
 
       {/* Priority */}
-      <div style={{ background: 'var(--cream-light, #F5F7F6)', borderLeft: '3px solid var(--teal)', borderRadius: '0 6px 6px 0', padding: '12px 14px', marginBottom: 14 }}>
+      <div style={{ background: 'var(--cream-light, #F5F7F6)', borderInlineStart: '3px solid var(--teal)', borderRadius: '0 6px 6px 0', padding: '12px 14px', marginBottom: 14 }}>
         <p style={{ ...mono, color: 'var(--teal)', fontSize: 9, margin: '0 0 4px' }}>Do this first</p>
         <p style={{ fontSize: 12, lineHeight: 1.5, color: 'var(--ink)', margin: 0 }}>
           Confirm the immune picture before any more killing. Drainage + cofactors come before
@@ -189,7 +189,7 @@ function TestsToOrder() {
 }
 
 function SupplementCalendar() {
-  const th: React.CSSProperties = { ...mono, fontSize: 9, color: 'var(--cream)', background: 'var(--teal)', padding: '6px 8px', textAlign: 'left' }
+  const th: React.CSSProperties = { ...mono, fontSize: 9, color: 'var(--cream)', background: 'var(--teal)', padding: '6px 8px', textAlign: 'start' }
   const td: React.CSSProperties = { padding: '7px 8px', fontSize: 11.5, lineHeight: 1.4, borderTop: '1px solid var(--cream-light, #F5F7F6)', color: 'var(--ink)', verticalAlign: 'top' }
   return (
     <Paper label="Supplement calendar · printable">
@@ -210,7 +210,7 @@ function SupplementCalendar() {
             ['Vitamin D3/K2 · 2,000 IU', 'Gentle binder · away from food'],
             ['Cod liver oil · ½ tsp', 'Probiotic · 1 cap'],
           ].map(([am, pm], i) => (
-            <tr key={i}><td style={td}>{am}</td><td style={{ ...td, borderLeft: '1px solid var(--cream-light, #F5F7F6)' }}>{pm}</td></tr>
+            <tr key={i}><td style={td}>{am}</td><td style={{ ...td, borderInlineStart: '1px solid var(--cream-light, #F5F7F6)' }}>{pm}</td></tr>
           ))}
         </tbody>
       </table>

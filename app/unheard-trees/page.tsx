@@ -200,14 +200,14 @@ body:has(.ht){ background:${C.paper} }
 .ht ol.method li:before{ content: counter(m); font-family:'Courier Prime', monospace; font-size:15px; color:var(--stamp); padding-top:4px }
 .ht ol.method b{ font-weight:500; display:block }
 .ht .tiers{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:0; border:1px solid var(--rule); background:var(--plate); margin:22px 0 26px }
-.ht .tier{ padding:24px; border-right:1px solid var(--rule) }
-.ht .tier:last-child{ border-right:0; background:#E3EADF }
+.ht .tier{ padding:24px; border-inline-end:1px solid var(--rule) }
+.ht .tier:last-child{ border-inline-end:0; background:#E3EADF }
 .ht .tier .amt{ font-size:40px; font-weight:400; line-height:1; margin:6px 0 4px }
-.ht .tier ul{ padding-left:18px; margin:12px 0 0; font-size:16px }
-.ht .honest{ max-width:72ch; font-size:16.5px; border-left:3px solid var(--stamp); padding-left:16px }
+.ht .tier ul{ padding-inline-start:18px; margin:12px 0 0; font-size:16px }
+.ht .honest{ max-width:72ch; font-size:16.5px; border-inline-start:3px solid var(--stamp); padding-inline-start:16px }
 .ht .foot{ border-top:1px solid var(--rule); padding:36px 0 50px; font-size:15.5px; color:#4E5A52 }
 .ht .foot nav{ display:flex; gap:8px 22px; flex-wrap:wrap; margin:10px 0 14px }
-@media (max-width:860px){ .ht .cols, .ht .origin{ grid-template-columns:1fr } .ht .origin img{ max-width:140px; justify-self:start } .ht .tier{ border-right:0; border-bottom:1px solid var(--rule) } }
+@media (max-width:860px){ .ht .cols, .ht .origin{ grid-template-columns:1fr } .ht .origin img{ max-width:140px; justify-self:start } .ht .tier{ border-inline-end:0; border-bottom:1px solid var(--rule) } }
 @media (prefers-reduced-motion: reduce){ .ht .wet,.ht .spot,.ht .bar{ animation:none; opacity:1; transform:none } }
 `
 

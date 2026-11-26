@@ -45,7 +45,7 @@ export default function RegularAIvsMinta() {
 
         <div style={{ display: 'grid', gap: 16 }}>
           {POINTS.map((p, i) => (
-            <div key={i} style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderLeft: `4px solid ${teal}`, borderRadius: 13, padding: 'clamp(18px,3vw,26px)' }}>
+            <div key={i} style={{ background: '#FFFFFF', border: `1px solid ${rule}`, borderInlineStart: `4px solid ${teal}`, borderRadius: 13, padding: 'clamp(18px,3vw,26px)' }}>
               <p style={{ fontFamily: 'var(--font-cormorant)', fontSize: 'clamp(21px,3vw,26px)', color: ink, margin: '0 0 8px', lineHeight: 1.15 }}>{p.lead}</p>
               <p style={{ fontSize: 15.5, lineHeight: 1.62, color: soft, margin: 0 }}>{p.body}</p>
             </div>

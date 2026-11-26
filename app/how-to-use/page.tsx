@@ -40,7 +40,7 @@ export default function HowToUse() {
       <section style={{ padding: '0 24px clamp(34px,5vw,54px)' }}>
         <div style={{ maxWidth: 720, margin: '0 auto', background: teal, color: '#FFFFFF', padding: 'clamp(26px,4.4vw,38px)' }}>
           <p style={{ fontSize: 11.5, letterSpacing: '0.2em', textTransform: 'uppercase', fontWeight: 700, color: '#cfe3df', margin: '0 0 14px' }}>If you’re locked out</p>
-          <ol style={{ margin: 0, paddingLeft: 20, fontSize: 17, lineHeight: 1.8, color: '#e6f0ee' }}>
+          <ol style={{ margin: 0, paddingInlineStart: 20, fontSize: 17, lineHeight: 1.8, color: '#e6f0ee' }}>
             <li>Go to <strong style={{ color: '#FFFFFF' }}>app.planbforpans.com/minta</strong></li>
             <li>Type the email address you signed up with</li>
             <li>Check your inbox and tap the link we send</li>

@@ -77,8 +77,8 @@ export default function PractitionersPage() {
               fontWeight: 400,
               marginTop: 24,
               maxWidth: 720,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
+              borderInlineStart: '3px solid var(--teal)',
+              paddingInlineStart: 22,
             }}
           >
             Parents in this battle for years are choosing between eating and the next
@@ -151,8 +151,8 @@ export default function PractitionersPage() {
               lineHeight: 1.45,
               fontWeight: 400,
               margin: 0,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
+              borderInlineStart: '3px solid var(--teal)',
+              paddingInlineStart: 22,
             }}
           >
             We know you have a practice to run. The 10-free-clients pledge is an optional
@@ -252,7 +252,7 @@ export default function PractitionersPage() {
                 marginTop: 36,
                 padding: '24px 28px',
                 background: 'rgba(31,107,107,0.18)',
-                borderLeft: '3px solid var(--teal-light)',
+                borderInlineStart: '3px solid var(--teal-light)',
                 position: 'relative',
               }}
             >
@@ -463,8 +463,8 @@ export default function PractitionersPage() {
                   margin: '28px 0 0',
                   fontWeight: 400,
                   lineHeight: 1.4,
-                  borderLeft: '3px solid var(--teal)',
-                  paddingLeft: 20,
+                  borderInlineStart: '3px solid var(--teal)',
+                  paddingInlineStart: 20,
                 }}
               >
                 Transparency is the point. The practitioners who show up get seen.
