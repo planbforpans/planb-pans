@@ -228,6 +228,7 @@ export default function PlanBForAutism() {
             <a className="card" href="https://planbforpans.com/app" style={{ color: 'var(--ink)' }}><span className="mono k">04 · Free</span><h3>Get the app</h3><p>Plan B on your phone, in the App Store and Google Play.</p></a>
           </div>
           <p style={{ marginTop: 22, color: '#D9D7E8' }}>Want a second set of eyes? <a href="https://planbforpans.com/case-review" style={{ color: 'var(--peach)' }}>A Case Review with Rachel</a> goes through your child’s whole story with you.</p>
+          <p style={{ marginTop: 10, color: '#D9D7E8' }}>What happens next: biology first, then whatever your child needs. <a href="https://planbforpans.com/#care-path" style={{ color: 'var(--peach)' }}>See the two-phase care path →</a></p>
         </div>
       </section>
 
