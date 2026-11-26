@@ -63,8 +63,10 @@ function Head({ fig, title, by }: { fig: string; title: string; by: string }) {
 // "Is it the body?" Nothing is stored; the count only says how much of the pattern is there.
 export function SelfCheck({ fig, c }: { fig: string; c: Condition }) {
   const items = [
-    `${c.it} came on over days or weeks, not slowly over years.`,
+    `${c.it} came on fast, over days or weeks.`,
+    `${c.it} crept in, then flared with colds or strep.`,
     'It gets worse with colds, strep or other illness.',
+    'It comes and goes: good weeks, then bad weeks.',
     'Tics: blinking, throat clearing, sniffing, jerks.',
     'Eating less, or new fears about food.',
     'Bedwetting, or needing to pee often and urgently.',
@@ -104,8 +106,8 @@ export function SelfCheck({ fig, c }: { fig: string; c: Condition }) {
 
 export function Compare({ fig, c }: { fig: string; c: Condition }) {
   const rows: [string, string, string][] = [
-    ['How it started', 'Over days or weeks. You can often name the week.', 'Slowly, over months or years.'],
     ['With illness', 'Flares with colds, strep or other bugs.', 'Steadier, not tied to illness.'],
+    ['Ups and downs', 'Waxes and wanes: good stretches, then flares.', 'Much the same from week to week.'],
     ['Other signs at once', 'Arrives with other changes: tics, sleep, eating, rage, bedwetting.', 'Usually on its own.'],
     ['After treating an infection', 'May ease when an infection is found and treated.', 'Infection treatment doesn’t change it much.'],
   ]
@@ -118,7 +120,7 @@ export function Compare({ fig, c }: { fig: string; c: Condition }) {
           <thead><tr><th /><th className="b">Can look body-driven</th><th>Can look more typical</th></tr></thead>
           <tbody>{rows.map(([k, b, t]) => <tr key={k}><td>{k}</td><td className="b">{b}</td><td className="t">{t}</td></tr>)}</tbody>
         </table>
-        <p className="fx-note">These can look like each other, and a child can have both. Only a doctor can diagnose.</p>
+        <p className="fx-note">How fast it started doesn’t settle it. Often it’s sudden, but not always: it can also creep in and flare with every illness. These can look like each other, and a child can have both. Only a doctor can diagnose.</p>
       </div>
     </section>
   )
@@ -207,6 +209,7 @@ export function Research({ fig, c }: { fig: string; c: Condition }) {
 export function Faq({ fig, c }: { fig: string; c: Condition }) {
   const qa: [string, string][] = [
     ['Isn’t this rare?', 'It’s underrecognized. Many parents, and many doctors, have never heard of PANS, so the quieter versions are easy to miss. That’s why the timeline matters so much.'],
+    ['Does it have to come on suddenly?', 'No. Often it’s sudden, and many parents can name the week. But not always. It can also creep in and flare with every illness. The clue is the pattern: worse when sick, several signs moving together, ups and downs. The research criteria for PANS describe an abrupt onset; many families see a slower, flaring pattern, and that is worth checking with your doctor too.'],
     [c.careQ, c.careA],
     ['Can this happen without a sore throat?', 'Yes. Strep can live around the bottom or be carried by someone at home without symptoms, and other infections, like Mycoplasma, flu, COVID or hand-foot-and-mouth, can do it too.'],
     ['How long does testing take?', 'Swabs often come back in a day to a few days, blood titers in about a week. Repeating titers takes four to six weeks. Specialty stool and urine tests can take two to three weeks.'],

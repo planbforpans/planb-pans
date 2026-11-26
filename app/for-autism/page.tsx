@@ -176,7 +176,7 @@ export default function PlanBForAutism() {
           <h2 className="serif">When it’s <em>more than</em> autism.</h2>
           <p style={{ maxWidth: 760 }}>Many autistic children also carry something treatable in the body that makes everything harder. These are the patterns parents tell us about most:</p>
           <ul className="signs">
-            <li><b>A sudden change</b>: rage, fear, rituals or tics that appeared fast, often after an illness</li>
+            <li><b>A sudden change</b>, or one that crept in: rage, fear, rituals or tics that appeared fast, or that flare with each illness</li>
             <li><b>Lost words or skills</b> after being sick</li>
             <li><b>Constipation</b> that never really goes away</li>
             <li><b>Sleep</b> that falls apart, or 2am wakings</li>
@@ -194,7 +194,7 @@ export default function PlanBForAutism() {
           <h2 className="serif">One story, <em>at different ages.</em></h2>
           <p style={{ maxWidth: 780 }}>Here is what we think, and what we are testing with every family who tracks. An infection or an immune hit can change how a child’s brain works. What it looks like may depend on how old the immune system is when it lands.</p>
           <div className="ages">
-            <div className="age"><span className="mono" style={{ color: 'var(--dusk2)' }}>An older immune system</span><h3>It can look like PANS</h3><p>A child who was doing fine, then overnight: OCD, rage, fear, food refusal. Parents can often name the week it started.</p></div>
+            <div className="age"><span className="mono" style={{ color: 'var(--dusk2)' }}>An older immune system</span><h3>It can look like PANS</h3><p>A child who was doing fine, then overnight: OCD, rage, fear, food refusal. Parents can often name the week it started. Not always: for some it creeps in and flares with each illness.</p></div>
             <div className="age young"><span className="mono" style={{ color: 'var(--dusk2)' }}>A younger immune system</span><h3>It can look like autism</h3><p>The hit lands while the immune system and the brain are still being built. The change is slower, earlier and harder to date, so it gets a different name.</p></div>
           </div>
           <div className="cols">

@@ -82,7 +82,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
       { top: '56%', left: '34%', t: 'Sleep' },
     ],
     h1: ['OCD that came on ', 'almost overnight', '? See the whole picture, and the ', 'next step', ' to take to your doctor.'],
-    dek: 'Rituals that weren’t there last month. Fears that won’t let go. Worse every time your child gets sick. When OCD arrives fast, the trigger may be in the body.',
+    dek: 'Rituals that weren’t there last month. Fears that won’t let go. Worse every time your child gets sick. Often it arrives fast, but not always. It can also creep in and flare with every illness. Either way, the trigger may be in the body.',
     monitor: ['ASO 412 IU/mL ▲', 'Anti-DNase B 680 ▲', 'Worries 7/10 ▼', 'Rituals 4/10 ▼', 'Tics 2/10 ▼', 'Sleep 7.2 h ▲', 'Nights tracked 14', 'Pattern found: 1'],
     signs: ['worries', 'ocd'],
     bugs: ['strep', 'myco', 'virus', 'mold', 'stress', 'bartonella', 'lyme', 'yeast', 'clostridia'],
@@ -98,7 +98,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
     ],
     careQ: 'Does OCD therapy and medicine still matter?',
     careA: 'Yes. ERP and medicine help many children. Looking at the body is something you add, with your doctor, not instead.',
-    mintaQ: 'My child’s OCD came on suddenly. What should I look at in the body, and what should I ask the doctor?',
+    mintaQ: 'My child’s OCD came on suddenly, or it flares every time they get sick. What should I look at in the body, and what should I ask the doctor?',
     tests: [
       ['Immunoglobulins (IgG, IgA, IgM, IgG subclasses) + pneumococcal titers', null, 'Can your child’s immune system make the antibodies it needs? A child who keeps getting hit may not be clearing infections.'],
       ['Test-of-cure swab, 2–4 weeks after treatment', null, 'Did the treatment work? A flare that comes back may be strep that never cleared.'],
@@ -127,7 +127,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
       { top: '56%', left: '34%', t: 'Weight' },
     ],
     h1: ['Safe foods suddenly ', 'off the table', '? See the whole picture, and the ', 'next step', ' to take to your doctor.'],
-    dek: 'Foods your child loved now “feel wrong.” A new fear of choking or throwing up. Smells and textures they can’t stand. Weight slipping. When eating narrows fast, it can be a sign that something in the body is driving the brain.',
+    dek: 'Foods your child loved now “feel wrong.” A new fear of choking or throwing up. Smells and textures they can’t stand. Weight slipping. When eating narrows fast, or shrinks a little more with every illness, it can be a sign that something in the body is driving the brain.',
     monitor: ['Safe foods 4 ▲', 'Choking fear 6/10 ▼', 'Ferritin 18 ng/mL ▼', 'Zinc 62 µg/dL ▼', 'ASO 412 IU/mL ▲', 'Bowel movements 1/day', 'Nights tracked 14', 'Pattern found: 1'],
     signs: ['picky', 'food'],
     bugs: ['strep', 'yeast', 'mold', 'myco', 'virus', 'stress', 'clostridia', 'bartonella', 'lyme'],
@@ -143,7 +143,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
     ],
     careQ: 'Does feeding therapy still matter?',
     careA: 'Yes. A feeding therapist, or a therapist trained in CBT for ARFID, helps many children. Looking at the body is something you add, not instead.',
-    mintaQ: 'My child’s eating narrowed suddenly. What should I look at in the body, and what should I ask the doctor?',
+    mintaQ: 'My child’s eating narrowed suddenly, or keeps narrowing with every illness. What should I look at in the body, and what should I ask the doctor?',
     cites: [['Toufexis MD, et al. Disordered eating and food restrictions in children with PANDAS/PANS. J Child Adolesc Psychopharmacol. 2015;25(1):48–56.', 'https://pubmed.ncbi.nlm.nih.gov/25329522/']],
     tests: [
       ['Zinc, ferritin and a CBC with iron panel', null, 'Taste, smell and appetite. Ferritin is the iron store and is often missed by a plain CBC.'],
@@ -193,7 +193,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
     ],
     careQ: 'Does ADHD medicine still matter?',
     careA: 'Yes. Medicine, behavioral support and school help make a real difference for many children. Keep what is working. Looking at the body is something you add, with your doctor.',
-    mintaQ: 'My child’s focus changed suddenly after an illness. What should I look at in the body, and what should I ask the doctor?',
+    mintaQ: 'My child’s focus changed after an illness, or gets worse with every cold. What should I look at in the body, and what should I ask the doctor?',
     tests: [
       ['Ferritin and an iron panel', null, 'The iron store, which a plain CBC can miss. Linked to restless sleep and attention.'],
       ['Thyroid: TSH + free T4', null, 'An over- or underactive thyroid can change focus, energy and mood.'],
@@ -206,7 +206,7 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
     trackerNote: '+ Ferritin checked: 16',
     minta: 'A wild week after a cold, and school called again. Tell Minta what changed, in your own words, and get a straight, plain-English read on what might be driving it and what to ask next.',
     reads: [
-      ['/is-it-adhd-or-pans.html', 'Is it ADHD, or something more?', 'How to tell a long-standing pattern from a sudden change.'],
+      ['/is-it-adhd-or-pans.html', 'Is it ADHD, or something more?', 'How to tell a steady, long-standing pattern from a change that came on fast or flares with illness.'],
       ['/root-cause-adhd-treatable-drivers.html', 'Treatable drivers behind focus', 'Sleep, iron, the gut and more, alongside standard care.'],
       ['/mold-and-adhd.html', 'Mold and attention', 'The inflammation and attention connection.'],
       ['/gut-microbiome-and-adhd.html', 'The gut and the brain in ADHD', 'Microbiome, diet and focus.'],

@@ -461,8 +461,9 @@ export default function TestsPage() {
             <em style={{ fontStyle: 'italic', color: 'var(--teal)' }}>can be measured.</em>
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', maxWidth: 680, marginBottom: 16 }}>
-            PANS and PANDAS look like sudden-onset OCD, intrusive thoughts, rage, regression, food
-            refusal, tics, sleep loss — out of nowhere, often after an infection. It's not a "phase."
+            PANS and PANDAS often look like sudden-onset OCD, intrusive thoughts, rage, regression, food
+            refusal, tics, sleep loss — out of nowhere, often after an infection. Not always: it can also
+            creep in and flare with every illness. It's not a "phase."
             It's an inflammatory immune response in the brain, almost always triggered by something
             measurable: an infection, a toxin, a mold exposure, or an underlying biochemical
             vulnerability. Standard pediatric workups miss almost all of it because the tests aren't
