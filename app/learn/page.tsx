@@ -2,6 +2,8 @@
 // what it is, the studies behind it, and (the part no one explains) HOW to
 // actually access it. Cards link to live pages or mark "coming soon".
 
+import { CONDITION_LINKS, conditionHref } from '../_components/conditions'
+
 export const metadata = {
   title: 'PANS & PANDAS Field Guide for Parents — Plan B for PANS',
   description:
@@ -18,11 +20,9 @@ const rust = '#9a5a3a'
 type Item = { title: string; blurb: string; href?: string }
 
 // The Plan B condition pages (Rachel, 2026-11-26): a parent can start from what they are seeing.
+// Each links to its own domain once CONDITION_DOMAIN_LIVE says it resolves.
 const CONDITIONS: [string, string][] = [
-  ['Food restriction (ARFID)', '/for-arfid'],
-  ['Constipation', '/for-constipation'],
-  ['Sudden OCD', '/for-ocd'],
-  ['Attention and focus (ADHD)', '/for-adhd'],
+  ...CONDITION_LINKS.map((l): [string, string] => [l.seeing, conditionHref(l.k)]),
   ['Autism and the body', '/for-autism'],
 ]
 
