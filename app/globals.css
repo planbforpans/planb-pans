@@ -858,3 +858,4 @@ html[lang="ar"] body * { letter-spacing: 0 !important; }
 html[dir="rtl"] :is(input[type="email"], input[type="tel"], input[type="url"], input[type="number"], code, pre) { direction: ltr; }
 html[dir="rtl"] :is([translate="no"], [data-no-translate], code) { unicode-bidi: isolate; }
 html[dir="rtl"] .cover-kid { direction: ltr; }
+html[dir="rtl"] :is(.site-logo, .brand) { direction: ltr; unicode-bidi: isolate; }
