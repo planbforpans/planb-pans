@@ -1,3 +1,7 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
 const MARKERS = [
   { label: 'Infect', from: 22 },
   { label: 'Immune', from: 120 },
@@ -27,12 +31,22 @@ const GROUPS: { name: string; tools: Tool[]; note?: string }[] = [
     ],
   },
   {
+    name: 'Speech & communication',
+    tools: [
+      { t: 'Speech therapy + AAC (talking device/app)' },
+      { t: 'Intensive speech-motor therapy (AMMT · DTTC · PROMPT)' },
+      { t: 'Play-based engagement therapy (JASPER)' },
+    ],
+  },
+  {
     name: 'Energy & body work',
     tools: [
       { t: 'Biomagnetism', href: '/biomagnetism.html' },
       { t: 'Homeopathy', href: '/homeopathy.html' },
       { t: 'Craniosacral work' },
       { t: 'Red light therapy', href: '/red-light-therapy-autism-pans.html' },
+      { t: 'Transcranial photobiomodulation (near-infrared)', href: '/red-light-therapy-autism-pans.html' },
+      { t: 'PEMF' },
       { t: 'Hyperbaric oxygen (HBOT)', href: '/hbot.html' },
       { t: 'Methylene blue', href: '/methylene-blue.html' },
     ],
@@ -44,9 +58,23 @@ const GROUPS: { name: string; tools: Tool[]; note?: string }[] = [
       { t: 'Phage therapy', href: '/phage.html' },
       { t: 'Peptide therapies', href: '/peptides.html' },
       { t: 'FMT', href: '/fmt.html' },
+      { t: 'Probiotic enemas', href: '/gut.html' },
       { t: 'Helminthic therapy', href: '/helminths.html' },
       { t: 'Ozone (rectal)', href: '/ozone.html', note: true },
       { t: 'Blood ozone (EBOO)', href: '/eboo.html', note: true },
+    ],
+    note: 'With an experienced practitioner',
+  },
+  {
+    name: 'Nutrition & brain',
+    tools: [{ t: 'Sulforaphane' }, { t: 'CBD (hemp, low THC)' }],
+  },
+  {
+    name: 'With a physician',
+    tools: [
+      { t: 'TruDOSE (own platelets)', note: true },
+      { t: 'Cerebrolysin', href: '/peptides.html', note: true },
+      { t: 'Suramin (clinical trial only)', note: true },
     ],
     note: 'With an experienced practitioner',
   },
@@ -97,7 +125,8 @@ const CSS = `
 .cp-bio { margin: auto 0 0; padding-top: 16px; }
 .cp-groups { margin-top: auto; display: grid; gap: 14px; }
 .cp-group { border-top: 1px solid var(--sand); padding-top: 10px; }
-.cp-gname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--sand-dark); margin: 0 0 8px; }
+.cp-gname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--sand-dark); margin: 0 0 8px; list-style: none; pointer-events: none; }
+.cp-gname::-webkit-details-marker { display: none; }
 .cp-end { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border-top: 1px solid var(--sand); padding-top: 12px; }
 .cp-any { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); border: 1px dashed var(--teal-light); padding: 6px 9px; border-radius: 2px; }
 .cp-guide { font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--teal-light); }
@@ -112,6 +141,10 @@ const CSS = `
 .cp-steps { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand-dark); margin: 8px 0 0 !important; }
 .cp-steps span { color: var(--teal); }
 @media (max-width: 760px) {
+  .cp-gname { pointer-events: auto; cursor: pointer; display: flex; justify-content: space-between; align-items: center; margin: 0; padding: 4px 0; color: var(--ink); }
+  .cp-gname::after { content: '+'; font-size: 15px; color: var(--teal); letter-spacing: 0; }
+  .cp-group[open] .cp-gname { margin-bottom: 8px; }
+  .cp-group[open] .cp-gname::after { content: '−'; }
   .cp-tools li > * { font-size: 10px; padding: 5px 8px; }
   .cp-grid { grid-template-columns: 1fr; }
   .cp-arrow { height: 44px; }
@@ -122,6 +155,11 @@ const CSS = `
 `
 
 export default function CarePath() {
+  const groupsRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!window.matchMedia('(max-width: 760px)').matches) return
+    groupsRef.current?.querySelectorAll('details').forEach((d) => { d.open = false })
+  }, [])
   return (
     <div className="cp" id="care-path">
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
@@ -165,13 +203,13 @@ export default function CarePath() {
           <p className="cp-n">Phase 2</p>
           <h3>Whatever your child needs</h3>
           <p>If symptoms persist once the markers are normal, we add other tools, chosen for your child: homeopathy, behavioral therapy, biomagnetism, phage therapy, craniosacral work, stem cells when a child is ready. Whatever helps.</p>
-          <div className="cp-groups">
+          <div className="cp-groups" ref={groupsRef}>
             {GROUPS.map((g) => (
-              <div className="cp-group" key={g.name}>
-                <p className="cp-gname">{g.name}</p>
+              <details className="cp-group" key={g.name} open>
+                <summary className="cp-gname">{g.name}</summary>
                 <Tags tools={g.tools} label={g.name} />
                 {g.note && <p className="cp-note"><span className="cp-mark">*</span> {g.note}</p>}
-              </div>
+              </details>
             ))}
             <div className="cp-end">
               <span className="cp-any">Whatever helps</span>
