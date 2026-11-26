@@ -6,7 +6,59 @@ const MARKERS = [
   { label: 'Mold', from: 28 },
 ]
 
-const TOOLS = ['Homeopathy', 'Behavioral therapy', 'Biomagnetism', 'Phage therapy', 'Craniosacral work', 'Stem cells, when ready']
+type Tool = { t: string; href?: string }
+
+const BIOLOGY: Tool[] = [
+  { t: 'Infections', href: '/pans-and-strep.html' },
+  { t: 'Lyme & co-infections', href: '/lyme.html' },
+  { t: 'Mold', href: '/mold-protocol.html' },
+  { t: 'IVIG & immune', href: '/ivig.html' },
+]
+
+const GROUPS: { name: string; tools: Tool[] }[] = [
+  {
+    name: 'Nervous system & brain',
+    tools: [
+      { t: 'Nervous-system regulation', href: '/nervous-system.html' },
+      { t: 'Brain retraining', href: '/brain-retraining-kids.html' },
+      { t: 'Neurofeedback & biofeedback', href: '/neurofeedback-biofeedback-autism-adhd.html' },
+      { t: 'MeRT', href: '/mert-for-autism.html' },
+      { t: 'Behavioral therapy' },
+    ],
+  },
+  {
+    name: 'Energy & body work',
+    tools: [
+      { t: 'Biomagnetism', href: '/biomagnetism.html' },
+      { t: 'Homeopathy', href: '/homeopathy.html' },
+      { t: 'Craniosacral work' },
+      { t: 'Red light therapy', href: '/red-light-therapy-autism-pans.html' },
+      { t: 'Hyperbaric oxygen (HBOT)', href: '/hbot.html' },
+      { t: 'Methylene blue', href: '/methylene-blue.html' },
+    ],
+  },
+  {
+    name: 'Immune & gut',
+    tools: [
+      { t: 'LDN', href: '/ldn.html' },
+      { t: 'Phage therapy', href: '/phage.html' },
+      { t: 'Peptide therapies', href: '/peptides.html' },
+      { t: 'FMT', href: '/fmt.html' },
+      { t: 'Helminthic therapy', href: '/helminths.html' },
+    ],
+  },
+  { name: 'When a child is ready', tools: [{ t: 'Stem cells' }] },
+]
+
+function Tags({ tools, label }: { tools: Tool[]; label: string }) {
+  return (
+    <ul className="cp-tools" aria-label={label}>
+      {tools.map(({ t, href }) => (
+        <li key={t}>{href ? <a href={href}>{t}</a> : <span>{t}</span>}</li>
+      ))}
+    </ul>
+  )
+}
 
 const CSS = `
 .cp { margin-top: clamp(56px, 7vw, 96px); border-top: 1px solid var(--ink); padding-top: 20px; }
@@ -31,9 +83,18 @@ const CSS = `
 .cp .trail { stroke: var(--sand-dark); stroke-width: .9; stroke-dasharray: 2 3; }
 .cp .now { fill: var(--teal); opacity: 0; transform-box: fill-box; transform-origin: center; }
 .how.in-view .cp .now { animation: pop .5s ease-out forwards; }
-.cp-tools { list-style: none; padding: 0; margin: auto 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.cp-tools li { font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--sand); background: var(--cream-light); padding: 7px 10px; border-radius: 2px; }
-.cp-tools li:last-child { border-style: dashed; color: var(--teal); border-color: var(--teal-light); background: transparent; }
+.cp-tools { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.cp-tools li > * { display: inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--sand); background: var(--cream-light); padding: 6px 9px; border-radius: 2px; text-decoration: none; }
+.cp-tools li > a { color: var(--teal-deep); border-color: var(--teal-light); background: var(--cream); transition: background .2s, color .2s; }
+.cp-tools li > a:hover, .cp-tools li > a:focus-visible { background: var(--teal); color: #fff; border-color: var(--teal); }
+.cp-bio { margin: auto 0 0; padding-top: 16px; }
+.cp-groups { margin-top: auto; display: grid; gap: 14px; }
+.cp-group { border-top: 1px solid var(--sand); padding-top: 10px; }
+.cp-gname { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--sand-dark); margin: 0 0 8px; }
+.cp-end { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; border-top: 1px solid var(--sand); padding-top: 12px; }
+.cp-any { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--teal); border: 1px dashed var(--teal-light); padding: 6px 9px; border-radius: 2px; }
+.cp-guide { font-size: 14px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--teal-light); }
+.cp-guide:hover { color: var(--teal); }
 .cp-loop { margin-top: 18px; border: 1px dashed var(--teal-light); padding: 18px clamp(18px, 2.4vw, 30px); display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 18px; align-items: center; }
 .cp-loop svg { width: 64px; height: 64px; color: var(--teal); }
 .cp-loop .ring { fill: none; stroke: currentColor; stroke-width: 1.4; stroke-dasharray: 150; stroke-dashoffset: 150; }
@@ -44,6 +105,7 @@ const CSS = `
 .cp-steps { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--sand-dark); margin: 8px 0 0 !important; }
 .cp-steps span { color: var(--teal); }
 @media (max-width: 760px) {
+  .cp-tools li > * { font-size: 10px; padding: 5px 8px; }
   .cp-grid { grid-template-columns: 1fr; }
   .cp-arrow { height: 44px; }
   .cp-arrow svg { transform: rotate(90deg); }
@@ -67,7 +129,7 @@ export default function CarePath() {
           <p className="cp-n">Phase 1</p>
           <h3>The biology</h3>
           <p>We start with what the blood and biological labs show: infections, the immune system, inflammation, nutrients, mold. We treat what&apos;s found and retest, until those markers are back in a normal range.</p>
-          <svg viewBox="0 0 300 150" style={{ width: '100%', height: 'auto', display: 'block', marginTop: 'auto' }} role="img" aria-label="Five lab markers move from outside the normal range back inside it after treatment and retesting">
+          <svg viewBox="0 0 300 150" style={{ width: '100%', height: 'auto', display: 'block' }} role="img" aria-label="Five lab markers move from outside the normal range back inside it after treatment and retesting">
             <rect className="band" x="10" y="52" width="280" height="44" />
             <line className="bandline" x1="10" x2="290" y1="52" y2="52" />
             <line className="bandline" x1="10" x2="290" y1="96" y2="96" />
@@ -85,6 +147,7 @@ export default function CarePath() {
               )
             })}
           </svg>
+          <div className="cp-bio"><Tags tools={BIOLOGY} label="Phase 1 guides in the Field Guide" /></div>
         </div>
 
         <div className="cp-arrow" aria-hidden="true">
@@ -95,10 +158,18 @@ export default function CarePath() {
           <p className="cp-n">Phase 2</p>
           <h3>Whatever your child needs</h3>
           <p>If symptoms persist once the markers are normal, we add other tools, chosen for your child: homeopathy, behavioral therapy, biomagnetism, phage therapy, craniosacral work, stem cells when a child is ready. Whatever helps.</p>
-          <ul className="cp-tools" aria-label="Tools we may add">
-            {TOOLS.map((t) => <li key={t}>{t}</li>)}
-            <li>Whatever helps</li>
-          </ul>
+          <div className="cp-groups">
+            {GROUPS.map((g) => (
+              <div className="cp-group" key={g.name}>
+                <p className="cp-gname">{g.name}</p>
+                <Tags tools={g.tools} label={g.name} />
+              </div>
+            ))}
+            <div className="cp-end">
+              <span className="cp-any">Whatever helps</span>
+              <a className="cp-guide" href="/learn">Every option, deconstructed &rarr; Field Guide</a>
+            </div>
+          </div>
         </div>
       </div>
 
