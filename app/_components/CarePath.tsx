@@ -6,7 +6,7 @@ const MARKERS = [
   { label: 'Mold', from: 28 },
 ]
 
-type Tool = { t: string; href?: string }
+type Tool = { t: string; href?: string; note?: boolean }
 
 const BIOLOGY: Tool[] = [
   { t: 'Infections', href: '/pans-and-strep.html' },
@@ -15,7 +15,7 @@ const BIOLOGY: Tool[] = [
   { t: 'IVIG & immune', href: '/ivig.html' },
 ]
 
-const GROUPS: { name: string; tools: Tool[] }[] = [
+const GROUPS: { name: string; tools: Tool[]; note?: string }[] = [
   {
     name: 'Nervous system & brain',
     tools: [
@@ -45,7 +45,10 @@ const GROUPS: { name: string; tools: Tool[] }[] = [
       { t: 'Peptide therapies', href: '/peptides.html' },
       { t: 'FMT', href: '/fmt.html' },
       { t: 'Helminthic therapy', href: '/helminths.html' },
+      { t: 'Ozone (rectal)', href: '/ozone.html', note: true },
+      { t: 'Blood ozone (EBOO)', href: '/eboo.html', note: true },
     ],
+    note: 'With an experienced practitioner',
   },
   { name: 'When a child is ready', tools: [{ t: 'Stem cells' }] },
 ]
@@ -53,9 +56,10 @@ const GROUPS: { name: string; tools: Tool[] }[] = [
 function Tags({ tools, label }: { tools: Tool[]; label: string }) {
   return (
     <ul className="cp-tools" aria-label={label}>
-      {tools.map(({ t, href }) => (
-        <li key={t}>{href ? <a href={href}>{t}</a> : <span>{t}</span>}</li>
-      ))}
+      {tools.map(({ t, href, note }) => {
+        const body = <>{t}{note && <sup className="cp-mark" aria-label="with an experienced practitioner">*</sup>}</>
+        return <li key={t}>{href ? <a href={href}>{body}</a> : <span>{body}</span>}</li>
+      })}
     </ul>
   )
 }
@@ -87,6 +91,9 @@ const CSS = `
 .cp-tools li > * { display: inline-block; font-family: var(--font-mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--sand); background: var(--cream-light); padding: 6px 9px; border-radius: 2px; text-decoration: none; }
 .cp-tools li > a { color: var(--teal-deep); border-color: var(--teal-light); background: var(--cream); transition: background .2s, color .2s; }
 .cp-tools li > a:hover, .cp-tools li > a:focus-visible { background: var(--teal); color: #fff; border-color: var(--teal); }
+.cp-mark { color: var(--teal); font-size: 1em; margin-left: 2px; vertical-align: super; line-height: 0; }
+.cp-note { font-size: 12.5px; color: var(--sand-dark); margin: 8px 0 0; font-style: italic; }
+.cp-note .cp-mark { vertical-align: baseline; font-style: normal; margin: 0 2px 0 0; }
 .cp-bio { margin: auto 0 0; padding-top: 16px; }
 .cp-groups { margin-top: auto; display: grid; gap: 14px; }
 .cp-group { border-top: 1px solid var(--sand); padding-top: 10px; }
@@ -163,6 +170,7 @@ export default function CarePath() {
               <div className="cp-group" key={g.name}>
                 <p className="cp-gname">{g.name}</p>
                 <Tags tools={g.tools} label={g.name} />
+                {g.note && <p className="cp-note"><span className="cp-mark">*</span> {g.note}</p>}
               </div>
             ))}
             <div className="cp-end">
