@@ -2,7 +2,8 @@
 // the PANS stuff." One config per condition; ConditionHome renders it in the homepage's layout.
 
 export type ConditionKey = 'ocd' | 'arfid' | 'adhd' | 'constipation'
-export type BugKey = 'strep' | 'myco' | 'virus' | 'mold' | 'yeast' | 'clostridia' | 'bartonella' | 'lyme' | 'stress'
+export type BugKey = 'strep' | 'myco' | 'virus' | 'mold' | 'yeast' | 'clostridia' | 'bartonella' | 'lyme' | 'stress' | 'infection'
+export type BugNote = { tell?: string; shows?: string; test?: string }
 export type SignKey = 'constipation' | 'picky' | 'worries' | 'focus' | 'sleep' | 'tics' | 'food' | 'ocd' | 'rage' | 'regression'
 
 // Link each condition to its own domain only once that domain resolves. OCD stays on the path
@@ -62,6 +63,8 @@ export type Condition = {
   careA: string
   mintaQ: string
   cites?: [string, string][]
+  bugNotes?: Partial<Record<BugKey, BugNote>>
+  lead?: { text: string; bugs: string[] }
 }
 
 const BOY = { src: '/kid-cover.png', alt: 'Silhouette of a child, Plan B for PANS', w: 900, h: 1200 }
@@ -221,11 +224,20 @@ export const CONDITIONS: Record<ConditionKey, Condition> = {
       { top: '56%', left: '34%', t: 'Sleep' },
     ],
     h1: ['Constipation ', 'no one can explain', '? See the whole picture, and the ', 'next step', ' to take to your doctor.'],
-    dek: 'Most constipation in children is simple. But when it never really goes away, comes with mood or behavior changes, or gets better every time your child is on an antibiotic, it can be a sign that something in the gut is talking to the brain.',
+    dek: 'Most constipation in children is simple. But when it never really goes away, comes with mood or behavior changes, or gets better every time your child is on an antibiotic, it can be a sign that something in the gut is talking to the brain. Two big triggers to look at first: mold and infection.',
     monitor: ['Days since BM 3 ▼', 'Bloating 6/10 ▼', 'Methane 22 ppm ▲', 'Mood 4/10 ▲', 'Better on amoxicillin', 'Sleep 7.0 h ▲', 'Nights tracked 14', 'Pattern found: 1'],
     signs: ['constipation'],
-    bugs: ['clostridia', 'yeast', 'strep', 'mold', 'virus', 'stress', 'myco', 'bartonella', 'lyme'],
-    hot: ['clostridia', 'yeast', 'strep'],
+    bugs: ['mold', 'infection', 'clostridia', 'yeast', 'virus', 'stress', 'bartonella', 'lyme'],
+    hot: ['mold', 'infection'],
+    // Rachel, 2026-11-26: "Mold is a big trigger for constipation. Also infection."
+    bugNotes: {
+      mold: {
+        tell: 'Constipation that eases away from the house is a clue.',
+        shows: 'Mycotoxins can slow the gut and feed yeast and clostridia. Often with anxiety, mood swings, brain fog and a child who is “sensitive to everything.”',
+        test: 'Urine mycotoxins (RealTime Laboratories), a home check you can do yourself, and an away-trial: a week somewhere else. Fast better-away rules mold in.',
+      },
+    },
+    lead: { text: 'For constipation, look first at mold and infection.', bugs: ['Mold', 'Strep', 'Mycoplasma', 'Clostridia'] },
     hotLabel: 'constipation',
     it: 'The constipation, or the behavior with it,',
     mechHook: 'mood and behavior that swing with the gut',

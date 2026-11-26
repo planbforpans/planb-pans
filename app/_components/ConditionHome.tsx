@@ -110,10 +110,10 @@ export default function ConditionHome({ k }: { k: ConditionKey }) {
 
       <StrepConnection fig="Fig. 02" signs={STREP_ON[k]} />
       <SelfCheck fig="Fig. 03" c={c} />
-      <EarlySigns fig="Fig. 04" current={c.signs} />
+      <EarlySigns fig="Fig. 04" current={c.signs} lead={c.lead} />
       <Compare fig="Fig. 05" c={c} />
       <Mechanism fig="Fig. 06" c={c} />
-      <BugPersonalities fig="Fig. 07" order={c.bugs} hot={c.hot} hotLabel={c.hotLabel} />
+      <BugPersonalities fig="Fig. 07" order={c.bugs} hot={c.hot} hotLabel={c.hotLabel} notes={c.bugNotes} />
 
       <section className="fx reveal" aria-label="The tests">
         <div className="fx-in">

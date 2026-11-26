@@ -1,7 +1,7 @@
 // Shared figures for the Plan B condition pages, drawn in the homepage's theme (white, ink, teal, signal red).
 // Rachel, 2026-11-26: "These are precursors to PANS." / "Same thing, just not as severe." /
 // "Most don't even know that strep causes these things." / "Show that pathogens have a personality."
-import type { BugKey, SignKey } from './conditions'
+import type { BugKey, BugNote, SignKey } from './conditions'
 
 const FX_CSS = `
 .fx { padding: clamp(56px, 7vw, 96px) 24px 0; }
@@ -47,6 +47,8 @@ const FX_CSS = `
 .dx-span::before, .dx-span::after { content: ""; flex: 1; border-top: 1px solid var(--sand-dark); }
 .dx-bugs ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; }
 .dx-bugs li { font-family: var(--font-display); font-size: 19px; color: var(--ink); }
+.dx-bugs li.on { color: var(--teal); font-style: italic; }
+.dx-lead { margin: 12px 0 0; text-align: center; font-size: 15.5px; font-weight: 600; color: var(--teal); }
 .bx-row { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
 .bx-card { border: 1px solid var(--sand); background: var(--cream); padding: 20px; display: flex; flex-direction: column; }
 .bx-card.hot { border-color: var(--teal); box-shadow: inset 0 3px 0 var(--teal); }
@@ -63,7 +65,7 @@ const FX_CSS = `
   .dx-cols { grid-template-columns: 1fr; }
   .dx-col + .dx-col { border-inline-start: 0; padding-inline-start: 0; border-top: 1px dashed var(--sand); padding-top: 12px; margin-top: 12px; }
   .bx-row { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; margin: 0 -24px; padding: 0 24px 12px; }
-  .bx-card { flex: 0 0 82%; scroll-snap-align: start; }
+  .bx-card { flex: 0 0 82%; scroll-snap-align: start; align-self: flex-start; }
 }
 @media (prefers-reduced-motion: reduce) { .sx-line { animation: none !important; stroke-dashoffset: 0; } }
 `
@@ -127,7 +129,7 @@ const RANGE: { h: string; items: [SignKey, string][] }[] = [
 ]
 
 // Early signs: a range from quieter to full PANS, with the same bugs across the whole range.
-export function EarlySigns({ fig, current }: { fig: string; current: SignKey[] }) {
+export function EarlySigns({ fig, current, lead }: { fig: string; current: SignKey[]; lead?: { text: string; bugs: string[] } }) {
   return (
     <section className="fx reveal" aria-label="Early signs">
       <div className="fx-in">
@@ -147,7 +149,8 @@ export function EarlySigns({ fig, current }: { fig: string; current: SignKey[] }
         </div>
         <div className="dx-bugs">
           <p className="dx-span"><span className="fx-tag">The same bugs, across the whole range</span></p>
-          <ul>{['Strep', 'Mycoplasma', 'Viruses', 'Mold', 'Yeast', 'Clostridia', 'Bartonella', 'Lyme'].map((b) => <li key={b}>{b}</li>)}</ul>
+          <ul>{['Strep', 'Mycoplasma', 'Viruses', 'Mold', 'Yeast', 'Clostridia', 'Bartonella', 'Lyme'].map((b) => <li key={b} className={lead?.bugs.includes(b) ? 'on' : undefined}>{b}</li>)}</ul>
+          {lead && <p className="dx-lead">{lead.text}</p>}
         </div>
         <p className="fx-p" style={{ marginTop: 26 }}>Each of these can be an early sign that something in the body, often an infection or an immune reaction, is driving the brain. The signs often start soft, like these, one at a time.</p>
         <p className="fx-p">When they come together, doctors have a name for it: <b>PANS</b>, or <b>PANDAS</b> when strep is the trigger. It’s a name for when an infection or immune reaction drives sudden changes in a child’s brain and body. Many parents have never heard of it, and assume it couldn’t be their child. It often begins just like this, with one sign that doesn’t quite make sense.</p>
@@ -218,6 +221,13 @@ const BUGS: Record<BugKey, { name: string; tier: string; tell: string; shows: st
     test: 'IGeneX or TLab ImmunoBlot. A negative standard test does not rule it out.',
     href: '/lyme-brain-fog-mood-swings-children.html', read: 'Lyme: fog and mood swings',
   },
+  infection: {
+    name: 'Infection', tier: 'Published',
+    tell: 'Constipation that improves on antibiotics is a clue.',
+    shows: 'Strep, including perianal strep that makes stooling hurt so children hold it in; Mycoplasma; clostridia and, after antibiotics, C. diff.',
+    test: 'Throat and perianal strep swab for the household (LabCorp 180800); Mycoplasma PCR with IgG + IgM; a stool test (GI-MAP). C. diff testing only runs on loose stool.',
+    href: '/pans-and-strep.html', read: 'PANDAS and strep', href2: '/gut.html', read2: 'The gut and the microbiome',
+  },
   stress: {
     name: 'A hard season', tier: 'The second hit',
     tell: 'A move, a loss, a big change, on top of a bug.',
@@ -228,7 +238,7 @@ const BUGS: Record<BugKey, { name: string; tier: string; tell: string; shows: st
 }
 
 // Every bug has a personality.
-export function BugPersonalities({ fig, order, hot, hotLabel }: { fig: string; order: BugKey[]; hot: BugKey[]; hotLabel: string }) {
+export function BugPersonalities({ fig, order, hot, hotLabel, notes }: { fig: string; order: BugKey[]; hot: BugKey[]; hotLabel: string; notes?: Partial<Record<BugKey, BugNote>> }) {
   return (
     <section className="fx reveal" aria-label="Every bug has a personality">
       <div className="fx-in">
@@ -237,7 +247,7 @@ export function BugPersonalities({ fig, order, hot, hotLabel }: { fig: string; o
         <p className="fx-p">Strep, Mycoplasma, viruses, mold, yeast, ticks, and the hard seasons that can tip them. The same child can carry more than one. The behavior tells you where to look first; the test tells you what is really there.</p>
         <div className="bx-row">
           {order.map((k) => {
-            const b = BUGS[k]
+            const b = { ...BUGS[k], ...(notes?.[k] ?? {}) }
             const isHot = hot.includes(k)
             return (
               <article key={k} className={`bx-card${isHot ? ' hot' : ''}`}>
