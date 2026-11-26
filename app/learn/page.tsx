@@ -83,7 +83,7 @@ const SECTIONS: Section[] = [
         label: 'Start here',
         items: [
           { title: 'Why Treatment Isn’t Working', blurb: 'The missed drivers behind relapse — mold, Lyme, methylation — and what to investigate next.', href: '/pans-treatment-not-working.html' },
-          { title: 'Is it autism or PANS?', blurb: 'They overlap, get confused, and can coexist. How the two differ, why onset and timeline matter most, and why an autism label should never block a PANS workup.', href: '/is-it-autism-or-pans.html' },
+          { title: 'Is it autism or PANS?', blurb: 'They overlap, get confused, and can coexist. How the two differ, why the timeline matters most, and why an autism label should never block a PANS workup.', href: '/is-it-autism-or-pans.html' },
         ],
       },
       {

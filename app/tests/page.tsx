@@ -461,10 +461,11 @@ export default function TestsPage() {
             <em style={{ fontStyle: 'italic', color: 'var(--teal)' }}>can be measured.</em>
           </h2>
           <p style={{ fontSize: 17, lineHeight: 1.7, color: 'var(--ink-soft)', maxWidth: 680, marginBottom: 16 }}>
-            PANS and PANDAS look like sudden-onset OCD, intrusive thoughts, rage, regression, food
-            refusal, tics, sleep loss — out of nowhere, often after an infection. It's not a "phase."
-            It's an inflammatory immune response in the brain, almost always triggered by something
-            measurable: an infection, a toxin, a mold exposure, or an underlying biochemical
+            PANS and PANDAS often look like sudden-onset OCD, intrusive thoughts, rage, regression, food
+            refusal, tics, sleep loss — out of nowhere, often after an infection. Not always: it can also
+            creep in and flare with every illness. It's not a "phase."
+            It's an inflammatory immune response in the brain, often linked to something you can
+            test for: an infection, a toxin, a mold exposure, or an underlying biochemical
             vulnerability. Standard pediatric workups miss almost all of it because the tests aren't
             part of standard care.
           </p>
@@ -597,7 +598,7 @@ export default function TestsPage() {
             subtitle="The second most common PANS trigger."
             rows={[
               { label: 'What it finds', value: 'Recent or past mycoplasma infection. Mycoplasma is the bug behind "walking pneumonia" — but it can also drive PANS without ever causing visible illness.' },
-              { label: 'Why it matters', value: 'If positive, often responds beautifully to a long course of azithromycin. Many kids with "PANS that won\'t resolve" have undertreated mycoplasma underneath.' },
+              { label: 'Why it matters', value: 'If positive, ask the doctor whether a course of azithromycin makes sense. Many kids with "PANS that won\'t resolve" have undertreated mycoplasma underneath.' },
               { label: 'Cost', value: <><strong>~$50–80</strong> · often covered</> },
               { label: 'Order yourself', value: <><ExtLink href="https://www.ultalabtests.com">Ulta Lab Tests</ExtLink> · <ExtLink href="https://www.questhealth.com">Quest Direct</ExtLink></> },
             ]}
@@ -863,7 +864,7 @@ export default function TestsPage() {
             num="04"
             title="Toxins &"
             italic="environment"
-            intro="Mold, heavy metals, and environmental toxins are massively underdiagnosed in PANS. A kid living in a water-damaged building, or with heavy-metal exposure, will not get better until the exposure is identified and addressed."
+            intro="Mold, heavy metals, and environmental toxins are massively underdiagnosed in PANS. A kid living in a water-damaged building, or with heavy-metal exposure, is worth checking, because the exposure can keep driving symptoms until it is identified and addressed."
             icon={
               <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M24 4l-6 12h-8c-4 0-6 4-4 7l8 12v8a3 3 0 003 3h14a3 3 0 003-3v-8l8-12c2-3 0-7-4-7h-8L24 4z" />

@@ -153,7 +153,7 @@ export function EarlySigns({ fig, current, lead }: { fig: string; current: SignK
           {lead && <p className="dx-lead">{lead.text}</p>}
         </div>
         <p className="fx-p" style={{ marginTop: 26 }}>Each of these can be an early sign that something in the body, often an infection or an immune reaction, is driving the brain. The signs often start soft, like these, one at a time.</p>
-        <p className="fx-p">When they come together, doctors have a name for it: <b>PANS</b>, or <b>PANDAS</b> when strep is the trigger. It’s a name for when an infection or immune reaction drives sudden changes in a child’s brain and body. Many parents have never heard of it, and assume it couldn’t be their child. It often begins just like this, with one sign that doesn’t quite make sense.</p>
+        <p className="fx-p">When they come together, doctors have a name for it: <b>PANS</b>, or <b>PANDAS</b> when strep is the trigger. It’s a name for when an infection or immune reaction drives changes in a child’s brain and body. Often they come on suddenly, but not always: they can also creep in and flare with every illness. Many parents have never heard of it, and assume it couldn’t be their child. It often begins just like this, with one sign that doesn’t quite make sense.</p>
         <p className="fx-p">Catching the pattern early and testing the biology is Phase 1 of the care path. <a className="fx-link" href="#care-path">See the two phases →</a></p>
         <p className="fx-note">A sign worth looking into, not a diagnosis.</p>
       </div>
@@ -165,7 +165,7 @@ export function EarlySigns({ fig, current, lead }: { fig: string; current: SignK
 const BUGS: Record<BugKey, { name: string; tier: string; tell: string; shows: string; hides?: string; test: string; href: string; read: string; href2?: string; read2?: string }> = {
   strep: {
     name: 'Strep', tier: 'Well studied',
-    tell: 'Tends to arrive overnight, in a child who was fine.',
+    tell: 'Often arrives overnight, in a child who was fine. It can also creep in and flare with each new strep.',
     shows: 'Sudden OCD and rituals, tics, fear-based food restriction, separation anxiety, rage storms, handwriting changes, peeing often.',
     hides: 'In the throat, around the bottom (perianal strep), and in a brother, sister or parent who carries it without getting sick.',
     test: 'Throat and perianal swab (culture or PCR, LabCorp 180800), and swab the household. ASO tends to peak about 3–6 weeks after strep and anti-DNase B later, about 6–8 weeks, so run both and repeat.',

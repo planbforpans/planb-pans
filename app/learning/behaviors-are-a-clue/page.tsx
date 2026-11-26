@@ -166,7 +166,7 @@ const BEHAVIORS: Behavior[] = [
         <p className="lrn-lead">Sudden OCD after a sore throat: <strong>think strep.</strong> That is PANDAS, the original pattern.</p>
         <p>After a cough, a chest cold or &ldquo;walking pneumonia&rdquo; in the house: <strong>think Mycoplasma.</strong> After the flu or COVID: a virus can set it off too.</p>
         <p>OCD that won&rsquo;t let go after strep is treated: <strong>look wider, at Lyme, Bartonella and mold.</strong> Mold exposure keeps the immune system on edge, and we see contamination fears and anxiety in kids from water-damaged buildings again and again.</p>
-        <p>Write down the date it started and what happened in the weeks before. The trigger is usually in there.</p>
+        <p>Write down the date it started and what happened in the weeks before. If it crept in instead, write down each illness and what got worse after it. The trigger is usually in there.</p>
       </>
     ),
     check: (
@@ -200,12 +200,12 @@ const BEHAVIORS: Behavior[] = [
     id: 'food',
     icon: 'food',
     title: 'Sudden food refusal or restriction',
-    hint: 'Not lifelong picky eating. A child who ate fine, then suddenly won’t.',
+    hint: 'Not lifelong, steady picky eating. A child who ate fine, then suddenly won’t, or loses more foods with every illness.',
     think: ['Strep', 'Mycoplasma', 'Gut'],
     clue: (
       <>
         <p className="lrn-lead">Sudden food refusal is one of the two front doors of PANS. <strong>Think strep and Mycoplasma first.</strong></p>
-        <p>It usually comes with a fear: of choking, of vomiting, of contamination, of a texture. The key word is <strong>sudden</strong>. A child who has always eaten five foods is a different story from a child whose eating fell apart in a week.</p>
+        <p>It usually comes with a fear: of choking, of vomiting, of contamination, of a texture. Often it is <strong>sudden</strong>: eating that fell apart in a week. But not always. It can also creep in, the menu shrinking a little more after each cold or strep. The clue is the pattern. A child who has always eaten the same five foods, steady through every illness, is a different story.</p>
         <p>Belly pain, bloating or constipation riding along: <strong>look at the gut too.</strong></p>
       </>
     ),
@@ -509,7 +509,7 @@ export default function BehaviorsAreAClue() {
         <div className="lrn-wrap">
           <p className="lrn-eyebrow">How to read this page</p>
           <h2>Four steps, <em>one behavior at a time.</em></h2>
-          <p className="lrn-frame">These are the patterns we see again and again. They&rsquo;re clues to test, not a diagnosis &mdash; and we update this page whenever the data says otherwise.</p>
+          <p className="lrn-frame">These are the patterns we see again and again. Often they arrive suddenly, but not always: they can also creep in and flare with every illness. Either way, they&rsquo;re clues to test, not a diagnosis &mdash; and we update this page whenever the data says otherwise.</p>
           <p className="body">Each card names what usually sits behind a behavior, the tests to ask for by name, and what has brought it down.</p>
           <ol className="lrn-chain">
             {CHAIN.map((c, i) => (
