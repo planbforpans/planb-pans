@@ -98,13 +98,13 @@ export default function MintaClient() {
               <Star size={30} />
               <div style={{ minWidth: 0, background: '#FFFFFF', border: '1px solid #E4DED0', padding: '14px 16px', borderRadius: '16px 16px 16px 4px', fontSize: 15, lineHeight: 1.6, color: 'var(--ink)' }}>
                 <p style={{ margin: '0 0 10px' }}>I&rsquo;m sorry. Three days of this is exhausting. Here&rsquo;s what I see in Maya&rsquo;s file:</p>
-                <ul style={{ margin: '0 0 10px', paddingLeft: 18 }}>
+                <ul style={{ margin: '0 0 10px', paddingInlineStart: 18 }}>
                   <li>Her strep swab on Sept 30 was positive, and she finished amoxicillin on Oct 10.</li>
                   <li>Her nights in the tracker were getting better until Oct 21. Then her rage scores went from 2 to 7.</li>
                   <li>You logged her sister home sick with a sore throat on Oct 19.</li>
                 </ul>
                 <p style={{ margin: '0 0 10px' }}>That pattern can mean strep came back, possibly from someone at home. Worth asking her doctor tomorrow:</p>
-                <ol style={{ margin: '0 0 10px', paddingLeft: 18 }}>
+                <ol style={{ margin: '0 0 10px', paddingInlineStart: 18 }}>
                   <li>A strep swab (throat and bottom) for Maya <em>and</em> her sister.</li>
                   <li>Her ferritin was 14 in August. Low iron can make rage and sleep worse. Has it been rechecked?</li>
                 </ol>

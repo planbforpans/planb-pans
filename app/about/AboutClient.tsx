@@ -20,8 +20,8 @@ export default function AboutPage() {
     lineHeight: 1.4,
     fontWeight: 400,
     margin: '36px 0',
-    borderLeft: '3px solid var(--teal)',
-    paddingLeft: 22,
+    borderInlineStart: '3px solid var(--teal)',
+    paddingInlineStart: 22,
   }
 
   return (
@@ -232,8 +232,8 @@ export default function AboutPage() {
               lineHeight: 1.38,
               fontWeight: 400,
               margin: '40px 0 0',
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
+              borderInlineStart: '3px solid var(--teal)',
+              paddingInlineStart: 22,
             }}
           >
             I love you. I&apos;ve been exactly where you are. And I&apos;m here.{' '}

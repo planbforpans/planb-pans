@@ -73,7 +73,7 @@ export default function TermsPage() {
           for use by a <span style={strong}>parent or legal guardian acting on behalf of a minor child.</span> By
           using the Service you represent and warrant that:
         </p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>you are 18 or older and able to form a binding contract;</li>
           <li style={li}>you are the parent or legal guardian of the child whose information you enter, or you are otherwise legally authorized to provide that information and to act on the child&apos;s behalf; and</li>
           <li style={li}>the information you provide is accurate and you have the right to provide it.</li>
@@ -89,14 +89,14 @@ export default function TermsPage() {
           service for families of children with PANS/PANDAS and related conditions.
         </p>
         <p style={{ ...p, marginBottom: 8 }}><span style={strong}>Free features include:</span></p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>the <span style={strong}>Field Guide</span> (educational content);</li>
           <li style={li}>the <span style={strong}>map</span>;</li>
           <li style={li}>the daily <span style={strong}>Tracker</span> for symptoms, medications, and behavior; and</li>
           <li style={li}>limited free use of <span style={strong}>Minta</span>, an AI assistant.</li>
         </ul>
         <p style={{ ...p, marginBottom: 8 }}><span style={strong}>Paid features include:</span></p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>the <span style={strong}>Synthesis</span> ($397; currently a $197 founding rate for the first 20 families) — an integration of your family&apos;s own records, framed as questions and options to discuss with your own licensed providers;</li>
           <li style={li}>the <span style={strong}>Direction</span> ($97);</li>
           <li style={li}><span style={strong}>pay-as-you-go Minta token packs</span>; and</li>
@@ -122,7 +122,7 @@ export default function TermsPage() {
 
         <h2 style={h2}>5 · Acceptable use</h2>
         <p style={p}>You agree <span style={strong}>not</span> to:</p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>use the Service for any unlawful purpose or in violation of these Terms;</li>
           <li style={li}>upload records or information you are not authorized to provide, or that infringe anyone&apos;s rights;</li>
           <li style={li}>represent yourself as a licensed provider, or use the Service to provide medical advice to others;</li>
@@ -184,7 +184,7 @@ export default function TermsPage() {
           <span style={strong}>Subscription and auto-renewal (planned monthly subscription).</span> When the monthly
           subscription is offered, the following terms apply and are presented clearly before you subscribe:
         </p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}><span style={strong}>Recurring charge.</span> The subscription is a recurring subscription that automatically renews each billing period until you cancel. By subscribing, you authorize us (through Stripe) to charge your payment method the then-current subscription price at the start of each billing period on a recurring basis.</li>
           <li style={li}><span style={strong}>Price and frequency disclosed up front.</span> The price, the billing frequency, and the fact that the subscription auto-renews are clearly disclosed to you before you subscribe, in a clear and conspicuous manner, separate from other terms.</li>
           <li style={li}><span style={strong}>Affirmative consent.</span> We obtain your express, affirmative consent to the recurring charge before any charge is made.</li>
@@ -293,7 +293,7 @@ function FinalizingBanner() {
       style={{
         background: 'var(--cream-soft)',
         border: `1px solid ${rule}`,
-        borderLeft: '3px solid var(--teal)',
+        borderInlineStart: '3px solid var(--teal)',
         borderRadius: 6,
         padding: '16px 20px',
         fontSize: 14,

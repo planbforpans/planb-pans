@@ -52,7 +52,7 @@ body:has(.po){ background:#F3F0E6 }
 .po h2{ font-size:clamp(32px,4.4vw,52px); line-height:1.06; margin:10px 0 18px }
 .po h2 em{ color:var(--moss) }
 .po .k{ color:var(--moss) }
-.po .frame{ border-left:3px solid var(--saffron); padding:4px 0 4px 16px; margin:0 0 26px; font-style:italic; color:var(--muted) }
+.po .frame{ border-inline-start:3px solid var(--saffron); padding:4px 0 4px 16px; margin:0 0 26px; font-style:italic; color:var(--muted) }
 .po .clues{ list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:0 34px }
 .po .clues li{ border-top:1px solid var(--rule); padding:16px 0 }
 .po .clues b{ display:block; font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:22px; line-height:1.25; margin-bottom:4px }
@@ -66,7 +66,7 @@ body:has(.po){ background:#F3F0E6 }
 .po .two{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:18px; margin-top:20px }
 .po .panel{ background:var(--card); border:1px solid var(--rule); border-radius:10px; padding:24px }
 .po .panel h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:28px; margin:6px 0 10px }
-.po .panel ul{ margin:0; padding-left:20px } .po .panel li{ margin-bottom:6px }
+.po .panel ul{ margin:0; padding-inline-start:20px } .po .panel li{ margin-bottom:6px }
 .po .tests{ width:100%; border-collapse:collapse; margin-top:16px }
 .po .tests td{ border-top:1px solid var(--rule); padding:16px 12px 16px 0; vertical-align:top }
 .po .tests td:first-child{ width:38%; font-weight:600 }
@@ -227,13 +227,13 @@ export default function PlanBForOCD() {
           <p className="mono k">What to track</p>
           <h2 className="serif">One minute a night. <em>The pattern shows itself.</em></h2>
           <div className="two">
-            <ul style={{ margin: 0, paddingLeft: 20 }}>
+            <ul style={{ margin: 0, paddingInlineStart: 20 }}>
               <li>How strong the OCD was today, 0 to 10</li>
               <li>New rituals, fears or intrusive thoughts</li>
               <li>Rage, crying, separation fears, sleep</li>
               <li>Food: what and how much</li>
             </ul>
-            <ul style={{ margin: 0, paddingLeft: 20 }}>
+            <ul style={{ margin: 0, paddingInlineStart: 20 }}>
               <li>Sore throats, coughs, fevers, anyone sick at home</li>
               <li>Every treatment, and the day it started</li>
               <li>Where they were: home, school, a trip</li>

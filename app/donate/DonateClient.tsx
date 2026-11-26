@@ -332,7 +332,7 @@ export default function DonatePage() {
                           {s.modality}
                         </p>
                       </div>
-                      <div style={{ textAlign: 'right' }}>
+                      <div style={{ textAlign: 'end' }}>
                         <p
                           className="serif"
                           style={{

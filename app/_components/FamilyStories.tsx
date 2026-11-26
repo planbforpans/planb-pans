@@ -140,7 +140,7 @@ export function FamilyStoryFull({ s }: { s: FamilyStory }) {
           style={{
             background: 'var(--cream-light)',
             border: '1px solid var(--teal)',
-            borderLeft: '4px solid var(--teal)',
+            borderInlineStart: '4px solid var(--teal)',
             borderRadius: 6,
             padding: 'clamp(18px, 2.6vw, 26px)',
             margin: '22px 0',
@@ -156,7 +156,7 @@ export function FamilyStoryFull({ s }: { s: FamilyStory }) {
         style={{
           background: 'var(--paper)',
           border: '1px solid var(--rule)',
-          borderLeft: '3px solid var(--teal)',
+          borderInlineStart: '3px solid var(--teal)',
           borderRadius: 4,
           padding: 'clamp(20px, 3vw, 28px)',
           margin: '24px 0',
@@ -164,7 +164,7 @@ export function FamilyStoryFull({ s }: { s: FamilyStory }) {
       >
         <p className="mono" style={{ ...label, color: 'var(--teal)' }}>What the synthesis found</p>
         <p style={{ ...p, marginBottom: 14, color: 'var(--ink)', fontWeight: 400 }}>{s.foundLabel}</p>
-        <ol style={{ margin: 0, paddingLeft: 22, display: 'grid', gap: 13 }}>
+        <ol style={{ margin: 0, paddingInlineStart: 22, display: 'grid', gap: 13 }}>
           {s.found.map((f, i) => (
             <li key={i} style={{ fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-soft)', fontWeight: 300 }}>{f}</li>
           ))}
@@ -175,7 +175,7 @@ export function FamilyStoryFull({ s }: { s: FamilyStory }) {
             {s.extraLabel && (
               <p style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink)', fontWeight: 400, margin: '0 0 10px' }}>{s.extraLabel}</p>
             )}
-            <ul style={{ margin: 0, paddingLeft: 20, display: 'grid', gap: 8 }}>
+            <ul style={{ margin: 0, paddingInlineStart: 20, display: 'grid', gap: 8 }}>
               {s.extra.map((e, i) => (
                 <li key={i} style={{ fontSize: 14.5, lineHeight: 1.6, color: 'var(--ink-soft)', fontWeight: 300 }}>{e}</li>
               ))}
@@ -202,7 +202,7 @@ export function FamilyStoryFull({ s }: { s: FamilyStory }) {
 
       <p style={p}>{s.unlock}</p>
 
-      <blockquote style={{ margin: '26px 0 0', paddingLeft: 22, borderLeft: '2px solid var(--teal)' }}>
+      <blockquote style={{ margin: '26px 0 0', paddingInlineStart: 22, borderInlineStart: '2px solid var(--teal)' }}>
         <span
           className="serif"
           style={{

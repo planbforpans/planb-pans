@@ -68,7 +68,7 @@ export default function PrivacyPage() {
 
         <h2 style={h2}>2 · Information we collect</h2>
         <p style={p}>We collect information you provide and information generated through your use of the Service:</p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}><span style={strong}>Account information</span> — your name, email address, login credentials, and basic account settings.</li>
           <li style={li}><span style={strong}>Uploaded health records and labs</span> — documents, lab results, and other medical records you upload about your child.</li>
           <li style={li}><span style={strong}>Symptom-tracking entries</span> — daily Tracker data about your child&apos;s symptoms, medications, supplements, and behavior, and related context (for example, ZIP code used to provide environment/pollen context).</li>
@@ -81,7 +81,7 @@ export default function PrivacyPage() {
 
         <h2 style={h2}>3 · How we use information</h2>
         <p style={p}>We use information to:</p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}><span style={strong}>operate and provide the Service</span> — store and display your records, run the Tracker, power Minta, and generate the Synthesis and Direction;</li>
           <li style={li}><span style={strong}>process information through AI</span> — send your relevant content to our AI subprocessor to generate Minta responses and the Synthesis (see Section 4);</li>
           <li style={li}><span style={strong}>process payments</span> through Stripe;</li>
@@ -96,7 +96,7 @@ export default function PrivacyPage() {
           To provide Minta, the Synthesis, and related features, we use third-party service providers
           (&ldquo;subprocessors&rdquo;). They process data only to provide their services to us.
         </p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}><span style={strong}>Anthropic (Claude API)</span> — AI processing. To generate Minta responses and the Synthesis, relevant content you provide is sent to Anthropic&apos;s API. Per Anthropic&apos;s commercial API terms, API inputs and outputs are not used to train Anthropic&apos;s models. <span style={flag}>[Current Anthropic API terms and retention to be confirmed with counsel before finalizing.]</span></li>
           <li style={li}><span style={strong}>Supabase</span> — database and storage hosting (your account data, records, Tracker entries, and conversations are stored here).</li>
           <li style={li}><span style={strong}>Vercel</span> — application hosting and delivery.</li>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
         </p>
 
         <h2 style={h2}>6 · What we do NOT do</h2>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>We do <span style={strong}>not sell</span> your personal information.</li>
           <li style={li}>We do <span style={strong}>not share</span> your personal information with advertisers, data brokers, insurers, or schools without your explicit consent.</li>
           <li style={li}>We do <span style={strong}>not</span> use your child&apos;s identifiable health data for marketing or advertising.</li>
@@ -167,7 +167,7 @@ export default function PrivacyPage() {
 
         <h2 style={h2}>10 · Your privacy rights</h2>
         <p style={p}>Depending on where you live, you may have rights under laws such as:</p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}><span style={strong}>Washington My Health My Data Act (MHMDA)</span> — which broadly regulates &ldquo;consumer health data&rdquo; and may require a separate Consumer Health Data Privacy Policy, specific consent for collection/sharing, and a right to withdraw consent and to have data deleted.</li>
           <li style={li}><span style={strong}>California Consumer Privacy Act / California Privacy Rights Act (CCPA/CPRA)</span> — rights to know, access, correct, delete, and limit use of sensitive personal information, and to opt out of &ldquo;sale&rdquo;/&ldquo;sharing&rdquo; (we do not sell or share for cross-context advertising).</li>
           <li style={li}><span style={strong}>Other state privacy laws</span> (e.g., Virginia, Colorado, and others) that may grant similar rights.</li>
@@ -228,7 +228,7 @@ function FinalizingBanner() {
       style={{
         background: 'var(--cream-soft)',
         border: `1px solid ${rule}`,
-        borderLeft: '3px solid var(--teal)',
+        borderInlineStart: '3px solid var(--teal)',
         borderRadius: 6,
         padding: '16px 20px',
         fontSize: 14,

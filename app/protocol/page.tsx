@@ -58,7 +58,7 @@ const TREE: { step: string; title: string; body: string }[] = [
 ]
 
 const sectionTitle: React.CSSProperties = { fontFamily: 'var(--font-cormorant)', fontWeight: 300, fontSize: 'clamp(26px, 4vw, 40px)', lineHeight: 1.05, letterSpacing: '-0.02em', color: ink, margin: '0 0 14px' }
-const th: React.CSSProperties = { textAlign: 'left', fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase', color: teal, padding: '10px 12px', borderBottom: `2px solid ${rule}` }
+const th: React.CSSProperties = { textAlign: 'start', fontSize: 12, letterSpacing: '0.06em', textTransform: 'uppercase', color: teal, padding: '10px 12px', borderBottom: `2px solid ${rule}` }
 const td: React.CSSProperties = { fontSize: 14.5, color: soft, padding: '12px', borderBottom: `1px solid ${rule}`, lineHeight: 1.5, verticalAlign: 'top' }
 
 export default function ProtocolPage() {
@@ -276,7 +276,7 @@ export default function ProtocolPage() {
               Dr. Baumel — a board-certified general pediatrician — treats early, mild-to-moderate PANS right in his regular office with
               a deliberately simple combination he&rsquo;s leaned on for over six years:
             </p>
-            <ul style={{ fontSize: 15.5, color: soft, lineHeight: 1.75, margin: '0 0 10px', paddingLeft: 20 }}>
+            <ul style={{ fontSize: 15.5, color: soft, lineHeight: 1.75, margin: '0 0 10px', paddingInlineStart: 20 }}>
               <li><strong style={{ color: ink }}>Cephalexin (Keflex) — 50 mg/kg/day, divided twice a day</strong> &nbsp;(the antibiotic, from Dr. Pasternack at Harvard)</li>
               <li><strong style={{ color: ink }}>Naproxen sodium — 5 mg/kg per dose</strong> &nbsp;(the anti-inflammatory, from Dr. Frankovich at Stanford)</li>
             </ul>
@@ -312,7 +312,7 @@ export default function ProtocolPage() {
           </p>
           <div style={{ background: card, border: `1px solid ${rule}`, borderRadius: 10, padding: '18px 20px' }}>
             <p style={{ fontSize: 15, fontWeight: 700, color: ink, margin: '0 0 10px' }}>How to get insurance to cover it</p>
-            <ul style={{ margin: 0, paddingLeft: 18, fontSize: 14.5, color: soft, lineHeight: 1.65 }}>
+            <ul style={{ margin: 0, paddingInlineStart: 18, fontSize: 14.5, color: soft, lineHeight: 1.65 }}>
               <li><strong style={{ color: ink }}>Code it as autoimmune encephalitis.</strong> Until there’s a PANS-specific code, this is the lever — six states (CA, CO, IL, MD, OR, RI) require it. PANS is, literally, an emerging autoimmune encephalopathy.</li>
               <li><strong style={{ color: ink }}>A letter of medical necessity</strong> mapping the treatment to the insurer’s own policy criteria.</li>
               <li><strong style={{ color: ink }}>Letters from multiple providers</strong> — several states require a PCP <em>and</em> a specialist to jointly attest.</li>
@@ -331,7 +331,7 @@ export default function ProtocolPage() {
       <section style={{ padding: 'clamp(48px, 7vw, 80px) 24px', borderBottom: `1px solid ${rule}` }}>
         <div className="pb-container" style={{ maxWidth: 760, margin: '0 auto' }}>
           <h2 style={sectionTitle}>What healing looks like — and when to escalate</h2>
-          <ul style={{ margin: '8px 0 0', paddingLeft: 18, fontSize: 15.5, color: soft, lineHeight: 1.7 }}>
+          <ul style={{ margin: '8px 0 0', paddingInlineStart: 18, fontSize: 15.5, color: soft, lineHeight: 1.7 }}>
             <li><strong style={{ color: ink }}>Antibiotics:</strong> recent-onset kids often improve within <strong>days to a few weeks</strong> of the right antibiotic.</li>
             <li><strong style={{ color: ink }}>Anti-inflammatories:</strong> a <strong>6-week</strong> trial; many kids slip when it’s withdrawn — itself a sign it was helping.</li>
             <li><strong style={{ color: ink }}>Steroid burst:</strong> works best within <strong>1–3 days</strong> of a flare; flares treated early ran ~6 weeks vs ~11 untreated.</li>

@@ -59,7 +59,7 @@ export default function Page() {
       </h2>
       <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 36px', display: 'grid', gap: 14 }}>
         {USES.map(([title, detail]) => (
-          <li key={title} style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-soft)', borderLeft: '3px solid var(--teal)', paddingLeft: 16 }}>
+          <li key={title} style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-soft)', borderInlineStart: '3px solid var(--teal)', paddingInlineStart: 16 }}>
             <strong style={{ color: 'var(--ink)' }}>{title}</strong> &mdash; {detail}
           </li>
         ))}
@@ -94,7 +94,7 @@ export default function Page() {
       <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', margin: '0 0 12px' }}>
         If you cannot give money, these matter just as much:
       </p>
-      <ul style={{ paddingLeft: 20, margin: '0 0 36px', display: 'grid', gap: 9 }}>
+      <ul style={{ paddingInlineStart: 20, margin: '0 0 36px', display: 'grid', gap: 9 }}>
         <li style={{ fontSize: 16, lineHeight: 1.6, color: 'var(--ink-soft)' }}>
           <strong style={{ color: 'var(--ink)' }}>Tell one other parent.</strong> Most families find us from another mother, not from a search.
         </li>

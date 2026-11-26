@@ -418,7 +418,7 @@ export default function MethodSection() {
                 fontSize: 10,
                 fontFamily: 'var(--mono)',
                 color: 'var(--mute)',
-                textAlign: 'right',
+                textAlign: 'end',
                 letterSpacing: '0.15em',
               }}
             >

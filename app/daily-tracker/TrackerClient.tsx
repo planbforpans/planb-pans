@@ -246,8 +246,8 @@ export default function TrackerPage() {
                   margin: '32px 0 0',
                   fontWeight: 400,
                   lineHeight: 1.3,
-                  borderLeft: '3px solid var(--teal)',
-                  paddingLeft: 22,
+                  borderInlineStart: '3px solid var(--teal)',
+                  paddingInlineStart: 22,
                 }}
               >
                 The log is the protocol.

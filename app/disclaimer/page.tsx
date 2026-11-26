@@ -137,7 +137,7 @@ export default function DisclaimerPage() {
           <span style={strong}>Plan B is not for medical emergencies.</span> Minta and Plan B&apos;s other features
           are not monitored for emergencies and cannot help in a crisis.
         </p>
-        <ul style={{ margin: '0 0 16px', paddingLeft: 22 }}>
+        <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>
           <li style={li}>
             <span style={strong}>If you or your child are experiencing a medical emergency, call 911</span> (or your
             local emergency number) or go to the nearest emergency room immediately.
@@ -192,7 +192,7 @@ function FinalizingBanner() {
       style={{
         background: 'var(--cream-soft)',
         border: `1px solid ${rule}`,
-        borderLeft: '3px solid var(--teal)',
+        borderInlineStart: '3px solid var(--teal)',
         borderRadius: 6,
         padding: '16px 20px',
         fontSize: 14,

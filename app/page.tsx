@@ -617,7 +617,7 @@ function InstallCard({ device, steps }: { device: string; steps: React.ReactNode
           fontSize: 15,
           color: 'var(--ink)',
           lineHeight: 1.9,
-          paddingLeft: 22,
+          paddingInlineStart: 22,
           margin: 0,
           fontWeight: 300,
         }}

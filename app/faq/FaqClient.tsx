@@ -85,7 +85,7 @@ export default function FAQPage() {
                     letterSpacing: '0.22em',
                     color: 'var(--teal)',
                     fontWeight: 700,
-                    textAlign: 'right',
+                    textAlign: 'end',
                   }}
                 >
                   {String(i + 1).padStart(2, '0')}
@@ -131,8 +131,8 @@ export default function FAQPage() {
               fontWeight: 400,
               margin: '48px 0 0',
               maxWidth: 720,
-              borderLeft: '3px solid var(--teal)',
-              paddingLeft: 22,
+              borderInlineStart: '3px solid var(--teal)',
+              paddingInlineStart: 22,
             }}
           >
             A question we didn&apos;t answer? Email{' '}

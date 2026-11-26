@@ -66,7 +66,7 @@ const STAGES: Stage[] = [
 function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
   const dark = stage.dark
   return (
-    <div style={{ position: 'relative', paddingLeft: 'clamp(0px, 5vw, 24px)' }}>
+    <div style={{ position: 'relative', paddingInlineStart: 'clamp(0px, 5vw, 24px)' }}>
       {/* Station card */}
       <div
         className="card-hover"
@@ -245,7 +245,7 @@ function StationNode({ stage, last }: { stage: Stage; last: boolean }) {
                     textTransform: 'uppercase',
                     fontWeight: 600,
                     color: stage.accent,
-                    marginLeft: 'auto',
+                    marginInlineStart: 'auto',
                   }}
                 >
                   See the protocol →
@@ -420,8 +420,8 @@ export default function EscalationPath() {
             marginTop: 'clamp(48px, 6vw, 72px)',
             textAlign: 'center',
             maxWidth: 760,
-            marginLeft: 'auto',
-            marginRight: 'auto',
+            marginInlineStart: 'auto',
+            marginInlineEnd: 'auto',
           }}
         >
           <div className="rule-ticks" style={{ width: 80, margin: '0 auto 32px' }} />

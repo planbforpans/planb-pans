@@ -56,7 +56,7 @@ body:has(.pa){ background:#F6F4F9 }
 .pa .card h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:24px; margin:8px 0 6px }
 .pa .card p{ margin:0; font-size:15.5px; color:#4A4E5E }
 .pa .signs{ columns:2 260px; column-gap:34px; margin-top:16px }
-.pa .signs li{ break-inside:avoid; margin:0 0 12px; padding-left:4px }
+.pa .signs li{ break-inside:avoid; margin:0 0 12px; padding-inline-start:4px }
 .pa .band{ background:var(--dusk); color:#F6F4F9 }
 .pa .band h2 em{ color:var(--peach) }
 .pa .quote{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:clamp(22px,3vw,32px); line-height:1.35; max-width:820px }
@@ -86,8 +86,8 @@ body:has(.pa){ background:#F6F4F9 }
 .pa .cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:16px; margin-top:16px }
 .pa .col{ background:#fff; border:1px solid var(--rule); border-radius:18px; padding:22px }
 .pa .col h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:24px; margin:6px 0 10px }
-.pa .col ul{ margin:0; padding-left:18px; font-size:15.5px } .pa .col li{ margin-bottom:8px }
-.pa .frame{ border-left:3px solid var(--peach); padding:4px 0 4px 16px; font-style:italic; color:#4A4E5E; margin:24px 0 0 }
+.pa .col ul{ margin:0; padding-inline-start:18px; font-size:15.5px } .pa .col li{ margin-bottom:8px }
+.pa .frame{ border-inline-start:3px solid var(--peach); padding:4px 0 4px 16px; font-style:italic; color:#4A4E5E; margin:24px 0 0 }
 .pa .teaser{ display:flex; justify-content:space-between; gap:20px; align-items:center; border:1px solid var(--rule); border-radius:18px; padding:26px; background:#fff; text-decoration:none; margin-top:18px }
 .pa .clue{ font-family: var(--f-bodoni), Georgia, serif; font-size:clamp(20px,2.4vw,26px); line-height:1.3; margin:0 0 6px }
 @media (max-width:760px){ .pa .ages{ grid-template-columns:1fr } .pa .research{ grid-template-columns:1fr; gap:8px } }
