@@ -1,4 +1,5 @@
 import CaseReviewVoices, { CaseReviewLong } from '../_components/CaseReviewVoices'
+import CaseReviewLanguageNote from '../_components/CaseReviewLanguageNote'
 // The Case Review — what it IS. Built 28 Oct 2026.
 //
 // Rachel: "I can't find the case review." She was right, and it predated the
@@ -133,6 +134,7 @@ export default function Page() {
           <a href={BOOK} style={{ display: 'inline-block', padding: '14px 26px', background: teal, color: '#fff', textDecoration: 'none', fontSize: 16, fontWeight: 600 }}>
             Book a Case Review
           </a>
+          <CaseReviewLanguageNote />
           <p style={{ fontSize: 15, lineHeight: 1.6, color: soft, margin: '20px 0 0' }}>
             Not sure yet? <a href={SIGNUP} style={{ color: teal }}>Start with the free synthesis</a> &mdash;
             it costs nothing and it is the same record we would read.
