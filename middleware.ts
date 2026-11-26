@@ -10,6 +10,13 @@ const AUTISM_HOSTS = new Set(['planbforautism.com', 'www.planbforautism.com', 'p
 
 const OCD_HOSTS = new Set(['planbforocd.com', 'www.planbforocd.com', 'planbforocd.org', 'www.planbforocd.org'])
 
+const ARFID_HOSTS = new Set(['planbforarfid.com', 'www.planbforarfid.com', 'planbforarfid.org', 'www.planbforarfid.org'])
+
+const ADHD_HOSTS = new Set(['planbforadhd.com', 'www.planbforadhd.com', 'planbforadhd.org', 'www.planbforadhd.org'])
+
+// planbforconstipation.com bought and attached to the Vercel project 2026-11-26 (apex + www). No .org yet.
+const CONSTIPATION_HOSTS = new Set(['planbforconstipation.com', 'www.planbforconstipation.com'])
+
 export function middleware(req: NextRequest) {
   // The Unheard Trees (2026-11-19): its own site, served from this app.
   const host = (req.headers.get('host') || '').toLowerCase()
@@ -23,6 +30,18 @@ export function middleware(req: NextRequest) {
   }
   if (OCD_HOSTS.has(host)) {
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-ocd', req.url))
+    return NextResponse.next()
+  }
+  if (ARFID_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-arfid', req.url))
+    return NextResponse.next()
+  }
+  if (ADHD_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-adhd', req.url))
+    return NextResponse.next()
+  }
+  if (CONSTIPATION_HOSTS.has(host)) {
+    if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-constipation', req.url))
     return NextResponse.next()
   }
   if (!req.nextUrl.pathname.startsWith('/minta-classes')) return NextResponse.next()

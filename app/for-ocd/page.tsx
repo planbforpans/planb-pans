@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import HeaderLang from '../_components/HeaderLang'
+import { EarlySigns } from '../_components/ConditionFigures'
 
 // Plan B for OCD (Rachel, 2026-11-25: "Plan B for OCD"). Served at planbforocd.com/.org via middleware rewrite.
 // For parents whose child's OCD came on suddenly or flares with illness. Same free tools as every Plan B site.
@@ -135,7 +136,7 @@ export default function PlanBForOCD() {
           <div>
             <p className="mono r d1" style={{ color: '#A9C7B2', margin: '0 0 16px' }}>When OCD comes on suddenly · free · a nonprofit</p>
             <h1 className="serif r d2">Sudden OCD after a sore throat? <em>Think strep.</em></h1>
-            <p className="lede r d3">If your child’s OCD came on almost overnight, or gets worse every time they get sick, the trigger may be in the body. Plan B helps you track the pattern, find the right tests and bring it all to your doctor. Free.</p>
+            <p className="lede r d3">If your child’s OCD came on almost overnight, or gets worse every time they get sick, the trigger may be in the body. Sudden OCD can be an early sign that something in the body is driving the brain. Plan B helps you track the pattern, find the right tests and bring it all to your doctor. Free.</p>
             <div className="btns r d4">
               <a className="btn p" href={`${APP}/ask?from=${FROM}`}>Ask Minta now</a>
               <a className="btn g" href={`${APP}/signup?from=${FROM}`}>Start your child’s free Synthesis</a>
@@ -159,6 +160,8 @@ export default function PlanBForOCD() {
           </figure>
         </div>
       </header>
+
+      <EarlySigns current="ocd" fig="Fig. 2" ink="var(--ink)" muted="var(--muted)" accent="#E3A93C" rule="var(--rule)" card="var(--card)" em="var(--moss)" />
 
       <section>
         <div className="wrap">
@@ -303,6 +306,9 @@ export default function PlanBForOCD() {
             <a href="https://planbforpans.com">Plan B for PANS</a>
             <a href="https://planbforpans.com/for-autism">Plan B for Autism</a>
             <a href="https://planbforpans.com/for-ocd">Plan B for OCD</a>
+            <a href="https://planbforpans.com/for-adhd">Plan B for ADHD</a>
+            <a href="https://planbforpans.com/for-arfid">Plan B for ARFID</a>
+            <a href="https://planbforpans.com/for-constipation">Plan B for Constipation</a>
             <a href="https://planbforpans.com/directory">Find a doctor</a>
             <a href="https://planbforpans.com/donate">Donate</a>
           </div>

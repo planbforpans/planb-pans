@@ -17,6 +17,15 @@ const rust = '#9a5a3a'
 
 type Item = { title: string; blurb: string; href?: string }
 
+// The Plan B condition pages (Rachel, 2026-11-26): a parent can start from what they are seeing.
+const CONDITIONS: [string, string][] = [
+  ['Food restriction (ARFID)', '/for-arfid'],
+  ['Constipation', '/for-constipation'],
+  ['Sudden OCD', '/for-ocd'],
+  ['Attention and focus (ADHD)', '/for-adhd'],
+  ['Autism and the body', '/for-autism'],
+]
+
 // A section can render its items flat (items) OR grouped under small, quiet
 // sub-headers (subgroups). A subgroup may carry a `caution` flag, which tints
 // it so a desperate parent doesn't chase thin-evidence therapies first.
@@ -263,6 +272,14 @@ export default function LearnPage() {
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, maxWidth: 680, margin: 0 }}>
             The hardest part of PANS is the moment you <strong style={{ color: ink }}>stall</strong> — when the standard path stops working and no one tells you what&rsquo;s left. <strong style={{ color: ink }}>This is what&rsquo;s left.</strong> Every treatment, laid out honestly, so that when you hit a wall you know the search isn&rsquo;t over — there&rsquo;s a Plan B for PANS. Each guide answers the same things: <strong style={{ color: ink }}>what it is</strong>, <strong style={{ color: ink }}>the research</strong>, <strong style={{ color: ink }}>the real risks</strong>, <strong style={{ color: ink }}>how to actually get it</strong>, and <strong style={{ color: ink }}>how to vet a practitioner.</strong>
           </p>
+          <nav aria-label="Start from what you are seeing" style={{ marginTop: 26 }}>
+            <p style={{ color: teal, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 10px' }}>Start from what you&rsquo;re seeing</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {CONDITIONS.map(([t, href]) => (
+                <a key={href} href={href} style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '8px 16px', border: `1px solid ${rule}`, borderRadius: 999, background: card, color: ink, textDecoration: 'none', fontSize: 15 }}>{t}</a>
+              ))}
+            </div>
+          </nav>
         </div>
       </section>
 

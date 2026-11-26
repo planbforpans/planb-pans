@@ -251,6 +251,9 @@ export default function PlanBForAutism() {
             <a href="https://planbforpans.com">Plan B for PANS</a>
             <a href="https://planbforpans.com/for-autism">Plan B for Autism</a>
             <a href="https://planbforpans.com/for-ocd">Plan B for OCD</a>
+            <a href="https://planbforpans.com/for-adhd">Plan B for ADHD</a>
+            <a href="https://planbforpans.com/for-arfid">Plan B for ARFID</a>
+            <a href="https://planbforpans.com/for-constipation">Plan B for Constipation</a>
             <a href="https://askminta.org">Ask Minta</a>
             <a href="https://unheardtrees.org">The Unheard Trees</a>
             <a href="https://planbforpans.com/directory">Find a doctor</a>

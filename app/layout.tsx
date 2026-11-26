@@ -255,6 +255,17 @@ gtag('config', 'AW-18556430921');`,
                 Autism or PANS?
               </a>
             </nav>
+            {/* The Plan B condition pages (2026-11-26). */}
+            <nav
+              aria-label="Plan B condition pages"
+              style={{ marginTop: 14, display: 'flex', gap: 18, flexWrap: 'wrap', justifyContent: 'center', fontSize: 13, fontWeight: 500 }}
+            >
+              <a href="/for-autism" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for Autism</a>
+              <a href="/for-ocd" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for OCD</a>
+              <a href="/for-adhd" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for ADHD</a>
+              <a href="/for-arfid" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for ARFID</a>
+              <a href="/for-constipation" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for Constipation</a>
+            </nav>
             <nav
               style={{
                 marginTop: 32,
