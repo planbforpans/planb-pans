@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import ConditionHome from '../_components/ConditionHome'
 
 // Plan B for ADHD (Rachel, 2026-11-26: "And for ADHD."). Served at planbforadhd.com/.org via middleware rewrite.
@@ -8,7 +9,7 @@ const DESC = 'Focus fell apart after an illness? Hyperactivity that came on fast
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: 'https://planbforpans.com/for-adhd' },
+  alternates: { canonical: 'https://planbforpans.com/for-adhd', languages: languageAlternates('/for-adhd') },
   openGraph: { title: 'Plan B for ADHD', description: DESC, url: 'https://planbforpans.com/for-adhd', siteName: 'Plan B for ADHD', type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Plan B for ADHD', description: DESC },
 }

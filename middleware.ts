@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { isLocalizedPath, localeFromSlug, localePath, splitLocale } from './lib/locales'
 
 // Password-gate the private "classes Minta should take" page.
 // HTTP Basic Auth: the browser shows its native password prompt and the page
@@ -17,6 +18,47 @@ const ADHD_HOSTS = new Set(['planbforadhd.com', 'www.planbforadhd.com', 'planbfo
 // planbforconstipation.com bought and attached to the Vercel project 2026-11-26 (apex + www). No .org yet.
 const CONSTIPATION_HOSTS = new Set(['planbforconstipation.com', 'www.planbforconstipation.com'])
 
+// Translated pages (2026-11-26). /es, /fr, ... /ar serve the page already in that
+// language (app/[locale]). An old ?lang=xx link to one of those pages moves to
+// its address (308, other query parameters such as gclid and utm_* kept), and a
+// parent who picked a language before lands on that language's page. Pages
+// without a translated version keep ?lang and the in-page translation.
+// `home` is the page a condition domain serves at its root
+// (planbforautism.com/es -> /es/for-autism).
+function localeRouting(req: NextRequest, home = '/'): NextResponse | null {
+  const url = req.nextUrl
+  const { locale, path } = splitLocale(url.pathname)
+  const target = path === '/' ? home : path
+  if (!isLocalizedPath(target)) return null
+  const asked = url.searchParams.get('lang')
+  if (asked !== null) {
+    const want = asked.toLowerCase() === 'en' ? 'en' : localeFromSlug(asked)
+    if (want) {
+      const to = url.clone()
+      to.searchParams.delete('lang')
+      to.pathname = localePath(want, path)
+      const res = to.pathname !== url.pathname || to.search !== url.search ? NextResponse.redirect(to, 308) : null
+      // Remember the choice like the picker does (shared with app.planbforpans.com),
+      // so ?lang=en is not undone by an earlier choice.
+      const host = (req.headers.get('host') || '').toLowerCase().split(':')[0]
+      const domain = /(^|\.)planbforpans\.com$/.test(host) ? '.planbforpans.com' : undefined
+      res?.cookies.set('pb_lang', want, { path: '/', maxAge: 31536000, sameSite: 'lax', domain })
+      if (res) return res
+      if (want === 'en') return null
+    }
+  }
+  if (!locale && asked === null) {
+    const saved = localeFromSlug(req.cookies.get('pb_lang')?.value)
+    if (saved) {
+      const to = url.clone()
+      to.pathname = localePath(saved, path)
+      return NextResponse.redirect(to, 307)
+    }
+  }
+  if (home !== '/' && path === '/') return NextResponse.rewrite(new URL(localePath(locale || 'en', home) + url.search, req.url))
+  return null
+}
+
 export function middleware(req: NextRequest) {
   // The Unheard Trees (2026-11-19): its own site, served from this app.
   const host = (req.headers.get('host') || '').toLowerCase()
@@ -25,25 +67,37 @@ export function middleware(req: NextRequest) {
     return NextResponse.next()
   }
   if (AUTISM_HOSTS.has(host)) {
+    const routed = localeRouting(req, '/for-autism')
+    if (routed) return routed
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-autism', req.url))
     return NextResponse.next()
   }
   if (OCD_HOSTS.has(host)) {
+    const routed = localeRouting(req, '/for-ocd')
+    if (routed) return routed
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-ocd', req.url))
     return NextResponse.next()
   }
   if (ARFID_HOSTS.has(host)) {
+    const routed = localeRouting(req, '/for-arfid')
+    if (routed) return routed
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-arfid', req.url))
     return NextResponse.next()
   }
   if (ADHD_HOSTS.has(host)) {
+    const routed = localeRouting(req, '/for-adhd')
+    if (routed) return routed
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-adhd', req.url))
     return NextResponse.next()
   }
   if (CONSTIPATION_HOSTS.has(host)) {
+    const routed = localeRouting(req, '/for-constipation')
+    if (routed) return routed
     if (req.nextUrl.pathname === '/') return NextResponse.rewrite(new URL('/for-constipation', req.url))
     return NextResponse.next()
   }
+  const routed = localeRouting(req)
+  if (routed) return routed
   if (!req.nextUrl.pathname.startsWith('/minta-classes')) return NextResponse.next()
   const expected = process.env.MINTA_CLASSES_PASSWORD || 'MintaLearns26'
   const auth = req.headers.get('authorization')
@@ -65,4 +119,21 @@ export function middleware(req: NextRequest) {
   })
 }
 
-export const config = { matcher: ['/', '/minta-classes', '/minta-classes/:path*'] }
+export const config = {
+  matcher: [
+    '/',
+    '/minta-classes',
+    '/minta-classes/:path*',
+    // Pages with a translated version (lib/locales.ts LOCALIZED_PATHS), plus
+    // condition pages that may join them, and every /{locale} address.
+    '/for-autism',
+    '/for-ocd',
+    '/for-arfid',
+    '/for-adhd',
+    '/for-constipation',
+    '/research',
+    '/learning/behaviors-are-a-clue',
+    '/:locale(es|fr|de|pt|it|zh-hans|zh-hant|ja|ar)',
+    '/:locale(es|fr|de|pt|it|zh-hans|zh-hant|ja|ar)/:path*',
+  ],
+}

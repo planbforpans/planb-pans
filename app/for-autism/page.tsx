@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import HeaderLang from '../_components/HeaderLang'
 import { CONDITION_LINKS, conditionHref } from '../_components/conditions'
 
@@ -10,7 +11,7 @@ const DESC = 'Your child’s autism is real. So are the gut, the sleep, the infe
 export const metadata: Metadata = {
   title: 'Plan B for Autism · Autism and the body',
   description: DESC,
-  alternates: { canonical: 'https://planbforpans.com/for-autism' },
+  alternates: { canonical: 'https://planbforpans.com/for-autism', languages: languageAlternates('/for-autism') },
   openGraph: { title: 'Plan B for Autism', description: DESC, url: 'https://planbforpans.com/for-autism', siteName: 'Plan B for Autism', type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Plan B for Autism', description: DESC },
 }

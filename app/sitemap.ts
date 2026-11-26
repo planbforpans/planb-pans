@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import fs from 'node:fs'
 import path from 'node:path'
 import { allProviders, outsideUS, statesWithProviders } from '@/lib/directory/data'
+import { LOCALES, LOCALIZED_PATHS, isLocalizedPath, languageAlternates, localePath } from '@/lib/locales'
 
 const BASE = 'https://planbforpans.com'
 
@@ -63,12 +64,25 @@ const HIGH_PRIORITY_HTML = new Set([
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date()
 
+  // Pages with translated versions list every language (hreflang) and each
+  // translated address gets its own entry (2026-11-26).
   const pageEntries: MetadataRoute.Sitemap = ROUTES.map((r) => ({
     url: `${BASE}${r.path}`,
     lastModified,
     changeFrequency: 'weekly',
     priority: r.priority,
+    ...(isLocalizedPath(r.path) ? { alternates: { languages: languageAlternates(r.path, BASE) } } : {}),
   }))
+
+  const localeEntries: MetadataRoute.Sitemap = LOCALIZED_PATHS.flatMap((p) =>
+    LOCALES.map((l) => ({
+      url: `${BASE}${localePath(l, p)}`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+      alternates: { languages: languageAlternates(p, BASE) },
+    })),
+  )
 
   // noindex redirect stubs — must never be emitted in the sitemap.
   const EXCLUDED_HTML = new Set([
@@ -96,5 +110,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...allProviders.map((p) => ({ url: `${BASE}/directory/p/${p.slug}`, lastModified: new Date(p.lastVerified), changeFrequency: 'weekly' as const, priority: 0.6 })),
   ]
 
-  return [...pageEntries, ...htmlEntries, ...directoryEntries]
+  return [...pageEntries, ...localeEntries, ...htmlEntries, ...directoryEntries]
 }

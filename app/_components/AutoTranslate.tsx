@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
 import { LANGS, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } from '@/lib/languages'
+import { isLocalizedPath, localePath, splitLocale } from '@/lib/locales'
 
 // The language chooser, on every page. English and Español first (2026-11-21);
 // French, German, Portuguese, Italian, Chinese (Simplified and Traditional),
@@ -20,6 +21,11 @@ import { LANGS, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } f
 // keeps working. Anything inside [translate="no"] or [data-no-translate] is
 // left alone. Switching from any translated language reloads the page, so the
 // translation always starts from the English.
+//
+// 2026-11-26: the main pages also exist already translated on the server
+// (/es, /fr, ... /ar; see lib/locales.ts). On those addresses the URL is the
+// language, and picking a language goes to that language's address instead of
+// translating in place.
 
 const LANG_KEY = 'pb_lang'
 const DISMISSED_KEY = 'pb_lang_dismissed'
@@ -30,6 +36,11 @@ const TEAL = '#2E6E70'
 
 function savedLang(): Lang | null {
   try {
+    const here = splitLocale(window.location.pathname).locale
+    if (here) {
+      setLangChoice(here)
+      return here
+    }
     const q = new URLSearchParams(window.location.search).get('lang')
     if (isLang(q)) {
       setLangChoice(q)
@@ -303,6 +314,15 @@ export default function AutoTranslate() {
       document.head.appendChild(link)
     }
     const cache = loadCache(lang)
+    // A server-translated page hands over its phrases: use them, and treat its
+    // already-translated text as done so it is never sent off again.
+    const seed = (window as unknown as { __pbDict?: { lang: string; dict: Record<string, string> } }).__pbDict
+    if (seed && seed.lang === lang) {
+      for (const [en, tr] of Object.entries(seed.dict)) {
+        cache[en] = tr
+        cache[tr.trim()] = tr.trim()
+      }
+    }
     const mine = new WeakMap<Node, string>() // node -> Spanish we wrote
     const attrMine = new WeakMap<Element, Record<string, string>>()
     let timer: ReturnType<typeof setTimeout> | null = null
@@ -417,6 +437,14 @@ export default function AutoTranslate() {
     setLangChoice(l)
     setChooser(null)
     if (l === lang) return
+    // This page has a version in that language: go to its address.
+    const { locale: here, path } = splitLocale(window.location.pathname)
+    if (here || isLocalizedPath(path)) {
+      const u = new URL(window.location.href)
+      u.searchParams.delete('lang')
+      window.location.assign(localePath(l, path) + u.search + u.hash)
+      return
+    }
     // From English, translate in place; from any other language, start again from the English.
     if (lang === 'en') {
       setLang(l)

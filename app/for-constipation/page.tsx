@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import ConditionHome from '../_components/ConditionHome'
 
 // Plan B for Constipation (Rachel, 2026-11-26). Served at planbforconstipation.com via middleware rewrite.
@@ -8,7 +9,7 @@ const DESC = 'Constipation that won’t go away, with mood or behavior changes? 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: 'https://planbforpans.com/for-constipation' },
+  alternates: { canonical: 'https://planbforpans.com/for-constipation', languages: languageAlternates('/for-constipation') },
   openGraph: { title: 'Plan B for Constipation', description: DESC, url: 'https://planbforpans.com/for-constipation', siteName: 'Plan B for Constipation', type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Plan B for Constipation', description: DESC },
 }
