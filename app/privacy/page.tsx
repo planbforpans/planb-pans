@@ -1,6 +1,8 @@
 // Privacy Policy. Renders the PRIVACY-POLICY-DRAFT faithfully as branded JSX.
 // NOTE: not yet attorney-reviewed; banner says so honestly.
 
+import { RESEARCH_BY_NOTICE } from '../../lib/research-notice'
+
 export const metadata = {
   title: 'Privacy Policy · Plan B for PANS',
   description:
@@ -87,7 +89,7 @@ export default function PrivacyPage() {
           <li style={li}><span style={strong}>process payments</span> through Stripe;</li>
           <li style={li}><span style={strong}>maintain security</span>, prevent abuse, debug, and comply with law;</li>
           <li style={li}><span style={strong}>communicate with you</span> about your account, purchases, and the Service; and</li>
-          <li style={li}><span style={strong}>conduct optional, consent-based de-identified aggregate research</span> (see Section 5).</li>
+          <li style={li}><span style={strong}>{RESEARCH_BY_NOTICE ? 'find patterns across families and publish them as combined numbers' : 'conduct optional, consent-based de-identified aggregate research'}</span> (see Section 5).</li>
         </ul>
         <p style={p}>We do <span style={strong}>not</span> use your child&apos;s identifiable health information for advertising.</p>
 
@@ -107,16 +109,31 @@ export default function PrivacyPage() {
           data-processing addenda / BAAs are needed with any subprocessor to be confirmed with counsel.]</span>
         </p>
 
-        <h2 style={h2}>5 · Optional de-identified aggregate research</h2>
-        <p style={p}>
-          With your <span style={strong}>consent</span>, Plan B may use <span style={strong}>de-identified</span>{' '}
-          information for <span style={strong}>aggregate cross-family research</span> — for example, to understand
-          which approaches families report as helpful across many children. <span style={strong}>De-identified data
-          does not identify your child</span> and we do not attempt to re-identify it. This is{' '}
-          <span style={strong}>optional</span>; you can decline or withdraw consent without losing access to the
-          core Service. <span style={flag}>[Consent mechanism, de-identification standard, and disclosures to be
-          confirmed with counsel.]</span>
-        </p>
+        {RESEARCH_BY_NOTICE ? (
+          <>
+            <h2 style={h2}>5 · Research: combined numbers</h2>
+            <p style={p}>
+              We use every family&apos;s information, <span style={strong}>with names and identifying details removed</span>, to find
+              patterns and publish them as <span style={strong}>combined numbers</span>. We never publish anything about one child,
+              and <span style={strong}>no group smaller than 5 families is shown</span>. You can leave your family out at any time
+              in Settings. You can see everything we have published at{' '}
+              <a href="https://app.planbforpans.com/findings" style={{ color: teal }}>app.planbforpans.com/findings</a>.
+            </p>
+          </>
+        ) : (
+          <>
+          <h2 style={h2}>5 · Optional de-identified aggregate research</h2>
+          <p style={p}>
+            With your <span style={strong}>consent</span>, Plan B may use <span style={strong}>de-identified</span>{' '}
+            information for <span style={strong}>aggregate cross-family research</span> — for example, to understand
+            which approaches families report as helpful across many children. <span style={strong}>De-identified data
+            does not identify your child</span> and we do not attempt to re-identify it. This is{' '}
+            <span style={strong}>optional</span>; you can decline or withdraw consent without losing access to the
+            core Service. <span style={flag}>[Consent mechanism, de-identification standard, and disclosures to be
+            confirmed with counsel.]</span>
+          </p>
+          </>
+        )}
 
         <h2 style={h2}>6 · What we do NOT do</h2>
         <ul style={{ margin: '0 0 16px', paddingInlineStart: 22 }}>

@@ -74,7 +74,7 @@ export function Patterns({ weeks, counter }: { weeks: FindingsWeek[]; counter: C
           <a href={`${APP}/findings`} rel="noopener" className="cta-teal">See every week &rarr;</a>
           <a href={`${APP}/signup`} rel="noopener" className="link-sweep" style={{ color: 'var(--ink)', fontSize: 14.5 }}>Start tracking free &rarr;</a>
         </div>
-        <p className="hub-note">Illustrative and observational, not proof. Only families who share their data for research are counted, and any group under 5 families is left out.</p>
+        <p className="hub-note">Illustrative and observational, not proof. Names and identifying details are removed, families who opt out are left out, and any group under 5 families is never shown.</p>
       </div>
     </section>
   )
