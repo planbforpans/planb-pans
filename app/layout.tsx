@@ -5,6 +5,7 @@ import { Analytics } from '@vercel/analytics/next'
 import AutoTranslate from './_components/AutoTranslate'
 import HeaderLang from './_components/HeaderLang'
 import './globals.css'
+import { CONDITION_LINKS, conditionHref } from './_components/conditions'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://planbforpans.com'),
@@ -254,6 +255,16 @@ gtag('config', 'AW-18556430921');`,
               <a href="/is-it-autism-or-pans.html" style={{ color: 'var(--teal)', textDecoration: 'none' }}>
                 Autism or PANS?
               </a>
+            </nav>
+            {/* The Plan B condition pages (2026-11-26). */}
+            <nav
+              aria-label="Plan B condition pages"
+              style={{ marginTop: 14, display: 'flex', gap: 18, flexWrap: 'wrap', justifyContent: 'center', fontSize: 13, fontWeight: 500 }}
+            >
+              <a href="/for-autism" style={{ color: 'var(--teal)', textDecoration: 'none' }}>Plan B for Autism</a>
+              {CONDITION_LINKS.map((l) => (
+                <a key={l.k} href={conditionHref(l.k)} style={{ color: 'var(--teal)', textDecoration: 'none' }}>{l.name}</a>
+              ))}
             </nav>
             <nav
               style={{

@@ -154,7 +154,7 @@ const CSS = `
 }
 `
 
-export default function CarePath() {
+export default function CarePath({ fig = "Fig. 02" }: { fig?: string } = {}) {
   const groupsRef = useRef<HTMLDivElement>(null)
   useEffect(() => {
     if (!window.matchMedia('(max-width: 760px)').matches) return
@@ -164,7 +164,7 @@ export default function CarePath() {
     <div className="cp" id="care-path">
       <style dangerouslySetInnerHTML={{ __html: CSS }} />
       <div className="cp-head">
-        <p className="cp-fig">Fig. 02 &middot; The care path</p>
+        <p className="cp-fig">{fig} &middot; The care path</p>
         <p className="cp-by">In Rachel&apos;s words</p>
       </div>
       <h2 className="cp-title">Two phases. <em>Biology</em> first, then whatever your child needs.</h2>

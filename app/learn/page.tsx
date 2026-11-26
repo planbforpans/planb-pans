@@ -2,6 +2,8 @@
 // what it is, the studies behind it, and (the part no one explains) HOW to
 // actually access it. Cards link to live pages or mark "coming soon".
 
+import { CONDITION_LINKS, conditionHref } from '../_components/conditions'
+
 export const metadata = {
   title: 'PANS & PANDAS Field Guide for Parents — Plan B for PANS',
   description:
@@ -16,6 +18,13 @@ const card = '#FFFFFF'
 const rust = '#9a5a3a'
 
 type Item = { title: string; blurb: string; href?: string }
+
+// The Plan B condition pages (Rachel, 2026-11-26): a parent can start from what they are seeing.
+// Each links to its own domain once CONDITION_DOMAIN_LIVE says it resolves.
+const CONDITIONS: [string, string][] = [
+  ...CONDITION_LINKS.map((l): [string, string] => [l.seeing, conditionHref(l.k)]),
+  ['Autism and the body', '/for-autism'],
+]
 
 // A section can render its items flat (items) OR grouped under small, quiet
 // sub-headers (subgroups). A subgroup may carry a `caution` flag, which tints
@@ -263,6 +272,14 @@ export default function LearnPage() {
           <p style={{ fontSize: 18, lineHeight: 1.7, color: soft, maxWidth: 680, margin: 0 }}>
             The hardest part of PANS is the moment you <strong style={{ color: ink }}>stall</strong> — when the standard path stops working and no one tells you what&rsquo;s left. <strong style={{ color: ink }}>This is what&rsquo;s left.</strong> Every treatment, laid out honestly, so that when you hit a wall you know the search isn&rsquo;t over — there&rsquo;s a Plan B for PANS. Each guide answers the same things: <strong style={{ color: ink }}>what it is</strong>, <strong style={{ color: ink }}>the research</strong>, <strong style={{ color: ink }}>the real risks</strong>, <strong style={{ color: ink }}>how to actually get it</strong>, and <strong style={{ color: ink }}>how to vet a practitioner.</strong>
           </p>
+          <nav aria-label="Start from what you are seeing" style={{ marginTop: 26 }}>
+            <p style={{ color: teal, fontSize: 12, letterSpacing: '0.16em', textTransform: 'uppercase', fontWeight: 700, margin: '0 0 10px' }}>Start from what you&rsquo;re seeing</p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+              {CONDITIONS.map(([t, href]) => (
+                <a key={href} href={href} style={{ display: 'inline-flex', alignItems: 'center', minHeight: 44, padding: '8px 16px', border: `1px solid ${rule}`, borderRadius: 999, background: card, color: ink, textDecoration: 'none', fontSize: 15 }}>{t}</a>
+              ))}
+            </div>
+          </nav>
         </div>
       </section>
 

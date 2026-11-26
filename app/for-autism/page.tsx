@@ -1,7 +1,9 @@
 import type { Metadata } from 'next'
 import HeaderLang from '../_components/HeaderLang'
+import { CONDITION_LINKS, conditionHref } from '../_components/conditions'
 
 // Plan B for Autism (Rachel, 2026-11-19). Served at planbforautism.com/.org via middleware rewrite.
+// Homepage theme, white background (Rachel, 2026-11-26: "All websites should be the same color as Plan B for PANS.").
 // Same offer as every Plan B site (free Synthesis, Minta the troubleshooter, tracker, Case Review, app),
 // packaged for autism families. Language: autism and the body; never "cure", never the puzzle piece.
 const DESC = 'Your child’s autism is real. So are the gut, the sleep, the infections and the inflammation that can make everything harder. Free help from Plan B, a nonprofit that follows children night by night.'
@@ -18,38 +20,38 @@ const FROM = 'autism'
 const BEHAVIORS = 'https://planbforpans.com/learning/behaviors-are-a-clue'
 
 const css = `
-body:has(.pa) .site-header, body:has(.pa) > footer { display:none !important }
-body:has(.pa){ background:#F6F4F9 }
-.pa{ --ink:#1E2230; --dusk:#2F3E63; --dusk2:#43568A; --lilac:#C9C3E6; --peach:#F2C9A9; --paper:#F6F4F9; --rule:#DDD8EA;
+body:has(.pa) > footer { display:none !important }
+.pa{ --ink:#1F2424; --dusk:#2E6E70; --dusk2:#2E6E70; --lilac:#2E6E70; --peach:#2E6E70; --paper:#F5F7F6; --rule:#E1E5E4; background:var(--cream);
   color:var(--ink); font-family: var(--f-instrument), 'Instrument Sans', system-ui, sans-serif; font-size:17px; line-height:1.65 }
 .pa *{ box-sizing:border-box } .pa a{ color:inherit }
 .pa h1,.pa h2,.pa h3,.pa p,.pa li{ color:inherit }
 .pa .serif{ font-family: var(--f-bodoni), 'Bodoni Moda', Georgia, serif; font-weight:400 }
 .pa .mono{ font-family: var(--f-plex), 'IBM Plex Mono', monospace; letter-spacing:.2em; text-transform:uppercase; font-size:11.5px }
 .pa .wrap{ max-width:1080px; margin:0 auto; padding:0 20px }
-.pa .hero{ background: radial-gradient(ellipse 80% 70% at 80% 30%, #43568A 0%, #2F3E63 45%, #1F2946 100%); color:#F6F4F9; padding:26px 0 70px; position:relative; overflow:hidden }
-.pa .stars{ position:absolute; inset:0; background-image: radial-gradient(1.5px 1.5px at 12% 22%, #fff8, transparent), radial-gradient(1px 1px at 32% 70%, #fff7, transparent), radial-gradient(1.5px 1.5px at 58% 16%, #fff9, transparent), radial-gradient(1px 1px at 78% 62%, #fff6, transparent), radial-gradient(1.2px 1.2px at 90% 30%, #fff8, transparent), radial-gradient(1px 1px at 45% 40%, #fff5, transparent); opacity:.8 }
+.pa .hero{ background: var(--cream); color:var(--ink); border-bottom:1px solid var(--sand); padding:26px 0 70px; position:relative; overflow:hidden }
+.pa .stars{ display:none; position:absolute; inset:0; background-image: radial-gradient(1.5px 1.5px at 12% 22%, #fff8, transparent), radial-gradient(1px 1px at 32% 70%, #fff7, transparent), radial-gradient(1.5px 1.5px at 58% 16%, #fff9, transparent), radial-gradient(1px 1px at 78% 62%, #fff6, transparent), radial-gradient(1.2px 1.2px at 90% 30%, #fff8, transparent), radial-gradient(1px 1px at 45% 40%, #fff5, transparent); opacity:.8 }
 .pa .top{ display:flex; justify-content:space-between; align-items:center; gap:12px; position:relative }
 .pa .brand{ font-family: var(--f-bodoni), Georgia, serif; font-size:24px; text-decoration:none }
 .pa .brand em{ color:var(--peach) }
 .pa .grid{ display:grid; grid-template-columns: 1.15fr .85fr; gap:30px; align-items:center; margin-top:46px; position:relative }
 .pa h1{ font-size:clamp(44px,7vw,84px); line-height:.98; margin:0 }
 .pa h1 em{ color:var(--peach) }
-.pa .lede{ font-size:clamp(18px,2.2vw,22px); line-height:1.5; color:#E3E1F0; margin:22px 0 28px; max-width:600px }
-.pa .girl{ width:100%; max-width:420px; justify-self:end; filter: drop-shadow(0 30px 60px rgba(10,14,30,.45)); opacity:0; animation: fade 1.4s .3s forwards }
-.pa .girl img{ width:100%; height:auto; filter: invert(1) sepia(.15) saturate(1.2) hue-rotate(200deg) brightness(1.02) }
+.pa .lede{ font-size:clamp(18px,2.2vw,22px); line-height:1.5; color:var(--ink-soft); margin:22px 0 28px; max-width:600px }
+.pa .girl{ width:100%; max-width:420px; justify-self:end;  opacity:0; animation: fade 1.4s .3s forwards }
+.pa .girl img{ width:100%; height:auto; filter:none }
 .pa .btns{ display:flex; flex-wrap:wrap; gap:12px }
-.pa .btn{ display:inline-block; padding:14px 22px; border-radius:999px; text-decoration:none; font-weight:600; font-size:15px }
-.pa .btn.p{ background:var(--peach); color:#2A1E14 } .pa .btn.g{ border:1px solid rgba(246,244,249,.55); color:#F6F4F9 } .pa .btn.d{ background:var(--dusk); color:#fff }
+.pa .manifesto .btn.p, .pa .band .btn.p{ color:var(--ink) }
+.pa .btn{ display:inline-block; padding:14px 22px; border-radius:2px; text-decoration:none; font-weight:600; font-size:15px }
+.pa .btn.p{ background:var(--peach); color:#fff } .pa .btn.g{ border:1px solid var(--ink); color:var(--ink) } .pa .btn.d{ background:var(--dusk); color:#fff }
 .pa section{ padding: clamp(60px,8vw,110px) 0 }
 .pa h2{ font-size:clamp(32px,4.6vw,54px); line-height:1.06; margin:10px 0 18px }
 .pa h2 em{ color:var(--dusk2) }
 .pa .minta{ background:#fff; border:1px solid var(--rule); border-radius:22px; padding:clamp(22px,4vw,40px); box-shadow:0 30px 70px -40px rgba(47,62,99,.45) }
 .pa .ask{ display:flex; gap:8px; margin-top:18px }
-.pa .ask input{ flex:1; min-width:0; font-size:17px; padding:15px 20px; border:1px solid #CFCADF; border-radius:999px; font-family:inherit }
+.pa .ask input{ flex:1; min-width:0; font-size:17px; padding:15px 20px; border:1px solid var(--sand); border-radius:999px; font-family:inherit }
 .pa .ask button{ border:0; border-radius:999px; background:var(--dusk); color:#fff; font-weight:600; padding:0 22px; font-size:15px; cursor:pointer }
 .pa .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:14px }
-.pa .chips a{ text-decoration:none; border:1px solid var(--rule); background:#F6F4F9; border-radius:999px; padding:8px 14px; font-size:13.5px }
+.pa .chips a{ text-decoration:none; border:1px solid var(--rule); background:var(--cream-light); border-radius:999px; padding:8px 14px; font-size:13.5px }
 .pa .cards{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr)); gap:16px; margin-top:22px }
 .pa .card{ background:#fff; border:1px solid var(--rule); border-radius:18px; padding:22px; text-decoration:none; display:block }
 .pa .card .k{ color:var(--dusk2) }
@@ -57,30 +59,31 @@ body:has(.pa){ background:#F6F4F9 }
 .pa .card p{ margin:0; font-size:15.5px; color:#4A4E5E }
 .pa .signs{ columns:2 260px; column-gap:34px; margin-top:16px }
 .pa .signs li{ break-inside:avoid; margin:0 0 12px; padding-inline-start:4px }
-.pa .band{ background:var(--dusk); color:#F6F4F9 }
+.pa .band{ background:var(--dusk); color:#fff; --peach:#CFE3DF; --lilac:#CFE3DF }
 .pa .band h2 em{ color:var(--peach) }
 .pa .quote{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:clamp(22px,3vw,32px); line-height:1.35; max-width:820px }
-.pa .foot{ background:#141A2E; color:#B8BCD2; padding:44px 0 88px; font-size:14.5px }
-.pa .foot a{ color:#E8E6F2 }
+.pa .foot{ background:var(--cream-light); color:var(--ink-soft); border-top:1px solid var(--sand); padding:44px 0 88px; font-size:14.5px }
+.pa .foot a{ color:var(--teal) }
 .pa .fam{ display:flex; flex-wrap:wrap; gap:10px 18px; margin:14px 0 18px }
 .pa{ overflow-x:hidden }
 .pa .grid > *{ min-width:0 }
 .pa .topr{ display:flex; gap:10px; align-items:center }
-.pa .topr a, .pa .topr .nav-lang{ min-height:44px; display:inline-flex; align-items:center; text-decoration:none; color:#E3E1F0 }
+.pa .topr{ display:none !important }
+.pa .topr a, .pa .topr .nav-lang{ min-height:44px; display:inline-flex; align-items:center; text-decoration:none; color:var(--ink) }
 .pa .topr .nav-lang{ padding:0 14px; font-family: var(--f-plex), monospace; letter-spacing:.1em; font-size:12px; text-transform:uppercase }
 .pa .brand{ min-height:44px; display:inline-flex; align-items:center }
 .pa .btn{ min-height:48px; display:inline-flex; align-items:center }
 .pa .chips a{ min-height:44px; display:inline-flex; align-items:center }
 .pa .foot a{ min-height:44px; display:inline-flex; align-items:center }
-.pa .manifesto{ background:linear-gradient(180deg,#1F2946 0%, #2F3E63 100%); color:#F6F4F9; padding-top:clamp(40px,6vw,80px) }
+.pa .manifesto{ background:var(--teal); color:#fff; --peach:#CFE3DF; --lilac:#CFE3DF; padding-top:clamp(40px,6vw,80px) }
 .pa .belief{ font-family: var(--f-bodoni), Georgia, serif; font-size:clamp(26px,3.6vw,44px); line-height:1.22; margin:14px 0 0; max-width:900px }
 .pa .belief em{ color:var(--peach) }
 .pa .sig{ font-family: var(--f-bodoni), Georgia, serif; font-style:italic; font-size:24px; color:var(--peach); margin:22px 0 0 }
 .pa .research{ border-top:1px solid rgba(201,195,230,.3); margin-top:44px; padding-top:30px; display:grid; grid-template-columns:auto 1fr; gap:22px; align-items:start; max-width:900px }
-.pa .research p{ margin:0; font-size:clamp(18px,2vw,21px); color:#E3E1F0 }
+.pa .research p{ margin:0; font-size:clamp(18px,2vw,21px); color:#E6EFEE }
 .pa .ages{ display:grid; grid-template-columns:1fr 1fr; gap:16px; margin:26px 0 }
 .pa .age{ border-radius:18px; padding:24px; border:1px solid var(--rule); background:#fff }
-.pa .age.young{ background:#EEEBF7 }
+.pa .age.young{ background:var(--cream-light) }
 .pa .age h3{ font-family: var(--f-bodoni), Georgia, serif; font-weight:400; font-size:28px; margin:6px 0 6px }
 .pa .age p{ margin:0; font-size:15.5px; color:#4A4E5E }
 .pa .cols{ display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr)); gap:16px; margin-top:16px }
@@ -128,7 +131,7 @@ export default function PlanBForAutism() {
               <a className="btn g" href={`${APP}/signup?from=${FROM}`}>Start your child’s free Synthesis</a>
             </div>
           </div>
-          <div className="girl"><img src="/girl-silhouette.png" alt="" /></div>
+          <div className="girl"><img src="/kid-cover.png" alt="" /></div>
         </div>
       </header>
 
@@ -245,12 +248,12 @@ export default function PlanBForAutism() {
 
       <footer className="foot">
         <div className="wrap">
-          <p className="serif" style={{ fontSize: 24, color: '#F6F4F9', margin: '0 0 6px' }}>Plan B for Autism</p>
+          <p className="serif" style={{ fontSize: 24, color: 'var(--ink)', margin: '0 0 6px' }}>Plan B for Autism</p>
           <p style={{ margin: 0 }}>Part of the Plan B family, from <a href="https://planbforpans.com">Plan B for PANS</a>, a Colorado nonprofit.</p>
           <div className="fam">
             <a href="https://planbforpans.com">Plan B for PANS</a>
             <a href="https://planbforpans.com/for-autism">Plan B for Autism</a>
-            <a href="https://planbforpans.com/for-ocd">Plan B for OCD</a>
+            {CONDITION_LINKS.map((l) => <a key={l.k} href={conditionHref(l.k)}>{l.name}</a>)}
             <a href="https://askminta.org">Ask Minta</a>
             <a href="https://unheardtrees.org">The Unheard Trees</a>
             <a href="https://planbforpans.com/directory">Find a doctor</a>

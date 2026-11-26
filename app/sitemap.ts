@@ -26,6 +26,9 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: '/directory', priority: 0.9 },
   { path: '/for-autism', priority: 0.8 },
   { path: '/for-ocd', priority: 0.8 },
+  { path: '/for-arfid', priority: 0.8 },
+  { path: '/for-constipation', priority: 0.8 },
+  { path: '/for-adhd', priority: 0.8 },
   { path: '/directory/review-policy', priority: 0.3 },
   { path: '/podcast', priority: 0.6 },
   // /minta-classes is password-gated — deliberately excluded from the sitemap.
