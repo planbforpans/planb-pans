@@ -1,15 +1,17 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
-import { LANGS, fromBrowser, isLang, langInfo, type Lang } from '@/lib/languages'
+import { useEffect, useRef, useState, type CSSProperties } from 'react'
+import { LANGS, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } from '@/lib/languages'
 
-// The language picker, on every page. English and Español first (2026-11-21);
-// French, German, Portuguese, Italian, Chinese, Japanese and Arabic (right to
-// left) added 2026-11-26 — see src/lib/languages.ts.
+// The language chooser, on every page. English and Español first (2026-11-21);
+// French, German, Portuguese, Italian, Chinese (Simplified and Traditional),
+// Japanese and Arabic (right to left) added 2026-11-26 — see src/lib/languages.ts.
 //
 // Rachel, 2026-11-21: "We have a heavy Spanish speaking group joining. Can we
 // make everything in Spanish if parents want it? They can switch languages?"
 // and "just launch now and she can correct tomorrow."
+// Rachel, 2026-11-26: "a parent needs to be able to click the correct
+// language" and "phone vital": one tap, big buttons, a bottom sheet on phones.
 //
 // When a parent picks a language, the page's visible text is translated in place
 // through /api/translate (Claude, with hand-checked overrides that always win)
@@ -20,15 +22,13 @@ import { LANGS, fromBrowser, isLang, langInfo, type Lang } from '@/lib/languages
 // translation always starts from the English.
 
 const LANG_KEY = 'pb_lang'
+const DISMISSED_KEY = 'pb_lang_dismissed'
 const cacheKey = (l: Lang) => `pb_${l}_cache_v1`
 const SKIP = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'SELECT', 'CODE', 'PRE', 'SVG', 'IFRAME'])
 const ATTRS = ['placeholder', 'title', 'aria-label', 'alt']
+const TEAL = '#2E6E70'
 
-// The choice is shared across planbforpans.com and app.planbforpans.com through a
-// cookie on the parent domain, so a parent picks a language once. On a first
-// visit with nothing chosen, the browser's language decides. A link with
-// ?lang=ar (or any code) picks the language for whoever opens it.
-export function getLang(): Lang {
+function savedLang(): Lang | null {
   try {
     const q = new URLSearchParams(window.location.search).get('lang')
     if (isLang(q)) {
@@ -39,10 +39,17 @@ export function getLang(): Lang {
     if (c && isLang(c[1])) return c[1]
     const s = window.localStorage.getItem(LANG_KEY)
     if (isLang(s)) return s
-    return fromBrowser(navigator.languages?.length ? navigator.languages : [navigator.language || 'en'])
-  } catch {
-    return 'en'
-  }
+  } catch {}
+  return null
+}
+
+// The choice is shared across planbforpans.com and app.planbforpans.com through a
+// cookie on the parent domain, so a parent picks a language once. A link with
+// ?lang=ar (or any code) picks the language for whoever opens it. Nothing is
+// translated until a language is chosen; a first visit outside US English gets
+// the chooser instead.
+export function getLang(): Lang {
+  return savedLang() || 'en'
 }
 
 export function setLangChoice(l: Lang) {
@@ -51,6 +58,18 @@ export function setLangChoice(l: Lang) {
     const domain = /(^|\.)planbforpans\.com$/.test(window.location.hostname) ? '; domain=.planbforpans.com' : ''
     document.cookie = `${LANG_KEY}=${l}; path=/; max-age=31536000; samesite=lax${domain}`
   } catch {}
+}
+
+export function openLanguageChooser() {
+  window.dispatchEvent(new Event('pb-lang-open'))
+}
+
+function browserLangs(): string[] {
+  try {
+    return navigator.languages?.length ? [...navigator.languages] : [navigator.language || 'en']
+  } catch {
+    return ['en']
+  }
 }
 
 function loadCache(l: Lang): Record<string, string> {
@@ -76,24 +95,200 @@ function skipped(el: Element | null): boolean {
   return false
 }
 
+// "🌐 Español": the compact button that opens the chooser. Used in page
+// headers (sign-in, intake, family hub, the website) and as the corner button
+// on every other page. While a header button is on the page the corner one hides.
+export function LangButton({ className, style, corner }: { className?: string; style?: CSSProperties; corner?: boolean }) {
+  const [lang, setLang] = useState<Lang>('en')
+  const [busy, setBusy] = useState(false)
+  useEffect(() => {
+    const read = () => setLang(getLang())
+    const onBusy = (e: Event) => setBusy(!!(e as CustomEvent<boolean>).detail)
+    read()
+    window.addEventListener('pb-lang', read)
+    window.addEventListener('pb-lang-busy', onBusy)
+    const root = document.documentElement
+    if (!corner) root.dataset.pbLangHeader = String(Number(root.dataset.pbLangHeader || 0) + 1)
+    return () => {
+      window.removeEventListener('pb-lang', read)
+      window.removeEventListener('pb-lang-busy', onBusy)
+      if (!corner) {
+        const n = Number(root.dataset.pbLangHeader || 1) - 1
+        if (n > 0) root.dataset.pbLangHeader = String(n)
+        else delete root.dataset.pbLangHeader
+      }
+    }
+  }, [corner])
+  const info = langInfo(lang)
+  return (
+    <button
+      type="button"
+      translate="no"
+      data-no-translate
+      data-pb-lang-corner={corner ? '' : undefined}
+      className={className}
+      onClick={openLanguageChooser}
+      aria-haspopup="dialog"
+      aria-label={`Language: ${info.name}. Change language`}
+      title={info.note || undefined}
+      style={className ? style : {
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: 6,
+        minHeight: 44,
+        padding: '0 14px 0 11px',
+        border: '1px solid #CFDCDA',
+        borderRadius: 999,
+        background: '#fff',
+        color: TEAL,
+        fontSize: 14,
+        fontWeight: 700,
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+        ...style,
+      }}
+    >
+      <span aria-hidden style={{ fontSize: 16, lineHeight: 1 }}>🌐</span>
+      <span lang={lang} dir={info.dir}>{busy ? info.translating : info.name}</span>
+    </button>
+  )
+}
+
+const SHEET_CSS = `
+.pbl-backdrop{position:fixed;inset:0;z-index:2147482600;background:rgba(18,32,32,.46);display:flex;align-items:flex-end;justify-content:center;animation:pbl-fade .18s ease-out}
+.pbl-sheet{box-sizing:border-box;width:100%;max-width:480px;max-height:88vh;max-height:88dvh;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;background:#fff;color:#1F2424;border-radius:22px 22px 0 0;padding:10px 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.18);animation:pbl-up .22s cubic-bezier(.2,.8,.2,1)}
+.pbl-grab{width:40px;height:5px;border-radius:3px;background:#D5DEDC;margin:0 auto 10px}
+.pbl-top{display:flex;align-items:flex-start;gap:8px}
+.pbl-title{flex:1;margin:4px 0 0;font-size:22px;line-height:1.25;font-weight:700}
+.pbl-x{flex:none;width:44px;height:44px;border:0;border-radius:22px;background:#F1F5F4;color:#1F2424;font-size:20px;cursor:pointer}
+.pbl-also{display:flex;flex-wrap:wrap;gap:2px 12px;margin:6px 0 14px;font-size:13px;line-height:1.6;color:#5B6766}
+.pbl-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pbl-opt{box-sizing:border-box;min-height:56px;width:100%;padding:8px 10px;border:1.5px solid #CFDCDA;border-radius:14px;background:#fff;color:#1F2424;font-size:17px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;text-align:center;line-height:1.2}
+.pbl-opt[aria-pressed="true"]{background:${TEAL};border-color:${TEAL};color:#fff}
+.pbl-opt.pbl-sugg{border-color:${TEAL};border-width:2.5px}
+.pbl-opt:focus-visible,.pbl-x:focus-visible,.pbl-keep:focus-visible{outline:3px solid #F2B04A;outline-offset:2px}
+.pbl-keep{margin-top:12px;width:100%;min-height:52px;border:0;border-radius:14px;background:#F1F5F4;color:#1F2424;font-size:16px;font-weight:600;cursor:pointer}
+.pbl-note{margin:12px 2px 0;font-size:12px;color:#5B6766;text-align:center}
+@media (min-width:640px){.pbl-backdrop{align-items:center;padding:24px}.pbl-sheet{border-radius:22px;padding:18px 22px 22px}.pbl-grab{display:none}}
+@media (max-width:340px){.pbl-opt{font-size:15px}}
+@keyframes pbl-up{from{transform:translateY(24px);opacity:.6}to{transform:none;opacity:1}}
+@keyframes pbl-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.pbl-backdrop,.pbl-sheet{animation:none}}
+`
+
+function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang; suggested: Lang; first: boolean; onPick: (l: Lang) => void; onClose: () => void }) {
+  const sheet = useRef<HTMLDivElement>(null)
+  const close = useRef(onClose)
+  useEffect(() => {
+    close.current = onClose
+  })
+  const head = langInfo(first ? suggested : current)
+  useEffect(() => {
+    const before = document.activeElement as HTMLElement | null
+    const overflow = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    const q = (sel: string) => sheet.current?.querySelector<HTMLElement>(sel)
+    const target = q('.pbl-sugg') || q('[aria-pressed="true"]') || q('.pbl-opt')
+    target?.focus()
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault()
+        close.current()
+      } else if (e.key === 'Tab' && sheet.current) {
+        const f = Array.from(sheet.current.querySelectorAll<HTMLElement>('button'))
+        if (!f.length) return
+        const i = f.indexOf(document.activeElement as HTMLElement)
+        if (e.shiftKey && i <= 0) {
+          e.preventDefault()
+          f[f.length - 1].focus()
+        } else if (!e.shiftKey && i === f.length - 1) {
+          e.preventDefault()
+          f[0].focus()
+        }
+      }
+    }
+    document.addEventListener('keydown', onKey)
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      document.body.style.overflow = overflow
+      before?.focus?.()
+    }
+  }, [])
+  return (
+    <div className="pbl-backdrop" translate="no" data-no-translate onClick={onClose}>
+      <style>{SHEET_CSS}</style>
+      <div
+        ref={sheet}
+        className="pbl-sheet"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="pbl-title"
+        lang={head.code}
+        dir={head.dir}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="pbl-grab" aria-hidden />
+        <div className="pbl-top">
+          <h2 id="pbl-title" className="pbl-title">{head.choose}</h2>
+          <button type="button" className="pbl-x" onClick={onClose} aria-label="Close">✕</button>
+        </div>
+        <p className="pbl-also">
+          {LANGS.filter((l) => l.code !== head.code).map((l) => (
+            <span key={l.code} lang={l.code} dir={l.dir}>{l.choose}</span>
+          ))}
+        </p>
+        <div className="pbl-grid" role="group" aria-labelledby="pbl-title">
+          {LANGS.map((l) => (
+            <button
+              key={l.code}
+              type="button"
+              className={`pbl-opt${first && l.code === suggested && l.code !== current ? ' pbl-sugg' : ''}`}
+              aria-pressed={l.code === current}
+              lang={l.code}
+              dir={l.dir}
+              onClick={() => onPick(l.code)}
+            >
+              {l.code === current && <span aria-hidden>✓</span>}
+              {l.name}
+            </button>
+          ))}
+        </div>
+        {first && (
+          <button type="button" className="pbl-keep" lang="en" dir="ltr" onClick={() => onPick('en')}>
+            Keep English
+          </button>
+        )}
+        {head.note && <p className="pbl-note">{head.note}</p>}
+      </div>
+    </div>
+  )
+}
+
 export default function AutoTranslate() {
   const [busy, setBusy] = useState(false)
   const [lang, setLang] = useState<Lang>('en')
-  const [open, setOpen] = useState(false)
-  const box = useRef<HTMLDivElement>(null)
+  const [chooser, setChooser] = useState<null | { first: boolean; suggested: Lang }>(null)
 
   useEffect(() => {
-    if (!open) return
-    const close = (e: PointerEvent) => {
-      if (!box.current?.contains(e.target as Node)) setOpen(false)
-    }
-    document.addEventListener('pointerdown', close)
-    return () => document.removeEventListener('pointerdown', close)
-  }, [open])
-
-  useEffect(() => {
-    setLang(getLang())
+    const saved = savedLang()
+    setLang(saved || 'en')
+    let dismissed = false
+    try {
+      dismissed = window.sessionStorage.getItem(DISMISSED_KEY) === '1'
+    } catch {}
+    let tz = ''
+    try {
+      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''
+    } catch {}
+    if (!saved && !dismissed && shouldOfferChooser(browserLangs(), tz)) setChooser({ first: true, suggested: fromBrowser(browserLangs()) })
+    const open = () => setChooser({ first: false, suggested: getLang() })
+    window.addEventListener('pb-lang-open', open)
+    return () => window.removeEventListener('pb-lang-open', open)
   }, [])
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('pb-lang-busy', { detail: busy }))
+  }, [busy])
 
   useEffect(() => {
     if (lang === 'en') return
@@ -219,115 +414,53 @@ export default function AutoTranslate() {
   }, [lang])
 
   const choose = (l: Lang) => {
-    if (l === lang) return
     setLangChoice(l)
-    setOpen(false)
+    setChooser(null)
+    if (l === lang) return
     // From English, translate in place; from any other language, start again from the English.
-    if (lang === 'en') { setLang(l); window.dispatchEvent(new Event('pb-lang')) }
-    else window.location.reload()
+    if (lang === 'en') {
+      setLang(l)
+      window.dispatchEvent(new Event('pb-lang'))
+    } else window.location.reload()
+  }
+
+  const dismiss = () => {
+    if (chooser?.first) {
+      try {
+        window.sessionStorage.setItem(DISMISSED_KEY, '1')
+      } catch {}
+    }
+    setChooser(null)
   }
 
   const info = langInfo(lang)
   return (
-    <div
-      ref={box}
-      translate="no"
-      data-no-translate
-      dir="ltr"
-      style={{
-        position: 'fixed',
-        left: 6,
-        bottom: 'calc(6px + env(safe-area-inset-bottom))',
-        opacity: 0.97,
-        zIndex: 2147482000,
-        maxWidth: 'calc(100vw - 12px)',
-      }}
-    >
-      {open && (
-        <ul
-          role="listbox"
-          aria-label="Language"
-          style={{
-            listStyle: 'none',
-            margin: '0 0 6px',
-            padding: 4,
-            background: '#fff',
-            border: '1px solid #CFDCDA',
-            borderRadius: 14,
-            boxShadow: '0 4px 18px rgba(0,0,0,.16)',
-            width: 170,
-          }}
-        >
-          {LANGS.map((l) => (
-            <li key={l.code}>
-              <button
-                type="button"
-                role="option"
-                aria-selected={lang === l.code}
-                lang={l.code}
-                dir={l.dir}
-                onClick={() => choose(l.code)}
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  textAlign: 'start',
-                  border: 0,
-                  background: lang === l.code ? '#2E6E70' : 'transparent',
-                  color: lang === l.code ? '#fff' : '#1F2424',
-                  fontSize: 14,
-                  fontWeight: lang === l.code ? 700 : 500,
-                  padding: '8px 12px',
-                  borderRadius: 10,
-                  cursor: 'pointer',
-                }}
-              >
-                {l.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-      )}
+    <>
       <div
+        translate="no"
+        data-no-translate
+        data-pb-lang-corner=""
+        dir="ltr"
         style={{
-          display: 'inline-flex',
+          position: 'fixed',
+          left: 6,
+          bottom: 'calc(6px + env(safe-area-inset-bottom))',
+          zIndex: 2147482000,
+          maxWidth: 'calc(100vw - 12px)',
+          display: 'flex',
           flexDirection: 'column',
-          background: '#fff',
-          border: '1px solid #CFDCDA',
-          borderRadius: 18,
-          padding: 2,
-          boxShadow: '0 2px 10px rgba(0,0,0,.12)',
+          alignItems: 'flex-start',
+          gap: 3,
         }}
       >
-        <button
-          type="button"
-          onClick={() => setOpen((o) => !o)}
-          aria-haspopup="listbox"
-          aria-expanded={open}
-          aria-label={`Language: ${info.name}`}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 6,
-            border: 0,
-            background: 'transparent',
-            color: '#2E6E70',
-            fontSize: 13,
-            fontWeight: 700,
-            padding: '6px 11px 6px 8px',
-            borderRadius: 14,
-            cursor: 'pointer',
-          }}
-        >
-          <span aria-hidden style={{ fontSize: 15 }}>🌐</span>
-          <span lang={lang} dir={info.dir}>{busy ? info.translating : info.name}</span>
-          <span aria-hidden style={{ fontSize: 10 }}>▾</span>
-        </button>
+        <LangButton corner style={{ boxShadow: '0 2px 10px rgba(0,0,0,.12)', opacity: 0.97 }} />
         {lang !== 'en' && (
-          <span lang={lang} dir={info.dir} style={{ fontSize: 10, lineHeight: 1.3, color: '#5B6766', padding: '0 10px 5px', maxWidth: 200 }}>
+          <span lang={lang} dir={info.dir} style={{ fontSize: 10, lineHeight: 1.3, color: '#5B6766', background: 'rgba(255,255,255,.92)', borderRadius: 6, padding: '2px 6px', maxWidth: 220 }}>
             {info.note}
           </span>
         )}
       </div>
-    </div>
+      {chooser && <Chooser current={lang} suggested={chooser.suggested} first={chooser.first} onPick={choose} onClose={dismiss} />}
+    </>
   )
 }

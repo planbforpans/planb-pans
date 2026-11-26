@@ -833,17 +833,15 @@ body { background: #fff; }
 
 .nav-lang{font:inherit;letter-spacing:inherit;text-transform:inherit;font-size:inherit;background:transparent;color:inherit;border:1px solid currentColor;border-radius:999px;padding:5px 11px;cursor:pointer;white-space:nowrap}
 .nav-lang:hover{background:rgba(31,107,107,.08)}
-.nav-lang{display:inline-flex;align-items:center;gap:5px;position:relative}
-.nav-lang select{appearance:none;-webkit-appearance:none;background:transparent;border:0;color:inherit;font:inherit;letter-spacing:0;text-transform:none;font-size:12px;font-weight:600;padding:0;padding-inline-end:10px;margin:0;cursor:pointer}
-.nav-lang select:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
-.nav-lang-caret{position:absolute;inset-inline-end:10px;font-size:9px;pointer-events:none}
+.nav-lang{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 14px 0 11px;text-transform:none;letter-spacing:0;font-size:13px;font-weight:600}
+.nav-lang>span:first-child{font-size:15px;line-height:1}
 
 /* Translated pages (language picker, lib/languages.ts). AutoTranslate sets
    lang and dir on <html>; English pages are untouched. */
 html:not([lang="en"]) body { overflow-wrap: break-word; }
 html[lang="de"] body { -webkit-hyphens: auto; hyphens: auto; }
-html[lang="ja"] body, html[lang="zh-Hans"] body { line-break: strict; }
-html:is([lang="ja"], [lang="zh-Hans"], [lang="ar"]) body * { font-style: normal !important; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"]) body { line-break: strict; }
+html:is([lang="ja"], [lang="zh-Hans"], [lang="zh-Hant"], [lang="ar"]) body * { font-style: normal !important; }
 
 /* Arabic, right to left. */
 html[lang="ar"] {
@@ -858,4 +856,7 @@ html[lang="ar"] body * { letter-spacing: 0 !important; }
 html[dir="rtl"] :is(input[type="email"], input[type="tel"], input[type="url"], input[type="number"], code, pre) { direction: ltr; }
 html[dir="rtl"] :is([translate="no"], [data-no-translate], code) { unicode-bidi: isolate; }
 html[dir="rtl"] .cover-kid { direction: ltr; }
+html:not([lang="en"]) .cover-kid .datapoint { white-space: nowrap; }
 html[dir="rtl"] :is(.site-logo, .brand) { direction: ltr; unicode-bidi: isolate; }
+/* A page with the language button in its header hides the corner one. */
+html[data-pb-lang-header] [data-pb-lang-corner] { display: none !important; }
