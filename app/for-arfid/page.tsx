@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import ConditionHome from '../_components/ConditionHome'
 
 // Plan B for ARFID (Rachel, 2026-11-26). Served at planbforarfid.com/.org via middleware rewrite.
@@ -8,7 +9,7 @@ const DESC = 'Safe foods suddenly inedible? A new fear of choking or throwing up
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: 'https://planbforpans.com/for-arfid' },
+  alternates: { canonical: 'https://planbforpans.com/for-arfid', languages: languageAlternates('/for-arfid') },
   openGraph: { title: 'Plan B for ARFID', description: DESC, url: 'https://planbforpans.com/for-arfid', siteName: 'Plan B for ARFID', type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Plan B for ARFID', description: DESC },
 }

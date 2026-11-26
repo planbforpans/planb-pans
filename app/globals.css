@@ -860,3 +860,7 @@ html:not([lang="en"]) .cover-kid .datapoint { white-space: nowrap; }
 html[dir="rtl"] :is(.site-logo, .brand) { direction: ltr; unicode-bidi: isolate; }
 /* A page with the language button in its header hides the corner one. */
 html[data-pb-lang-header] [data-pb-lang-corner] { display: none !important; }
+
+/* Server-translated pages (app/[locale]): the machine-translation note above the footer. */
+.pb-mt-note { margin: 0; padding: 14px 16px; text-align: center; font-size: 12.5px; line-height: 1.5; color: var(--sand-dark, #6b6458); background: var(--cream-light, #faf7f0); border-top: 1px solid var(--sand, #ddd5c4); }
+.pb-mt-note a { color: var(--teal, #2E6E70); text-decoration: underline; }

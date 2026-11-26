@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import Link from 'next/link'
 
 // What we're learning · Clue 01 (Rachel, 2026-11-25): "Behaviors are symptoms
@@ -16,7 +17,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/learning/behaviors-are-a-clue' },
+  alternates: { canonical: '/learning/behaviors-are-a-clue', languages: languageAlternates('/learning/behaviors-are-a-clue') },
   openGraph: {
     title: 'Behaviors are a clue',
     description: DESCRIPTION,

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { languageAlternates } from '@/lib/locales'
 import ConditionHome from '../_components/ConditionHome'
 
 // Plan B for OCD (Rachel, 2026-11-25: "Plan B for OCD"). Served at planbforocd.com/.org via middleware rewrite.
@@ -8,7 +9,7 @@ const DESC = 'Sudden OCD after a sore throat? Think strep. Free help from a nonp
 export const metadata: Metadata = {
   title: TITLE,
   description: DESC,
-  alternates: { canonical: 'https://planbforpans.com/for-ocd' },
+  alternates: { canonical: 'https://planbforpans.com/for-ocd', languages: languageAlternates('/for-ocd') },
   openGraph: { title: 'Plan B for OCD', description: DESC, url: 'https://planbforpans.com/for-ocd', siteName: 'Plan B for OCD', type: 'website' },
   twitter: { card: 'summary_large_image', title: 'Plan B for OCD', description: DESC },
 }
