@@ -287,6 +287,7 @@ export default function PlanBForOCD() {
             <a className="card" href={`${APP}/signup?from=${FROM}&next=/tracker`}><span className="mono k">03 · Free</span><h3>A one-minute tracker</h3><p>See what helps and what sets off a flare, on a chart you can show the doctor.</p></a>
             <a className="card" href="https://planbforpans.com/app"><span className="mono k">04 · Free</span><h3>Get the app</h3><p>Plan B on your phone, in the App Store and Google Play.</p></a>
           </div>
+          <p style={{ marginTop: 22, color: '#D7E3DA' }}>What happens next: biology first, then whatever your child needs. <a href="https://planbforpans.com/#care-path" style={{ color: 'var(--saffron)' }}>See the two-phase care path →</a></p>
           <div className="btns" style={{ marginTop: 26 }}>
             <a className="btn p" href={`${APP}/signup?from=${FROM}`}>Start free</a>
             <a className="btn g" href={`${APP}/join?src=${FROM}`}>Just keep me posted</a>

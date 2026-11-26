@@ -5,6 +5,7 @@ import BucketSection from './_components/BucketSection'
 import { VOICES } from './_components/voices'
 import CaseReviewVoices, { CaseReviewLong } from './_components/CaseReviewVoices'
 import WelcomeVideo from './_components/WelcomeVideo'
+import CarePath from './_components/CarePath'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -158,6 +159,7 @@ export default function Home() {
               </svg>
             </div>
           </div>
+          <CarePath />
           <div className="how-cta">
             <a href="https://app.planbforpans.com/signup" rel="noopener" className="cta-teal">Start your free Synthesis</a>
             <a href="https://app.planbforpans.com/sample-synthesis-2" rel="noopener" className="link-sweep" style={{ color: 'var(--ink)', fontSize: 14.5 }}>See a sample Synthesis &rarr;</a>
