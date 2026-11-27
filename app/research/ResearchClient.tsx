@@ -1,83 +1,79 @@
 'use client'
 
 import ResearchSection from '../_components/ResearchSection'
-import { useReveal } from '../_components/hooks'
+import Manifesto from '../_components/Manifesto'
+import { HubStyles, Patterns, OurStudies, EngineTrials, Vote } from './HubSections'
+import type { Counter, FindingsWeek, Study, Trial } from '../../lib/research-data'
 
-export default function ResearchPage() {
-  const ref = useReveal()
+type Props = {
+  findings: { weeks: FindingsWeek[]; counter: Counter }
+  studies: Study[] | null
+  trials: { trials: Trial[]; topics: Record<string, string>; updated_at: string | null } | null
+}
+
+export default function ResearchPage({ findings, studies, trials }: Props) {
   return (
     <main style={{ background: 'var(--cream)' }}>
-      {/* Header */}
-      <section
-        style={{
-          padding: '120px 24px 80px',
-          borderBottom: '1px solid var(--rule)',
-          background: 'var(--cream-light)',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <div
-          className="bloom-float"
-          style={{
-            position: 'absolute',
-            top: -180,
-            right: -180,
-            width: 480,
-            height: 480,
-            borderRadius: '50%',
-            background:
-              'radial-gradient(circle, rgba(31,107,107,0.12) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }}
-        />
-        <div
-          ref={ref}
-          className="pb-container reveal"
-          style={{ position: 'relative', zIndex: 1, maxWidth: 1080 }}
-        >
-          <p className="eyebrow" style={{ marginBottom: 22 }}>
-            The research
-          </p>
-          <h1
+      {/* WE ARE THE RESEARCH — the Research hub opens with the manifesto (Rachel, 2026-11-26). */}
+      <HubStyles />
+      <Manifesto fig="Fig. 01" as="h1" showLinks={false} />
+      <Patterns weeks={findings.weeks} counter={findings.counter} />
+      <OurStudies studies={studies} />
+
+      {/* CLINICAL TRIALS — relevant PANS/PANDAS studies families can look into */}
+      <section style={{ padding: 'clamp(56px, 8vw, 96px) 24px', borderBottom: '1px solid var(--rule)' }}>
+        <div className="pb-container" style={{ maxWidth: 920 }}>
+          <p className="eyebrow" style={{ marginBottom: 18 }}>Fig. 04 · Studies you can join</p>
+          <h2
             className="serif"
-            style={{
-              fontSize: 'clamp(48px, 8vw, 96px)',
-              fontWeight: 300,
-              letterSpacing: '-0.026em',
-              lineHeight: 0.98,
-              margin: 0,
-              color: 'var(--ink)',
-              maxWidth: 1000,
-            }}
+            style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.08, color: 'var(--ink)', margin: '0 0 16px' }}
           >
-            Every kid is a puzzle.
-            <br />
-            <em style={{ color: 'var(--teal)' }}>
-              Together, they tell a story.
-            </em>
-          </h1>
-          <p
-            style={{
-              fontSize: 19,
-              lineHeight: 1.7,
-              color: 'var(--ink-soft)',
-              fontWeight: 300,
-              maxWidth: 720,
-              marginTop: 28,
-            }}
-          >
-            Plan B for PANS has a unique working understanding of PANS, PANDAS, and the shared drivers
-            behind severe dysregulation — built from the full arc of every family that tracks
-            with it. The more kids in the library, the more precisely each next read lands.
+            Recruiting trials for children.
+          </h2>
+          <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', fontWeight: 300, maxWidth: 720, margin: '0 0 32px' }}>
+            Recruiting studies relevant to our kids. Status and eligibility change, so always confirm at the link before counting on a study.
+          </p>
+          {trials ? <EngineTrials trials={trials.trials} topics={trials.topics} updated={trials.updated_at} /> : <div style={{ display: 'grid', gap: 14 }}>
+            {[
+              { tag: 'Recruiting · natural history', title: 'PEDIA — PANS incidence & natural-history study (Univ. of Wisconsin)', why: 'A prospective study mapping how often PANS strikes and how it unfolds over time — the foundational data the field still lacks.', nct: 'NCT06811935', href: 'https://clinicaltrials.gov/study/NCT06811935' },
+              { tag: 'Results posted · IVIG', title: 'Panzyga Phase III — IVIG vs. placebo in PANS/PANDAS (completed)', why: 'Results in (71 kids): IVIG missed the primary OCD-severity endpoint (p=0.072) but beat placebo on overall clinical improvement (CGI-I, p=0.009). The first controlled IVIG evidence — points to selecting the right immune-driven kids.', nct: 'NCT04508530', href: 'https://clinicaltrials.gov/study/NCT04508530' },
+              { tag: 'Completed · IVIG', title: 'Open-label IVIG in children with PANS (Göteborg)', why: 'Completed Oct 2025 — results pending. Immunoglobulin therapy for the immune-driven cases.', nct: 'NCT04609761', href: 'https://clinicaltrials.gov/study/NCT04609761' },
+              { tag: 'Completed · IVIG access', title: 'The Unhide™ Project — economic impact of IVIG on PANS/PANDAS families', why: 'Completed Sept 2025 — documents the financial reality of pursuing IVIG, the evidence base for the insurance-coverage fight.', nct: 'NCT06818656', href: 'https://clinicaltrials.gov/study/NCT06818656' },
+              { tag: 'Recruiting · registry', title: 'Unhide® digital health platform — brain-inflammation lifestyle registry', why: 'Open registry collecting real-world lifestyle data across PANS/PANDAS and other brain-inflammation conditions — a way for families to contribute to the data the field still lacks.', nct: 'NCT04806620', href: 'https://clinicaltrials.gov/study/NCT04806620' },
+              { tag: 'Active · cannabinoid', title: 'NTI164 — full-spectrum medicinal cannabis extract for PANS', why: 'A novel anti-inflammatory / neuro-immune approach being trialed for PANS (active, not currently recruiting) — a genuinely new modality for refractory cases.', nct: 'NCT06621888', href: 'https://clinicaltrials.gov/study/NCT06621888' },
+              { tag: 'Results posted · pediatric Lyme', title: 'VLA15 Lyme disease vaccine — safety study in healthy children (Pfizer/Valneva)', why: 'A pediatric (ages 5–17) safety study of the 6-valent OspA Lyme vaccine candidate, now completed with results posted. Part of the program behind an anticipated 2026 FDA submission — the first real prospect of preventing the tick-borne infections that drive so many of these kids.', nct: 'NCT05634811', href: 'https://clinicaltrials.gov/study/NCT05634811' },
+              { tag: 'Stanford · markers', title: 'Neurobiologic, immunologic & rheumatologic markers in youth with PANS', why: 'Building the biomarker map that could finally make PANS a measurable diagnosis.', nct: 'NCT02889016', href: 'https://clinicaltrials.gov/study/NCT02889016' },
+              { tag: 'Mass General · imaging', title: 'Pediatric Neuropsychiatry & Immunology — neuroinflammation MRI', why: 'Imaging the brain inflammation behind PANDAS/PANS (also enrolling healthy controls).', nct: '', href: 'https://www.massgeneral.org/children/research/pediatric-neuropsychiatry-and-immunology-research-program' },
+              { tag: 'Find more', title: 'PPN research volunteer hub — every open PANS/PANDAS study', why: 'The PANDAS Physicians Network keeps the running list of trials seeking participants.', nct: '', href: 'https://www.pandasppn.org/participate/' },
+            ].map((t) => (
+              <a
+                key={t.title}
+                href={t.href}
+                target="_blank"
+                rel="noopener"
+                style={{ display: 'block', textDecoration: 'none', background: 'var(--cream-light)', border: '1px solid var(--rule)', borderRadius: 8, padding: '18px 20px' }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 6 }}>
+                  <span style={{ color: 'var(--teal)', fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t.tag}</span>
+                  {t.nct && <span style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{t.nct}</span>}
+                </div>
+                <p style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)', margin: '0 0 6px', lineHeight: 1.35 }}>{t.title}</p>
+                <p style={{ fontSize: 14.5, color: 'var(--ink-soft)', margin: 0, lineHeight: 1.55 }}>{t.why}</p>
+              </a>
+            ))}
+          </div>}
+          <p style={{ fontSize: 13, color: 'var(--ink-soft)', fontStyle: 'italic', marginTop: 20 }}>
+            Not an endorsement or medical advice — talk with your clinical team about whether a trial fits your child.
           </p>
         </div>
       </section>
 
-      {/* LATEST FINDINGS — what Minta is tracking (the monthly research radar) */}
+      <Vote />
+
+      {/* MINTA READS THE FIELD — hand-picked new papers (the monthly research radar) */}
       <section style={{ padding: 'clamp(56px, 8vw, 96px) 24px', borderBottom: '1px solid var(--rule)' }}>
         <div className="pb-container" style={{ maxWidth: 920 }}>
-          <p className="eyebrow" style={{ marginBottom: 18 }}>New studies to watch · updated monthly</p>
+          <p className="eyebrow" style={{ marginBottom: 18 }}>Fig. 06 · Minta reads the field · updated monthly</p>
           <h2
             className="serif"
             style={{ fontSize: 'clamp(30px, 4.5vw, 52px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.05, color: 'var(--ink)', margin: '0 0 16px' }}
@@ -125,54 +121,6 @@ export default function ResearchPage() {
           </div>
           <p style={{ fontSize: 13, color: 'var(--ink-soft)', fontStyle: 'italic', marginTop: 20 }}>
             Updated as new research lands. Educational only — not medical advice.
-          </p>
-        </div>
-      </section>
-
-      {/* CLINICAL TRIALS — relevant PANS/PANDAS studies families can look into */}
-      <section style={{ padding: 'clamp(56px, 8vw, 96px) 24px', borderBottom: '1px solid var(--rule)' }}>
-        <div className="pb-container" style={{ maxWidth: 920 }}>
-          <p className="eyebrow" style={{ marginBottom: 18 }}>Clinical trials · for PANS / PANDAS</p>
-          <h2
-            className="serif"
-            style={{ fontSize: 'clamp(28px, 4vw, 44px)', fontWeight: 300, letterSpacing: '-0.02em', lineHeight: 1.08, color: 'var(--ink)', margin: '0 0 16px' }}
-          >
-            Open studies worth knowing about.
-          </h2>
-          <p style={{ fontSize: 16, lineHeight: 1.7, color: 'var(--ink-soft)', fontWeight: 300, maxWidth: 720, margin: '0 0 32px' }}>
-            Recruiting or active trials relevant to PANS/PANDAS kids. Status and eligibility change — always confirm at the link before counting on a study.
-          </p>
-          <div style={{ display: 'grid', gap: 14 }}>
-            {[
-              { tag: 'Recruiting · natural history', title: 'PEDIA — PANS incidence & natural-history study (Univ. of Wisconsin)', why: 'A prospective study mapping how often PANS strikes and how it unfolds over time — the foundational data the field still lacks.', nct: 'NCT06811935', href: 'https://clinicaltrials.gov/study/NCT06811935' },
-              { tag: 'Results posted · IVIG', title: 'Panzyga Phase III — IVIG vs. placebo in PANS/PANDAS (completed)', why: 'Results in (71 kids): IVIG missed the primary OCD-severity endpoint (p=0.072) but beat placebo on overall clinical improvement (CGI-I, p=0.009). The first controlled IVIG evidence — points to selecting the right immune-driven kids.', nct: 'NCT04508530', href: 'https://clinicaltrials.gov/study/NCT04508530' },
-              { tag: 'Completed · IVIG', title: 'Open-label IVIG in children with PANS (Göteborg)', why: 'Completed Oct 2025 — results pending. Immunoglobulin therapy for the immune-driven cases.', nct: 'NCT04609761', href: 'https://clinicaltrials.gov/study/NCT04609761' },
-              { tag: 'Completed · IVIG access', title: 'The Unhide™ Project — economic impact of IVIG on PANS/PANDAS families', why: 'Completed Sept 2025 — documents the financial reality of pursuing IVIG, the evidence base for the insurance-coverage fight.', nct: 'NCT06818656', href: 'https://clinicaltrials.gov/study/NCT06818656' },
-              { tag: 'Recruiting · registry', title: 'Unhide® digital health platform — brain-inflammation lifestyle registry', why: 'Open registry collecting real-world lifestyle data across PANS/PANDAS and other brain-inflammation conditions — a way for families to contribute to the data the field still lacks.', nct: 'NCT04806620', href: 'https://clinicaltrials.gov/study/NCT04806620' },
-              { tag: 'Active · cannabinoid', title: 'NTI164 — full-spectrum medicinal cannabis extract for PANS', why: 'A novel anti-inflammatory / neuro-immune approach being trialed for PANS (active, not currently recruiting) — a genuinely new modality for refractory cases.', nct: 'NCT06621888', href: 'https://clinicaltrials.gov/study/NCT06621888' },
-              { tag: 'Results posted · pediatric Lyme', title: 'VLA15 Lyme disease vaccine — safety study in healthy children (Pfizer/Valneva)', why: 'A pediatric (ages 5–17) safety study of the 6-valent OspA Lyme vaccine candidate, now completed with results posted. Part of the program behind an anticipated 2026 FDA submission — the first real prospect of preventing the tick-borne infections that drive so many of these kids.', nct: 'NCT05634811', href: 'https://clinicaltrials.gov/study/NCT05634811' },
-              { tag: 'Stanford · markers', title: 'Neurobiologic, immunologic & rheumatologic markers in youth with PANS', why: 'Building the biomarker map that could finally make PANS a measurable diagnosis.', nct: 'NCT02889016', href: 'https://clinicaltrials.gov/study/NCT02889016' },
-              { tag: 'Mass General · imaging', title: 'Pediatric Neuropsychiatry & Immunology — neuroinflammation MRI', why: 'Imaging the brain inflammation behind PANDAS/PANS (also enrolling healthy controls).', nct: '', href: 'https://www.massgeneral.org/children/research/pediatric-neuropsychiatry-and-immunology-research-program' },
-              { tag: 'Find more', title: 'PPN research volunteer hub — every open PANS/PANDAS study', why: 'The PANDAS Physicians Network keeps the running list of trials seeking participants.', nct: '', href: 'https://www.pandasppn.org/participate/' },
-            ].map((t) => (
-              <a
-                key={t.title}
-                href={t.href}
-                target="_blank"
-                rel="noopener"
-                style={{ display: 'block', textDecoration: 'none', background: 'var(--cream-light)', border: '1px solid var(--rule)', borderRadius: 8, padding: '18px 20px' }}
-              >
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 6 }}>
-                  <span style={{ color: 'var(--teal)', fontSize: 12, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{t.tag}</span>
-                  {t.nct && <span style={{ fontSize: 12, color: 'var(--ink-soft)' }}>{t.nct}</span>}
-                </div>
-                <p style={{ fontSize: 17, fontWeight: 500, color: 'var(--ink)', margin: '0 0 6px', lineHeight: 1.35 }}>{t.title}</p>
-                <p style={{ fontSize: 14.5, color: 'var(--ink-soft)', margin: 0, lineHeight: 1.55 }}>{t.why}</p>
-              </a>
-            ))}
-          </div>
-          <p style={{ fontSize: 13, color: 'var(--ink-soft)', fontStyle: 'italic', marginTop: 20 }}>
-            Not an endorsement or medical advice — talk with your clinical team about whether a trial fits your child.
           </p>
         </div>
       </section>
