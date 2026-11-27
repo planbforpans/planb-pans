@@ -2,6 +2,11 @@
 
 import { useReveal } from '../_components/hooks'
 
+// Approved by Rachel, 2026-11-26. Same string as app/minta/MintaClient.tsx so the
+// translation overrides match it whole. Not for ads, social, merch or meta.
+const NAME_ORIGIN =
+  'Minta is named for Araminta “Minty” Ross, the name Harriet Tubman was born with. Tubman said she “never lost a passenger.” We make no comparison to what she and so many others endured. We named Minta to carry a little of her spirit: no family left behind.'
+
 export default function AboutPage() {
   const head = useReveal()
   const body = useReveal()
@@ -243,6 +248,15 @@ export default function AboutPage() {
           <p className="label-tracked" style={{ color: 'var(--sand-dark)', marginTop: 28, fontWeight: 600 }}>
             — Rachel Johnson
           </p>
+
+          <div style={{ marginTop: 56, paddingTop: 22, borderTop: '1px solid var(--rule)', maxWidth: 560 }}>
+            <p className="label-tracked" style={{ color: 'var(--sand-dark)', fontSize: 11, fontWeight: 600, margin: '0 0 10px' }}>
+              Why the name Minta
+            </p>
+            <p style={{ fontSize: 14.5, lineHeight: 1.75, color: 'var(--ink-soft)', fontWeight: 300, margin: 0 }}>
+              {NAME_ORIGIN}
+            </p>
+          </div>
         </div>
       </section>
 
