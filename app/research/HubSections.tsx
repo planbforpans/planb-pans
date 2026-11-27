@@ -59,7 +59,7 @@ export function Patterns({ weeks, counter }: { weeks: FindingsWeek[]; counter: C
     <section className="hub" id="patterns">
       <div className="hub-in">
         <p className="hub-fig"><span>Fig. 02 &middot; The patterns</span><span>Updated weekly</span></p>
-        <h2>What we&apos;ve learned <em>so far.</em></h2>
+        <h2>{latest.length ? <>This week&apos;s <em>patterns.</em></> : <>What we&apos;ve learned <em>so far.</em></>}</h2>
         <p className="hub-lede">What families tracking together are learning, week by week. Anonymous, aggregate, and public.</p>
         {counter && (
           <div className="hub-count"><span><b>{counter.families_tracking.toLocaleString('en-US')}</b>families tracking</span><span><b>{counter.nights_logged.toLocaleString('en-US')}</b>nights logged</span></div>
@@ -67,7 +67,7 @@ export function Patterns({ weeks, counter }: { weeks: FindingsWeek[]; counter: C
         {latest.length ? latest.map((f, i) => (
           <div className="hub-f" key={f.id + i}>
             <span className="no">{String(i + 1).padStart(2, '0')}</span>
-            <div><h3>{f.headline}</h3><p>{f.body}</p><span className="hub-n">n = {f.n} {f.unit || 'families'}</span></div>
+            <div><h3>{f.headline}</h3><p>{f.body}</p><span className="hub-n">{f.label ? `${f.label} · ` : ''}n = {f.n} {f.unit || 'families'}</span></div>
           </div>
         )) : <div className="hub-empty">Our first weekly findings are coming soon.</div>}
         <div className="hub-actions">

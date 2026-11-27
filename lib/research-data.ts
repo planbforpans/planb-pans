@@ -3,7 +3,7 @@ import { APP_ORIGIN } from './directory/data'
 // Research hub data, fetched from the app's public endpoints (ISR). Every
 // fetch fails soft: the page renders its fallback instead of breaking.
 
-export type Finding = { id: string; title: string; headline: string; body: string; n: number; unit?: string }
+export type Finding = { id: string; title: string; headline: string; body: string; n: number; unit?: string; label?: string }
 export type FindingsWeek = { week_start: string; findings: Finding[] }
 export type Counter = { families_tracking: number; nights_logged: number } | null
 export type Study = { slug: string; title: string; kicker: string; status: string; question: string; who: string; how: string; href: string; join: string }
