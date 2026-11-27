@@ -25,6 +25,11 @@ const VOICES = [
   { quote: 'Minta’s synthesis was very helpful and I’ve saved it into my daughter’s files.', who: 'Sheila, PANS parent' },
 ]
 
+// Approved by Rachel, 2026-11-26. One string so translation overrides match it
+// whole and keep the names and the quote. Not for ads, social, merch or meta.
+const NAME_ORIGIN =
+  'Minta is named for Araminta “Minty” Ross, the name Harriet Tubman was born with. Tubman said she “never lost a passenger.” We make no comparison to what she and so many others endured. We named Minta to carry a little of her spirit: no family left behind.'
+
 const DOES = [
   ['Connects the dots', 'Years of labs, symptoms and nights in one view, so patterns one doctor’s visit can’t see come forward.'],
   ['Explains it in plain words', 'Any number, any test, any term. Ask as many times as you need.'],
@@ -148,8 +153,8 @@ export default function MintaClient() {
               <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-soft)', fontWeight: 300 }}>Minta isn&rsquo;t a doctor. She doesn&rsquo;t diagnose or prescribe. Everything she gives you is made to take to yours.</p>
             </div>
             <div>
-              <h3 className="serif" style={{ fontSize: 26, fontWeight: 400, margin: '0 0 8px' }}>Why &ldquo;Minta&rdquo;</h3>
-              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-soft)', fontWeight: 300 }}>She&rsquo;s named for Araminta Ross, Harriet Tubman&rsquo;s birth name. Tubman found her way by the North Star and led others through the dark. Minta&rsquo;s star is a small nod to her.</p>
+              <h3 className="serif" style={{ fontSize: 26, fontWeight: 400, margin: '0 0 8px' }}>Why the name Minta</h3>
+              <p style={{ margin: 0, fontSize: 15.5, lineHeight: 1.65, color: 'var(--ink-soft)', fontWeight: 300 }}>{NAME_ORIGIN}</p>
             </div>
             <div>
               <h3 className="serif" style={{ fontSize: 26, fontWeight: 400, margin: '0 0 8px' }}>Your child&rsquo;s privacy</h3>
