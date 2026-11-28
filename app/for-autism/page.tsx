@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { languageAlternates } from '@/lib/locales'
 import HeaderLang from '../_components/HeaderLang'
+import WhyTracking from '../_components/WhyTracking'
 import { CONDITION_LINKS, conditionHref } from '../_components/conditions'
 
 // Plan B for Autism (Rachel, 2026-11-19). Served at planbforautism.com/.org via middleware rewrite.
@@ -220,6 +221,8 @@ export default function PlanBForAutism() {
           </a>
         </div>
       </section>
+
+      <WhyTracking fig="Fig. 01" from={FROM} />
 
       <section className="band">
         <div className="wrap">

@@ -7,6 +7,7 @@ import CaseReviewVoices, { CaseReviewLong } from './_components/CaseReviewVoices
 import WelcomeVideo from './_components/WelcomeVideo'
 import CarePath from './_components/CarePath'
 import Manifesto from './_components/Manifesto'
+import WhyTracking from './_components/WhyTracking'
 
 export default function Home() {
   const revealRef = useRef<HTMLElement | null>(null)
@@ -170,6 +171,9 @@ export default function Home() {
 
       {/* WE ARE THE RESEARCH — closing statement right after the care path (Rachel, 2026-11-26). */}
       <Manifesto fig="Fig. 03" />
+
+      {/* WHY TRACKING BEHAVIOR MATTERS (Rachel, 2026-11-28): behavior is the clue, tracking is the unlock. */}
+      <WhyTracking fig="Fig. 04" />
 
       {/* THE TRACKER — shown, not described. */}
       <section className="tracker-show reveal">
