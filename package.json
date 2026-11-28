@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "directory:build": "node scripts/directory/build.mjs",
-    "translations": "node scripts/translations/build.mjs"
+    "translations": "node scripts/translations/build.mjs",
+    "test": "node --test --import ./lib/__tests__/ts-resolve.mjs \"lib/__tests__/*.test.mjs\""
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

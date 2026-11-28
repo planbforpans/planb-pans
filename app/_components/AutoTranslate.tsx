@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useRef, useState, type CSSProperties } from 'react'
-import { LANGS, fromBrowser, isLang, langInfo, shouldOfferChooser, type Lang } from '@/lib/languages'
+import { createPortal } from 'react-dom'
+import { LANGS, isLang, langInfo, resolveLang, viewingIn, type Lang } from '@/lib/languages'
 import { isLocalizedPath, localePath, splitLocale } from '@/lib/locales'
 
 // The language chooser, on every page. English and Español first (2026-11-21);
@@ -28,24 +29,16 @@ import { isLocalizedPath, localePath, splitLocale } from '@/lib/locales'
 // translating in place.
 
 const LANG_KEY = 'pb_lang'
-const DISMISSED_KEY = 'pb_lang_dismissed'
 const cacheKey = (l: Lang) => `pb_${l}_cache_v1`
 const SKIP = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT', 'TEXTAREA', 'INPUT', 'SELECT', 'CODE', 'PRE', 'SVG', 'IFRAME'])
 const ATTRS = ['placeholder', 'title', 'aria-label', 'alt']
 const TEAL = '#2E6E70'
 
-function savedLang(): Lang | null {
+// Pages that stay in English unless the parent picks a language.
+const STAY_ENGLISH = /^\/(minta-classes|api)(\/|$)/
+
+function storedLang(): Lang | null {
   try {
-    const here = splitLocale(window.location.pathname).locale
-    if (here) {
-      setLangChoice(here)
-      return here
-    }
-    const q = new URLSearchParams(window.location.search).get('lang')
-    if (isLang(q)) {
-      setLangChoice(q)
-      return q
-    }
     const c = document.cookie.match(/(?:^|; )pb_lang=([A-Za-z-]+)/)
     if (c && isLang(c[1])) return c[1]
     const s = window.localStorage.getItem(LANG_KEY)
@@ -54,13 +47,34 @@ function savedLang(): Lang | null {
   return null
 }
 
+// The page's language, and whether it was switched on its own (no saved choice,
+// following the browser). A saved choice always wins over the browser.
+function readLang(): { lang: Lang; auto: boolean } {
+  try {
+    const r = resolveLang({
+      urlLocale: splitLocale(window.location.pathname).locale,
+      query: new URLSearchParams(window.location.search).get('lang'),
+      stored: storedLang(),
+      browser: browserLangs(),
+      ua: navigator.userAgent,
+      stayEnglish: STAY_ENGLISH.test(window.location.pathname),
+    })
+    if (r.save) setLangChoice(r.save)
+    return r
+  } catch {
+    return { lang: 'en', auto: false }
+  }
+}
+
 // The choice is shared across planbforpans.com and app.planbforpans.com through a
 // cookie on the parent domain, so a parent picks a language once. A link with
-// ?lang=ar (or any code) picks the language for whoever opens it. Nothing is
-// translated until a language is chosen; a first visit outside US English gets
-// the chooser instead.
+// ?lang=ar (or any code) picks the language for whoever opens it. With nothing
+// chosen, a browser in a language we support switches to it on its own
+// (2026-11-27) and a small banner offers the chooser; only a choice the parent
+// makes (a pick, or closing the banner) is saved, so a new device follows its
+// own browser.
 export function getLang(): Lang {
-  return savedLang() || 'en'
+  return readLang().lang
 }
 
 export function setLangChoice(l: Lang) {
@@ -187,6 +201,51 @@ const SHEET_CSS = `
 @media (prefers-reduced-motion:reduce){.pbl-backdrop,.pbl-sheet{animation:none}}
 `
 
+const BANNER_CSS = `
+.pbl-banner{box-sizing:border-box;position:relative;z-index:60;display:flex;align-items:center;gap:10px;min-height:44px;padding:4px 6px 4px 16px;background:#E8F1EF;border-bottom:1px solid #CFDCDA;color:#1F2424;font-size:14px;line-height:1.35;animation:pbl-drop .28s cubic-bezier(.2,.8,.2,1)}
+.pbl-banner[dir="rtl"]{padding:4px 16px 4px 6px}
+.pbl-banner-globe{flex:none;font-size:16px;line-height:1}
+.pbl-banner-text{flex:1;min-width:0;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px}
+.pbl-banner-now{font-weight:600}
+.pbl-banner-dot{color:#7C8A88}
+.pbl-banner-switch{padding:6px 0;border:0;background:none;color:${TEAL};font:inherit;font-weight:700;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;cursor:pointer}
+.pbl-banner-x{flex:none;width:40px;height:40px;border:0;border-radius:20px;background:transparent;color:#41504E;font-size:16px;cursor:pointer}
+.pbl-banner-x:hover{background:rgba(46,110,112,.1)}
+.pbl-banner-switch:focus-visible,.pbl-banner-x:focus-visible{outline:3px solid #F2B04A;outline-offset:2px}
+@keyframes pbl-drop{from{transform:translateY(-100%);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.pbl-banner{animation:none}}
+`
+
+// "Viewing in Español · Switch language", in that language, at the very top of
+// the page after the language switched on its own. ✕ keeps the language and
+// saves it; "Switch language" opens the chooser (English included).
+function AutoBanner({ lang, onSwitch, onClose }: { lang: Lang; onSwitch: () => void; onClose: () => void }) {
+  // Only ever mounted in the browser (after the page reads its language).
+  const [host] = useState(() => {
+    const el = document.createElement('div')
+    el.setAttribute('data-pb-lang-banner', '')
+    return el
+  })
+  useEffect(() => {
+    document.body.prepend(host)
+    return () => host.remove()
+  }, [host])
+  const info = langInfo(lang)
+  return createPortal(
+    <div className="pbl-banner" role="region" aria-label={info.switchLang} translate="no" data-no-translate lang={lang} dir={info.dir}>
+      <style>{BANNER_CSS}</style>
+      <span className="pbl-banner-globe" aria-hidden>🌐</span>
+      <p className="pbl-banner-text">
+        <span className="pbl-banner-now">{viewingIn(lang)}</span>
+        <span className="pbl-banner-dot" aria-hidden>·</span>
+        <button type="button" className="pbl-banner-switch" onClick={onSwitch} aria-haspopup="dialog">{info.switchLang}</button>
+      </p>
+      <button type="button" className="pbl-banner-x" onClick={onClose} aria-label="Close">✕</button>
+    </div>,
+    host,
+  )
+}
+
 function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang; suggested: Lang; first: boolean; onPick: (l: Lang) => void; onClose: () => void }) {
   const sheet = useRef<HTMLDivElement>(null)
   const close = useRef(onClose)
@@ -278,20 +337,15 @@ function Chooser({ current, suggested, first, onPick, onClose }: { current: Lang
 export default function AutoTranslate() {
   const [busy, setBusy] = useState(false)
   const [lang, setLang] = useState<Lang>('en')
+  const [auto, setAuto] = useState(false)
   const [chooser, setChooser] = useState<null | { first: boolean; suggested: Lang }>(null)
 
   useEffect(() => {
-    const saved = savedLang()
-    setLang(saved || 'en')
-    let dismissed = false
-    try {
-      dismissed = window.sessionStorage.getItem(DISMISSED_KEY) === '1'
-    } catch {}
-    let tz = ''
-    try {
-      tz = Intl.DateTimeFormat().resolvedOptions().timeZone || ''
-    } catch {}
-    if (!saved && !dismissed && shouldOfferChooser(browserLangs(), tz)) setChooser({ first: true, suggested: fromBrowser(browserLangs()) })
+    // The first-visit chooser no longer opens on its own (2026-11-27): the page
+    // is already in the browser's language and the banner opens the chooser.
+    const now = readLang()
+    setLang(now.lang)
+    setAuto(now.auto)
     const open = () => setChooser({ first: false, suggested: getLang() })
     window.addEventListener('pb-lang-open', open)
     return () => window.removeEventListener('pb-lang-open', open)
@@ -435,6 +489,7 @@ export default function AutoTranslate() {
 
   const choose = (l: Lang) => {
     setLangChoice(l)
+    setAuto(false)
     setChooser(null)
     if (l === lang) return
     // This page has a version in that language: go to its address.
@@ -452,13 +507,11 @@ export default function AutoTranslate() {
     } else window.location.reload()
   }
 
-  const dismiss = () => {
-    if (chooser?.first) {
-      try {
-        window.sessionStorage.setItem(DISMISSED_KEY, '1')
-      } catch {}
-    }
-    setChooser(null)
+  const dismiss = () => setChooser(null)
+
+  const keep = () => {
+    setLangChoice(lang)
+    setAuto(false)
   }
 
   const info = langInfo(lang)
@@ -488,6 +541,7 @@ export default function AutoTranslate() {
           </span>
         )}
       </div>
+      {auto && lang !== 'en' && <AutoBanner lang={lang} onSwitch={openLanguageChooser} onClose={keep} />}
       {chooser && <Chooser current={lang} suggested={chooser.suggested} first={chooser.first} onPick={choose} onClose={dismiss} />}
     </>
   )

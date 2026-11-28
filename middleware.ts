@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { autoLang, isLang, parseAcceptLanguage } from './lib/languages'
 import { isLocalizedPath, localeFromSlug, localePath, splitLocale } from './lib/locales'
 
 // Password-gate the private "classes Minta should take" page.
@@ -23,6 +24,13 @@ const CONSTIPATION_HOSTS = new Set(['planbforconstipation.com', 'www.planbforcon
 // its address (308, other query parameters such as gclid and utm_* kept), and a
 // parent who picked a language before lands on that language's page. Pages
 // without a translated version keep ?lang and the in-page translation.
+//
+// 2026-11-27 (Rachel: "Wherever browser people are in should automatically
+// switch language"): with no saved choice at all, a browser whose first
+// supported language is not English goes straight to that language's page (307,
+// query kept). Crawlers and preview bots never move (lib/languages.ts isBot).
+// Nothing is saved, so a new device follows its own browser; the page's banner
+// saves a choice once the parent makes one.
 // `home` is the page a condition domain serves at its root
 // (planbforautism.com/es -> /es/for-autism).
 function localeRouting(req: NextRequest, home = '/'): NextResponse | null {
@@ -48,11 +56,23 @@ function localeRouting(req: NextRequest, home = '/'): NextResponse | null {
     }
   }
   if (!locale && asked === null) {
-    const saved = localeFromSlug(req.cookies.get('pb_lang')?.value)
+    const cookie = req.cookies.get('pb_lang')?.value
+    const saved = localeFromSlug(cookie)
     if (saved) {
       const to = url.clone()
       to.pathname = localePath(saved, path)
       return NextResponse.redirect(to, 307)
+    }
+    const auto = !isLang(cookie) && (req.method === 'GET' || req.method === 'HEAD')
+      ? autoLang(parseAcceptLanguage(req.headers.get('accept-language')), req.headers.get('user-agent'))
+      : null
+    if (auto) {
+      const to = url.clone()
+      to.pathname = localePath(auto, path)
+      const res = NextResponse.redirect(to, 307)
+      res.headers.set('Vary', 'Accept-Language, Cookie, User-Agent')
+      res.headers.set('Cache-Control', 'private, no-store')
+      return res
     }
   }
   if (home !== '/' && path === '/') return NextResponse.rewrite(new URL(localePath(locale || 'en', home) + url.search, req.url))
