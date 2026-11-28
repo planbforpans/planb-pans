@@ -8,6 +8,7 @@ import { useEffect, Fragment } from 'react'
 import { VOICES } from './voices'
 import CaseReviewVoices, { CaseReviewLong } from './CaseReviewVoices'
 import CarePath from './CarePath'
+import WhyTracking from './WhyTracking'
 import { CONDITIONS, type ConditionKey } from './conditions'
 import { FiguresStyle, StrepConnection, EarlySigns, BugPersonalities } from './ConditionFigures'
 import { DepthStyle, SelfCheck, Compare, Mechanism, DoctorReplies, Research, Faq } from './ConditionDepth'
@@ -202,6 +203,8 @@ export default function ConditionHome({ k }: { k: ConditionKey }) {
         </div>
       </section>
 
+      <WhyTracking fig="Fig. 11" from={k} />
+
       <section className="tracker-show reveal">
         <div className="tracker-in">
           <div className="phone" aria-hidden="true">
@@ -255,7 +258,7 @@ export default function ConditionHome({ k }: { k: ConditionKey }) {
         </div>
       </section>
 
-      <Research fig="Fig. 11" c={c} />
+      <Research fig="Fig. 12" c={c} />
 
       <section aria-label="Try Minta" style={{ padding: 'clamp(72px, 10vw, 120px) 24px', background: 'var(--cream-light)', borderBottom: '1px solid var(--rule)', position: 'relative', overflow: 'hidden' }}>
         <div className="bloom-float" style={{ position: 'absolute', top: -180, right: -160, width: 520, height: 520, borderRadius: '50%', background: 'radial-gradient(circle, rgba(31,107,107,0.10) 0%, transparent 70%)', pointerEvents: 'none' }} />
@@ -274,7 +277,7 @@ export default function ConditionHome({ k }: { k: ConditionKey }) {
         </div>
       </section>
 
-      <Faq fig="Fig. 12" c={c} />
+      <Faq fig="Fig. 13" c={c} />
 
       <section className="fx reveal" aria-label="From the Field Guide" style={{ paddingBottom: 'clamp(56px, 7vw, 96px)' }}>
         <div className="fx-in">
